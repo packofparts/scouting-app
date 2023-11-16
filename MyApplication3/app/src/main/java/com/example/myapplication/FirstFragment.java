@@ -12,8 +12,6 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.myapplication.databinding.FragmentFirstBinding;
 
 public class FirstFragment extends Fragment {
-///comment
-    //another comment
     private FragmentFirstBinding binding;
 
     @Override

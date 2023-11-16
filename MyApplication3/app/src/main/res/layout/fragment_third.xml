@@ -15,6 +15,6 @@
         android:id="@+id/button_third"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Button :D" />
 
 </FrameLayout>

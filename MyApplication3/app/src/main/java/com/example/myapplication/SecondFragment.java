@@ -1,6 +1,9 @@
 package com.example.myapplication;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +25,7 @@ public class SecondFragment extends Fragment {
     ) {
 
         binding = FragmentSecondBinding.inflate(inflater, container, false);
+
         return binding.getRoot();
 
     }
@@ -32,10 +36,21 @@ public class SecondFragment extends Fragment {
         binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 NavHostFragment.findNavController(SecondFragment.this)
                         .navigate(R.id.action_SecondFragment_to_ThirdFragment);
             }
         });
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        float height = displayMetrics.heightPixels;
+        float width = displayMetrics.widthPixels;
+        ViewGroup.LayoutParams layoutParams = binding.relativeLayoutFirst.getLayoutParams();
+        layoutParams.width = (int) width;
+        layoutParams.height = (int) height;
+        binding.relativeLayoutFirst.setLayoutParams(layoutParams);
+        binding.buttonSecond.setTranslationX((width - 300)/ 2);
+        binding.buttonSecond.setTranslationY((height / 8)  * 6);
     }
 
     @Override

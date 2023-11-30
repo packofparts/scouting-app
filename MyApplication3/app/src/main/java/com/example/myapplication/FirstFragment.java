@@ -12,8 +12,8 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.myapplication.databinding.FragmentFirstBinding;
 
 public class FirstFragment extends Fragment {
-
     private FragmentFirstBinding binding;
+    //fdsafdagdsa 
 
     @Override
     public View onCreateView(

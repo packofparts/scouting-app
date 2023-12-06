@@ -35,4 +35,9 @@
             android:id="@+id/action_ThirdFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/teleop"
+        android:name="com.example.myapplication.HomePage"
+        android:label="fragment_teleop"
+        tools:layout="@layout/fragment_mainpage" />
 </navigation>

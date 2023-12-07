@@ -1,14 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pitTableLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".PitFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <TableRow
+        android:id="@+id/topPitRow"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="89dp">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="185dp"
+            android:layout_height="75dp"
+            android:text="@string/input_team_num_label"
+            android:textColor="#07C6B5"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/pitInputtedTeamNlo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:text="@string/ex_1294"
+            android:textColor="#A607C6B5" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/secondPitRow"
+        android:layout_width="match_parent"
+        android:layout_height="63dp">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@string/boolean_value"
+            android:textColor="#07C6B5"
+            android:textSize="24sp" />
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/thirdPitRow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/bottomPitRow"
+        android:layout_width="match_parent"
+        android:layout_height="81dp" >
+
+        <TextView
+            android:id="@+id/pit_game_title"
+            android:layout_width="206dp"
+            android:layout_height="247dp"
+            android:layout_weight="@integer/material_motion_duration_long_2"
+            android:gravity="bottom|end|top|start"
+            android:rotation="30"
+            android:text="@string/game_title"
+            android:padding="20dp"
+            android:textColor="#07C6B5"
+            android:textSize="60sp" />
+    </TableRow>
+</TableLayout>

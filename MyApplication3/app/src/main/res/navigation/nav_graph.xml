@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_pitFragment"
+            app:destination="@id/pitFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -35,4 +38,10 @@
             android:id="@+id/action_ThirdFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/pitFragment"
+        android:name="com.example.myapplication.PitFragment"
+        android:label="fragment_pit"
+        tools:layout="@layout/fragment_pit" />
 </navigation>

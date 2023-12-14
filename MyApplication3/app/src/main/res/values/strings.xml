@@ -45,4 +45,10 @@
     </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Strings for Pit scouting page-->
+    <string name="input_team_num_label"> Input team number: </string>
+    <string name="boolean_value">Boolean Value</string>
+    <string name="ex_1294">ex: 1294</string>
+    <string name="game_title">CRESCENDO</string>
 </resources>

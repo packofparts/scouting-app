@@ -50,7 +50,7 @@ public class SecondFragment extends Fragment {
         layoutParams.height = (int) height;
         binding.relativeLayoutFirst.setLayoutParams(layoutParams);
         binding.buttonSecond.setTranslationX((width - 300)/ 2);
-        binding.buttonSecond.setTranslationY((height / 8)  * 6);
+        binding.textView.setTranslationX((width - 360)/ 2);
     }
 
     @Override

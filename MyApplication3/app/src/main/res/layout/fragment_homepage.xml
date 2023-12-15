@@ -6,13 +6,73 @@
     android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="HomePage" >
+    android:background="#000000"
+    tools:context="HomePage">
 
     <TextView
-        android:id="@+id/Apple"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_marginStart="160dp"
+        android:text="10"
+        android:textColor="#FFFFFF"
+        android:textSize="96sp"
+        app:layout_constraintBottom_toTopOf="@+id/Random_Button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.171" />
+
+    <Button
+        android:id="@+id/Toast_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="156dp"
+        android:backgroundTint="#00107E"
+        android:text="Toast"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textCursorDrawable="@android:drawable/alert_dark_frame"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/Count_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="156dp"
+        android:backgroundTint="#00107E"
+        android:text="Count"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textCursorDrawable="@android:drawable/alert_dark_frame"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/Random_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="51dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="156dp"
+        android:backgroundTint="#00107E"
+        android:text="Random"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textCursorDrawable="@android:drawable/alert_dark_frame"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/Count_Button"
+        app:layout_constraintStart_toEndOf="@+id/Toast_Button" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,7 +34,7 @@ public class ThirdFragment extends Fragment {
 
 
     private FragmentThirdBinding binding;
-    private boolean workingAuto;
+
 
     @Override
     public View onCreateView(
@@ -43,12 +43,17 @@ public class ThirdFragment extends Fragment {
         binding = FragmentThirdBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
-
+    private boolean workingAuto;
     public void setWorkingAuto(boolean wantedValue){
-
+        wantedValue = true;
         workingAuto = wantedValue;
-    }
 
+    }
+    private boolean notWorkingAuto;
+    public void setNotWorkingAuto(boolean notWantedValue){
+        notWantedValue = false;
+        notWorkingAuto = notWantedValue;
+    }
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -61,7 +66,17 @@ public class ThirdFragment extends Fragment {
                 System.out.println(workingAuto);
             }
         });
+        binding.No.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                NavController navController = NavHostFragment.findNavController(ThirdFragment.this);
+                setNotWorkingAuto(notWorkingAuto);
+                System.out.println(notWorkingAuto);
+            }
+        });
     }
+
     /*public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 

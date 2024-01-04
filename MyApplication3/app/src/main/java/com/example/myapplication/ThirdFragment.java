@@ -2,23 +2,82 @@ package com.example.myapplication;
 
 import android.os.Bundle;
 
+
 import androidx.fragment.app.Fragment;
+
+import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+
+
+import androidx.navigation.fragment.NavHostFragment;
+
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+
+import androidx.annotation.NonNull;
+
+import com.example.myapplication.databinding.FragmentThirdBinding;
+
+
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ThirdFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class ThirdFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
+    private FragmentThirdBinding binding;
+    private boolean workingAuto;
+
+    @Override
+    public View onCreateView(
+            LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState
+    ){
+        binding = FragmentThirdBinding.inflate(inflater, container, false);
+        return binding.getRoot();
+    }
+
+    public void setWorkingAuto(boolean wantedValue){
+
+        workingAuto = wantedValue;
+    }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        binding.Yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                NavController navController = NavHostFragment.findNavController(ThirdFragment.this);
+                setWorkingAuto(workingAuto);
+                System.out.println(workingAuto);
+            }
+        });
+    }
+    /*public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        binding.Yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                NavController navController = NavHostFragment.findNavController(ThirdFragment.this);
+                if (.isChecked()) {
+                    checkBox.setChecked(false);
+                }
+            }
+        });
+    }*/
+    //TODO: Rename parameter arguments, choose names that match
+    //the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -59,19 +118,13 @@ public class ThirdFragment extends Fragment {
 
     }
 
-    /*
-    @Override
-    public void onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        buttonThird.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(ThirdFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
-            }
-        });
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_third, container, false);
-    }
-     */
+
+
+
+
+
+
+
+
+
 }

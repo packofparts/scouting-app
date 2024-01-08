@@ -54,4 +54,14 @@
     <string name="Yes">Yes</string>
     <string name="working_auto">Does robot have working auto?</string>
     <string name="No">No</string>
+    <string name="ten">10\n</string>
+    <string name="toast">Toast\n</string>
+    <string name="Toast">Toast</string>
+    <string name="Count">Count</string>
+    <string name="Random">Random</string>
+    <string name="toAuto">Auto segment</string>
+    <string name="Teleop">Teleop\n</string>
+    <string name="moveOut">Did the robot move out of their zone?</string>
+    <string name="scoreAuto">Did the robot score during auto?</string>
+    <string name="numNotes">If so how many?</string>
 </resources>

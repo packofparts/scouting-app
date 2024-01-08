@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="168dp"
+        android:layout_marginTop="112dp"
         android:layout_marginEnd="18dp"
         android:text="@string/Yes"
         app:layout_constraintEnd_toStartOf="@+id/No"
@@ -25,7 +25,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="71dp"
+        android:layout_marginTop="44dp"
         android:text="@string/working_auto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,5 +40,102 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Yes"
         tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/moveOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="72dp"
+        android:text="@string/moveOut"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/No" />
+
+    <Button
+        android:id="@+id/moveYes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="15dp"
+        android:text="@string/Yes"
+        app:layout_constraintEnd_toStartOf="@+id/moveNo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/moveOut" />
+
+    <Button
+        android:id="@+id/moveNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:text="@string/No"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/moveYes"
+        app:layout_constraintTop_toBottomOf="@+id/moveOut" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="42dp"
+        android:text="@string/scoreAuto"
+        app:layout_constraintStart_toStartOf="@+id/moveYes"
+        app:layout_constraintTop_toBottomOf="@+id/moveNo" />
+
+    <Button
+        android:id="@+id/scoreAutoYes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/Yes"
+        app:layout_constraintEnd_toStartOf="@+id/scoreAutoNo"
+        app:layout_constraintHorizontal_bias="0.429"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <Button
+        android:id="@+id/scoreAutoNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="56dp"
+        android:text="@string/No"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/moveNo"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="If so how many?"
+        app:layout_constraintEnd_toStartOf="@+id/scoreAutoNo"
+        app:layout_constraintTop_toBottomOf="@+id/scoreAutoNo" />
+
+    <EditText
+        android:id="@+id/numNotes"
+        android:layout_width="204dp"
+        android:layout_height="93dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="@+id/scoreAutoYes"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <Button
+        android:id="@+id/toAutoCont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="Auto cont. "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 

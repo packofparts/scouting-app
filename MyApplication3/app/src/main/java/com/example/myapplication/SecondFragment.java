@@ -33,14 +33,7 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_ThirdFragment);
-            }
-        });
         DisplayMetrics displayMetrics = new DisplayMetrics();
         ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         float height = displayMetrics.heightPixels;
@@ -49,7 +42,6 @@ public class SecondFragment extends Fragment {
         layoutParams.width = (int) width;
         layoutParams.height = (int) height;
         binding.relativeLayoutFirst.setLayoutParams(layoutParams);
-        binding.buttonSecond.setTranslationX((width - 300)/ 2);
         binding.textView.setTranslationX((width - 360)/ 2);
     }
 

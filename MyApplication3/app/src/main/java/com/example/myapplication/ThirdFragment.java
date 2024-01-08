@@ -43,20 +43,53 @@ public class ThirdFragment extends Fragment {
         binding = FragmentThirdBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
+    // DOES THE ROBOT HAVE WORKING AUTO
     private boolean workingAuto;
     public void setWorkingAuto(boolean wantedValue){
         wantedValue = true;
         workingAuto = wantedValue;
 
     }
+
     private boolean notWorkingAuto;
     public void setNotWorkingAuto(boolean notWantedValue){
         notWantedValue = false;
         notWorkingAuto = notWantedValue;
     }
+
+    //DOES THE ROBOT MOVE OUT OF THEIR ZONE DURING AUTO PHASE
+
+    private boolean outOfZone;
+    public void setoutOfZone(boolean wantedValue){
+        wantedValue = true;
+        outOfZone = wantedValue;
+    }
+    private boolean notOutOfZone;
+    public void setnotOutOfZone(boolean notWantedValue){
+        notWantedValue = false;
+        notOutOfZone = notWantedValue;
+        }
+    //DOES ROBOT SCORE DURING AUTO PHASE
+
+    private boolean scoreAuto;
+       public void setScoreAuto(boolean wantedValue){
+        wantedValue = true;
+        scoreAuto = wantedValue;
+    }
+    private boolean noScoreAuto;
+       public void setNoScoreAuto(boolean notWantedValue){
+           notWantedValue = false;
+           noScoreAuto = notWantedValue;
+       }
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        binding.toAutoCont.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(ThirdFragment.this)
+                        .navigate(R.id.action_ThirdFragment_to_thirdFragment2);
+            }
+        });
         binding.Yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,7 +108,46 @@ public class ThirdFragment extends Fragment {
                 System.out.println(notWorkingAuto);
             }
         });
-    }
+        binding.moveYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                NavController navController = NavHostFragment.findNavController(ThirdFragment.this);
+                setoutOfZone(outOfZone);
+                System.out.println(outOfZone);
+            }
+        });
+        binding.moveNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                NavController navController = NavHostFragment.findNavController(ThirdFragment.this);
+                setnotOutOfZone(notOutOfZone);
+                System.out.println(notOutOfZone);
+            }
+        });
+        binding.scoreAutoYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                NavController navController = NavHostFragment.findNavController(ThirdFragment.this);
+                setScoreAuto(scoreAuto);
+                System.out.println(scoreAuto);
+            }
+        });
+        binding.scoreAutoNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                NavController navController = NavHostFragment.findNavController(ThirdFragment.this);
+                setnotOutOfZone(noScoreAuto);
+                System.out.println(noScoreAuto);
+            }
+        });
+
+
+        }
+
 
     /*public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -132,14 +204,4 @@ public class ThirdFragment extends Fragment {
         }
 
     }
-
-
-
-
-
-
-
-
-
-
 }

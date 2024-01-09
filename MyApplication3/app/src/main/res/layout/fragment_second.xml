@@ -94,6 +94,7 @@
             android:translationY="580dp" />
 
         <Button
+
             android:id="@+id/next"
             android:layout_width="300px"
             android:layout_height="wrap_content"
@@ -105,6 +106,7 @@
             app:layout_constraintHorizontal_bias="0.547"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
         <Button
             android:id="@+id/minusAmp"

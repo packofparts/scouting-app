@@ -37,14 +37,15 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         binding.next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_ThirdFragment);
             }
         });
+
+
         DisplayMetrics displayMetrics = new DisplayMetrics();
         ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         float height = displayMetrics.heightPixels;
@@ -53,6 +54,7 @@ public class SecondFragment extends Fragment {
         layoutParams.width = (int) width;
         layoutParams.height = (int) height + 380;
         binding.relativeLayoutFirst.setLayoutParams(layoutParams);
+
         binding.next.setTranslationX((width - 300)/ 2.0f);
         binding.next.setTranslationY(height + 230);
         binding.title.setTranslationX((width - 136)/ 2.0f);
@@ -93,6 +95,8 @@ public class SecondFragment extends Fragment {
 
         binding.speakerNotesAmp.setTranslationX(width * 0.073f);
         binding.speakerNotesAmp.setTranslationY(height * 0.835f);
+
+
     }
 
     @Override

@@ -12,6 +12,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -144,6 +145,7 @@ public class ThirdFragment extends Fragment {
                 System.out.println(noScoreAuto);
             }
         });
+        Editable numNotes = binding.numNotes.getText();
 
 
         }

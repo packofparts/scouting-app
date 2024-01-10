@@ -1,4 +1,11 @@
 <resources>
+    <string name="Contacted_opponent">Spinner Example</string>
+
+    <string-array name="Contacted_opponent">
+        <item>Contacted Opponent</item>
+        <item>Contacted Teammate</item>
+        <item>No contact</item>
+    </string-array>
     <string name="app_name">My Application</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->

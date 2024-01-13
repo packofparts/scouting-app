@@ -95,5 +95,13 @@ public class PitFragment extends Fragment {
                isTrue = !isTrue;
            }
         });
+
+        binding.toAuto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(PitFragment.this)
+                        .navigate(R.id.action_pitFragment_to_ThirdFragment);
+            }
+        });
     }
 }

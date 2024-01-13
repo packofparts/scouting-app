@@ -9,6 +9,5 @@ For ($i=0; $i -lt $androidIdArray.Length; $i++){
     else{
         echo "bruh"
     }
-    Start-Sleep -Seconds 1
 }
 

@@ -2,8 +2,10 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:barrierMargin="0dp"
     tools:context=".SecondFragment">
 
     <RelativeLayout
@@ -12,21 +14,218 @@
         android:layout_height="730dp"
         android:padding="0dp">
 
+
+        <Switch
+            android:id="@+id/broke"
+            android:layout_width="410px"
+            android:layout_height="wrap_content"
+            android:text="Broke?     "
+            android:textColor="#000000"
+            android:textSize="26dp"
+            android:thumbTint="#73C2F0"
+            android:thumbTintMode="src_in"
+            android:trackTint="#73C2F0"
+            android:trackTintMode="src_over"
+            android:translationX="30dp"
+            android:translationY="150dp" />
+
+        <Switch
+            android:id="@+id/defense"
+            android:layout_width="410px"
+            android:layout_height="wrap_content"
+            android:text="Defense? "
+            android:textColor="#000000"
+            android:textSize="26dp"
+            android:thumbTint="#73C2F0"
+            android:trackTint="#73C2F0"
+            android:trackTintMode="src_over"
+            android:translationX="30dp"
+            android:translationY="200dp" />
+
+        <Switch
+            android:id="@+id/ground"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:text="Pick up from ground?"
+            android:textColor="#000000"
+            android:textSize="26dp"
+            android:thumbTint="#73C2F0"
+            android:trackTint="#73C2F0"
+            android:trackTintMode="src_over"
+            android:translationX="30dp"
+            android:translationY="250dp" />
+
+        <Switch
+            android:id="@+id/source"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:text="Pick up from source?"
+            android:textColor="#000000"
+            android:textSize="26dp"
+            android:thumbTint="#73C2F0"
+            android:trackTint="#73C2F0"
+            android:trackTintMode="src_over"
+            android:translationX="30dp"
+            android:translationY="300dp" />
+
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="360px"
+            android:id="@+id/title"
+            android:layout_width="136dp"
             android:layout_height="wrap_content"
             android:text="Tele-OP"
+            android:textSize="38dp"
             android:translationX="150dp"
-            android:translationY="50dp"
-            android:textSize="38dp" />
+            android:translationY="50dp" />
 
-        <Button
-            android:id="@+id/button2"
+        <TextView
+            android:id="@+id/ampNotes"
+            android:layout_width="136dp"
+            android:layout_height="wrap_content"
+            android:text="Notes in Amp"
+            android:textSize="26dp"
+            android:translationX="30dp"
+            android:translationY="350dp" />
+        <TextView
+            android:id="@+id/ampCounter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="0"
+            android:textSize="26dp"
+            android:translationX="245dp"
+            android:translationY="355dp" />
 
+        <TextView
+            android:id="@+id/speakerNotesUnamp"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="Notes in Speaker (Unamplified)"
+            android:textSize="26dp"
+            android:translationX="30dp"
+            android:translationY="460dp" />
+
+        <TextView
+            android:id="@+id/speakerUnampCounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="26dp"
+            android:translationX="245dp"
+            android:translationY="440dp" />
+        <TextView
+            android:id="@+id/speakerAmpCounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="26dp"
+            android:translationX="245dp"
+            android:translationY="545dp" />
+
+        <TextView
+            android:id="@+id/speakerNotesAmp"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="Notes in Speaker (Amplified)"
+            android:textSize="26dp"
+            android:translationX="30dp"
+            android:translationY="535dp" />
+
+        <Button
+
+            android:id="@+id/next"
+            android:layout_width="300px"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:backgroundTint="#73C2F0"
+            android:text="@string/next"
+            android:translationX="150dp"
+            android:translationY="600dp"
+            app:cornerRadius="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.547"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Button
+            android:id="@+id/minusAmp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="36dp"
+            android:backgroundTint="#73C2F0"
+            android:text="-"
+            android:textSize="26dp"
+            android:translationX="150dp"
+            android:translationY="315dp"
+            app:cornerRadius="100dp" />
+
+        <Button
+            android:id="@+id/plusAmp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="36dp"
+            android:backgroundTint="#73C2F0"
+            android:backgroundTintMode="add"
+            android:text="+"
+            android:textSize="26dp"
+            android:translationX="300dp"
+            android:translationY="315dp"
+            app:cornerRadius="100dp" />
+
+        <Button
+            android:id="@+id/minusSpeakerUnamp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="36dp"
+            android:backgroundTint="#73C2F0"
+            android:text="-"
+            android:textSize="26dp"
+            android:translationX="150dp"
+            android:translationY="400dp"
+            app:cornerRadius="100dp" />
+
+        <Button
+            android:id="@+id/plusSpeakerUnamp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="36dp"
+            android:backgroundTint="#73C2F0"
+            android:text="+"
+            android:textSize="26dp"
+            android:translationX="300dp"
+            android:translationY="400dp"
+            app:cornerRadius="100dp" />
+
+        <Button
+            android:id="@+id/minusSpeakerAmp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="36dp"
+            android:backgroundTint="#73C2F0"
+            android:text="-"
+            android:textSize="26dp"
+            android:translationX="150dp"
+            android:translationY="505dp"
+            app:cornerRadius="100dp" />
+
+        <Button
+            android:id="@+id/plusSpeakerAmp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="36dp"
+            android:backgroundTint="#73C2F0"
+            android:text="+"
+            android:textSize="26dp"
+            android:translationX="300dp"
+            android:translationY="505dp"
+            app:cornerRadius="100dp" />
+
+        <ImageView
+            android:id="@+id/pop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pop"
+            android:translationX="0dp"
+            android:translationY="0dp"/>
 
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>

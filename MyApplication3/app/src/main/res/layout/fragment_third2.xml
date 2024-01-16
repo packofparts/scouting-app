@@ -12,41 +12,42 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+
         android:layout_marginBottom="246dp"
         android:text="Auto cont."
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/contact"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/spinner3"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
     <Button
         android:id="@+id/toTeleop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="37dp"
-        android:layout_marginBottom="54dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="33dp"
         android:text="Teleop"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner3" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="26dp"
+
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="54dp"
         android:text="Notes in amp (# of) ?"
         app:layout_constraintBottom_toTopOf="@+id/editTextNumber"
-        app:layout_constraintEnd_toEndOf="@+id/editTextNumber"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintStart_toStartOf="@+id/editTextNumber"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextNumber"
         android:layout_width="181dp"
-        android:layout_height="64dp"
-        android:layout_marginBottom="521dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="584dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -54,25 +55,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="59dp"
-        android:text="Did the robot contact another robot?"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
 
     <Spinner
-        android:id="@+id/contact"
-        android:layout_width="197dp"
-        android:layout_height="62dp"
-        android:layout_marginBottom="374dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/spinner3"
+        android:layout_width="185dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="255dp"
+        android:layout_marginBottom="322dp"
+        app:layout_constraintBottom_toTopOf="@+id/toTeleop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -25,13 +26,15 @@ public class PitFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    private boolean isTrue = false;
+
     private FragmentPitBinding binding;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public PitFragment() {
+    public PitFragment(int test) {
         // Required empty public constructor
     }
 
@@ -45,7 +48,7 @@ public class PitFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static PitFragment newInstance(String param1, String param2) {
-        PitFragment fragment = new PitFragment();
+        PitFragment fragment = new PitFragment(0);
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -76,12 +79,23 @@ public class PitFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         binding.Pit.setOnClickListener(new View.OnClickListener() {
+            /*Intent intent = new Intent(getActivity().getBaseContext(), TargetActivity.class);
+            intent.putExtra("message", message);
+            getActivity().startActivity(intent);*/
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(PitFragment.this)
                         .navigate(R.id.action_pitFragment_to_HomePage);
             }
         });
+
+        binding.checkBox.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               isTrue = !isTrue;
+           }
+        });
+
         binding.toAuto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,5 +103,9 @@ public class PitFragment extends Fragment {
                         .navigate(R.id.action_pitFragment_to_ThirdFragment);
             }
         });
+
+    }
+    public PitFragment() {
+        // Required empty public constructor
     }
 }

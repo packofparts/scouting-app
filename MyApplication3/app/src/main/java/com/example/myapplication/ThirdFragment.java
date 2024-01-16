@@ -178,15 +178,7 @@ public class ThirdFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ThirdestAndGreatestFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static ThirdFragment newInstance(String param1, String param2) {
         ThirdFragment fragment = new ThirdFragment();
         Bundle args = new Bundle();
@@ -196,14 +188,5 @@ public class ThirdFragment extends Fragment {
         return fragment;
     }
 
-    Button secToThird;
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
 
-    }
 }

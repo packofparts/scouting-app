@@ -70,5 +70,9 @@
         android:id="@+id/SecondFragment2"
         android:name="com.example.myapplication.SecondFragment2"
         android:label="Second Fragment 2"
-        tools:layout="@layout/fragment_second2" />
+        tools:layout="@layout/fragment_second2" >
+        <action
+            android:id="@+id/action_SecondFragment2_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
 </navigation>

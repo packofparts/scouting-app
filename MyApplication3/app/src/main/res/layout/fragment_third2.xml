@@ -26,7 +26,8 @@
         android:layout_marginBottom="54dp"
         android:text="Teleop"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner3" />
 
     <TextView
         android:id="@+id/textView8"
@@ -50,5 +51,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_width="185dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="255dp"
+        android:layout_marginBottom="322dp"
+        app:layout_constraintBottom_toTopOf="@+id/toTeleop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

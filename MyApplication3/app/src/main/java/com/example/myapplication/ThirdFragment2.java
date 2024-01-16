@@ -16,6 +16,7 @@ import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 
@@ -23,6 +24,9 @@ import androidx.annotation.NonNull;
 
 import com.example.myapplication.databinding.FragmentThird2Binding;
 import com.example.myapplication.databinding.FragmentThirdBinding;
+
+import java.lang.reflect.Array;
+
 public class ThirdFragment2 extends Fragment{
 
 
@@ -47,5 +51,8 @@ public class ThirdFragment2 extends Fragment{
             }
         });
 
+        String[] typeContact = {"No contact", "Hit teammate", "Hit opponent"};
+        ArrayAdapter<String> contact =  new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, typeContact);
+        binding.spinner3.setAdapter(contact);
     }
 }

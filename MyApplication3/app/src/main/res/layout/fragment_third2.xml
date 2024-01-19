@@ -13,12 +13,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginBottom="246dp"
+        android:layout_marginTop="2dp"
         android:text="Auto cont."
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/spinner3"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/toTeleop"
@@ -28,44 +28,31 @@
         android:layout_marginBottom="33dp"
         android:text="Teleop"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner3" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="54dp"
-        android:text="Notes in amp (# of) ?"
-        app:layout_constraintBottom_toTopOf="@+id/editTextNumber"
-        app:layout_constraintStart_toStartOf="@+id/editTextNumber"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="38dp"
+        android:text="Any other comments? (max 150 characters)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
-        android:id="@+id/editTextNumber"
-        android:layout_width="181dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="584dp"
+        android:id="@+id/editTextTextMultiLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="43dp"
         android:ems="10"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-
-    <Spinner
-        android:id="@+id/spinner3"
-        android:layout_width="185dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="255dp"
-        android:layout_marginBottom="322dp"
-        app:layout_constraintBottom_toTopOf="@+id/toTeleop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:maxLength="150"
+        app:layout_constraintStart_toStartOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

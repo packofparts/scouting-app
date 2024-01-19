@@ -45,18 +45,9 @@ public class ThirdFragment2 extends Fragment{
                         .navigate(R.id.action_thirdFragment2_to_SecondFragment);
             }
         });
-        String[] typeContact = {"No contact", "Teammate to Teammate", "Teammate to opponent"};
-        ArrayAdapter<String> contact = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, typeContact);
-        binding.spinner3.setAdapter(contact);
 
-        binding.toTeleop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(ThirdFragment2.this)
-                        .navigate(R.id.action_thirdFragment2_to_SecondFragment);
-                System.out.println(contact);
-            }
-        });
+
+
 
 
 

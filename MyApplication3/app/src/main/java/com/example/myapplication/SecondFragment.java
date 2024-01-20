@@ -25,10 +25,6 @@ import com.example.myapplication.databinding.FragmentSecondBinding;
 public class SecondFragment extends Fragment {
 
     private FragmentSecondBinding binding;
-    public int amp = 0;
-    public int speakerUnamp = 0;
-    public int speakerAmp = 0;
-    public boolean mode = false;
 
     ViewGroup v = null;
     @Override
@@ -39,8 +35,42 @@ public class SecondFragment extends Fragment {
 
         binding = FragmentSecondBinding.inflate(inflater, container, false);
         v = container;
+        binding.ampCounter.setText("" + MainActivity.amp);
+        binding.speakerUnampCounter.setText("" + MainActivity.speakerUnamp);
+        binding.speakerAmpCounter.setText("" + MainActivity.speakerAmp);
+        binding.broke.setChecked(MainActivity.broke);
+        if (binding.broke.isChecked()){
+            binding.broke.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+            binding.broke.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+        } else {
+            binding.broke.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+            binding.broke.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+        }
+        binding.defense.setChecked(MainActivity.defense);
+        if (binding.defense.isChecked()){
+            binding.defense.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+            binding.defense.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+        } else {
+            binding.defense.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+            binding.defense.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+        }
+        binding.ground.setChecked(MainActivity.ground);
+        if (binding.ground.isChecked()){
+            binding.ground.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+            binding.ground.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+        } else {
+            binding.ground.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+            binding.ground.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+        }
+        binding.source.setChecked(MainActivity.source);
+        if (binding.source.isChecked()){
+            binding.source.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+            binding.source.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+        } else {
+            binding.source.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+            binding.source.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+        }
         return binding.getRoot();
-
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -71,8 +101,8 @@ public class SecondFragment extends Fragment {
         binding.pop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               mode = !mode;
-               lightDark(v, mode);
+               MainActivity.darkMode = !MainActivity.darkMode;
+               lightDark(v, MainActivity.darkMode);
             }
         });
         binding.broke.setTranslationX(width * 0.073f);
@@ -87,6 +117,7 @@ public class SecondFragment extends Fragment {
                     binding.broke.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
                     binding.broke.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
                 }
+                MainActivity.broke = binding.broke.isChecked();
             }
         });
         binding.defense.setTranslationX(width * 0.073f);
@@ -101,6 +132,7 @@ public class SecondFragment extends Fragment {
                     binding.defense.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
                     binding.defense.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
                 }
+                MainActivity.defense = binding.defense.isChecked();
             }
         });
         binding.ground.setTranslationX(width * 0.073f);
@@ -115,6 +147,7 @@ public class SecondFragment extends Fragment {
                     binding.ground.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
                     binding.ground.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
                 }
+                MainActivity.ground = binding.ground.isChecked();
             }
         });
         binding.source.setTranslationX(width * 0.073f);
@@ -129,6 +162,7 @@ public class SecondFragment extends Fragment {
                     binding.source.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
                     binding.source.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
                 }
+                MainActivity.source = binding.source.isChecked();
             }
         });
         binding.ampNotes.setTranslationX(width * 0.073f);
@@ -138,9 +172,9 @@ public class SecondFragment extends Fragment {
         binding.minusAmp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (amp > 0){
-                    amp --;
-                    binding.ampCounter.setText("" + amp);
+                if (MainActivity.amp > 0){
+                    MainActivity.amp --;
+                    binding.ampCounter.setText("" + MainActivity.amp);
                 }
             }
         });
@@ -149,8 +183,8 @@ public class SecondFragment extends Fragment {
         binding.plusAmp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                amp ++;
-                binding.ampCounter.setText("" + amp);
+                MainActivity.amp ++;
+                binding.ampCounter.setText("" + MainActivity.amp);
             }
         });
         binding.ampCounter.setTranslationX(width * 0.598f);
@@ -163,9 +197,9 @@ public class SecondFragment extends Fragment {
         binding.minusSpeakerUnamp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (speakerUnamp > 0){
-                    speakerUnamp --;
-                    binding.speakerUnampCounter.setText("" + speakerUnamp);
+                if (MainActivity.speakerUnamp > 0){
+                    MainActivity.speakerUnamp --;
+                    binding.speakerUnampCounter.setText("" + MainActivity.speakerUnamp);
                 }
             }
         });
@@ -174,8 +208,8 @@ public class SecondFragment extends Fragment {
         binding.plusSpeakerUnamp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                speakerUnamp ++;
-                binding.speakerUnampCounter.setText("" + speakerUnamp);
+                MainActivity.speakerUnamp ++;
+                binding.speakerUnampCounter.setText("" + MainActivity.speakerUnamp);
             }
         });
         binding.speakerUnampCounter.setTranslationX(width * 0.598f);
@@ -188,9 +222,9 @@ public class SecondFragment extends Fragment {
         binding.minusSpeakerAmp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (speakerAmp > 0){
-                    speakerAmp --;
-                    binding.speakerAmpCounter.setText("" + speakerAmp);
+                if (MainActivity.speakerAmp > 0){
+                    MainActivity.speakerAmp --;
+                    binding.speakerAmpCounter.setText("" + MainActivity.speakerAmp);
                 }
             }
         });
@@ -199,19 +233,20 @@ public class SecondFragment extends Fragment {
         binding.plusSpeakerAmp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                speakerAmp ++;
-                binding.speakerAmpCounter.setText("" + speakerAmp);
+                MainActivity.speakerAmp ++;
+                binding.speakerAmpCounter.setText("" + MainActivity.speakerAmp);
             }
         });
         binding.speakerAmpCounter.setTranslationX(width * 0.598f);
         binding.speakerAmpCounter.setTranslationY(height * 0.784f);
-        lightDark(v, mode);
+        lightDark(v, MainActivity.darkMode);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+
     }
     public void lightDark (ViewGroup v, boolean mode){
         if (!mode){

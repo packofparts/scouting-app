@@ -19,6 +19,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -38,12 +39,7 @@ import com.google.android.material.textfield.TextInputLayout;
 public class SecondFragment2 extends Fragment {
 
     private FragmentSecond2Binding binding;
-    public int noteStuck = 0;
-    public int noteSuccess = 0;
-    public boolean mode = false;
 
-    public int notesThrown = 0;
-    public int notesHit = 0;
     ViewGroup v = null;
     @Override
     public View onCreateView(
@@ -53,13 +49,14 @@ public class SecondFragment2 extends Fragment {
 
         binding = FragmentSecond2Binding.inflate(inflater, container, false);
         v = container;
-        noteStuck = Integer.parseInt("" + binding.notesStuckCounter.getText());
-        noteSuccess = Integer.parseInt("" + binding.notesSuccessCounter.getText());
-        mode =  String.format("#%06X", (0xFFFFFF & binding.title.getCurrentTextColor())).equals("#FFFFFF");
-        notesThrown = Integer.parseInt("" + binding.notesThrownCounter.getText());
-        notesHit = Integer.parseInt("" + binding.notesHitCounter.getText());
+        binding.notesStuckCounter.setText("" + MainActivity.noteStuck);
+        binding.notesSuccessCounter.setText("" + MainActivity.noteSuccess);
+        binding.notesThrownCounter.setText("" + MainActivity.notesThrown);
+        binding.notesHitCounter.setText("" + MainActivity.notesHit);
+        binding.human.setChecked(MainActivity.human);
+        binding.textInput.setText(MainActivity.teleOpNotes);
+        binding.characterLimit.setText("Character Limit: " + binding.textInput.getText().length() + "/150");
         return binding.getRoot();
-
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -90,8 +87,8 @@ public class SecondFragment2 extends Fragment {
         binding.pop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               mode = !mode;
-               lightDark(v, mode);
+               MainActivity.darkMode = !MainActivity.darkMode;
+               lightDark(v, MainActivity.darkMode);
             }
         });
 
@@ -117,7 +114,7 @@ public class SecondFragment2 extends Fragment {
                     binding.textInput.setText(text);
                 }
                 binding.characterLimit.setText("Character Limit: " + binding.textInput.getText().length() + "/150");
-                //binding.relativeLayoutFirst.setTranslationY(0f);
+                MainActivity.teleOpNotes = binding.textInput.getText() + "";
             }
         });
         binding.textInput.setOnTouchListener(new View.OnTouchListener(){
@@ -138,21 +135,44 @@ public class SecondFragment2 extends Fragment {
                 return false;
             }
         });
-        String[] chainAttempts = {"No Attempt", "Failed Attempt", "Successful Attempt"};
-        ArrayAdapter<String> chainAdapter = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, chainAttempts);
+        ArrayAdapter<String> chainAdapter = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, MainActivity.chainAttempts);
         binding.chainAttempt.setAdapter(chainAdapter);
+        binding.chainAttempt.setSelection(MainActivity.chainAttemptIndex);
         binding.chainAttempt.setTranslationY(height * 0.201f);
         binding.chainAttempt.setTranslationX(width * 0.366f);
+        binding.chainAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                MainActivity.chainAttemptIndex = position;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         binding.chainAttemptBackground.setTranslationY(binding.chainAttempt.getTranslationY() - (height * 0.045f));
         binding.chainAttemptBackground.setTranslationX(binding.chainAttempt.getTranslationX());
         binding.chain.setTranslationY(height * 0.201f);
         binding.chain.setTranslationX(width * 0.073f);
 
-        String[] harmonyAttempts = {"No Attempt", "Failed Attempt", "2 On Chain", "3 On Chain"};
-        ArrayAdapter<String> harmonyAdapter = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, harmonyAttempts);
+        ArrayAdapter<String> harmonyAdapter = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, MainActivity.harmonyAttempts);
         binding.harmonyAttempt.setAdapter(harmonyAdapter);
+        binding.harmonyAttempt.setSelection(MainActivity.harmonyAttemptIndex);
         binding.harmonyAttempt.setTranslationY(height * 0.302f);
         binding.harmonyAttempt.setTranslationX(width * 0.366f);
+        binding.harmonyAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                MainActivity.harmonyAttemptIndex = position;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         binding.harmonyAttemptBackground.setTranslationY(binding.harmonyAttempt.getTranslationY() - (height * 0.045f));
         binding.harmonyAttemptBackground.setTranslationX(binding.harmonyAttempt.getTranslationX());
         binding.harmony.setTranslationY(height * 0.302f);
@@ -165,9 +185,9 @@ public class SecondFragment2 extends Fragment {
         binding.minusNotesStuck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (noteStuck > 0){
-                    noteStuck --;
-                    binding.notesStuckCounter.setText("" + noteStuck);
+                if (MainActivity.noteStuck > 0){
+                    MainActivity.noteStuck --;
+                    binding.notesStuckCounter.setText("" + MainActivity.noteStuck);
                 }
             }
         });
@@ -176,9 +196,9 @@ public class SecondFragment2 extends Fragment {
         binding.plusNotesStuck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (noteStuck < 3) {
-                    noteStuck++;
-                    binding.notesStuckCounter.setText("" + noteStuck);
+                if (MainActivity.noteStuck < 3) {
+                    MainActivity.noteStuck++;
+                    binding.notesStuckCounter.setText("" + MainActivity.noteStuck);
                 }
             }
         });
@@ -192,9 +212,9 @@ public class SecondFragment2 extends Fragment {
         binding.minusNotesSuccess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (noteSuccess > 0){
-                    noteSuccess --;
-                    binding.notesSuccessCounter.setText("" + noteSuccess);
+                if (MainActivity.noteSuccess > 0){
+                    MainActivity.noteSuccess --;
+                    binding.notesSuccessCounter.setText("" + MainActivity.noteSuccess);
                 }
             }
         });
@@ -203,9 +223,9 @@ public class SecondFragment2 extends Fragment {
         binding.plusNotesSuccess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (noteSuccess < 3) {
-                    noteSuccess++;
-                    binding.notesSuccessCounter.setText("" + noteSuccess);
+                if (MainActivity.noteSuccess < 3) {
+                    MainActivity.noteSuccess++;
+                    binding.notesSuccessCounter.setText("" + MainActivity.noteSuccess);
                 }
             }
         });
@@ -254,6 +274,7 @@ public class SecondFragment2 extends Fragment {
                     binding.minusNotesHit.setVisibility(GONE);
                     binding.notesHitCounter.setVisibility(GONE);
                 }
+                MainActivity.human = binding.human.isChecked();
             }
         });
         binding.notesThrown.setTranslationY(binding.notesStuck.getTranslationY() + 530);
@@ -263,9 +284,9 @@ public class SecondFragment2 extends Fragment {
         binding.minusNotesThrown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (notesThrown > 0) {
-                    notesThrown--;
-                    binding.notesThrownCounter.setText("" + notesThrown);
+                if (MainActivity.notesThrown > 0) {
+                    MainActivity.notesThrown--;
+                    binding.notesThrownCounter.setText("" + MainActivity.notesThrown);
                 }
             }
         });
@@ -274,9 +295,9 @@ public class SecondFragment2 extends Fragment {
         binding.plusNotesThrown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (notesThrown < 3) {
-                    notesThrown++;
-                    binding.notesThrownCounter.setText("" + notesThrown);
+                if (MainActivity.notesThrown < 3) {
+                    MainActivity.notesThrown++;
+                    binding.notesThrownCounter.setText("" + MainActivity.notesThrown);
                 }
             }
         });
@@ -290,9 +311,9 @@ public class SecondFragment2 extends Fragment {
         binding.minusNotesHit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (notesHit > 0) {
-                    notesHit--;
-                    binding.notesHitCounter.setText("" + notesHit);
+                if (MainActivity.notesHit > 0) {
+                    MainActivity.notesHit--;
+                    binding.notesHitCounter.setText("" + MainActivity.notesHit);
                 }
             }
         });
@@ -301,16 +322,53 @@ public class SecondFragment2 extends Fragment {
         binding.plusNotesHit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (notesHit < 3) {
-                    notesHit++;
-                    binding.notesHitCounter.setText("" + notesHit);
+                if (MainActivity.notesHit < 3) {
+                    MainActivity.notesHit++;
+                    binding.notesHitCounter.setText("" + MainActivity.notesHit);
                 }
             }
         });
         binding.notesHitCounter.setTranslationY(binding.notesSuccessCounter.getTranslationY() + 500);
         binding.notesHitCounter.setTranslationX(binding.notesSuccessCounter.getTranslationX());
 
-        lightDark(v, mode);
+        if (binding.human.isChecked()){
+            binding.human.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+            binding.human.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+            ViewGroup.LayoutParams layoutParam = binding.relativeLayoutFirst.getLayoutParams();
+            layoutParam.width = (int) width;
+            layoutParam.height = (int) height + 500;
+            binding.relativeLayoutFirst.setLayoutParams(layoutParam);
+            binding.next.setTranslationY(height * 0.863f + 500);
+            binding.input.setTranslationY(binding.next.getTranslationY() - 118);
+            binding.characterLimit.setTranslationY(binding.input.getTranslationY() + (height * 0.091f));
+            binding.notesThrown.setVisibility(VISIBLE);
+            binding.plusNotesThrown.setVisibility(VISIBLE);
+            binding.minusNotesThrown.setVisibility(VISIBLE);
+            binding.notesThrownCounter.setVisibility(VISIBLE);
+            binding.notesHit.setVisibility(VISIBLE);
+            binding.plusNotesHit.setVisibility(VISIBLE);
+            binding.minusNotesHit.setVisibility(VISIBLE);
+            binding.notesHitCounter.setVisibility(VISIBLE);
+        } else {
+            binding.human.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+            binding.human.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+            ViewGroup.LayoutParams layoutParam = binding.relativeLayoutFirst.getLayoutParams();
+            layoutParam.width = (int) width;
+            layoutParam.height = (int) height - 38;
+            binding.relativeLayoutFirst.setLayoutParams(layoutParam);
+            binding.next.setTranslationY(height * 0.863f);
+            binding.input.setTranslationY(height * 0.784f);
+            binding.characterLimit.setTranslationY(height * 0.875f);
+            binding.notesThrown.setVisibility(GONE);
+            binding.plusNotesThrown.setVisibility(GONE);
+            binding.minusNotesThrown.setVisibility(GONE);
+            binding.notesThrownCounter.setVisibility(GONE);
+            binding.notesHit.setVisibility(GONE);
+            binding.plusNotesHit.setVisibility(GONE);
+            binding.minusNotesHit.setVisibility(GONE);
+            binding.notesHitCounter.setVisibility(GONE);
+        }
+        lightDark(v, MainActivity.darkMode);
     }
 
     @Override

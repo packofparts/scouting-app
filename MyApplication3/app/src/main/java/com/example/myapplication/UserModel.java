@@ -14,6 +14,7 @@ public class UserModel extends ViewModel {
 
     public UserModel() {
         // trigger user load.
+        MatchData matchInfo = new MatchData();
     }
 
     void doAction() {

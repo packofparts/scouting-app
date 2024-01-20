@@ -103,5 +103,9 @@ public class PitFragment extends Fragment {
                         .navigate(R.id.action_pitFragment_to_ThirdFragment);
             }
         });
+
+    }
+    public PitFragment() {
+        // Required empty public constructor
     }
 }

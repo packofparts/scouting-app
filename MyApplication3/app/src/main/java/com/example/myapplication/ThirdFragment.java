@@ -12,9 +12,11 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 
@@ -43,44 +45,7 @@ public class ThirdFragment extends Fragment {
         binding = FragmentThirdBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
-    // DOES THE ROBOT HAVE WORKING AUTO
-    private boolean workingAuto;
-    public void setWorkingAuto(boolean wantedValue){
-        wantedValue = true;
-        workingAuto = wantedValue;
 
-    }
-
-    private boolean notWorkingAuto;
-    public void setNotWorkingAuto(boolean notWantedValue){
-        notWantedValue = false;
-        notWorkingAuto = notWantedValue;
-    }
-
-    //DOES THE ROBOT MOVE OUT OF THEIR ZONE DURING AUTO PHASE
-
-    private boolean outOfZone;
-    public void setoutOfZone(boolean wantedValue){
-        wantedValue = true;
-        outOfZone = wantedValue;
-    }
-    private boolean notOutOfZone;
-    public void setnotOutOfZone(boolean notWantedValue){
-        notWantedValue = false;
-        notOutOfZone = notWantedValue;
-        }
-    //DOES ROBOT SCORE DURING AUTO PHASE
-
-    private boolean scoreAuto;
-       public void setScoreAuto(boolean wantedValue){
-        wantedValue = true;
-        scoreAuto = wantedValue;
-    }
-    private boolean noScoreAuto;
-       public void setNoScoreAuto(boolean notWantedValue){
-           notWantedValue = false;
-           noScoreAuto = notWantedValue;
-       }
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.toAutoCont.setOnClickListener(new View.OnClickListener() {
@@ -90,79 +55,18 @@ public class ThirdFragment extends Fragment {
                         .navigate(R.id.action_ThirdFragment_to_thirdFragment2);
             }
         });
-        binding.Yes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        String[] typeContact = {"No contact", "Teammate to Teammate", "Teammate to opponent"};
+        ArrayAdapter<String> contact = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, typeContact);
+        binding.spinner.setAdapter(contact);
 
-                NavController navController = NavHostFragment.findNavController(ThirdFragment.this);
-                setWorkingAuto(workingAuto);
-                System.out.println(workingAuto);
-            }
-        });
-        binding.No.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                NavController navController = NavHostFragment.findNavController(ThirdFragment.this);
-                setNotWorkingAuto(notWorkingAuto);
-                System.out.println(notWorkingAuto);
-            }
-        });
-        binding.moveYes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                NavController navController = NavHostFragment.findNavController(ThirdFragment.this);
-                setoutOfZone(outOfZone);
-                System.out.println(outOfZone);
-            }
-        });
-        binding.moveNo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                NavController navController = NavHostFragment.findNavController(ThirdFragment.this);
-                setnotOutOfZone(notOutOfZone);
-                System.out.println(notOutOfZone);
-            }
-        });
-        binding.scoreAutoYes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                NavController navController = NavHostFragment.findNavController(ThirdFragment.this);
-                setScoreAuto(scoreAuto);
-                System.out.println(scoreAuto);
-            }
-        });
-        binding.scoreAutoNo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                NavController navController = NavHostFragment.findNavController(ThirdFragment.this);
-                setnotOutOfZone(noScoreAuto);
-                System.out.println(noScoreAuto);
-            }
-        });
+        Editable numNotes = binding.numNotes.getText();
 
 
         }
 
 
-    /*public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
-        binding.Yes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                NavController navController = NavHostFragment.findNavController(ThirdFragment.this);
-                if (.isChecked()) {
-                    checkBox.setChecked(false);
-                }
-            }
-        });
-    }*/
     //TODO: Rename parameter arguments, choose names that match
     //the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -176,15 +80,7 @@ public class ThirdFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ThirdestAndGreatestFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static ThirdFragment newInstance(String param1, String param2) {
         ThirdFragment fragment = new ThirdFragment();
         Bundle args = new Bundle();
@@ -194,14 +90,5 @@ public class ThirdFragment extends Fragment {
         return fragment;
     }
 
-    Button secToThird;
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
 
-    }
 }

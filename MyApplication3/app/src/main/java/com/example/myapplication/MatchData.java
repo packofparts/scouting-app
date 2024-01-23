@@ -2,6 +2,9 @@ package com.example.myapplication;
 
 public class MatchData {
 
+    //Test Data
+    boolean tf = false;
+
     //Auto Data
     boolean workingAuto = false;
     boolean moveOutOfZone = false;
@@ -57,6 +60,10 @@ public class MatchData {
 
 
     //Getters
+
+    //Test
+
+    public boolean setTf() {    return tf;    }
 
     //Auto
 
@@ -120,6 +127,9 @@ public class MatchData {
     }
 
     //Setters
+
+    //Test
+    public void setTf(boolean tf) {    this.tf = tf;    }
 
     //Auto
     public void setWorkingAuto(boolean workingAuto) {    this.workingAuto = workingAuto;    }

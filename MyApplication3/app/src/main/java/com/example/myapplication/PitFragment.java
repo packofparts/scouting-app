@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
@@ -25,16 +26,15 @@ public class PitFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
     private boolean isTrue = false;
-
     private FragmentPitBinding binding;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    UserModel userModel = new ViewModelProvider(requireActivity()).get(UserModel.class);
 
-    public PitFragment(int test) {
+    public PitFragment() {
         // Required empty public constructor
     }
 
@@ -48,7 +48,7 @@ public class PitFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static PitFragment newInstance(String param1, String param2) {
-        PitFragment fragment = new PitFragment(0);
+        PitFragment fragment = new PitFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -93,6 +93,7 @@ public class PitFragment extends Fragment {
            @Override
            public void onClick(View view) {
                isTrue = !isTrue;
+                userModel.getData().getValue().setTf();
            }
         });
 

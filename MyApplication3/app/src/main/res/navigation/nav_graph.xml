@@ -30,7 +30,7 @@
     <fragment
         android:id="@+id/ThirdFragment"
         android:name="com.example.myapplication.ThirdFragment"
-        android:label="Third Fragment"
+        android:label="Autonomous"
         tools:layout="@layout/fragment_third">
 
         <action
@@ -61,7 +61,7 @@
     <fragment
         android:id="@+id/thirdFragment2"
         android:name="com.example.myapplication.ThirdFragment2"
-        android:label="ThirdFragment2" >
+        android:label="Autonomous" >
         <action
             android:id="@+id/action_thirdFragment2_to_SecondFragment"
             app:destination="@id/SecondFragment" />
@@ -69,7 +69,7 @@
     <fragment
         android:id="@+id/SecondFragment2"
         android:name="com.example.myapplication.SecondFragment2"
-        android:label="Second Fragment 2"
+        android:label="Endgame"
         tools:layout="@layout/fragment_second2" >
         <action
             android:id="@+id/action_SecondFragment2_to_FirstFragment"

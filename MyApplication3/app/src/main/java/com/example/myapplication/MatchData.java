@@ -3,188 +3,163 @@ package com.example.myapplication;
 public class MatchData {
 
     //Test Data
-    boolean tf = false;
+    boolean testBool = false;
 
     //Auto Data
     boolean workingAuto = false;
     boolean moveOutOfZone = false;
-    int ampA = 0;
-    int speakerA = 0;
-    enum contactRobot {
+    int ampAuto = 0;
+    int speakerAuto = 0;
+    enum ContactRobot {
         None,
         Allies,
         Opposition
     }
-    contactRobot contactBot;
+    ContactRobot contactBot;
 
     //Teleop Data
     boolean broke = false;
     boolean defense = false;
-    int ampT = 0;
+    int ampTeleop = 0;
     int ampSpeaker = 0;
-    int speakerT = 0;
+    int speakerTeleop = 0;
     int dump = 0;
-    enum noteAquisition {
+    enum NoteAcquisition {
         None,
         Floor,
         Source,
         Both
     }
-    noteAquisition noteAquired;
+    NoteAcquisition noteAcquired;
 
     //End of Match data
-    enum chain {
+    enum Chain {
         Nope,
         Attempted,
-        Failed,
-        Succeded
+        Succeeded
     }
-    chain chaining;
+    Chain chaining;
 
-    enum trap {
+    enum Trap {
         Nope,
         Attempted,
-        Failed,
-        Suceded
+        Succeeded
     }
-    trap trapping;
-    enum harmony {
+    Trap trapping;
+    enum Harmony {
         Nope,
         Attempted,
-        Failed,
-        Succeded
+        Succeeded
     }
-    harmony harmo;
+    Harmony harmo;
     String notes = "";
     // add human player spotlight data later
 
 
-    //Getters
+    //Getters and Setters
 
     //Test
 
-    public boolean setTf() {    return tf;    }
+    public boolean getTestBool() {    return testBool;    }
+    public void setTestBool(boolean testBool) {    this.testBool = testBool;    }
 
     //Auto
 
     public boolean isWorkingAuto() {
         return workingAuto;
     }
+    public void setWorkingAuto(boolean workingAuto) {    this.workingAuto = workingAuto;    }
 
     public boolean isMoveOutOfZone() {
         return moveOutOfZone;
     }
-
-    public int getAmpA() {
-        return ampA;
+    public void setMoveOutOfZone(boolean moveOutOfZone) {
+        this.moveOutOfZone = moveOutOfZone;
     }
 
-    public int getSpeakerA() {
-        return speakerA;
+    public int getAmpAuto() {
+        return ampAuto;
+    }
+    public void setAmpAuto(int ampAuto) {
+        this.ampAuto = ampAuto;
     }
 
-    public contactRobot getContactBot() {
+    public int getSpeakerAuto() {
+        return speakerAuto;
+    }
+    public void setSpeakerAuto(int speakerAuto) {
+        this.speakerAuto = speakerAuto;
+    }
+
+    public ContactRobot getContactBot() {
         return contactBot;
+    }
+    public void setContactBot(ContactRobot contactBot) {
+        this.contactBot = contactBot;
     }
 
     //Teleop
     public boolean isBroke() {
         return broke;
     }
+    public void setBroke(boolean broke) {
+        this.broke = broke;
+    }
 
     public boolean isDefense() {
         return defense;
     }
+    public void setDefense(boolean defense) {
+        this.defense = defense;
+    }
 
-    public int getAmpT() {
-        return ampT;
+    public int getAmpTeleop() {
+        return ampTeleop;
+    }
+    public void setAmpTeleop(int ampTeleop) {
+        this.ampTeleop = ampTeleop;
     }
 
     public int getAmpSpeaker() {
         return ampSpeaker;
     }
+    public void setAmpSpeaker(int ampSpeaker) {
+        this.ampSpeaker = ampSpeaker;
+    }
 
-    public int getSpeakerT() {
-        return speakerT;
+    public int getSpeakerTeleop() {
+        return speakerTeleop;
+    }
+    public void setSpeakerTeleop(int speakerTeleop) {
+        this.speakerTeleop = speakerTeleop;
     }
 
     public int getDump() {
         return dump;
     }
-
-    public noteAquisition getNoteAquired() {   return noteAquired;    }
-
-    //Endgame
-
-    public chain getChaining() {    return chaining;    }
-
-    public trap getTrapping() {     return trapping;    }
-
-    public harmony getHarmo() {     return harmo;     }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    //Setters
-
-    //Test
-    public void setTf(boolean tf) {    this.tf = tf;    }
-
-    //Auto
-    public void setWorkingAuto(boolean workingAuto) {    this.workingAuto = workingAuto;    }
-
-    public void setMoveOutOfZone(boolean moveOutOfZone) {
-        this.moveOutOfZone = moveOutOfZone;
-    }
-
-    public void setAmpA(int ampA) {
-        this.ampA = ampA;
-    }
-
-    public void setSpeakerA(int speakerA) {
-        this.speakerA = speakerA;
-    }
-
-    public void setContactBot(contactRobot contactBot) {
-        this.contactBot = contactBot;
-    }
-
-    //Teleop
-    public void setBroke(boolean broke) {
-        this.broke = broke;
-    }
-
-    public void setDefense(boolean defense) {
-        this.defense = defense;
-    }
-
-    public void setAmpT(int ampT) {
-        this.ampT = ampT;
-    }
-
-    public void setAmpSpeaker(int ampSpeaker) {
-        this.ampSpeaker = ampSpeaker;
-    }
-
-    public void setSpeakerT(int speakerT) {
-        this.speakerT = speakerT;
-    }
-
     public void setDump(int dump) {
         this.dump = dump;
     }
 
-    public void setNoteAquired(noteAquisition noteAquired) {   this.noteAquired = noteAquired;    }
+    public NoteAcquisition getNoteAcquired() {   return noteAcquired;    }
+    public void setNoteAcquired(NoteAcquisition noteAcquired) {   this.noteAcquired = noteAcquired;   }
 
     //Endgame
+
+    public Chain getChaining() {    return chaining;    }
+    public void setChaining(Chain chaining) {    this.chaining = chaining;    }
+
+    public Trap getTrapping() {     return trapping;    }
+    public void setTrapping(Trap trapping) {    this.trapping = trapping;    }
+
+    public Harmony getHarmo() {     return harmo;     }
+    public void setHarmo(Harmony harmo) {     this.harmo = harmo;    }
+
+    public String getNotes() {
+        return notes;
+    }
     public void setNotes(String notes) {
         this.notes = notes;
     }
 
-    public void setChaining(chain chaining) {    this.chaining = chaining;    }
-
-    public void setTrapping(trap trapping) {    this.trapping = trapping;    }
-
-    public void setHarmo(harmony harmo) {     this.harmo = harmo;    }
 }

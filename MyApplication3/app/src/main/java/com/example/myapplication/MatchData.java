@@ -61,7 +61,7 @@ public class MatchData {
     //Test
 
     public boolean getTestBool() {    return testBool;    }
-    public void setTestBool(boolean testBool) {    this.testBool = testBool;    }
+    public void setTestBool(boolean testBool) { this.testBool = testBool;    }
 
     //Auto
 

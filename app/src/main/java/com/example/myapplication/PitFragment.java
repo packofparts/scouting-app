@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -12,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.myapplication.databinding.FragmentPitBinding;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,10 +33,12 @@ public class PitFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    UserModel userModel = new ViewModelProvider(requireActivity()).get(UserModel.class);
+    UserModel userModel;
 
     public PitFragment() {
-        // Required empty public constructor
+        FragmentActivity fragmentActivity = requireActivity();
+        ViewModelProvider viewModelProvider = new ViewModelProvider(fragmentActivity);
+        userModel = viewModelProvider.get(UserModel.class);
     }
 
     /**
@@ -91,7 +96,7 @@ public class PitFragment extends Fragment {
            @Override
            public void onClick(View view) {
                isTrue = !isTrue;
-                userModel.getData().getValue().setTestBool(isTrue);
+                Objects.requireNonNull(userModel.getData().getValue()).setTestBool(isTrue);
            }
         });
 

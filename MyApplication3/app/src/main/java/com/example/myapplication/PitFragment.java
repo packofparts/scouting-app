@@ -104,7 +104,5 @@ public class PitFragment extends Fragment {
         });
 
     }
-    public PitFragment() {
-        // Required empty public constructor
-    }
+
 }

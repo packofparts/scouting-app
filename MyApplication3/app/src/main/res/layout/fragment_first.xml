@@ -15,8 +15,10 @@
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="123dp"
+            android:layout_marginTop="287dp"
             android:text="Match #"
-            tools:layout_editor_absoluteX="107dp"
-            tools:layout_editor_absoluteY="271dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

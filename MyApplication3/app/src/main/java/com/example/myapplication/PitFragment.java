@@ -34,7 +34,7 @@ public class PitFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public PitFragment(int test) {
+    public PitFragment() {
         // Required empty public constructor
     }
 
@@ -48,7 +48,7 @@ public class PitFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static PitFragment newInstance(String param1, String param2) {
-        PitFragment fragment = new PitFragment(0);
+        PitFragment fragment = new PitFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

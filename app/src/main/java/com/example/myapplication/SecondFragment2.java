@@ -9,6 +9,7 @@ import android.content.res.ColorStateList;
 import android.database.DataSetObserver;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -71,16 +72,15 @@ public class SecondFragment2 extends Fragment {
             }
         });
 
-
         DisplayMetrics displayMetrics = new DisplayMetrics();
         ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         float height = displayMetrics.heightPixels;
         float width = displayMetrics.widthPixels;
         ViewGroup.LayoutParams layoutParams = binding.relativeLayoutFirst.getLayoutParams();
         layoutParams.width = (int) width;
-        layoutParams.height = (int) height - 38;
+        layoutParams.height = (int) height;
         binding.relativeLayoutFirst.setLayoutParams(layoutParams);
-
+        binding.relativeLayoutFirst.setTranslationY(50);
         binding.next.setTranslationX((width - 300)/ 2.0f);
         binding.next.setTranslationY(height * 0.863f);
         binding.title.setTranslationX((width - 136)/ 2.0f);
@@ -376,6 +376,12 @@ public class SecondFragment2 extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+    /**
+     *
+     * @param v current ViewGroup obtained from onCreateView
+     * @param mode false for light mode, true for dark mode
+     */
     public void lightDark (ViewGroup v, boolean mode){
         if (!mode){
             for (int i = 0; i < v.getChildCount(); i ++){

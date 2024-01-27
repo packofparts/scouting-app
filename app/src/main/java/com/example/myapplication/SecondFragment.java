@@ -90,7 +90,7 @@ public class SecondFragment extends Fragment {
         layoutParams.width = (int) width;
         layoutParams.height = (int) height;
         binding.relativeLayoutFirst.setLayoutParams(layoutParams);
-
+        binding.relativeLayoutFirst.setTranslationY(50);
         binding.next.setTranslationX((width - 300)/ 2.0f);
         binding.next.setTranslationY(height * 0.863f);
         binding.title.setTranslationX((width - 136)/ 2.0f);

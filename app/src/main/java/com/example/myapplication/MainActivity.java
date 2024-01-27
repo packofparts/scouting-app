@@ -22,7 +22,7 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity {
 //Hi
     private AppBarConfiguration appBarConfiguration;
-    private ActivityMainBinding binding;
+    private ActivityMainBinding binding; 
 
     public static String[] chainAttempts = {"No Attempt", "Failed Attempt", "Successful Attempt"};
     public static String[] harmonyAttempts = {"No Attempt", "Failed Attempt", "2 On Chain", "3 On Chain"};
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-
+//Hello
     }
 
     @Override

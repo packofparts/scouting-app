@@ -137,7 +137,23 @@
             android:layout_marginTop="36dp"
             android:backgroundTint="#73C2F0"
             android:text="@string/next"
-            android:translationX="150dp"
+            android:translationX="230dp"
+            android:translationY="600dp"
+            app:cornerRadius="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.547"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+
+            android:id="@+id/prev"
+            android:layout_width="300px"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:backgroundTint="#73C2F0"
+            android:text="Previous"
+            android:translationX="80dp"
             android:translationY="600dp"
             app:cornerRadius="100dp"
             app:layout_constraintEnd_toEndOf="parent"

@@ -24,7 +24,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
-//Hi
+//in-app variables
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 

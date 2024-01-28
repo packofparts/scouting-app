@@ -23,6 +23,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Switch;
@@ -72,6 +73,14 @@ public class SecondFragment2 extends Fragment {
             }
         });
 
+        binding.prev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(SecondFragment2.this)
+                        .navigate(R.id.action_SecondFragment2_to_SecondFragment);
+            }
+        });
+
         DisplayMetrics displayMetrics = new DisplayMetrics();
         ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         float height = displayMetrics.heightPixels;
@@ -81,8 +90,10 @@ public class SecondFragment2 extends Fragment {
         layoutParams.height = (int) height;
         binding.relativeLayoutFirst.setLayoutParams(layoutParams);
         binding.relativeLayoutFirst.setTranslationY(50);
-        binding.next.setTranslationX((width - 300)/ 2.0f);
+        binding.next.setTranslationX((width - 300)/ 1.1f);
         binding.next.setTranslationY(height * 0.863f);
+        binding.prev.setTranslationX((width - 300)/ 8.0f);
+        binding.prev.setTranslationY(height * 0.863f);
         binding.title.setTranslationX((width - 136)/ 2.0f);
         binding.pop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -234,9 +245,9 @@ public class SecondFragment2 extends Fragment {
 
         binding.human.setTranslationY(height * 0.719f);
         binding.human.setTranslationX(width * 0.073f);
-        binding.human.setOnClickListener(new View.OnClickListener() {
+        binding.human.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (binding.human.isChecked()){
                     binding.human.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
                     binding.human.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
@@ -245,6 +256,7 @@ public class SecondFragment2 extends Fragment {
                     layoutParams.height = (int) height + 500;
                     binding.relativeLayoutFirst.setLayoutParams(layoutParams);
                     binding.next.setTranslationY(height * 0.863f + 500);
+                    binding.prev.setTranslationY(height * 0.863f + 500);
                     binding.input.setTranslationY(binding.next.getTranslationY() - 118);
                     binding.characterLimit.setTranslationY(binding.input.getTranslationY() + (height * 0.091f));
                     binding.notesThrown.setVisibility(VISIBLE);
@@ -263,6 +275,7 @@ public class SecondFragment2 extends Fragment {
                     layoutParams.height = (int) height - 38;
                     binding.relativeLayoutFirst.setLayoutParams(layoutParams);
                     binding.next.setTranslationY(height * 0.863f);
+                    binding.prev.setTranslationY(height * 0.863f);
                     binding.input.setTranslationY(height * 0.784f);
                     binding.characterLimit.setTranslationY(height * 0.875f);
                     binding.notesThrown.setVisibility(GONE);
@@ -339,6 +352,7 @@ public class SecondFragment2 extends Fragment {
             layoutParam.height = (int) height + 500;
             binding.relativeLayoutFirst.setLayoutParams(layoutParam);
             binding.next.setTranslationY(height * 0.863f + 500);
+            binding.prev.setTranslationY(height * 0.863f + 500);
             binding.input.setTranslationY(binding.next.getTranslationY() - 118);
             binding.characterLimit.setTranslationY(binding.input.getTranslationY() + (height * 0.091f));
             binding.notesThrown.setVisibility(VISIBLE);
@@ -357,6 +371,7 @@ public class SecondFragment2 extends Fragment {
             layoutParam.height = (int) height - 38;
             binding.relativeLayoutFirst.setLayoutParams(layoutParam);
             binding.next.setTranslationY(height * 0.863f);
+            binding.prev.setTranslationY(height * 0.863f);
             binding.input.setTranslationY(height * 0.784f);
             binding.characterLimit.setTranslationY(height * 0.875f);
             binding.notesThrown.setVisibility(GONE);

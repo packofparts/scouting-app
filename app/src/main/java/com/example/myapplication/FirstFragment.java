@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,20 +18,21 @@ public class FirstFragment extends Fragment {
 
     @Override
     public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
+            LayoutInflater  inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
         //he he he ha
         binding = FragmentFirstBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
-    }
+
+        }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
 
-
+        
         binding.button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,6 +40,10 @@ public class FirstFragment extends Fragment {
                         .navigate(R.id.action_FirstFragment_to_ThirdFragment);
             }
         });
+        DisplayMetrics dm = new DisplayMetrics();
+        float width = dm.widthPixels;
+        float height = dm.heightPixels;
+        binding.textView12.setTranslationY(0);
     }
 
     @Override

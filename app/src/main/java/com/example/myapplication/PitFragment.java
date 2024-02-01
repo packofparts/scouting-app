@@ -35,11 +35,11 @@ public class PitFragment extends Fragment {
     private String mParam2;
     UserModel userModel;
 
-    public PitFragment() {
+    /*public PitFragment() {
         FragmentActivity fragmentActivity = requireActivity();
         ViewModelProvider viewModelProvider = new ViewModelProvider(fragmentActivity);
         userModel = viewModelProvider.get(UserModel.class);
-    }
+    }*/
 
     /**
      * Use this factory method to create a new instance of
@@ -93,11 +93,11 @@ public class PitFragment extends Fragment {
         });
 
         binding.checkBox.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               isTrue = !isTrue;
+            @Override
+            public void onClick(View view) {
+                isTrue = !isTrue;
                 Objects.requireNonNull(userModel.getData().getValue()).setTestBool(isTrue);
-           }
+            }
         });
 
         /*binding.toAuto.setOnClickListener(new View.OnClickListener() {
@@ -106,8 +106,15 @@ public class PitFragment extends Fragment {
                 NavHostFragment.findNavController(PitFragment.this)
                         .navigate(R.id.action_pitFragment_to_ThirdFragment);
             }
+<<<<<<< HEAD:app/src/main/java/com/example/myapplication/PitFragment.java
         });*/
 
+
+    }
+
+
+    public PitFragment() {
+        // Required empty public constructor
     }
 
 }

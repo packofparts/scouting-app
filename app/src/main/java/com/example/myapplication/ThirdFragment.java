@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.animation.ObjectAnimator;
+import android.graphics.Color;
 import android.os.Bundle;
 
 
@@ -18,6 +20,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Switch;
+import android.widget.TextView;
 
 
 import androidx.annotation.NonNull;
@@ -36,6 +41,8 @@ public class ThirdFragment extends Fragment {
 
 
     private FragmentThirdBinding binding;
+    ViewGroup v = null;
+
 
 
     @Override
@@ -43,6 +50,7 @@ public class ThirdFragment extends Fragment {
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState
     ){
         binding = FragmentThirdBinding.inflate(inflater, container, false);
+        v = container;
         return binding.getRoot();
     }
 
@@ -55,15 +63,84 @@ public class ThirdFragment extends Fragment {
                         .navigate(R.id.action_ThirdFragment_to_thirdFragment2);
             }
         });
+        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotationX", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
+        animation.setDuration(1000);
+        binding.pop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                animation.start();
+                MainActivity.darkMode = !MainActivity.darkMode;
+                lightDark(v, MainActivity.darkMode);
+            }
+        });
+
         String[] typeContact = {"No contact", "Teammate to Teammate", "Teammate to opponent"};
         ArrayAdapter<String> contact = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, typeContact);
         binding.spinner.setAdapter(contact);
 
 
-        Editable numNotes = binding.numNotes.getText();
 
+        Switch switch1 = binding.switch1.findViewById(R.id.switch1);
+        switch1.isChecked();
 
+        Switch switch2 = binding.switch2.findViewById(R.id.switch2);
+        switch2.isChecked();
+
+        Switch switch3 = binding.switch3.findViewById(R.id.switch3);
+        switch3.isChecked();
+
+        EditText numNotes = binding.numNotes.findViewById(R.id.numNotes);
+        numNotes.getText();
+
+        EditText numNotesInAmp = binding.editTextNumber2.findViewById(R.id.editTextNumber2);
+        numNotesInAmp.getText();
         }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        binding = null;
+
+    }
+    public void lightDark (ViewGroup v, boolean mode){
+        if (!mode){
+            for (int i = 0; i < v.getChildCount(); i ++){
+                View child = v.getChildAt(i);
+                if (!(child instanceof Button)) {
+                    child.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                    if (child instanceof TextView) {
+                        TextView tx = (TextView) child;
+                        tx.setTextColor(Color.parseColor("#000000"));
+                    }
+                }
+                if (child instanceof Switch) {
+                    Switch tx = (Switch) child;
+                    tx.setTextColor(Color.parseColor("#000000"));
+                }
+                if (child instanceof ViewGroup){
+                    lightDark((ViewGroup)child, mode);
+                }
+            }
+        } else {
+            for (int i = 0; i < v.getChildCount(); i ++){
+                View child = v.getChildAt(i);
+                if (!(child instanceof Button)) {
+                    child.setBackgroundColor(Color.parseColor("#000000"));
+                    if (child instanceof TextView) {
+                        TextView tx = (TextView) child;
+                        tx.setTextColor(Color.parseColor("#FFFFFF"));
+                    }
+                }
+                if (child instanceof Switch) {
+                    Switch tx = (Switch) child;
+                    tx.setTextColor(Color.parseColor("#FFFFFF"));
+                }
+                if (child instanceof ViewGroup){
+                    lightDark((ViewGroup)child, mode);
+                }
+            }
+        }
+    }
 
 
 

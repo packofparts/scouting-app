@@ -29,7 +29,7 @@
             android:ems="10"
             android:inputType="text"
             android:text="@string/ex_1294"
-            android:textColor="#A607C6B5" />
+            android:textColor="#A607C6B5"/>
     </TableRow>
 
     <TableRow

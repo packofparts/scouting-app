@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -33,13 +35,17 @@ public class PitFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
     UserModel userModel;
 
+
     public PitFragment() {
-        FragmentActivity fragmentActivity = requireActivity();
-        ViewModelProvider viewModelProvider = new ViewModelProvider(fragmentActivity);
-        userModel = viewModelProvider.get(UserModel.class);
+
     }
+
+    /*FragmentActivity fragmentActivity = requireActivity();
+        ViewModelProvider viewModelProvider = new ViewModelProvider(fragmentActivity);
+        userModel = viewModelProvider.get(UserModel.class);*/
 
     /**
      * Use this factory method to create a new instance of

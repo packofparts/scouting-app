@@ -76,6 +76,14 @@
             android:textSize="38dp"
             android:translationX="150dp"
             android:translationY="50dp" />
+        <TextView
+            android:id="@+id/team"
+            android:layout_width="136dp"
+            android:layout_height="wrap_content"
+            android:text="Team 0"
+            android:textSize="26dp"
+            android:translationX="150dp"
+            android:translationY="88dp" />
 
         <TextView
             android:id="@+id/ampNotes"
@@ -239,9 +247,10 @@
             android:id="@+id/pop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:rotationX="360"
             android:src="@drawable/pop"
             android:translationX="0dp"
-            android:translationY="0dp"/>
+            android:translationY="0dp" />
 
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>

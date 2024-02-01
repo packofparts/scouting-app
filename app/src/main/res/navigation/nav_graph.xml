@@ -12,11 +12,11 @@
         tools:layout="@layout/fragment_first">
 
         <action
-            android:id="@+id/action_FirstFragment_to_pitFragment"
-            app:destination="@id/pitFragment" />
-        <action
             android:id="@+id/action_FirstFragment_to_ThirdFragment"
             app:destination="@id/ThirdFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_HomePage"
+            app:destination="@id/HomePage" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -57,7 +57,14 @@
         android:id="@+id/HomePage"
         android:name="com.example.myapplication.HomePage"
         android:label="fragment_homepage"
-        tools:layout="@layout/fragment_homepage" />
+        tools:layout="@layout/fragment_homepage" >
+        <action
+            android:id="@+id/action_HomePage_to_pitFragment"
+            app:destination="@id/pitFragment" />
+        <action
+            android:id="@+id/action_HomePage_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
     <fragment
         android:id="@+id/thirdFragment2"
         android:name="com.example.myapplication.ThirdFragment2"

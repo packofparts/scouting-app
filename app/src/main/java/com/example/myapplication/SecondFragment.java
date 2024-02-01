@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -26,6 +28,7 @@ public class SecondFragment extends Fragment {
     private FragmentSecondBinding binding;
 
     ViewGroup v = null;
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -34,6 +37,7 @@ public class SecondFragment extends Fragment {
 
         binding = FragmentSecondBinding.inflate(inflater, container, false);
         v = container;
+        binding.team.setText("Team " + MainActivity.teamNumber);
         binding.ampCounter.setText("" + MainActivity.amp);
         binding.speakerUnampCounter.setText("" + MainActivity.speakerUnamp);
         binding.speakerAmpCounter.setText("" + MainActivity.speakerAmp);
@@ -105,11 +109,16 @@ public class SecondFragment extends Fragment {
         binding.prev.setTranslationX((width - 300)/ 8.0f);
         binding.prev.setTranslationY(height * 0.863f);
         binding.title.setTranslationX((width - 136)/ 2.0f);
+        binding.team.setTranslationY(height * 0.127f);
+        binding.team.setTranslationX(binding.title.getX());
+        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotationX", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
+        animation.setDuration(1000);
         binding.pop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               MainActivity.darkMode = !MainActivity.darkMode;
-               lightDark(v, MainActivity.darkMode);
+                animation.start();
+                MainActivity.darkMode = !MainActivity.darkMode;
+                lightDark(v, MainActivity.darkMode);
             }
         });
         binding.broke.setTranslationX(width * 0.073f);
@@ -256,6 +265,7 @@ public class SecondFragment extends Fragment {
         binding = null;
 
     }
+
     public void lightDark (ViewGroup v, boolean mode){
         if (!mode){
             for (int i = 0; i < v.getChildCount(); i ++){

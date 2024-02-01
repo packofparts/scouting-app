@@ -32,7 +32,6 @@
         app:layout_constraintEnd_toEndOf="@+id/editTextNumber2"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
     <Button
         android:id="@+id/toAutoCont"
         android:layout_width="wrap_content"

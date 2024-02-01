@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public static int notesHit = 0;
     public static int chainAttemptIndex = 0;
     public static int harmonyAttemptIndex = 0;
+    public static String teamNumber = "0";
     public static boolean broke = false;
     public static boolean defense = false;
     public static boolean ground = false;

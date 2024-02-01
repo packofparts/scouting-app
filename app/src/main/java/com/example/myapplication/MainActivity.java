@@ -24,7 +24,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
-//Hi
+//in-app variables
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding; 
 
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public static int notesHit = 0;
     public static int chainAttemptIndex = 0;
     public static int harmonyAttemptIndex = 0;
+    public static String teamNumber = "0";
     public static boolean broke = false;
     public static boolean defense = false;
     public static boolean ground = false;
@@ -58,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
 
         getSupportActionBar().hide();
         binding.fab.setOnClickListener(new View.OnClickListener() {

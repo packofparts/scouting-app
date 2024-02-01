@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-
+//J
 public class UserModel extends ViewModel {
     private MutableLiveData<MatchData> userLiveData = new MutableLiveData<>(new MatchData());
 

@@ -1,10 +1,8 @@
 <resources>
 
-<<<<<<< HEAD:app/src/main/res/values/strings.xml
+:app/src/main/res/values/strings.xml
     <string name="app_name">POP Scouting</string>
-=======
-    <string name="app_name">My Application</string>
->>>>>>> 38bc2e420dc6345cc1e37efb2064827e0dea65d1:MyApplication3/app/src/main/res/values/strings.xml
+
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Match Selection</string>

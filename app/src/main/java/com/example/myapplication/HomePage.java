@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.animation.ObjectAnimator;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,9 +11,13 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Switch;
+import android.widget.TextView;
 
 import com.example.myapplication.databinding.FragmentHomepageBinding;
 import com.example.myapplication.databinding.FragmentSecondBinding;
+import com.google.android.material.textfield.TextInputEditText;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,7 +34,7 @@ public class HomePage extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private ViewGroup v;
     private FragmentHomepageBinding binding;
     public HomePage() {
         // Required empty public constructor
@@ -66,18 +72,78 @@ public class HomePage extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentHomepageBinding.inflate(inflater, container, false);
+        v = container;
         return binding.getRoot();
     }
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.button2.setOnClickListener(new View.OnClickListener() {
+        /*binding.button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NavHostFragment.findNavController(HomePage.this)
                         .navigate(R.id.action_HomePage_to_pitFragment);
             }
+        });*/
+        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.WolfLogoInfo, "rotation", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
+        animation.setDuration(1000);
+        binding.WolfLogoInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                animation.start();
+                MainActivity.darkMode = !MainActivity.darkMode;
+                lightDark(v, MainActivity.darkMode);
+            }
         });
-
+        lightDark(v, MainActivity.darkMode);
+    }
+    public void lightDark (ViewGroup v, boolean mode){
+        if (!mode){
+            for (int i = 0; i < v.getChildCount(); i ++){
+                View child = v.getChildAt(i);
+                if (!(child instanceof Button)) {
+                    child.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                    if (child instanceof TextView) {
+                        TextView tx = (TextView) child;
+                        tx.setTextColor(Color.parseColor("#000000"));
+                    }
+                    if (child instanceof TextInputEditText) {
+                        TextView tx = (TextInputEditText) child;
+                        tx.setTextColor(Color.parseColor("#000000"));
+                        tx.setHintTextColor(Color.parseColor("#000000"));
+                    }
+                }
+                if (child instanceof Switch) {
+                    Switch tx = (Switch) child;
+                    tx.setTextColor(Color.parseColor("#000000"));
+                }
+                if (child instanceof ViewGroup){
+                    lightDark((ViewGroup)child, mode);
+                }
+            }
+        } else {
+            for (int i = 0; i < v.getChildCount(); i ++){
+                View child = v.getChildAt(i);
+                if (!(child instanceof Button)) {
+                    child.setBackgroundColor(Color.parseColor("#000000"));
+                    if (child instanceof TextView) {
+                        TextView tx = (TextView) child;
+                        tx.setTextColor(Color.parseColor("#FFFFFF"));
+                    }
+                    if (child instanceof TextInputEditText) {
+                        TextView tx = (TextInputEditText) child;
+                        tx.setTextColor(Color.parseColor("#FFFFFF"));
+                        tx.setHintTextColor(Color.parseColor("#FFFFFF"));
+                    }
+                }
+                if (child instanceof Switch) {
+                    Switch tx = (Switch) child;
+                    tx.setTextColor(Color.parseColor("#FFFFFF"));
+                }
+                if (child instanceof ViewGroup){
+                    lightDark((ViewGroup)child, mode);
+                }
+            }
+        }
     }
 }

@@ -58,9 +58,9 @@
             <TextView
                 android:id="@+id/Wolf_info"
                 android:layout_width="243dp"
-                android:layout_height="91dp"
+                android:layout_height="105dp"
                 android:gravity="left"
-                android:text="The wolf logo effortlessly switches the backdrop, toggling between a crisp white canvas and a sleek black background. "
+                android:text="Any wolf logo effortlessly switches the backdrop, toggling between a crisp white canvas and a sleek black background. (← try me)"
                 android:textColor="@color/white"
                 android:textSize="17sp"
                 android:translationX="150dp"
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/pop"
                 android:translationX="10dp"
-                android:translationY="-65dp" />
+                android:translationY="-65dp"/>
 
             <ImageView
                 android:id="@+id/Switch_off"
@@ -171,7 +171,7 @@
                 android:layout_width="244dp"
                 android:layout_height="71dp"
                 android:gravity="left"
-                android:text="The Next button will transport you to the next page, leading to a page titled End Game."
+                android:text="The Next button will transport you to the next page."
                 android:textColor="@color/white"
                 android:textSize="17sp"
                 android:translationX="10dp"
@@ -194,7 +194,7 @@
                 android:layout_width="244dp"
                 android:layout_height="54dp"
                 android:gravity="left"
-                android:text="The Previous button will take you back to the Tele Op page."
+                android:text="The Previous button will take you back to your previous page."
                 android:textColor="@color/white"
                 android:textSize="17sp"
                 android:translationX="150dp"

@@ -13,17 +13,209 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="215dp"
+            <TextView
+                android:id="@+id/Team_Selection"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="-10dp"
+                android:gravity="center"
+                android:text="Team Selection"
+                android:textColor="@color/white"
+                android:textSize="32sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/Auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="-10dp"
+                android:gravity="center"
+                android:text="Auto"
+                android:textColor="@color/white"
+                android:textSize="32sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/Tele_op_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="-10dp"
+                android:gravity="center"
+                android:text="Tele-Op"
+                android:textColor="@color/white"
+                android:textSize="32sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/Wolf_info"
+                android:layout_width="243dp"
+                android:layout_height="91dp"
+                android:gravity="left"
+                android:text="The wolf logo effortlessly switches the backdrop, toggling between a crisp white canvas and a sleek black background. "
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:translationX="150dp"
+                android:translationY="40dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <ImageView
+                android:id="@+id/Wolf_logo_info"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:src="@drawable/pop"
+                android:translationX="10dp"
+                android:translationY="-65dp" />
+
+            <ImageView
+                android:id="@+id/Switch_off"
+                android:layout_width="154dp"
+                android:layout_height="87dp"
+                android:src="@drawable/switchoff"
+                android:translationX="240dp"
+                android:translationY="-65dp" />
+
+            <TextView
+                android:id="@+id/Switch_off_Info"
+                android:layout_width="233dp"
+                android:layout_height="91dp"
+                android:gravity="left"
+                android:text="When the switch is positioned to the left and lacks a purple color, the switch indicates the statement is false. "
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:translationX="10dp"
+                android:translationY="-150dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/Switch_on_info"
+                android:layout_width="244dp"
+                android:layout_height="82dp"
+                android:gravity="left"
+                android:text="When the switch is positioned to the right with a purple color, it signifies that the statement is true."
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:translationX="150dp"
+                android:translationY="-140dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <ImageView
+                android:id="@+id/Switch_on"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/switchon"
+                android:translationX="10dp"
+                android:translationY="-220dp" />
+
+            <ImageView
+                android:id="@+id/Plus"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/plus"
+                android:translationX="270dp"
+                android:translationY="-210dp" />
+
+            <TextView
+                android:id="@+id/Plus_info"
+                android:layout_width="248dp"
+                android:layout_height="63dp"
+                android:gravity="left"
+                android:text="Use the plus icon to indicate the ascending numerical value related to the statement."
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:translationX="10dp"
+                android:translationY="-270dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <ImageView
+                android:id="@+id/Minus"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/minus"
+                android:translationX="30dp"
+                android:translationY="-265dp" />
+
+            <TextView
+                android:id="@+id/Minus_info"
+                android:layout_width="246dp"
+                android:layout_height="65dp"
+                android:gravity="left"
+                android:text="Use the minus icon to signify the decreasing numerical value associated with the statement."
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:translationX="150dp"
+                android:translationY="-335dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <Button
+                android:id="@+id/next_info_button"
+                android:layout_width="106dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:backgroundTint="#3280B4"
+                android:text="@string/next"
+                android:translationX="265dp"
+                android:translationY="-350dp"
+                app:cornerRadius="100dp" />
+
+            <TextView
+                android:id="@+id/Next_info"
+                android:layout_width="244dp"
+                android:layout_height="71dp"
+                android:gravity="left"
+                android:text="The Next button will transport you to the next page, leading to a page titled End Game."
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:translationX="10dp"
+                android:translationY="-400dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <Button
+                android:id="@+id/previous_info_button"
+                android:layout_width="106dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="36dp"
+                android:backgroundTint="#3280B4"
+                android:text="@string/previous"
+                android:translationX="10dp"
+                android:translationY="-430dp"
+                app:cornerRadius="100dp" />
+
+            <TextView
+                android:id="@+id/Previous_info"
+                android:layout_width="244dp"
+                android:layout_height="54dp"
+                android:gravity="left"
+                android:text="The Previous button will take you back to the Tele Op page."
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:translationX="150dp"
+                android:translationY="-470dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/End_Game"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="-10dp"
+                android:gravity="center"
+                android:text="End Game"
+                android:textColor="@color/white"
+                android:textSize="32sp"
+                android:translationX="0dp"
+                android:translationY="-450dp"
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

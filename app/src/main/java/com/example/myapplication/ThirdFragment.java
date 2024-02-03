@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.animation.ObjectAnimator;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -20,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -51,6 +53,37 @@ public class ThirdFragment extends Fragment {
     ){
         binding = FragmentThirdBinding.inflate(inflater, container, false);
         v = container;
+        if (binding.switch1.isChecked()){
+            binding.switch1.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+            binding.switch1.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+        } else {
+            binding.switch1.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+            binding.switch1.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+        }
+        binding.switch2.setChecked(MainActivity.defense);
+        if (binding.switch2.isChecked()){
+            binding.switch2.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+            binding.switch2.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+        } else {
+            binding.switch2.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+            binding.switch2.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+        }
+        binding.switch3.setChecked(MainActivity.ground);
+        if (binding.switch3.isChecked()){
+            binding.switch3.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+            binding.switch3.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+        } else {
+            binding.switch3.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+            binding.switch3.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+        }
+        /*binding.source.setChecked(MainActivity.source);
+        if (binding.source.isChecked()){
+            binding.source.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+            binding.source.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+        } else {
+            binding.source.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+            binding.source.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+        }*/
         return binding.getRoot();
     }
 
@@ -71,6 +104,45 @@ public class ThirdFragment extends Fragment {
                 animation.start();
                 MainActivity.darkMode = !MainActivity.darkMode;
                 lightDark(v, MainActivity.darkMode);
+            }
+        });
+        binding.switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
+                if (binding.switch1.isChecked()){
+                    binding.switch1.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+                    binding.switch1.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+                } else {
+                    binding.switch1.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+                    binding.switch1.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+                }
+                MainActivity.broke = binding.switch1.isChecked();
+            }
+        });
+        binding.switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
+                if (binding.switch2.isChecked()){
+                    binding.switch2.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+                    binding.switch1.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+                } else {
+                    binding.switch2.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+                    binding.switch2.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+                }
+                MainActivity.broke = binding.switch2.isChecked();
+            }
+        });
+        binding.switch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
+                if (binding.switch3.isChecked()){
+                    binding.switch3.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+                    binding.switch3.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+                } else {
+                    binding.switch3.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+                    binding.switch3.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+                }
+                MainActivity.broke = binding.switch3.isChecked();
             }
         });
 
@@ -139,6 +211,11 @@ public class ThirdFragment extends Fragment {
                     lightDark((ViewGroup)child, mode);
                 }
             }
+        }
+        EditText numNotes = binding.numNotes.findViewById(R.id.numNotes);
+
+        if(binding.pop.isActivated()){
+            numNotes.setTextColor(Integer.parseInt("FFF-FFF"));
         }
     }
 

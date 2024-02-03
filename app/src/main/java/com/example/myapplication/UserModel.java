@@ -10,10 +10,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-
+//J
 public class UserModel extends ViewModel {
     private MutableLiveData<MatchData> userLiveData = new MutableLiveData<>();
-
+//S
     public LiveData<MatchData> getData() {
         return userLiveData;
     }

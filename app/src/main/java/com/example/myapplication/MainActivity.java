@@ -1,9 +1,13 @@
 package com.example.myapplication;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
@@ -20,9 +24,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
-//Hi
+//in-app variables
     private AppBarConfiguration appBarConfiguration;
-    private ActivityMainBinding binding;
+    private ActivityMainBinding binding; 
 
     public static String[] chainAttempts = {"No Attempt", "Failed Attempt", "Successful Attempt"};
     public static String[] harmonyAttempts = {"No Attempt", "Failed Attempt", "2 On Chain", "3 On Chain"};
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public static int notesHit = 0;
     public static int chainAttemptIndex = 0;
     public static int harmonyAttemptIndex = 0;
+    public static String teamNumber = "0";
     public static boolean broke = false;
     public static boolean defense = false;
     public static boolean ground = false;
@@ -55,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
+        getSupportActionBar().hide();
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

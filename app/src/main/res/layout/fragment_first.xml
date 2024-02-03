@@ -6,19 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".FirstFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
+        android:layout_height="730dp"
+        android:padding="0dp">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/cont"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="Continue"
+            android:translationY="118dp"
+            android:translationX="290dp"/>
+        <Button
+            android:id="@+id/back"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:translationY="118dp"
+            android:translationX="10dp"/>
+
+        <TextView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="123dp"
-            android:layout_marginTop="287dp"
-            android:text="Match #"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:text="Team Selection"
+            android:textSize="42dp"
+            android:translationX="60dp"
+            android:translationY="50dp"/>
+
+
+        <ImageView
+            android:id="@+id/pop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pop"
+            android:translationY="500dp"
+            android:translationX="30dp"/>
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input"
+            android:layout_width="140dp"
+            android:layout_height="66dp"
+            android:hint="Team Number"
+            android:inputType="number"
+            android:translationX="133dp"
+            android:translationY="110dp" />
+
+    </RelativeLayout>
 </androidx.core.widget.NestedScrollView>

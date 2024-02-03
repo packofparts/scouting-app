@@ -111,7 +111,7 @@ public class SecondFragment extends Fragment {
         binding.title.setTranslationX((width - 136)/ 2.0f);
         binding.team.setTranslationY(height * 0.127f);
         binding.team.setTranslationX(binding.title.getX());
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotationX", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
+        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
         animation.setDuration(1000);
         binding.pop.setOnClickListener(new View.OnClickListener() {
             @Override

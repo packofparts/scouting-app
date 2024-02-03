@@ -35,6 +35,7 @@ public class FirstFragment extends Fragment {
         binding = FragmentFirstBinding.inflate(inflater, container, false);
         v = container;
         binding.input.setText(MainActivity.teamNumber.equals("0") ? "" : MainActivity.teamNumber);
+        //binding.input.setText(getActivity().toString());
         return binding.getRoot();
     }
 
@@ -63,7 +64,7 @@ public class FirstFragment extends Fragment {
                         .navigate(R.id.action_FirstFragment_to_HomePage);
             }
         });
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotationX", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
+        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
         animation.setDuration(1000);
         binding.pop.setOnClickListener(new View.OnClickListener() {
             @Override

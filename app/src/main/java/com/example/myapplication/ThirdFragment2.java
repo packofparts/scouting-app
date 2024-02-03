@@ -67,9 +67,8 @@ public class ThirdFragment2 extends Fragment{
                 lightDark(v, MainActivity.darkMode);
             }
 
-
-
         });
+        lightDark(v, MainActivity.darkMode);
 
 
 

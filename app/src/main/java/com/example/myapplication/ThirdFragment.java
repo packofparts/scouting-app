@@ -144,7 +144,9 @@ public class ThirdFragment extends Fragment {
                 }
                 MainActivity.broke = binding.switch3.isChecked();
             }
+
         });
+        lightDark(v, MainActivity.darkMode);
 
         String[] typeContact = {"No contact", "Teammate to Teammate", "Teammate to opponent"};
         ArrayAdapter<String> contact = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, typeContact);
@@ -215,7 +217,7 @@ public class ThirdFragment extends Fragment {
         EditText numNotes = binding.numNotes.findViewById(R.id.numNotes);
 
         if(binding.pop.isActivated()){
-            numNotes.setTextColor(Integer.parseInt("FFF-FFF"));
+            numNotes.setTextColor(Color.WHITE);
         }
     }
 

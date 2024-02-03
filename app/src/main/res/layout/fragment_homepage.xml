@@ -29,6 +29,8 @@
                 android:text="Team Selection"
                 android:textColor="@color/white"
                 android:textSize="32sp"
+                android:translationX="0dp"
+                android:translationY="15dp"
                 tools:ignore="HardcodedText" />
 
             <TextView
@@ -46,25 +48,25 @@
             <TextView
                 android:id="@+id/Tele_op_info"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="73dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="-10dp"
                 android:gravity="center"
                 android:text="Tele-Op"
                 android:textColor="@color/white"
-                android:textSize="32sp"
+                android:textSize="42sp"
                 tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/Wolf_info"
                 android:layout_width="243dp"
-                android:layout_height="91dp"
+                android:layout_height="76dp"
                 android:gravity="left"
-                android:text="The wolf logo effortlessly switches the backdrop, toggling between a crisp white canvas and a sleek black background. "
+                android:text="The wolf logo switches the backdrop, toggling between a white background and a black background. "
                 android:textColor="@color/white"
-                android:textSize="17sp"
+                android:textSize="15sp"
                 android:translationX="150dp"
-                android:translationY="40dp"
+                android:translationY="45dp"
                 tools:ignore="HardcodedText,RtlHardcoded" />
 
             <ImageView
@@ -81,30 +83,30 @@
                 android:layout_height="87dp"
                 android:src="@drawable/switchoff"
                 android:translationX="240dp"
-                android:translationY="-65dp" />
+                android:translationY="-35dp" />
 
             <TextView
                 android:id="@+id/Switch_off_Info"
                 android:layout_width="233dp"
-                android:layout_height="91dp"
+                android:layout_height="73dp"
                 android:gravity="left"
-                android:text="When the switch is positioned to the left and lacks a purple color, the switch indicates the statement is false. "
+                android:text="When the switch is positioned to the left and lacks a purple color, the switch tells us that the statement is false. "
                 android:textColor="@color/white"
-                android:textSize="17sp"
+                android:textSize="15sp"
                 android:translationX="10dp"
-                android:translationY="-150dp"
+                android:translationY="-120dp"
                 tools:ignore="HardcodedText,RtlHardcoded" />
 
             <TextView
                 android:id="@+id/Switch_on_info"
                 android:layout_width="244dp"
-                android:layout_height="82dp"
+                android:layout_height="61dp"
                 android:gravity="left"
-                android:text="When the switch is positioned to the right with a purple color, it signifies that the statement is true."
+                android:text="When the switch is positioned to the right with a purple color, it us that that the statement is true."
                 android:textColor="@color/white"
-                android:textSize="17sp"
+                android:textSize="15sp"
                 android:translationX="150dp"
-                android:translationY="-140dp"
+                android:translationY="-110dp"
                 tools:ignore="HardcodedText,RtlHardcoded" />
 
             <ImageView
@@ -113,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/switchon"
                 android:translationX="10dp"
-                android:translationY="-220dp" />
+                android:translationY="-180dp" />
 
             <ImageView
                 android:id="@+id/Plus"
@@ -121,18 +123,18 @@
                 android:layout_height="70dp"
                 android:src="@drawable/plus"
                 android:translationX="270dp"
-                android:translationY="-210dp" />
+                android:translationY="-180dp" />
 
             <TextView
                 android:id="@+id/Plus_info"
                 android:layout_width="248dp"
                 android:layout_height="63dp"
                 android:gravity="left"
-                android:text="Use the plus icon to indicate the ascending numerical value related to the statement."
+                android:text="Use the plus icon to show the increase of that statement."
                 android:textColor="@color/white"
-                android:textSize="17sp"
+                android:textSize="15sp"
                 android:translationX="10dp"
-                android:translationY="-270dp"
+                android:translationY="-240dp"
                 tools:ignore="HardcodedText,RtlHardcoded" />
 
             <ImageView
@@ -141,18 +143,18 @@
                 android:layout_height="70dp"
                 android:src="@drawable/minus"
                 android:translationX="30dp"
-                android:translationY="-265dp" />
+                android:translationY="-235dp" />
 
             <TextView
                 android:id="@+id/Minus_info"
                 android:layout_width="246dp"
                 android:layout_height="65dp"
                 android:gravity="left"
-                android:text="Use the minus icon to signify the decreasing numerical value associated with the statement."
+                android:text="Use the minus icon to show the decreasing that the statement is having."
                 android:textColor="@color/white"
-                android:textSize="17sp"
+                android:textSize="15sp"
                 android:translationX="150dp"
-                android:translationY="-335dp"
+                android:translationY="-305dp"
                 tools:ignore="HardcodedText,RtlHardcoded" />
 
             <Button
@@ -163,7 +165,7 @@
                 android:backgroundTint="#3280B4"
                 android:text="@string/next"
                 android:translationX="265dp"
-                android:translationY="-350dp"
+                android:translationY="-320dp"
                 app:cornerRadius="100dp" />
 
             <TextView
@@ -173,20 +175,20 @@
                 android:gravity="left"
                 android:text="The Next button will transport you to the next page, leading to a page titled End Game."
                 android:textColor="@color/white"
-                android:textSize="17sp"
+                android:textSize="15sp"
                 android:translationX="10dp"
-                android:translationY="-400dp"
+                android:translationY="-370dp"
                 tools:ignore="HardcodedText,RtlHardcoded" />
 
             <Button
                 android:id="@+id/previous_info_button"
                 android:layout_width="106dp"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="36dp"
                 android:backgroundTint="#3280B4"
                 android:text="@string/previous"
                 android:translationX="10dp"
-                android:translationY="-430dp"
+                android:translationY="-400dp"
                 app:cornerRadius="100dp" />
 
             <TextView
@@ -194,11 +196,155 @@
                 android:layout_width="244dp"
                 android:layout_height="54dp"
                 android:gravity="left"
-                android:text="The Previous button will take you back to the Tele Op page."
+                android:text="The Previous button will take you back to the Auto page."
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:translationX="150dp"
+                android:translationY="-440dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/Broke"
+                android:layout_width="117dp"
+                android:layout_height="60dp"
+                android:gravity="left"
+                android:text="Broke?"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:translationX="280dp"
+                android:translationY="-430dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/Broke_info"
+                android:layout_width="257dp"
+                android:layout_height="68dp"
+                android:gravity="left"
+                android:text="Broke means the robot broke and didn't work."
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:translationX="10dp"
+                android:translationY="-490dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/Defense"
+                android:layout_width="wrap_content"
+                android:layout_height="54dp"
+                android:gravity="left"
+                android:text="Defense?"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:translationX="10dp"
+                android:translationY="-470dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/Defense_info"
+                android:layout_width="244dp"
+                android:layout_height="54dp"
+                android:gravity="left"
+                android:text="Broke means the robot broke and didn't work."
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:translationX="160dp"
+                android:translationY="-524dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/Ground_info"
+                android:layout_width="176dp"
+                android:layout_height="116dp"
+                android:gravity="left"
+                android:text="Pick up from the ground means if it has picked up notes from the ground. "
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:translationX="10dp"
+                android:translationY="-510dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/Ground"
+                android:layout_width="205dp"
+                android:layout_height="105dp"
+                android:gravity="left"
+                android:text="Pick up from ground?"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:translationX="190dp"
+                android:translationY="-640dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/Source_Pick_up"
+                android:layout_width="173dp"
+                android:layout_height="87dp"
+                android:gravity="left"
+                android:text="Pick up from source?"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:translationX="10dp"
+                android:translationY="-640dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/Source_Pick_up_info"
+                android:layout_width="205dp"
+                android:layout_height="105dp"
+                android:gravity="left"
+                android:text="Pick up from the source means if it picked up notes from the person handing them out for the wall. "
                 android:textColor="@color/white"
                 android:textSize="17sp"
-                android:translationX="150dp"
-                android:translationY="-470dp"
+                android:translationX="190dp"
+                android:translationY="-730dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/Amp_Pick_up"
+                android:layout_width="205dp"
+                android:layout_height="42dp"
+                android:gravity="left"
+                android:text="Notes in Amp"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                android:translationX="220dp"
+                android:translationY="-730dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/Amp_Pick_up_info"
+                android:layout_width="205dp"
+                android:layout_height="105dp"
+                android:gravity="left"
+                android:text="Notes in Amp means if they scored in the Amp which is needed to amplify the speaker. "
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:translationX="10dp"
+                android:translationY="-780dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/Note_in_Speaker"
+                android:layout_width="205dp"
+                android:layout_height="105dp"
+                android:gravity="left"
+                android:text="Notes in Speaker Amplified/Unamplified"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:translationX="10dp"
+                android:translationY="-570dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/Note_in_Speaker_info"
+                android:layout_width="205dp"
+                android:layout_height="105dp"
+                android:gravity="left"
+                android:text="Notes in Speaker means scoring in the big structure in the middle with two categories for Amplified and another for non-Amplified scoring. "
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:translationX="190dp"
+                android:translationY="-640dp"
                 tools:ignore="HardcodedText,RtlHardcoded" />
 
             <TextView
@@ -212,7 +358,7 @@
                 android:textColor="@color/white"
                 android:textSize="32sp"
                 android:translationX="0dp"
-                android:translationY="-450dp"
+                android:translationY="-100dp"
                 tools:ignore="HardcodedText" />
 
         </LinearLayout>

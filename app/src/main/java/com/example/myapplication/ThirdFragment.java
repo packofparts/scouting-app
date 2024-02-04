@@ -66,16 +66,16 @@ public class ThirdFragment extends Fragment {
             binding.switch2.setThumbTintList(blue);
             binding.switch2.setTrackTintList(blue);
         } else {
-            binding.switch2.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
-            binding.switch2.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+            binding.switch2.setThumbTintList(blue);
+            binding.switch2.setTrackTintList(blue);
         }
         binding.switch3.setChecked(MainActivity.ground);
         if (binding.switch3.isChecked()){
             binding.switch3.setThumbTintList(blue);
             binding.switch3.setTrackTintList(blue);
         } else {
-            binding.switch3.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
-            binding.switch3.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+            binding.switch3.setThumbTintList(blue);
+            binding.switch3.setTrackTintList(blue);
         }
 
         return binding.getRoot();
@@ -83,6 +83,8 @@ public class ThirdFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ColorStateList purple = ColorStateList.valueOf(Color.parseColor(("#6750A3")));
+        ColorStateList blue = ColorStateList.valueOf((Color.parseColor("#73C2F0")));
         binding.toAutoCont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,11 +106,11 @@ public class ThirdFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
                 if (binding.switch1.isChecked()){
-                    binding.switch1.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
-                    binding.switch1.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+                    binding.switch1.setThumbTintList(purple);
+                    binding.switch1.setTrackTintList(purple);
                 } else {
-                    binding.switch1.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
-                    binding.switch1.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+                    binding.switch1.setThumbTintList(blue);
+                    binding.switch1.setTrackTintList(blue);
                 }
                 MainActivity.broke = binding.switch1.isChecked();
             }
@@ -117,11 +119,11 @@ public class ThirdFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
                 if (binding.switch2.isChecked()){
-                    binding.switch2.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
-                    binding.switch2.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+                    binding.switch2.setThumbTintList(purple);
+                    binding.switch2.setTrackTintList(purple);
                 } else {
-                    binding.switch2.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
-                    binding.switch2.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+                    binding.switch2.setThumbTintList(blue);
+                    binding.switch2.setTrackTintList(blue);
                 }
                 MainActivity.broke = binding.switch2.isChecked();
             }
@@ -130,11 +132,11 @@ public class ThirdFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
                 if (binding.switch3.isChecked()){
-                    binding.switch3.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
-                    binding.switch3.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+                    binding.switch3.setThumbTintList(purple);
+                    binding.switch3.setTrackTintList(purple);
                 } else {
-                    binding.switch3.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
-                    binding.switch3.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+                    binding.switch3.setThumbTintList(blue);
+                    binding.switch3.setTrackTintList(blue);
                 }
                 MainActivity.broke = binding.switch3.isChecked();
             }

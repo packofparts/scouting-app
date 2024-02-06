@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -63,12 +64,13 @@ public class ThirdFragment2 extends Fragment{
                 lightDark(v, MainActivity.darkMode);
             }
         });
+        EditText charactersRemaining = view.findViewById(R.id.charactersRemaining);
+        EditText comments = view.findViewById(R.id.comments);
+        charactersRemaining.setEnabled(false);
+
+        binding.charactersRemaining.setText("Character Limit: " + binding.comments.getText().length() + "/150");
 
         lightDark(v, MainActivity.darkMode);
-
-
-
-
 
     }
     public void lightDark (ViewGroup v, boolean mode){

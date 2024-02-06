@@ -8,20 +8,17 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 
-import androidx.navigation.fragment.NavHostFragment;
-
-
-import android.text.Editable;
+import android.provider.Contacts;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -30,7 +27,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.example.myapplication.databinding.FragmentThirdBinding;
-import com.google.android.material.textfield.TextInputLayout;
 
 
 /**
@@ -44,7 +40,8 @@ public class ThirdFragment extends Fragment {
 
     private FragmentThirdBinding binding;
     ViewGroup v = null;
-
+    private static ColorStateList purple = ColorStateList.valueOf(Color.parseColor("#6750A3"));
+    private static ColorStateList blue = ColorStateList.valueOf(Color.parseColor("#73C2F0"));
 
     @Override
     public View onCreateView(
@@ -52,8 +49,6 @@ public class ThirdFragment extends Fragment {
     ){
         binding = FragmentThirdBinding.inflate(inflater, container, false);
         v = container;
-        ColorStateList purple = ColorStateList.valueOf(Color.parseColor(("#6750A3")));
-        ColorStateList blue = ColorStateList.valueOf((Color.parseColor("#73C2F0")));
         if (binding.switch1.isChecked()){
             binding.switch1.setThumbTintList(purple);
             binding.switch1.setTrackTintList(purple);
@@ -63,28 +58,24 @@ public class ThirdFragment extends Fragment {
         }
         binding.switch2.setChecked(MainActivity.defense);
         if (binding.switch2.isChecked()){
-            binding.switch2.setThumbTintList(blue);
-            binding.switch2.setTrackTintList(blue);
+            binding.switch2.setThumbTintList(purple);
+            binding.switch2.setTrackTintList(purple);
         } else {
             binding.switch2.setThumbTintList(blue);
             binding.switch2.setTrackTintList(blue);
         }
         binding.switch3.setChecked(MainActivity.ground);
-        if (binding.switch3.isChecked()){
-            binding.switch3.setThumbTintList(blue);
-            binding.switch3.setTrackTintList(blue);
-        } else {
-            binding.switch3.setThumbTintList(blue);
-            binding.switch3.setTrackTintList(blue);
-        }
+        binding.switch3.setThumbTintList(blue);
+        binding.switch3.setTrackTintList(blue);
 
         return binding.getRoot();
     }
 
+
+
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ColorStateList purple = ColorStateList.valueOf(Color.parseColor(("#6750A3")));
-        ColorStateList blue = ColorStateList.valueOf((Color.parseColor("#73C2F0")));
+
         binding.toAutoCont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -146,7 +137,6 @@ public class ThirdFragment extends Fragment {
         binding.spinner.setAdapter(contact);
 
 
-        Editable numNotes = binding.numNotes.getText();
 
         lightDark(v, MainActivity.darkMode);
 
@@ -158,14 +148,21 @@ public class ThirdFragment extends Fragment {
 
         Switch switch3 = view.findViewById(R.id.switch3);
         switch3.isChecked();
+
+        EditText numNotes = view.findViewById(R.id.numNotes);
+        numNotes.getText();
+
+        EditText numNotesInAmp = view.findViewById(R.id.numNotesInAmp);
+        numNotesInAmp.getText();
+
+        Spinner Contact = view.findViewById(R.id.spinner);
+        Contact.getSelectedItem();
     }
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
-
-
     public void lightDark (ViewGroup v, boolean mode){
         int bgColor = (mode ? (Color.BLACK) : Color.WHITE);
         int textColor = (mode ? (Color.WHITE) : (Color.BLACK));
@@ -187,6 +184,9 @@ public class ThirdFragment extends Fragment {
             }
         }
     }
+
+
+
 
 
     //TODO: Rename parameter arguments, choose names that match

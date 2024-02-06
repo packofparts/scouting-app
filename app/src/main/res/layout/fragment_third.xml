@@ -24,16 +24,18 @@
 
     <EditText
         android:id="@+id/numNotes"
-        android:layout_width="78dp"
-        android:layout_height="45dp"
+        android:layout_width="149dp"
+        android:layout_height="40dp"
         android:layout_marginStart="-75dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="216dp"
         android:layout_marginBottom="27dp"
         android:ems="10"
         android:inputType="number"
+        app:boxBackgroundMode="filled"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -121,8 +123,8 @@
 
     <EditText
         android:id="@+id/numNotesInAmp"
-        android:layout_width="77dp"
-        android:layout_height="45dp"
+        android:layout_width="129dp"
+        android:layout_height="57dp"
         android:layout_marginStart="-335dp"
         android:layout_marginTop="120dp"
         android:layout_marginEnd="85dp"
@@ -131,8 +133,10 @@
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/textView10"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/switch3" />
+        app:layout_constraintTop_toBottomOf="@+id/switch3"
+        app:layout_constraintVertical_bias="0.808" />
 
     <TextView
         android:id="@+id/textView10"

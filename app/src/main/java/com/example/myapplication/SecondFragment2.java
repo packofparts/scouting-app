@@ -414,44 +414,24 @@ public class SecondFragment2 extends Fragment {
      * @param mode false for light mode, true for dark mode
      */
     public void lightDark (ViewGroup v, boolean mode){
-        if (!mode){
-            for (int i = 0; i < v.getChildCount(); i ++){
-                View child = v.getChildAt(i);
-                if (!(child instanceof Spinner) && !(child instanceof TextInputLayout)) {
-                    if (!(child instanceof Button)) {
-                        child.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                        if (child instanceof TextView) {
-                            TextView tx = (TextView) child;
-                            tx.setTextColor(Color.parseColor("#000000"));
-                        }
-                    }
-                    if (child instanceof Switch) {
-                        Switch tx = (Switch) child;
-                        tx.setTextColor(Color.parseColor("#000000"));
-                    }
-                    if (child instanceof ViewGroup) {
-                        lightDark((ViewGroup) child, mode);
+        String bgColor = !mode ? "#FFFFFF" : "#000000";
+        String viewColor = !mode ? "#000000" : "#FFFFFF";
+        for (int i = 0; i < v.getChildCount(); i ++){
+            View child = v.getChildAt(i);
+            if (!(child instanceof Spinner) && !(child instanceof TextInputLayout)) {
+                if (!(child instanceof Button)) {
+                    child.setBackgroundColor(Color.parseColor(bgColor));
+                    if (child instanceof TextView) {
+                        TextView tx = (TextView) child;
+                        tx.setTextColor(Color.parseColor(viewColor));
                     }
                 }
-            }
-        } else {
-            for (int i = 0; i < v.getChildCount(); i ++){
-                View child = v.getChildAt(i);
-                if (!(child instanceof Spinner) && !(child instanceof TextInputLayout)) {
-                    if (!(child instanceof Button)) {
-                        child.setBackgroundColor(Color.parseColor("#000000"));
-                        if (child instanceof TextView) {
-                            TextView tx = (TextView) child;
-                            tx.setTextColor(Color.parseColor("#FFFFFF"));
-                        }
-                    }
-                    if (child instanceof Switch) {
+                if (child instanceof Switch) {
                         Switch tx = (Switch) child;
-                        tx.setTextColor(Color.parseColor("#FFFFFF"));
-                    }
-                    if (child instanceof ViewGroup) {
-                        lightDark((ViewGroup) child, mode);
-                    }
+                        tx.setTextColor(Color.parseColor(viewColor));
+                }
+                if (child instanceof ViewGroup) {
+                    lightDark((ViewGroup) child, mode);
                 }
             }
         }

@@ -23,6 +23,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentSecondBinding;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class SecondFragment extends Fragment {
 
@@ -276,41 +277,28 @@ public class SecondFragment extends Fragment {
     }
 
     public void lightDark (ViewGroup v, boolean mode){
-        if (!mode){
-            for (int i = 0; i < v.getChildCount(); i ++){
-                View child = v.getChildAt(i);
-                if (!(child instanceof Button)) {
-                    child.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                    if (child instanceof TextView) {
-                        TextView tx = (TextView) child;
-                        tx.setTextColor(Color.parseColor("#000000"));
-                    }
+        String bgColor = !mode ? "#FFFFFF" : "#000000";
+        String viewColor = !mode ? "#000000" : "#FFFFFF";
+        for (int i = 0; i < v.getChildCount(); i ++){
+            View child = v.getChildAt(i);
+            if (!(child instanceof Button)) {
+                child.setBackgroundColor(Color.parseColor(bgColor));
+                if (child instanceof TextView) {
+                    TextView tx = (TextView) child;
+                    tx.setTextColor(Color.parseColor(viewColor));
                 }
-                if (child instanceof Switch) {
-                    Switch tx = (Switch) child;
-                    tx.setTextColor(Color.parseColor("#000000"));
-                }
-                if (child instanceof ViewGroup){
-                    lightDark((ViewGroup)child, mode);
+                if (child instanceof TextInputEditText) {
+                    TextView tx = (TextInputEditText) child;
+                    tx.setTextColor(Color.parseColor(viewColor));
+                    tx.setHintTextColor(Color.parseColor(viewColor));
                 }
             }
-        } else {
-            for (int i = 0; i < v.getChildCount(); i ++){
-                View child = v.getChildAt(i);
-                if (!(child instanceof Button)) {
-                    child.setBackgroundColor(Color.parseColor("#000000"));
-                    if (child instanceof TextView) {
-                        TextView tx = (TextView) child;
-                        tx.setTextColor(Color.parseColor("#FFFFFF"));
-                    }
-                }
-                if (child instanceof Switch) {
-                    Switch tx = (Switch) child;
-                    tx.setTextColor(Color.parseColor("#FFFFFF"));
-                }
-                if (child instanceof ViewGroup){
-                    lightDark((ViewGroup)child, mode);
-                }
+            if (child instanceof Switch) {
+                Switch tx = (Switch) child;
+                tx.setTextColor(Color.parseColor(viewColor));
+            }
+            if (child instanceof ViewGroup){
+                lightDark((ViewGroup)child, mode);
             }
         }
     }

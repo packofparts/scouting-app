@@ -35,7 +35,6 @@ public class FirstFragment extends Fragment {
         binding = FragmentFirstBinding.inflate(inflater, container, false);
         v = container;
         binding.input.setText(MainActivity.teamNumber.equals("0") ? "" : MainActivity.teamNumber);
-        //binding.input.setText(getActivity().toString());
         return binding.getRoot();
     }
 

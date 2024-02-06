@@ -5,6 +5,7 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.DragEvent;
@@ -42,6 +43,7 @@ public class SecondFragment extends Fragment {
         binding.speakerUnampCounter.setText("" + MainActivity.speakerUnamp);
         binding.speakerAmpCounter.setText("" + MainActivity.speakerAmp);
         binding.broke.setChecked(MainActivity.broke);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
         if (binding.broke.isChecked()){
             binding.broke.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
             binding.broke.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
@@ -50,6 +52,7 @@ public class SecondFragment extends Fragment {
             binding.broke.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
         }
         binding.defense.setChecked(MainActivity.defense);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
         if (binding.defense.isChecked()){
             binding.defense.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
             binding.defense.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
@@ -58,6 +61,7 @@ public class SecondFragment extends Fragment {
             binding.defense.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
         }
         binding.ground.setChecked(MainActivity.ground);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
         if (binding.ground.isChecked()){
             binding.ground.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
             binding.ground.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
@@ -66,6 +70,7 @@ public class SecondFragment extends Fragment {
             binding.ground.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
         }
         binding.source.setChecked(MainActivity.source);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
         if (binding.source.isChecked()){
             binding.source.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
             binding.source.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
@@ -126,6 +131,7 @@ public class SecondFragment extends Fragment {
         binding.broke.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                 if (binding.broke.isChecked()){
                     binding.broke.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
                     binding.broke.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
@@ -141,6 +147,7 @@ public class SecondFragment extends Fragment {
         binding.defense.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                 if (binding.defense.isChecked()){
                     binding.defense.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
                     binding.defense.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
@@ -156,6 +163,7 @@ public class SecondFragment extends Fragment {
         binding.ground.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                 if (binding.ground.isChecked()){
                     binding.ground.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
                     binding.ground.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
@@ -171,6 +179,7 @@ public class SecondFragment extends Fragment {
         binding.source.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                 if (binding.source.isChecked()){
                     binding.source.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
                     binding.source.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));

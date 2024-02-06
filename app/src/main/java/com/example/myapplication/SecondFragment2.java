@@ -11,6 +11,7 @@ import android.database.DataSetObserver;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -257,8 +258,10 @@ public class SecondFragment2 extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (binding.human.isChecked()){
-                    binding.human.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
-                    binding.human.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        binding.human.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+                        binding.human.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+                    }
                     ViewGroup.LayoutParams layoutParams = binding.relativeLayoutFirst.getLayoutParams();
                     layoutParams.width = (int) width;
                     layoutParams.height = (int) height + 500;
@@ -276,8 +279,10 @@ public class SecondFragment2 extends Fragment {
                     binding.minusNotesHit.setVisibility(VISIBLE);
                     binding.notesHitCounter.setVisibility(VISIBLE);
                 } else {
-                    binding.human.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
-                    binding.human.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        binding.human.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+                        binding.human.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+                    }
                     ViewGroup.LayoutParams layoutParams = binding.relativeLayoutFirst.getLayoutParams();
                     layoutParams.width = (int) width;
                     layoutParams.height = (int) height - 38;
@@ -351,10 +356,11 @@ public class SecondFragment2 extends Fragment {
         });
         binding.notesHitCounter.setTranslationY(binding.notesSuccessCounter.getTranslationY() + 500);
         binding.notesHitCounter.setTranslationX(binding.notesSuccessCounter.getTranslationX());
-
         if (binding.human.isChecked()){
-            binding.human.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
-            binding.human.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                binding.human.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+                binding.human.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+            }
             ViewGroup.LayoutParams layoutParam = binding.relativeLayoutFirst.getLayoutParams();
             layoutParam.width = (int) width;
             layoutParam.height = (int) height + 500;
@@ -372,8 +378,10 @@ public class SecondFragment2 extends Fragment {
             binding.minusNotesHit.setVisibility(VISIBLE);
             binding.notesHitCounter.setVisibility(VISIBLE);
         } else {
-            binding.human.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
-            binding.human.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                binding.human.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+                binding.human.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+            }
             ViewGroup.LayoutParams layoutParam = binding.relativeLayoutFirst.getLayoutParams();
             layoutParam.width = (int) width;
             layoutParam.height = (int) height - 38;

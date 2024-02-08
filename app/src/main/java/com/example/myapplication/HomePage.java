@@ -1,9 +1,28 @@
 package com.example.myapplication;
+<<<<<<< HEAD
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+=======
+
+import android.animation.ObjectAnimator;
+import android.graphics.Color;
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
+
+>>>>>>> 07b06c4242d1ed067a0db520c92892a3927315a3
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Switch;
+import android.widget.TextView;
+
+import com.example.myapplication.databinding.FragmentHomepageBinding;
+import com.example.myapplication.databinding.FragmentSecondBinding;
+import com.google.android.material.textfield.TextInputEditText;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,7 +39,8 @@ public class HomePage extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private ViewGroup v;
+    private FragmentHomepageBinding binding;
     public HomePage() {
         // Required empty public constructor
     }
@@ -56,6 +76,30 @@ public class HomePage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_homepage, container, false);
+        binding = FragmentHomepageBinding.inflate(inflater, container, false);
+        v = container;
+        return binding.getRoot();
+    }
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        /*binding.button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(HomePage.this)
+                        .navigate(R.id.action_HomePage_to_pitFragment);
+            }
+        });*/
+        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.WolfLogoInfo, "rotation", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
+        animation.setDuration(1000);
+        binding.WolfLogoInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                animation.start();
+                MainActivity.darkMode = !MainActivity.darkMode;
+                uiHelpers.lightDark(v, MainActivity.darkMode);
+            }
+        });
+        uiHelpers.lightDark(v, MainActivity.darkMode);
     }
 }

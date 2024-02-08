@@ -46,7 +46,7 @@ public class FirstFragment extends Fragment {
         binding.cont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (MainActivity.teamNumber.length() > 2 && MainActivity.teamNumber.length() < 6) {
+                if (MainActivity.teamNumber.length() > 0 && MainActivity.teamNumber.length() < 6) {
                     NavHostFragment.findNavController(FirstFragment.this)
                             .navigate(R.id.action_FirstFragment_to_ThirdFragment);
                 } else {
@@ -63,14 +63,14 @@ public class FirstFragment extends Fragment {
                         .navigate(R.id.action_FirstFragment_to_HomePage);
             }
         });
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotationX", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
+        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
         animation.setDuration(1000);
         binding.pop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 animation.start();
                 MainActivity.darkMode = !MainActivity.darkMode;
-                lightDark(v, MainActivity.darkMode);
+                uiHelpers.lightDark(v, MainActivity.darkMode);
             }
         });
         DisplayMetrics dm = new DisplayMetrics();
@@ -103,61 +103,12 @@ public class FirstFragment extends Fragment {
         binding.cont.setTranslationX(width * 0.707f);
         binding.pop.setTranslationY(height * 0.719f);
         binding.pop.setTranslationX(width * 0.073f);
-        lightDark(v, MainActivity.darkMode);
+        uiHelpers.lightDark(v, MainActivity.darkMode);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-    }
-    public void lightDark (ViewGroup v, boolean mode){
-        if (!mode){
-            for (int i = 0; i < v.getChildCount(); i ++){
-                View child = v.getChildAt(i);
-                if (!(child instanceof Button)) {
-                    child.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                    if (child instanceof TextView) {
-                        TextView tx = (TextView) child;
-                        tx.setTextColor(Color.parseColor("#000000"));
-                    }
-                    if (child instanceof TextInputEditText) {
-                        TextView tx = (TextInputEditText) child;
-                        tx.setTextColor(Color.parseColor("#000000"));
-                        tx.setHintTextColor(Color.parseColor("#000000"));
-                    }
-                }
-                if (child instanceof Switch) {
-                    Switch tx = (Switch) child;
-                    tx.setTextColor(Color.parseColor("#000000"));
-                }
-                if (child instanceof ViewGroup){
-                    lightDark((ViewGroup)child, mode);
-                }
-            }
-        } else {
-            for (int i = 0; i < v.getChildCount(); i ++){
-                View child = v.getChildAt(i);
-                if (!(child instanceof Button)) {
-                    child.setBackgroundColor(Color.parseColor("#000000"));
-                    if (child instanceof TextView) {
-                        TextView tx = (TextView) child;
-                        tx.setTextColor(Color.parseColor("#FFFFFF"));
-                    }
-                    if (child instanceof TextInputEditText) {
-                        TextView tx = (TextInputEditText) child;
-                        tx.setTextColor(Color.parseColor("#FFFFFF"));
-                        tx.setHintTextColor(Color.parseColor("#FFFFFF"));
-                    }
-                }
-                if (child instanceof Switch) {
-                    Switch tx = (Switch) child;
-                    tx.setTextColor(Color.parseColor("#FFFFFF"));
-                }
-                if (child instanceof ViewGroup){
-                    lightDark((ViewGroup)child, mode);
-                }
-            }
-        }
     }
 }

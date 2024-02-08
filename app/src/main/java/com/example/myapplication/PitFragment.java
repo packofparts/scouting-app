@@ -40,7 +40,11 @@ public class PitFragment extends Fragment {
 
 
     public PitFragment() {
-
+        try {
+            FragmentActivity fragmentActivity = getActivity();
+            ViewModelProvider viewModelProvider = new ViewModelProvider(fragmentActivity);
+            userModel = viewModelProvider.get(UserModel.class);
+        } catch(Exception e){}
     }
 
     /*FragmentActivity fragmentActivity = requireActivity();
@@ -97,7 +101,6 @@ public class PitFragment extends Fragment {
                         .navigate(R.id.action_pitFragment_to_HomePage);
             }
         });
-
         binding.checkBox.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {

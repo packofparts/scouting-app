@@ -22,9 +22,7 @@ import com.example.myapplication.databinding.FragmentThird2Binding;
 
 
 
-public class ThirdFragment2 extends Fragment{
-
-
+public class ThirdFragment2 extends Fragment {
 
 
     private FragmentThird2Binding binding;
@@ -37,17 +35,15 @@ public class ThirdFragment2 extends Fragment{
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState
 
 
-    ){
+    ) {
         binding = FragmentThird2Binding.inflate(inflater, container, false);
         v = container;
         return binding.getRoot();
     }
 
 
-
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
 
         binding.toTeleop.setOnClickListener(new View.OnClickListener() {
@@ -64,32 +60,12 @@ public class ThirdFragment2 extends Fragment{
             public void onClick(View view) {
                 animation.start();
                 MainActivity.darkMode = !MainActivity.darkMode;
-                lightDark(v, MainActivity.darkMode);
+                UIHelpers.lightDark(v, MainActivity.darkMode);
             }
         });
-        lightDark(v, MainActivity.darkMode);
+        UIHelpers.lightDark(v, MainActivity.darkMode);
 
     }
-    public void lightDark (ViewGroup v, boolean mode){
-        int bgColor = (mode ? (Color.BLACK) : Color.WHITE);
-        int textColor = (mode ? (Color.WHITE) : (Color.BLACK));
-        for (int i = 0; i < v.getChildCount(); i ++){
-            View child = v.getChildAt(i);
-            if (!(child instanceof Button)) {
-                child.setBackgroundColor(bgColor);
-                if (child instanceof TextView) {
-                    TextView tx = (TextView) child;
-                    tx.setTextColor(textColor);
-                }
-            }
-            if (child instanceof Switch) {
-                Switch tx = (Switch) child;
-                tx.setTextColor(textColor);
-            }
-            if (child instanceof ViewGroup){
-                lightDark((ViewGroup)child, mode);
-            }
-        }
-    }
-    }
+
+}
 

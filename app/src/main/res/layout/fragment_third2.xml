@@ -15,10 +15,8 @@
 
         android:layout_marginTop="40dp"
         android:layout_marginEnd="45dp"
-        android:layout_marginBottom="236dp"
         android:text="Auto cont."
         android:textSize="35sp"
-        app:layout_constraintBottom_toTopOf="@+id/charactersRemaining"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/pop"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,8 +29,7 @@
         android:layout_marginBottom="33dp"
         android:text="Teleop"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/charactersRemaining" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
     <TextView
@@ -55,14 +52,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="101dp"
-        android:layout_marginEnd="7dp"
         android:layout_marginBottom="362dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
         android:maxLength="150"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/charactersRemaining"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
@@ -79,21 +74,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/pop" />
-
-    <EditText
-        android:id="@+id/charactersRemaining"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginBottom="281dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name"
-        android:textSize="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/toTeleop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/comments"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

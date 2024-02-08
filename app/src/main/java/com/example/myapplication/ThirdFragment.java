@@ -8,12 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -46,11 +44,7 @@ public class ThirdFragment extends Fragment {
             setSwitchColor(binding.switch2);
             setSwitchColor(binding.switch3);
         binding.switch2.setChecked(MainActivity.defense);
-
-
-
         binding.switch3.setChecked(MainActivity.ground);
-
         binding.switch3.setThumbTintList(blue);
         binding.switch3.setTrackTintList(blue);
 
@@ -70,8 +64,6 @@ public class ThirdFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-
         binding.toAutoCont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,45 +78,28 @@ public class ThirdFragment extends Fragment {
             public void onClick(View view) {
                 animation.start();
                 MainActivity.darkMode = !MainActivity.darkMode;
-                lightDark(v, MainActivity.darkMode);
+                UIHelpers.lightDark(v, MainActivity.darkMode);
+
             }
         });
         binding.switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
-                if (binding.switch1.isChecked()){
-                    binding.switch1.setThumbTintList(purple);
-                    binding.switch1.setTrackTintList(purple);
-                } else {
-                    binding.switch1.setThumbTintList(blue);
-                    binding.switch1.setTrackTintList(blue);
-                }
+                setSwitchColor(binding.switch1);
                 MainActivity.broke = binding.switch1.isChecked();
             }
         });
         binding.switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
-                if (binding.switch2.isChecked()){
-                    binding.switch2.setThumbTintList(purple);
-                    binding.switch2.setTrackTintList(purple);
-                } else {
-                    binding.switch2.setThumbTintList(blue);
-                    binding.switch2.setTrackTintList(blue);
-                }
+                setSwitchColor(binding.switch2);
                 MainActivity.broke = binding.switch2.isChecked();
             }
         });
         binding.switch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
-                if (binding.switch3.isChecked()){
-                    binding.switch3.setThumbTintList(purple);
-                    binding.switch3.setTrackTintList(purple);
-                } else {
-                    binding.switch3.setThumbTintList(blue);
-                    binding.switch3.setTrackTintList(blue);
-                }
+                setSwitchColor(binding.switch3);
                 MainActivity.broke = binding.switch3.isChecked();
             }
         });
@@ -133,8 +108,8 @@ public class ThirdFragment extends Fragment {
         binding.spinner.setAdapter(contact);
 
 
-
-        lightDark(v, MainActivity.darkMode);
+        UIHelpers.lightDark(v, MainActivity.darkMode);
+        //lightDark(v, MainActivity.darkMode);
 
         Switch switch1 = view.findViewById(R.id.switch1);
         switch1.isChecked();
@@ -160,30 +135,6 @@ public class ThirdFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-    public void lightDark (ViewGroup v, boolean mode){
-        int bgColor = (mode ? (Color.BLACK) : Color.WHITE);
-        int textColor = (mode ? (Color.WHITE) : (Color.BLACK));
-        for (int i = 0; i < v.getChildCount(); i ++){
-            View child = v.getChildAt(i);
-            if (!(child instanceof Button)) {
-                child.setBackgroundColor(bgColor);
-                if (child instanceof TextView) {
-                    TextView tx = (TextView) child;
-                    tx.setTextColor(textColor);
-                }
-            }
-            if (child instanceof Switch) {
-                Switch tx = (Switch) child;
-                tx.setTextColor(textColor);
-            }
-            if (child instanceof ViewGroup){
-                lightDark((ViewGroup)child, mode);
-            }
-        }
-    }
-
-
-
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -194,7 +145,6 @@ public class ThirdFragment extends Fragment {
     public ThirdFragment() {
         // Required empty public constructor
     }
-
 
     public static ThirdFragment newInstance(String param1, String param2) {
         ThirdFragment fragment = new ThirdFragment();

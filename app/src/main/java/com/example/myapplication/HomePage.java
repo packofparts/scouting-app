@@ -1,8 +1,7 @@
 package com.example.myapplication;
-<<<<<<< HEAD
+
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
-=======
 
 import android.animation.ObjectAnimator;
 import android.graphics.Color;
@@ -12,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
->>>>>>> 07b06c4242d1ed067a0db520c92892a3927315a3
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

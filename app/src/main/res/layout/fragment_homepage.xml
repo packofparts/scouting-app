@@ -8,8 +8,8 @@
     android:layout_height="match_parent"
     android:background="#000000"
     android:orientation="vertical"
-    tools:context="HomePage">
-
+    tools:context="HomePage"
+    app:navGraph="@navigation/nav_graph">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -58,9 +58,9 @@
             <TextView
                 android:id="@+id/Wolf_info"
                 android:layout_width="243dp"
-                android:layout_height="91dp"
+                android:layout_height="105dp"
                 android:gravity="left"
-                android:text="The wolf logo effortlessly switches the backdrop, toggling between a crisp white canvas and a sleek black background. "
+                android:text="Any wolf logo effortlessly switches the backdrop, toggling between a crisp white canvas and a sleek black background. (← try me)"
                 android:textColor="@color/white"
                 android:textSize="17sp"
                 android:translationX="150dp"
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/pop"
                 android:translationX="10dp"
-                android:translationY="-65dp" />
+                android:translationY="-65dp"/>
 
             <ImageView
                 android:id="@+id/Switch_off"
@@ -171,7 +171,7 @@
                 android:layout_width="244dp"
                 android:layout_height="71dp"
                 android:gravity="left"
-                android:text="The Next button will transport you to the next page, leading to a page titled End Game."
+                android:text="The Next button will transport you to the next page. (try me →)"
                 android:textColor="@color/white"
                 android:textSize="17sp"
                 android:translationX="10dp"
@@ -192,9 +192,9 @@
             <TextView
                 android:id="@+id/Previous_info"
                 android:layout_width="244dp"
-                android:layout_height="54dp"
+                android:layout_height="66dp"
                 android:gravity="left"
-                android:text="The Previous button will take you back to the Tele Op page."
+                android:text="The Previous button will take you back to your previous page. (← try me)"
                 android:textColor="@color/white"
                 android:textSize="17sp"
                 android:translationX="150dp"
@@ -205,7 +205,7 @@
                 android:id="@+id/End_Game"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="0dp"
                 android:layout_marginBottom="-10dp"
                 android:gravity="center"
                 android:text="End Game"

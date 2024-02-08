@@ -5,6 +5,7 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.DragEvent;
@@ -22,6 +23,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentSecondBinding;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class SecondFragment extends Fragment {
 
@@ -42,36 +44,40 @@ public class SecondFragment extends Fragment {
         binding.speakerUnampCounter.setText("" + MainActivity.speakerUnamp);
         binding.speakerAmpCounter.setText("" + MainActivity.speakerAmp);
         binding.broke.setChecked(MainActivity.broke);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
         if (binding.broke.isChecked()){
-            binding.broke.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
-            binding.broke.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+            binding.broke.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
+            binding.broke.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
         } else {
-            binding.broke.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
-            binding.broke.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+            binding.broke.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
+            binding.broke.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
         }
         binding.defense.setChecked(MainActivity.defense);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
         if (binding.defense.isChecked()){
-            binding.defense.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
-            binding.defense.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+            binding.defense.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
+            binding.defense.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
         } else {
-            binding.defense.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
-            binding.defense.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+            binding.defense.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
+            binding.defense.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
         }
         binding.ground.setChecked(MainActivity.ground);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
         if (binding.ground.isChecked()){
-            binding.ground.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
-            binding.ground.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+            binding.ground.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
+            binding.ground.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
         } else {
-            binding.ground.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
-            binding.ground.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+            binding.ground.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
+            binding.ground.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
         }
         binding.source.setChecked(MainActivity.source);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
         if (binding.source.isChecked()){
-            binding.source.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
-            binding.source.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+            binding.source.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
+            binding.source.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
         } else {
-            binding.source.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
-            binding.source.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+            binding.source.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
+            binding.source.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
         }
         return binding.getRoot();
     }
@@ -111,14 +117,14 @@ public class SecondFragment extends Fragment {
         binding.title.setTranslationX((width - 136)/ 2.0f);
         binding.team.setTranslationY(height * 0.127f);
         binding.team.setTranslationX(binding.title.getX());
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotationX", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
+        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
         animation.setDuration(1000);
         binding.pop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 animation.start();
                 MainActivity.darkMode = !MainActivity.darkMode;
-                lightDark(v, MainActivity.darkMode);
+                uiHelpers.lightDark(v, MainActivity.darkMode);
             }
         });
         binding.broke.setTranslationX(width * 0.073f);
@@ -126,12 +132,13 @@ public class SecondFragment extends Fragment {
         binding.broke.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                 if (binding.broke.isChecked()){
-                    binding.broke.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
-                    binding.broke.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+                    binding.broke.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
+                    binding.broke.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
                 } else {
-                    binding.broke.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
-                    binding.broke.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+                    binding.broke.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
+                    binding.broke.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
                 }
                 MainActivity.broke = binding.broke.isChecked();
             }
@@ -141,12 +148,13 @@ public class SecondFragment extends Fragment {
         binding.defense.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                 if (binding.defense.isChecked()){
-                    binding.defense.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
-                    binding.defense.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+                    binding.defense.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
+                    binding.defense.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
                 } else {
-                    binding.defense.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
-                    binding.defense.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+                    binding.defense.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
+                    binding.defense.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
                 }
                 MainActivity.defense = binding.defense.isChecked();
             }
@@ -156,12 +164,13 @@ public class SecondFragment extends Fragment {
         binding.ground.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                 if (binding.ground.isChecked()){
-                    binding.ground.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
-                    binding.ground.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+                    binding.ground.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
+                    binding.ground.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
                 } else {
-                    binding.ground.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
-                    binding.ground.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+                    binding.ground.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
+                    binding.ground.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
                 }
                 MainActivity.ground = binding.ground.isChecked();
             }
@@ -171,12 +180,13 @@ public class SecondFragment extends Fragment {
         binding.source.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                 if (binding.source.isChecked()){
-                    binding.source.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
-                    binding.source.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+                    binding.source.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
+                    binding.source.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
                 } else {
-                    binding.source.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
-                    binding.source.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+                    binding.source.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
+                    binding.source.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
                 }
                 MainActivity.source = binding.source.isChecked();
             }
@@ -255,7 +265,7 @@ public class SecondFragment extends Fragment {
         });
         binding.speakerAmpCounter.setTranslationX(width * 0.598f);
         binding.speakerAmpCounter.setTranslationY(height * 0.784f);
-        lightDark(v, MainActivity.darkMode);
+        uiHelpers.lightDark(v, MainActivity.darkMode);
     }
    
     @Override
@@ -264,45 +274,5 @@ public class SecondFragment extends Fragment {
 
         binding = null;
 
-    }
-
-    public void lightDark (ViewGroup v, boolean mode){
-        if (!mode){
-            for (int i = 0; i < v.getChildCount(); i ++){
-                View child = v.getChildAt(i);
-                if (!(child instanceof Button)) {
-                    child.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                    if (child instanceof TextView) {
-                        TextView tx = (TextView) child;
-                        tx.setTextColor(Color.parseColor("#000000"));
-                    }
-                }
-                if (child instanceof Switch) {
-                    Switch tx = (Switch) child;
-                    tx.setTextColor(Color.parseColor("#000000"));
-                }
-                if (child instanceof ViewGroup){
-                    lightDark((ViewGroup)child, mode);
-                }
-            }
-        } else {
-            for (int i = 0; i < v.getChildCount(); i ++){
-                View child = v.getChildAt(i);
-                if (!(child instanceof Button)) {
-                    child.setBackgroundColor(Color.parseColor("#000000"));
-                    if (child instanceof TextView) {
-                        TextView tx = (TextView) child;
-                        tx.setTextColor(Color.parseColor("#FFFFFF"));
-                    }
-                }
-                if (child instanceof Switch) {
-                    Switch tx = (Switch) child;
-                    tx.setTextColor(Color.parseColor("#FFFFFF"));
-                }
-                if (child instanceof ViewGroup){
-                    lightDark((ViewGroup)child, mode);
-                }
-            }
-        }
     }
 }

@@ -4,14 +4,6 @@ import android.animation.ObjectAnimator;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
-
-
-import androidx.fragment.app.Fragment;
-
-import androidx.navigation.fragment.NavHostFragment;
-
-
-import android.provider.Contacts;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +15,9 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
-
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentThirdBinding;
 
@@ -49,32 +42,35 @@ public class ThirdFragment extends Fragment {
     ){
         binding = FragmentThirdBinding.inflate(inflater, container, false);
         v = container;
-        if (binding.switch1.isChecked()){
-            binding.switch1.setThumbTintList(purple);
-            binding.switch1.setTrackTintList(purple);
-        } else {
-            binding.switch1.setThumbTintList(blue);
-            binding.switch1.setTrackTintList(blue);
-        }
+            setSwitchColor(binding.switch1);
+            setSwitchColor(binding.switch2);
+            setSwitchColor(binding.switch3);
         binding.switch2.setChecked(MainActivity.defense);
-        if (binding.switch2.isChecked()){
-            binding.switch2.setThumbTintList(purple);
-            binding.switch2.setTrackTintList(purple);
-        } else {
-            binding.switch2.setThumbTintList(blue);
-            binding.switch2.setTrackTintList(blue);
-        }
+
+
+
         binding.switch3.setChecked(MainActivity.ground);
+
         binding.switch3.setThumbTintList(blue);
         binding.switch3.setTrackTintList(blue);
 
         return binding.getRoot();
     }
 
-
+    private void setSwitchColor(Switch switch1) {
+        if (switch1.isChecked()) {
+            switch1.setThumbTintList(purple);
+            switch1.setTrackTintList(purple);
+        } else {
+            switch1.setThumbTintList(blue);
+            switch1.setTrackTintList(blue);
+        }
+    }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
 
         binding.toAutoCont.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,6 +153,7 @@ public class ThirdFragment extends Fragment {
 
         Spinner Contact = view.findViewById(R.id.spinner);
         Contact.getSelectedItem();
+
     }
     @Override
     public void onDestroyView() {
@@ -188,13 +185,9 @@ public class ThirdFragment extends Fragment {
 
 
 
-
-    //TODO: Rename parameter arguments, choose names that match
-    //the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 

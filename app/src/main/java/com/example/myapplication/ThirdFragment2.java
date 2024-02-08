@@ -42,6 +42,9 @@ public class ThirdFragment2 extends Fragment{
         v = container;
         return binding.getRoot();
     }
+
+
+
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -64,12 +67,6 @@ public class ThirdFragment2 extends Fragment{
                 lightDark(v, MainActivity.darkMode);
             }
         });
-        EditText charactersRemaining = view.findViewById(R.id.charactersRemaining);
-        EditText comments = view.findViewById(R.id.comments);
-        charactersRemaining.setEnabled(false);
-
-        binding.charactersRemaining.setText("Character Limit: " + binding.comments.getText().length() + "/150");
-
         lightDark(v, MainActivity.darkMode);
 
     }

@@ -27,8 +27,8 @@
             android:id="@+id/action_SecondFragment_to_SecondFragment2"
             app:destination="@id/SecondFragment2" />
         <action
-            android:id="@+id/action_SecondFragment_to_thirdFragment2"
-            app:destination="@id/thirdFragment2" />
+            android:id="@+id/action_SecondFragment_to_ThirdFragment"
+            app:destination="@id/ThirdFragment" />
     </fragment>
     <fragment
         android:id="@+id/ThirdFragment"
@@ -37,11 +37,11 @@
         tools:layout="@layout/fragment_third">
 
         <action
-            android:id="@+id/action_ThirdFragment_to_thirdFragment2"
-            app:destination="@id/thirdFragment2" />
-        <action
             android:id="@+id/action_ThirdFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_ThirdFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
     </fragment>
 
     <fragment
@@ -64,17 +64,6 @@
         <action
             android:id="@+id/action_HomePage_to_FirstFragment"
             app:destination="@id/FirstFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/thirdFragment2"
-        android:name="com.example.myapplication.ThirdFragment2"
-        android:label="Autonomous" >
-        <action
-            android:id="@+id/action_thirdFragment2_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-        <action
-            android:id="@+id/action_thirdFragment2_to_ThirdFragment"
-            app:destination="@id/ThirdFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment2"

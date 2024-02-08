@@ -78,7 +78,7 @@ public class ThirdFragment extends Fragment {
             public void onClick(View view) {
                 animation.start();
                 MainActivity.darkMode = !MainActivity.darkMode;
-                uiHelpers.lightDark(v, MainActivity.darkMode);
+                UIHelpers.lightDark(v, MainActivity.darkMode);
 
             }
         });
@@ -105,7 +105,7 @@ public class ThirdFragment extends Fragment {
         binding.spinner.setAdapter(contact);
 
 
-        uiHelpers.lightDark(v, MainActivity.darkMode);
+        UIHelpers.lightDark(v, MainActivity.darkMode);
 
         Switch switch1 = view.findViewById(R.id.switch1);
         switch1.isChecked();

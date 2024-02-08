@@ -107,7 +107,7 @@ public class SecondFragment2 extends Fragment {
             public void onClick(View view) {
                 animation.start();
                 MainActivity.darkMode = !MainActivity.darkMode;
-                uiHelpers.lightDark(v, MainActivity.darkMode);
+                UIHelpers.lightDark(v, MainActivity.darkMode);
             }
         });
 
@@ -258,8 +258,8 @@ public class SecondFragment2 extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (binding.human.isChecked()){
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        binding.human.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
-                        binding.human.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
+                        binding.human.setThumbTintList(ColorStateList.valueOf(UIHelpers.purple));
+                        binding.human.setTrackTintList(ColorStateList.valueOf(UIHelpers.purple));
                     }
                     ViewGroup.LayoutParams layoutParams = binding.relativeLayoutFirst.getLayoutParams();
                     layoutParams.width = (int) width;
@@ -279,8 +279,8 @@ public class SecondFragment2 extends Fragment {
                     binding.notesHitCounter.setVisibility(VISIBLE);
                 } else {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        binding.human.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
-                        binding.human.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
+                        binding.human.setThumbTintList(ColorStateList.valueOf(UIHelpers.teamColor));
+                        binding.human.setTrackTintList(ColorStateList.valueOf(UIHelpers.teamColor));
                     }
                     ViewGroup.LayoutParams layoutParams = binding.relativeLayoutFirst.getLayoutParams();
                     layoutParams.width = (int) width;
@@ -357,8 +357,8 @@ public class SecondFragment2 extends Fragment {
         binding.notesHitCounter.setTranslationX(binding.notesSuccessCounter.getTranslationX());
         if (binding.human.isChecked()){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                binding.human.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
-                binding.human.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
+                binding.human.setThumbTintList(ColorStateList.valueOf(UIHelpers.purple));
+                binding.human.setTrackTintList(ColorStateList.valueOf(UIHelpers.purple));
             }
             ViewGroup.LayoutParams layoutParam = binding.relativeLayoutFirst.getLayoutParams();
             layoutParam.width = (int) width;
@@ -378,8 +378,8 @@ public class SecondFragment2 extends Fragment {
             binding.notesHitCounter.setVisibility(VISIBLE);
         } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                binding.human.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
-                binding.human.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
+                binding.human.setThumbTintList(ColorStateList.valueOf(UIHelpers.teamColor));
+                binding.human.setTrackTintList(ColorStateList.valueOf(UIHelpers.teamColor));
             }
             ViewGroup.LayoutParams layoutParam = binding.relativeLayoutFirst.getLayoutParams();
             layoutParam.width = (int) width;
@@ -398,7 +398,7 @@ public class SecondFragment2 extends Fragment {
             binding.minusNotesHit.setVisibility(GONE);
             binding.notesHitCounter.setVisibility(GONE);
         }
-        uiHelpers.lightDark(v, MainActivity.darkMode);
+        UIHelpers.lightDark(v, MainActivity.darkMode);
     }
 
     @Override

@@ -92,35 +92,9 @@ public class HomePage extends Fragment {
             public void onClick(View view) {
                 animation.start();
                 MainActivity.darkMode = !MainActivity.darkMode;
-                lightDark(v, MainActivity.darkMode);
+                uiHelpers.lightDark(v, MainActivity.darkMode);
             }
         });
-        lightDark(v, MainActivity.darkMode);
-    }
-    public void lightDark (ViewGroup v, boolean mode){
-        String bgColor = !mode ? "#FFFFFF" : "#000000";
-        String viewColor = !mode ? "#000000" : "#FFFFFF";
-        for (int i = 0; i < v.getChildCount(); i ++){
-            View child = v.getChildAt(i);
-            if (!(child instanceof Button)) {
-                child.setBackgroundColor(Color.parseColor(bgColor));
-                if (child instanceof TextView) {
-                    TextView tx = (TextView) child;
-                    tx.setTextColor(Color.parseColor(viewColor));
-                }
-                if (child instanceof TextInputEditText) {
-                    TextView tx = (TextInputEditText) child;
-                    tx.setTextColor(Color.parseColor(viewColor));
-                    tx.setHintTextColor(Color.parseColor(viewColor));
-                }
-            }
-            if (child instanceof Switch) {
-                Switch tx = (Switch) child;
-                tx.setTextColor(Color.parseColor(viewColor));
-            }
-            if (child instanceof ViewGroup){
-                lightDark((ViewGroup)child, mode);
-            }
-        }
+        uiHelpers.lightDark(v, MainActivity.darkMode);
     }
 }

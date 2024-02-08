@@ -46,7 +46,7 @@ public class FirstFragment extends Fragment {
         binding.cont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (MainActivity.teamNumber.length() > 2 && MainActivity.teamNumber.length() < 6) {
+                if (MainActivity.teamNumber.length() > 0 && MainActivity.teamNumber.length() < 6) {
                     NavHostFragment.findNavController(FirstFragment.this)
                             .navigate(R.id.action_FirstFragment_to_ThirdFragment);
                 } else {
@@ -70,7 +70,7 @@ public class FirstFragment extends Fragment {
             public void onClick(View view) {
                 animation.start();
                 MainActivity.darkMode = !MainActivity.darkMode;
-                lightDark(v, MainActivity.darkMode);
+                uiHelpers.lightDark(v, MainActivity.darkMode);
             }
         });
         DisplayMetrics dm = new DisplayMetrics();
@@ -103,38 +103,12 @@ public class FirstFragment extends Fragment {
         binding.cont.setTranslationX(width * 0.707f);
         binding.pop.setTranslationY(height * 0.719f);
         binding.pop.setTranslationX(width * 0.073f);
-        lightDark(v, MainActivity.darkMode);
+        uiHelpers.lightDark(v, MainActivity.darkMode);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-    }
-    public void lightDark (ViewGroup v, boolean mode){
-        String bgColor = !mode ? "#FFFFFF" : "#000000";
-        String viewColor = !mode ? "#000000" : "#FFFFFF";
-        for (int i = 0; i < v.getChildCount(); i ++){
-            View child = v.getChildAt(i);
-            if (!(child instanceof Button)) {
-                child.setBackgroundColor(Color.parseColor(bgColor));
-                if (child instanceof TextView) {
-                    TextView tx = (TextView) child;
-                    tx.setTextColor(Color.parseColor(viewColor));
-                }
-                if (child instanceof TextInputEditText) {
-                    TextView tx = (TextInputEditText) child;
-                    tx.setTextColor(Color.parseColor(viewColor));
-                    tx.setHintTextColor(Color.parseColor(viewColor));
-                }
-            }
-            if (child instanceof Switch) {
-                Switch tx = (Switch) child;
-                tx.setTextColor(Color.parseColor(viewColor));
-            }
-            if (child instanceof ViewGroup){
-                lightDark((ViewGroup)child, mode);
-            }
-        }
     }
 }

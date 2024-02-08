@@ -43,7 +43,6 @@ import com.google.android.material.textfield.TextInputLayout;
 public class SecondFragment2 extends Fragment {
 
     private FragmentSecond2Binding binding;
-
     ViewGroup v = null;
     @Override
     public View onCreateView(
@@ -108,7 +107,7 @@ public class SecondFragment2 extends Fragment {
             public void onClick(View view) {
                 animation.start();
                 MainActivity.darkMode = !MainActivity.darkMode;
-                lightDark(v, MainActivity.darkMode);
+                uiHelpers.lightDark(v, MainActivity.darkMode);
             }
         });
 
@@ -259,8 +258,8 @@ public class SecondFragment2 extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (binding.human.isChecked()){
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        binding.human.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
-                        binding.human.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+                        binding.human.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
+                        binding.human.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
                     }
                     ViewGroup.LayoutParams layoutParams = binding.relativeLayoutFirst.getLayoutParams();
                     layoutParams.width = (int) width;
@@ -280,8 +279,8 @@ public class SecondFragment2 extends Fragment {
                     binding.notesHitCounter.setVisibility(VISIBLE);
                 } else {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        binding.human.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
-                        binding.human.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+                        binding.human.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
+                        binding.human.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
                     }
                     ViewGroup.LayoutParams layoutParams = binding.relativeLayoutFirst.getLayoutParams();
                     layoutParams.width = (int) width;
@@ -358,8 +357,8 @@ public class SecondFragment2 extends Fragment {
         binding.notesHitCounter.setTranslationX(binding.notesSuccessCounter.getTranslationX());
         if (binding.human.isChecked()){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                binding.human.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
-                binding.human.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
+                binding.human.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
+                binding.human.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
             }
             ViewGroup.LayoutParams layoutParam = binding.relativeLayoutFirst.getLayoutParams();
             layoutParam.width = (int) width;
@@ -379,8 +378,8 @@ public class SecondFragment2 extends Fragment {
             binding.notesHitCounter.setVisibility(VISIBLE);
         } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                binding.human.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
-                binding.human.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#73C2F0")));
+                binding.human.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
+                binding.human.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
             }
             ViewGroup.LayoutParams layoutParam = binding.relativeLayoutFirst.getLayoutParams();
             layoutParam.width = (int) width;
@@ -399,7 +398,7 @@ public class SecondFragment2 extends Fragment {
             binding.minusNotesHit.setVisibility(GONE);
             binding.notesHitCounter.setVisibility(GONE);
         }
-        lightDark(v, MainActivity.darkMode);
+        uiHelpers.lightDark(v, MainActivity.darkMode);
     }
 
     @Override
@@ -413,27 +412,5 @@ public class SecondFragment2 extends Fragment {
      * @param v current ViewGroup obtained from onCreateView
      * @param mode false for light mode, true for dark mode
      */
-    public void lightDark (ViewGroup v, boolean mode){
-        String bgColor = !mode ? "#FFFFFF" : "#000000";
-        String viewColor = !mode ? "#000000" : "#FFFFFF";
-        for (int i = 0; i < v.getChildCount(); i ++){
-            View child = v.getChildAt(i);
-            if (!(child instanceof Spinner) && !(child instanceof TextInputLayout)) {
-                if (!(child instanceof Button)) {
-                    child.setBackgroundColor(Color.parseColor(bgColor));
-                    if (child instanceof TextView) {
-                        TextView tx = (TextView) child;
-                        tx.setTextColor(Color.parseColor(viewColor));
-                    }
-                }
-                if (child instanceof Switch) {
-                        Switch tx = (Switch) child;
-                        tx.setTextColor(Color.parseColor(viewColor));
-                }
-                if (child instanceof ViewGroup) {
-                    lightDark((ViewGroup) child, mode);
-                }
-            }
-        }
-    }
+
 }

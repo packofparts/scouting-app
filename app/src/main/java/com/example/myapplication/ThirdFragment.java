@@ -78,7 +78,7 @@ public class ThirdFragment extends Fragment {
             public void onClick(View view) {
                 animation.start();
                 MainActivity.darkMode = !MainActivity.darkMode;
-                UIHelpers.lightDark(v, MainActivity.darkMode);
+                uiHelpers.lightDark(v, MainActivity.darkMode);
 
             }
         });
@@ -86,21 +86,18 @@ public class ThirdFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
                 setSwitchColor(binding.switch1);
-                MainActivity.broke = binding.switch1.isChecked();
             }
         });
         binding.switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
                 setSwitchColor(binding.switch2);
-                MainActivity.broke = binding.switch2.isChecked();
             }
         });
         binding.switch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
                 setSwitchColor(binding.switch3);
-                MainActivity.broke = binding.switch3.isChecked();
             }
         });
         String[] typeContact = {"No contact", "Teammate to Teammate", "Teammate to opponent"};
@@ -108,8 +105,7 @@ public class ThirdFragment extends Fragment {
         binding.spinner.setAdapter(contact);
 
 
-        UIHelpers.lightDark(v, MainActivity.darkMode);
-        //lightDark(v, MainActivity.darkMode);
+        uiHelpers.lightDark(v, MainActivity.darkMode);
 
         Switch switch1 = view.findViewById(R.id.switch1);
         switch1.isChecked();

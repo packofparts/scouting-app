@@ -55,15 +55,16 @@ public class ThirdFragment2 extends Fragment {
         });
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotationX", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
         animation.setDuration(1000);
+
         binding.pop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 animation.start();
                 MainActivity.darkMode = !MainActivity.darkMode;
-                UIHelpers.lightDark(v, MainActivity.darkMode);
+                uiHelpers.lightDark(v, MainActivity.darkMode);
             }
         });
-        UIHelpers.lightDark(v, MainActivity.darkMode);
+        uiHelpers.lightDark(v, MainActivity.darkMode);
 
     }
 

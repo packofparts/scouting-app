@@ -1,14 +1,19 @@
 package com.example.myapplication;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.DragEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -23,6 +28,7 @@ public class SecondFragment extends Fragment {
     private FragmentSecondBinding binding;
 
     ViewGroup v = null;
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -31,6 +37,7 @@ public class SecondFragment extends Fragment {
 
         binding = FragmentSecondBinding.inflate(inflater, container, false);
         v = container;
+        binding.team.setText("Team " + MainActivity.teamNumber);
         binding.ampCounter.setText("" + MainActivity.amp);
         binding.speakerUnampCounter.setText("" + MainActivity.speakerUnamp);
         binding.speakerAmpCounter.setText("" + MainActivity.speakerAmp);
@@ -80,7 +87,13 @@ public class SecondFragment extends Fragment {
                         .navigate(R.id.action_SecondFragment_to_SecondFragment2);
             }
         });
-
+        binding.prev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(SecondFragment.this)
+                        .navigate(R.id.action_SecondFragment_to_thirdFragment2);
+            }
+        });
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -91,21 +104,28 @@ public class SecondFragment extends Fragment {
         layoutParams.height = (int) height;
         binding.relativeLayoutFirst.setLayoutParams(layoutParams);
         binding.relativeLayoutFirst.setTranslationY(50);
-        binding.next.setTranslationX((width - 300)/ 2.0f);
+        binding.next.setTranslationX((width - 300)/ 1.1f);
         binding.next.setTranslationY(height * 0.863f);
+        binding.prev.setTranslationX((width - 300)/ 8.0f);
+        binding.prev.setTranslationY(height * 0.863f);
         binding.title.setTranslationX((width - 136)/ 2.0f);
+        binding.team.setTranslationY(height * 0.127f);
+        binding.team.setTranslationX(binding.title.getX());
+        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotationX", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
+        animation.setDuration(1000);
         binding.pop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               MainActivity.darkMode = !MainActivity.darkMode;
-               lightDark(v, MainActivity.darkMode);
+                animation.start();
+                MainActivity.darkMode = !MainActivity.darkMode;
+                lightDark(v, MainActivity.darkMode);
             }
         });
         binding.broke.setTranslationX(width * 0.073f);
         binding.broke.setTranslationY(height * 0.216f);
-        binding.broke.setOnClickListener(new View.OnClickListener() {
+        binding.broke.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
                 if (binding.broke.isChecked()){
                     binding.broke.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
                     binding.broke.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
@@ -118,9 +138,9 @@ public class SecondFragment extends Fragment {
         });
         binding.defense.setTranslationX(width * 0.073f);
         binding.defense.setTranslationY(height * 0.288f);
-        binding.defense.setOnClickListener(new View.OnClickListener() {
+        binding.defense.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
                 if (binding.defense.isChecked()){
                     binding.defense.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
                     binding.defense.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
@@ -133,9 +153,9 @@ public class SecondFragment extends Fragment {
         });
         binding.ground.setTranslationX(width * 0.073f);
         binding.ground.setTranslationY(height * 0.360f);
-        binding.ground.setOnClickListener(new View.OnClickListener() {
+        binding.ground.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
                 if (binding.ground.isChecked()){
                     binding.ground.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
                     binding.ground.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
@@ -148,9 +168,9 @@ public class SecondFragment extends Fragment {
         });
         binding.source.setTranslationX(width * 0.073f);
         binding.source.setTranslationY(height * 0.432f);
-        binding.source.setOnClickListener(new View.OnClickListener() {
+        binding.source.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (binding.source.isChecked()){
                     binding.source.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
                     binding.source.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#6750A3")));
@@ -237,13 +257,15 @@ public class SecondFragment extends Fragment {
         binding.speakerAmpCounter.setTranslationY(height * 0.784f);
         lightDark(v, MainActivity.darkMode);
     }
-
+   
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+
         binding = null;
 
     }
+
     public void lightDark (ViewGroup v, boolean mode){
         if (!mode){
             for (int i = 0; i < v.getChildCount(); i ++){

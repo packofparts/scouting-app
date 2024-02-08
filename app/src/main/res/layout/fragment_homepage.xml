@@ -30,8 +30,7 @@
                 android:textColor="@color/white"
                 android:textSize="32sp"
                 android:translationX="0dp"
-                android:translationY="15dp"
-                tools:ignore="HardcodedText" />
+                android:translationY="15dp" />
 
             <TextView
                 android:id="@+id/Auto"
@@ -54,7 +53,7 @@
                 android:gravity="center"
                 android:text="Tele-Op"
                 android:textColor="@color/white"
-                android:textSize="42sp"
+                android:textSize="32sp"
                 tools:ignore="HardcodedText" />
 
             <TextView
@@ -102,7 +101,7 @@
                 android:layout_width="244dp"
                 android:layout_height="wrap_content"
                 android:gravity="left"
-                android:text="When the switch is positioned to the right with a purple color, it us that that the statement is true."
+                android:text="When the switch is positioned to the right with a purple color, it tells us that that the statement is true."
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 android:translationX="150dp"
@@ -134,8 +133,7 @@
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 android:translationX="150dp"
-                android:translationY="-220dp"
-                tools:ignore="HardcodedText,RtlHardcoded" />
+                android:translationY="-220dp" />
 
             <ImageView
                 android:id="@+id/Minus"
@@ -154,8 +152,7 @@
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 android:translationX="150dp"
-                android:translationY="-270dp"
-                tools:ignore="HardcodedText,RtlHardcoded" />
+                android:translationY="-270dp"/>
 
             <Button
                 android:id="@+id/next_info_button"
@@ -165,8 +162,7 @@
                 android:backgroundTint="#3280B4"
                 android:text="@string/next"
                 android:translationX="10dp"
-                android:translationY="-280dp"
-                app:cornerRadius="100dp" />
+                android:translationY="-280dp" />
 
             <TextView
                 android:id="@+id/Next_info"
@@ -189,7 +185,7 @@
                 android:text="@string/previous"
                 android:translationX="10dp"
                 android:translationY="-355dp"
-                app:cornerRadius="100dp" />
+                app:cornerRadius="100dp"/>
 
             <TextView
                 android:id="@+id/Previous_info"
@@ -356,10 +352,7 @@
                 android:layout_marginBottom="-10dp"
                 android:gravity="center"
                 android:textColor="@color/white"
-                android:textSize="42sp"
-                android:translationX="0dp"
-                android:translationY="-450dp"
-                tools:ignore="HardcodedText" />
+                android:textSize="42sp"/>
 
         </LinearLayout>
     </ScrollView>

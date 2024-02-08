@@ -70,7 +70,7 @@ public class FirstFragment extends Fragment {
             public void onClick(View view) {
                 animation.start();
                 MainActivity.darkMode = !MainActivity.darkMode;
-                uiHelpers.lightDark(v, MainActivity.darkMode);
+                UIHelpers.lightDark(v, MainActivity.darkMode);
             }
         });
         DisplayMetrics dm = new DisplayMetrics();
@@ -103,7 +103,7 @@ public class FirstFragment extends Fragment {
         binding.cont.setTranslationX(width * 0.707f);
         binding.pop.setTranslationY(height * 0.719f);
         binding.pop.setTranslationX(width * 0.073f);
-        uiHelpers.lightDark(v, MainActivity.darkMode);
+        UIHelpers.lightDark(v, MainActivity.darkMode);
     }
 
     @Override

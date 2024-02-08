@@ -1,5 +1,4 @@
 package com.example.myapplication;
-
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.graphics.Color;

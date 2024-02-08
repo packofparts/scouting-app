@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-public class uiHelpers {
+public class UIHelpers {
     public static int purple = Color.parseColor("#6750A3");
     public static int teamColor = Color.parseColor("#73C2F0");
     public static void lightDark (ViewGroup v, boolean mode){

@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -36,20 +37,10 @@ public class PitFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    UserModel userModel;
-
 
     public PitFragment() {
-        try {
-            FragmentActivity fragmentActivity = getActivity();
-            ViewModelProvider viewModelProvider = new ViewModelProvider(fragmentActivity);
-            userModel = viewModelProvider.get(UserModel.class);
-        } catch(Exception e){}
-    }
 
-    /*FragmentActivity fragmentActivity = requireActivity();
-        ViewModelProvider viewModelProvider = new ViewModelProvider(fragmentActivity);
-        userModel = viewModelProvider.get(UserModel.class);*/
+    }
 
     /**
      * Use this factory method to create a new instance of
@@ -85,16 +76,16 @@ public class PitFragment extends Fragment {
         binding = FragmentPitBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
-        //return inflater.inflate(R.layout.fragment_pit, container, false);
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        ViewModelProvider viewModelProvider = new ViewModelProvider(requireActivity());
+        UserModel userModel = viewModelProvider.get(UserModel.class);
+
+
         binding.Pit.setOnClickListener(new View.OnClickListener() {
-            /*Intent intent = new Intent(getActivity().getBaseContext(), TargetActivity.class);
-            intent.putExtra("message", message);
-            getActivity().startActivity(intent);*/
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(PitFragment.this)
@@ -104,18 +95,10 @@ public class PitFragment extends Fragment {
         binding.checkBox.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
+               System.out.println(UserModel.getMatchData().isBroke());
                isTrue = !isTrue;
-                Objects.requireNonNull(userModel.getData().getValue()).setTestBool(isTrue);
            }
         });
-
-        /*binding.toAuto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(PitFragment.this)
-                        .navigate(R.id.action_pitFragment_to_ThirdFragment);
-            }
-        });*/
 
     }
 

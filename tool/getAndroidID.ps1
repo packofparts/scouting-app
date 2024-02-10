@@ -7,9 +7,9 @@ $androidId = ./adb devices | Select-Object -Skip 1 | Select-Object -SkipLast 1 |
 $androidIdArray = $androidId.Split("\n")
 For ($i=0; $i -lt $androidIdArray.Length; $i++){
     ./adb -s $androidIdArray[$i] shell mkdir /sdcard/ScoutingData
-    if (-Not (./adb shell "(ls /sdcard/ScoutingData/lock.txt >> /dev/null 2>&1 && echo y)")) {
-        ./adb -s $androidIdArray[$i] pull /sdcard/ScoutingData $env:USERPROFILE\documents
-        ./adb -s $androidIdArray[$i] shell touch /sdcard/ScoutingData/lock.txt
+    if (-Not (./adb shell "(ls /sdcard/Documents/ScoutingData/lock.txt >> /dev/null 2>&1 && echo y)")) {
+        ./adb -s $androidIdArray[$i] pull /sdcard/Documents/ScoutingData $env:USERPROFILE\documents
+        ./adb -s $androidIdArray[$i] shell touch /sdcard/Documents/ScoutingData/lock.txt
     }
     
 }

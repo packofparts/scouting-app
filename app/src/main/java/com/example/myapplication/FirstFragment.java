@@ -95,6 +95,7 @@ public class FirstFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 MainActivity.teamNumber = binding.input.getText() + "";
+                UserModel.getMatchData().setTeamNumber(Integer.parseInt(MainActivity.teamNumber));
             }
         });
         binding.cont.setTranslationY(height * 0.170f);

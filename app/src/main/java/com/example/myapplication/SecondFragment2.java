@@ -133,7 +133,7 @@ public class SecondFragment2 extends Fragment {
                     binding.textInput.setText(text);
                 }
                 binding.characterLimit.setText("Character Limit: " + binding.textInput.getText().length() + "/150");
-                MainActivity.teleOpNotes = binding.textInput.getText() + "";
+                UserModel.getMatchData().setNotes(String.format("%s", binding.textInput.getText()));
             }
         });
         binding.textInput.setOnTouchListener(new View.OnTouchListener(){
@@ -162,7 +162,7 @@ public class SecondFragment2 extends Fragment {
         binding.chainAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                MainActivity.chainAttemptIndex = position;
+                UserModel.getMatchData().setChaining(position);
             }
 
             @Override
@@ -184,7 +184,7 @@ public class SecondFragment2 extends Fragment {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                MainActivity.harmonyAttemptIndex = position;
+                UserModel.getMatchData().setHarmo(position);
             }
 
             @Override
@@ -206,6 +206,7 @@ public class SecondFragment2 extends Fragment {
             public void onClick(View view) {
                 if (MainActivity.noteStuck > 0){
                     MainActivity.noteStuck --;
+
                     binding.notesStuckCounter.setText("" + MainActivity.noteStuck);
                 }
             }
@@ -299,7 +300,7 @@ public class SecondFragment2 extends Fragment {
                     binding.minusNotesHit.setVisibility(GONE);
                     binding.notesHitCounter.setVisibility(GONE);
                 }
-                MainActivity.human = binding.human.isChecked();
+                UserModel.getMatchData().setHumanPlayerAtAmp(binding.human.isChecked());
             }
         });
         binding.notesThrown.setTranslationY(binding.notesStuck.getTranslationY() + 530);
@@ -311,6 +312,7 @@ public class SecondFragment2 extends Fragment {
             public void onClick(View v) {
                 if (MainActivity.notesThrown > 0) {
                     MainActivity.notesThrown--;
+                    UserModel.getMatchData().setHumanPlayerNotesThrown(MainActivity.notesThrown);
                     binding.notesThrownCounter.setText("" + MainActivity.notesThrown);
                 }
             }
@@ -322,6 +324,7 @@ public class SecondFragment2 extends Fragment {
             public void onClick(View v) {
                 if (MainActivity.notesThrown < 3) {
                     MainActivity.notesThrown++;
+                    UserModel.getMatchData().setHumanPlayerNotesThrown(MainActivity.notesThrown);
                     binding.notesThrownCounter.setText("" + MainActivity.notesThrown);
                 }
             }
@@ -338,6 +341,7 @@ public class SecondFragment2 extends Fragment {
             public void onClick(View v) {
                 if (MainActivity.notesHit > 0) {
                     MainActivity.notesHit--;
+                    UserModel.getMatchData().setHumanPlayerNotesSpotlighted(MainActivity.notesHit);
                     binding.notesHitCounter.setText("" + MainActivity.notesHit);
                 }
             }
@@ -349,6 +353,7 @@ public class SecondFragment2 extends Fragment {
             public void onClick(View v) {
                 if (MainActivity.notesHit < 3) {
                     MainActivity.notesHit++;
+                    UserModel.getMatchData().setHumanPlayerNotesSpotlighted(MainActivity.notesHit);
                     binding.notesHitCounter.setText("" + MainActivity.notesHit);
                 }
             }

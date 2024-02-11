@@ -140,7 +140,7 @@ public class SecondFragment extends Fragment {
                     binding.broke.setThumbTintList(ColorStateList.valueOf(UIHelpers.teamColor));
                     binding.broke.setTrackTintList(ColorStateList.valueOf(UIHelpers.teamColor));
                 }
-                MainActivity.broke = binding.broke.isChecked();
+                UserModel.getMatchData().setBroke(binding.broke.isChecked());
             }
         });
         binding.defense.setTranslationX(width * 0.073f);
@@ -156,7 +156,7 @@ public class SecondFragment extends Fragment {
                     binding.defense.setThumbTintList(ColorStateList.valueOf(UIHelpers.teamColor));
                     binding.defense.setTrackTintList(ColorStateList.valueOf(UIHelpers.teamColor));
                 }
-                MainActivity.defense = binding.defense.isChecked();
+                UserModel.getMatchData().setDefense(binding.defense.isChecked());
             }
         });
         binding.ground.setTranslationX(width * 0.073f);
@@ -172,7 +172,8 @@ public class SecondFragment extends Fragment {
                     binding.ground.setThumbTintList(ColorStateList.valueOf(UIHelpers.teamColor));
                     binding.ground.setTrackTintList(ColorStateList.valueOf(UIHelpers.teamColor));
                 }
-                MainActivity.ground = binding.ground.isChecked();
+                UserModel.getMatchData().setNoteAcquired(binding.defense.isChecked(), binding.source.isChecked());
+
             }
         });
         binding.source.setTranslationX(width * 0.073f);
@@ -188,7 +189,7 @@ public class SecondFragment extends Fragment {
                     binding.source.setThumbTintList(ColorStateList.valueOf(UIHelpers.teamColor));
                     binding.source.setTrackTintList(ColorStateList.valueOf(UIHelpers.teamColor));
                 }
-                MainActivity.source = binding.source.isChecked();
+                UserModel.getMatchData().setNoteAcquired(binding.defense.isChecked(), binding.source.isChecked());
             }
         });
         binding.ampNotes.setTranslationX(width * 0.073f);
@@ -200,6 +201,7 @@ public class SecondFragment extends Fragment {
             public void onClick(View view) {
                 if (MainActivity.amp > 0){
                     MainActivity.amp --;
+                    UserModel.getMatchData().setAmpTeleop(MainActivity.amp);
                     binding.ampCounter.setText("" + MainActivity.amp);
                 }
             }
@@ -210,6 +212,7 @@ public class SecondFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 MainActivity.amp ++;
+                UserModel.getMatchData().setAmpTeleop(MainActivity.amp);
                 binding.ampCounter.setText("" + MainActivity.amp);
             }
         });
@@ -225,6 +228,7 @@ public class SecondFragment extends Fragment {
             public void onClick(View view) {
                 if (MainActivity.speakerUnamp > 0){
                     MainActivity.speakerUnamp --;
+                    UserModel.getMatchData().setSpeakerTeleop(MainActivity.speakerUnamp);
                     binding.speakerUnampCounter.setText("" + MainActivity.speakerUnamp);
                 }
             }
@@ -235,6 +239,7 @@ public class SecondFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 MainActivity.speakerUnamp ++;
+                UserModel.getMatchData().setSpeakerTeleop(MainActivity.speakerUnamp);
                 binding.speakerUnampCounter.setText("" + MainActivity.speakerUnamp);
             }
         });
@@ -250,6 +255,7 @@ public class SecondFragment extends Fragment {
             public void onClick(View view) {
                 if (MainActivity.speakerAmp > 0){
                     MainActivity.speakerAmp --;
+                    UserModel.getMatchData().setAmplifiedSpeaker(MainActivity.speakerAmp);
                     binding.speakerAmpCounter.setText("" + MainActivity.speakerAmp);
                 }
             }
@@ -260,6 +266,7 @@ public class SecondFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 MainActivity.speakerAmp ++;
+                UserModel.getMatchData().setAmplifiedSpeaker(MainActivity.speakerAmp);
                 binding.speakerAmpCounter.setText("" + MainActivity.speakerAmp);
             }
         });

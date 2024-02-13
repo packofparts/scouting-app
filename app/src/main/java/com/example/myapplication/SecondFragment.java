@@ -123,8 +123,8 @@ public class SecondFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 animation.start();
-                MainActivity.darkMode = !MainActivity.darkMode;
-                uiHelpers.lightDark(v, MainActivity.darkMode);
+                uiHelpers.darkMode = !uiHelpers.darkMode;
+                uiHelpers.lightDark(v, uiHelpers.darkMode);
             }
         });
         binding.broke.setTranslationX(width * 0.073f);
@@ -265,7 +265,7 @@ public class SecondFragment extends Fragment {
         });
         binding.speakerAmpCounter.setTranslationX(width * 0.598f);
         binding.speakerAmpCounter.setTranslationY(height * 0.784f);
-        uiHelpers.lightDark(v, MainActivity.darkMode);
+        uiHelpers.lightDark(v, uiHelpers.darkMode);
     }
    
     @Override

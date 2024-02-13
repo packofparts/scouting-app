@@ -57,8 +57,7 @@
                     android:id="@+id/Wolf_logo_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/pop"
-                    android:marginRight="100dp"/>
+                    android:src="@drawable/pop"/>
 
 
                 <TextView

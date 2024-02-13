@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     public static boolean ground = false;
     public static boolean source = false;
     public static boolean human = false;
-    public static boolean darkMode = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

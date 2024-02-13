@@ -106,8 +106,8 @@ public class SecondFragment2 extends Fragment {
             @Override
             public void onClick(View view) {
                 animation.start();
-                MainActivity.darkMode = !MainActivity.darkMode;
-                uiHelpers.lightDark(v, MainActivity.darkMode);
+                uiHelpers.darkMode = !uiHelpers.darkMode;
+                uiHelpers.lightDark(v, uiHelpers.darkMode);
             }
         });
 
@@ -398,7 +398,7 @@ public class SecondFragment2 extends Fragment {
             binding.minusNotesHit.setVisibility(GONE);
             binding.notesHitCounter.setVisibility(GONE);
         }
-        uiHelpers.lightDark(v, MainActivity.darkMode);
+        uiHelpers.lightDark(v, uiHelpers.darkMode);
     }
 
     @Override

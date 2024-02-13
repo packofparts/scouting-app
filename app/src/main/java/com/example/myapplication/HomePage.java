@@ -91,10 +91,17 @@ public class HomePage extends Fragment {
             @Override
             public void onClick(View view) {
                 animation.start();
-                MainActivity.darkMode = !MainActivity.darkMode;
-                uiHelpers.lightDark(v, MainActivity.darkMode);
+                uiHelpers.darkMode = !uiHelpers.darkMode;
+                uiHelpers.lightDark(v, uiHelpers.darkMode);
             }
         });
-        uiHelpers.lightDark(v, MainActivity.darkMode);
+        binding.nextInfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(HomePage.this)
+                        .navigate(R.id.action_HomePage_to_FirstFragment);
+            }
+        });
+        uiHelpers.lightDark(v, uiHelpers.darkMode);
     }
 }

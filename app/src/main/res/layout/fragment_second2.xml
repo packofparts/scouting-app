@@ -172,7 +172,7 @@
             android:id="@+id/notesSuccess"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Notes in Trap (Successful)"
+            android:text="Notes in Trap (Success)"
             android:textSize="26dp"
             android:translationX="30dp"
             android:translationY="400dp" />

@@ -50,9 +50,19 @@
             android:layout_width="140dp"
             android:layout_height="66dp"
             android:hint="Team Number"
+            android:gravity="center"
             android:inputType="number"
             android:translationX="133dp"
             android:translationY="110dp" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/match"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:hint="OR Input Match Number"
+            android:gravity="center"
+            android:inputType="number"
+            android:translationX="0dp"
+            android:translationY="180dp" />
 
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>

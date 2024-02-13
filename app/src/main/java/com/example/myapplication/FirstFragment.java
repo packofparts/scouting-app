@@ -99,6 +99,7 @@ public class FirstFragment extends Fragment {
                 MainActivity.teamNumber = binding.input.getText() + "";
             }
         });
+        binding.match.setTranslationY(height * 0.261f);
         binding.cont.setTranslationY(height * 0.170f);
         binding.cont.setTranslationX(width * 0.707f);
         binding.pop.setTranslationY(height * 0.719f);

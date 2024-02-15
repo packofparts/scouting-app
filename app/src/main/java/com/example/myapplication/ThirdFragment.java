@@ -64,7 +64,7 @@ public class ThirdFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        binding.team.setText("Team " + MainActivity.teamNumber);
         //VARIABLES
         Switch switch1 = view.findViewById(R.id.switch1);
         Switch switch2 = view.findViewById(R.id.switch2);

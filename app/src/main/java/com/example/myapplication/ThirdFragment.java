@@ -65,13 +65,14 @@ public class ThirdFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.toSecondFragment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(ThirdFragment.this)
-                        .navigate(R.id.action_ThirdFragment_to_SecondFragment);
-            }
-        });
+        //VARIABLES
+        Switch switch1 = view.findViewById(R.id.switch1);
+        Switch switch2 = view.findViewById(R.id.switch2);
+        Switch switch3 = view.findViewById(R.id.switch3);
+        EditText numNotes = view.findViewById(R.id.numNotes);
+        EditText numNotesInAmp = view.findViewById(R.id.numNotesInAmp);
+        Spinner Contact = view.findViewById(R.id.spinner);
+
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotationX", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
         animation.setDuration(1000);
         binding.pop.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +102,21 @@ public class ThirdFragment extends Fragment {
                 setSwitchColor(binding.switch3);
             }
         });
+        binding.toSecondFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(ThirdFragment.this)
+                        .navigate(R.id.action_ThirdFragment_to_SecondFragment);
+                //getting the value of variables when switching to teleop from auto
+                switch1.isChecked();
+                switch2.isChecked();
+                switch3.isChecked();
+                numNotes.getText();
+                numNotesInAmp.getText();
+                Contact.getSelectedItem();
+            }
+
+        });
         String[] typeContact = {"No contact", "Teammate to Teammate", "Teammate to opponent"};
         ArrayAdapter<String> contact = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, typeContact);
         binding.spinner.setAdapter(contact);
@@ -108,23 +124,7 @@ public class ThirdFragment extends Fragment {
 
         UIHelpers.lightDark(v, MainActivity.darkMode);
 
-        Switch switch1 = view.findViewById(R.id.switch1);
-        switch1.isChecked();
 
-        Switch switch2 = view.findViewById(R.id.switch2);
-        switch2.isChecked();
-
-        Switch switch3 = view.findViewById(R.id.switch3);
-        switch3.isChecked();
-
-        EditText numNotes = view.findViewById(R.id.numNotes);
-        numNotes.getText();
-
-        EditText numNotesInAmp = view.findViewById(R.id.numNotesInAmp);
-        numNotesInAmp.getText();
-
-        Spinner Contact = view.findViewById(R.id.spinner);
-        Contact.getSelectedItem();
 
         numNotes.getBackground().setColorFilter(Color.parseColor("#73C2F0"), PorterDuff.Mode.SRC_ATOP);
         numNotesInAmp.getBackground().setColorFilter(Color.parseColor("#73C2F0"), PorterDuff.Mode.SRC_ATOP);

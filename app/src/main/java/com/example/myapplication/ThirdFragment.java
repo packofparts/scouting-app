@@ -79,8 +79,8 @@ public class ThirdFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 animation.start();
-                MainActivity.darkMode = !MainActivity.darkMode;
-                UIHelpers.lightDark(v, MainActivity.darkMode);
+                UIHelpers.darkMode = !UIHelpers.darkMode;
+                UIHelpers.lightDark(v, UIHelpers.darkMode);
 
             }
         });
@@ -122,7 +122,7 @@ public class ThirdFragment extends Fragment {
         binding.spinner.setAdapter(contact);
 
 
-        UIHelpers.lightDark(v, MainActivity.darkMode);
+        UIHelpers.lightDark(v, UIHelpers.darkMode);
 
 
 

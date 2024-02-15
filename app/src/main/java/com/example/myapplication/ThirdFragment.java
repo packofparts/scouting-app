@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.animation.ObjectAnimator;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -125,6 +126,8 @@ public class ThirdFragment extends Fragment {
         Spinner Contact = view.findViewById(R.id.spinner);
         Contact.getSelectedItem();
 
+        numNotes.getBackground().setColorFilter(Color.parseColor("#73C2F0"), PorterDuff.Mode.SRC_ATOP);
+        numNotesInAmp.getBackground().setColorFilter(Color.parseColor("#73C2F0"), PorterDuff.Mode.SRC_ATOP);
     }
     @Override
     public void onDestroyView() {

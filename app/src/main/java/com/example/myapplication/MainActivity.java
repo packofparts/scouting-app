@@ -10,6 +10,8 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 
 import androidx.core.view.WindowCompat;
@@ -99,4 +101,5 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
 }

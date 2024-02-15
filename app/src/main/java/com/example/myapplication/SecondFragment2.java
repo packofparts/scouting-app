@@ -3,6 +3,8 @@ package com.example.myapplication;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
+import static com.google.android.material.internal.ViewUtils.dpToPx;
+
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
@@ -16,16 +18,19 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Switch;
@@ -143,6 +148,7 @@ public class SecondFragment2 extends Fragment {
                 binding.relativeLayoutFirst.setTranslationY(-binding.input.getTranslationY() + 100);
                 return false;
             }
+
         });
         binding.textInput.setImeOptions(EditorInfo.IME_ACTION_DONE);
         binding.textInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -150,6 +156,8 @@ public class SecondFragment2 extends Fragment {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE){
                     binding.relativeLayoutFirst.setTranslationY(0f);
+                }else {
+                    Log.d("", actionId + "");
                 }
                 return false;
             }

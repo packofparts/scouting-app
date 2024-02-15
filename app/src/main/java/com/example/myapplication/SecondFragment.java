@@ -44,41 +44,13 @@ public class SecondFragment extends Fragment {
         binding.speakerUnampCounter.setText("" + MainActivity.speakerUnamp);
         binding.speakerAmpCounter.setText("" + MainActivity.speakerAmp);
         binding.broke.setChecked(MainActivity.broke);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-        if (binding.broke.isChecked()){
-            binding.broke.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
-            binding.broke.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
-        } else {
-            binding.broke.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
-            binding.broke.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
-        }
+        checkedOperation(binding.broke);
         binding.defense.setChecked(MainActivity.defense);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-        if (binding.defense.isChecked()){
-            binding.defense.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
-            binding.defense.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
-        } else {
-            binding.defense.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
-            binding.defense.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
-        }
+        checkedOperation(binding.defense);
         binding.ground.setChecked(MainActivity.ground);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-        if (binding.ground.isChecked()){
-            binding.ground.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
-            binding.ground.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
-        } else {
-            binding.ground.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
-            binding.ground.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
-        }
+        checkedOperation(binding.ground);
         binding.source.setChecked(MainActivity.source);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-        if (binding.source.isChecked()){
-            binding.source.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
-            binding.source.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
-        } else {
-            binding.source.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
-            binding.source.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
-        }
+        checkedOperation(binding.source);
         return binding.getRoot();
     }
 
@@ -132,14 +104,7 @@ public class SecondFragment extends Fragment {
         binding.broke.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                if (binding.broke.isChecked()){
-                    binding.broke.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
-                    binding.broke.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
-                } else {
-                    binding.broke.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
-                    binding.broke.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
-                }
+                checkedOperation(binding.broke);
                 MainActivity.broke = binding.broke.isChecked();
             }
         });
@@ -148,14 +113,7 @@ public class SecondFragment extends Fragment {
         binding.defense.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                if (binding.defense.isChecked()){
-                    binding.defense.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
-                    binding.defense.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
-                } else {
-                    binding.defense.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
-                    binding.defense.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
-                }
+                checkedOperation(binding.defense);
                 MainActivity.defense = binding.defense.isChecked();
             }
         });
@@ -164,14 +122,7 @@ public class SecondFragment extends Fragment {
         binding.ground.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                if (binding.ground.isChecked()){
-                    binding.ground.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
-                    binding.ground.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
-                } else {
-                    binding.ground.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
-                    binding.ground.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
-                }
+                checkedOperation(binding.ground);
                 MainActivity.ground = binding.ground.isChecked();
             }
         });
@@ -180,14 +131,7 @@ public class SecondFragment extends Fragment {
         binding.source.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                if (binding.source.isChecked()){
-                    binding.source.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
-                    binding.source.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
-                } else {
-                    binding.source.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
-                    binding.source.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
-                }
+                checkedOperation(binding.source);
                 MainActivity.source = binding.source.isChecked();
             }
         });
@@ -274,5 +218,18 @@ public class SecondFragment extends Fragment {
 
         binding = null;
 
+    }
+    public void checkedOperation (View v){
+        if (v instanceof Switch){
+            Switch s = (Switch) v;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                if (s.isChecked()){
+                    s.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
+                    s.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
+                } else {
+                    s.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
+                    s.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
+                }
+        }
     }
 }

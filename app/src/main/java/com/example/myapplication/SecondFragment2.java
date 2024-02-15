@@ -256,49 +256,7 @@ public class SecondFragment2 extends Fragment {
         binding.human.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (binding.human.isChecked()){
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        binding.human.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
-                        binding.human.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
-                    }
-                    ViewGroup.LayoutParams layoutParams = binding.relativeLayoutFirst.getLayoutParams();
-                    layoutParams.width = (int) width;
-                    layoutParams.height = (int) height + 500;
-                    binding.relativeLayoutFirst.setLayoutParams(layoutParams);
-                    binding.next.setTranslationY(height * 0.863f + 500);
-                    binding.prev.setTranslationY(height * 0.863f + 500);
-                    binding.input.setTranslationY(binding.next.getTranslationY() - 118);
-                    binding.characterLimit.setTranslationY(binding.input.getTranslationY() + (height * 0.091f));
-                    binding.notesThrown.setVisibility(VISIBLE);
-                    binding.plusNotesThrown.setVisibility(VISIBLE);
-                    binding.minusNotesThrown.setVisibility(VISIBLE);
-                    binding.notesThrownCounter.setVisibility(VISIBLE);
-                    binding.notesHit.setVisibility(VISIBLE);
-                    binding.plusNotesHit.setVisibility(VISIBLE);
-                    binding.minusNotesHit.setVisibility(VISIBLE);
-                    binding.notesHitCounter.setVisibility(VISIBLE);
-                } else {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        binding.human.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
-                        binding.human.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
-                    }
-                    ViewGroup.LayoutParams layoutParams = binding.relativeLayoutFirst.getLayoutParams();
-                    layoutParams.width = (int) width;
-                    layoutParams.height = (int) height - 38;
-                    binding.relativeLayoutFirst.setLayoutParams(layoutParams);
-                    binding.next.setTranslationY(height * 0.863f);
-                    binding.prev.setTranslationY(height * 0.863f);
-                    binding.input.setTranslationY(height * 0.784f);
-                    binding.characterLimit.setTranslationY(height * 0.875f);
-                    binding.notesThrown.setVisibility(GONE);
-                    binding.plusNotesThrown.setVisibility(GONE);
-                    binding.minusNotesThrown.setVisibility(GONE);
-                    binding.notesThrownCounter.setVisibility(GONE);
-                    binding.notesHit.setVisibility(GONE);
-                    binding.plusNotesHit.setVisibility(GONE);
-                    binding.minusNotesHit.setVisibility(GONE);
-                    binding.notesHitCounter.setVisibility(GONE);
-                }
+                humanOperation(binding.human.isChecked(), width, height);
                 MainActivity.human = binding.human.isChecked();
             }
         });
@@ -355,49 +313,7 @@ public class SecondFragment2 extends Fragment {
         });
         binding.notesHitCounter.setTranslationY(binding.notesSuccessCounter.getTranslationY() + 500);
         binding.notesHitCounter.setTranslationX(binding.notesSuccessCounter.getTranslationX());
-        if (binding.human.isChecked()){
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                binding.human.setThumbTintList(ColorStateList.valueOf(uiHelpers.purple));
-                binding.human.setTrackTintList(ColorStateList.valueOf(uiHelpers.purple));
-            }
-            ViewGroup.LayoutParams layoutParam = binding.relativeLayoutFirst.getLayoutParams();
-            layoutParam.width = (int) width;
-            layoutParam.height = (int) height + 500;
-            binding.relativeLayoutFirst.setLayoutParams(layoutParam);
-            binding.next.setTranslationY(height * 0.863f + 500);
-            binding.prev.setTranslationY(height * 0.863f + 500);
-            binding.input.setTranslationY(binding.next.getTranslationY() - 118);
-            binding.characterLimit.setTranslationY(binding.input.getTranslationY() + (height * 0.091f));
-            binding.notesThrown.setVisibility(VISIBLE);
-            binding.plusNotesThrown.setVisibility(VISIBLE);
-            binding.minusNotesThrown.setVisibility(VISIBLE);
-            binding.notesThrownCounter.setVisibility(VISIBLE);
-            binding.notesHit.setVisibility(VISIBLE);
-            binding.plusNotesHit.setVisibility(VISIBLE);
-            binding.minusNotesHit.setVisibility(VISIBLE);
-            binding.notesHitCounter.setVisibility(VISIBLE);
-        } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                binding.human.setThumbTintList(ColorStateList.valueOf(uiHelpers.teamColor));
-                binding.human.setTrackTintList(ColorStateList.valueOf(uiHelpers.teamColor));
-            }
-            ViewGroup.LayoutParams layoutParam = binding.relativeLayoutFirst.getLayoutParams();
-            layoutParam.width = (int) width;
-            layoutParam.height = (int) height - 38;
-            binding.relativeLayoutFirst.setLayoutParams(layoutParam);
-            binding.next.setTranslationY(height * 0.863f);
-            binding.prev.setTranslationY(height * 0.863f);
-            binding.input.setTranslationY(height * 0.784f);
-            binding.characterLimit.setTranslationY(height * 0.875f);
-            binding.notesThrown.setVisibility(GONE);
-            binding.plusNotesThrown.setVisibility(GONE);
-            binding.minusNotesThrown.setVisibility(GONE);
-            binding.notesThrownCounter.setVisibility(GONE);
-            binding.notesHit.setVisibility(GONE);
-            binding.plusNotesHit.setVisibility(GONE);
-            binding.minusNotesHit.setVisibility(GONE);
-            binding.notesHitCounter.setVisibility(GONE);
-        }
+        humanOperation(binding.human.isChecked(), width, height);
         uiHelpers.lightDark(v, uiHelpers.darkMode);
     }
 
@@ -407,10 +323,32 @@ public class SecondFragment2 extends Fragment {
         binding = null;
     }
 
-    /**
-     *
-     * @param v current ViewGroup obtained from onCreateView
-     * @param mode false for light mode, true for dark mode
-     */
+    public void humanOperation(boolean checked, float width, float height){
+        int layout = checked ? 500:-38;
+        int view = checked? 500: 0;
+        int vis = checked? VISIBLE:GONE;
+        ColorStateList col = checked? ColorStateList.valueOf(uiHelpers.purple): ColorStateList.valueOf(uiHelpers.teamColor);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            binding.human.setThumbTintList(col);
+            binding.human.setTrackTintList(col);
+        }
+        ViewGroup.LayoutParams layoutParam = binding.relativeLayoutFirst.getLayoutParams();
+        layoutParam.width = (int) width;
+        layoutParam.height = (int) height + layout;
+        binding.relativeLayoutFirst.setLayoutParams(layoutParam);
+        binding.next.setTranslationY(height * 0.863f + view);
+        binding.prev.setTranslationY(height * 0.863f + view);
+        float input = checked? binding.next.getTranslationY() - 118: height * 0.784f;
+        binding.input.setTranslationY(input);
+        binding.characterLimit.setTranslationY(binding.input.getTranslationY() + (height * 0.091f));
+        binding.notesThrown.setVisibility(vis);
+        binding.plusNotesThrown.setVisibility(vis);
+        binding.minusNotesThrown.setVisibility(vis);
+        binding.notesThrownCounter.setVisibility(vis);
+        binding.notesHit.setVisibility(vis);
+        binding.plusNotesHit.setVisibility(vis);
+        binding.minusNotesHit.setVisibility(vis);
+        binding.notesHitCounter.setVisibility(vis);
+    }
 
 }

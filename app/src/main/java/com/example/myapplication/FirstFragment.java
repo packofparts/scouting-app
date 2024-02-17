@@ -24,14 +24,12 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class FirstFragment extends Fragment {
     private FragmentFirstBinding binding;
-    //fdsafdagdsa 
     ViewGroup v;
     @Override
     public View onCreateView(
             LayoutInflater  inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        //he he he ha
         binding = FragmentFirstBinding.inflate(inflater, container, false);
         v = container;
         binding.input.setText(MainActivity.teamNumber.equals("0") ? "" : MainActivity.teamNumber);
@@ -97,6 +95,7 @@ public class FirstFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 MainActivity.teamNumber = binding.input.getText() + "";
+                UserModel.getMatchData().setTeamNumber(Integer.parseInt(MainActivity.teamNumber));
             }
         });
         binding.cont.setTranslationY(height * 0.170f);

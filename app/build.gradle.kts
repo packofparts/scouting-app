@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.myapplication"
-        minSdk = 22 //change to 22 for older SDK/Android versions
+        minSdk = 24 //change to 22 for older SDK/Android versions
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"

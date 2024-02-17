@@ -36,6 +36,8 @@ public class ThirdFragment extends Fragment {
     private static ColorStateList purple = ColorStateList.valueOf(Color.parseColor("#6750A3"));
     private static ColorStateList blue = ColorStateList.valueOf(Color.parseColor("#73C2F0"));
 
+    public static boolean defense = false;
+    public static boolean ground = false;
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState
@@ -45,8 +47,8 @@ public class ThirdFragment extends Fragment {
             setSwitchColor(binding.switch1);
             setSwitchColor(binding.switch2);
             setSwitchColor(binding.switch3);
-        binding.switch2.setChecked(MainActivity.defense);
-        binding.switch3.setChecked(MainActivity.ground);
+        binding.switch2.setChecked(ThirdFragment.defense);
+        binding.switch3.setChecked(ThirdFragment.ground);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             binding.switch3.setThumbTintList(blue);

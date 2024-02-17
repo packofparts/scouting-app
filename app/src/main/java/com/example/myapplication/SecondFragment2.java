@@ -32,6 +32,17 @@ import java.util.Objects;
 public class SecondFragment2 extends Fragment {
 
     private FragmentSecond2Binding binding;
+    public static String[] chainAttempts = {"No Attempt", "Failed Attempt", "Successful Attempt"};
+    public static String[] harmonyAttempts = {"No Attempt", "Failed Attempt", "2 On Chain", "3 On Chain"};
+    public static String teleOpNotes = "";
+    public static int noteStuck = 0;
+    public static int noteSuccess = 0;
+    public static int notesThrown = 0;
+    public static int notesHit = 0;
+    public static int chainAttemptIndex = 0;
+    public static int harmonyAttemptIndex = 0;
+    public static String teamNumber = "0";
+    public static boolean human = false;
     ViewGroup v = null;
     @SuppressLint("SetTextI18n")
     @Override
@@ -42,14 +53,14 @@ public class SecondFragment2 extends Fragment {
 
         binding = FragmentSecond2Binding.inflate(inflater, container, false);
         v = container;
-        binding.team.setText("Team " + MainActivity.teamNumber);
+        binding.team.setText("Team " + SecondFragment2.teamNumber);
         //binding.team.setText(getActivity().toString());
-        binding.notesStuckCounter.setText(String.valueOf(MainActivity.noteStuck));
-        binding.notesSuccessCounter.setText(String.valueOf(MainActivity.noteSuccess));
-        binding.notesThrownCounter.setText(String.valueOf(MainActivity.notesThrown));
-        binding.notesHitCounter.setText(String.valueOf(MainActivity.notesHit));
-        binding.human.setChecked(MainActivity.human);
-        binding.textInput.setText(MainActivity.teleOpNotes);
+        binding.notesStuckCounter.setText(String.valueOf(SecondFragment2.noteStuck));
+        binding.notesSuccessCounter.setText(String.valueOf(SecondFragment2.noteSuccess));
+        binding.notesThrownCounter.setText(String.valueOf(SecondFragment2.notesThrown));
+        binding.notesHitCounter.setText(String.valueOf(SecondFragment2.notesHit));
+        binding.human.setChecked(SecondFragment2.human);
+        binding.textInput.setText(SecondFragment2.teleOpNotes);
         binding.characterLimit.setText("Character Limit: " + Objects.requireNonNull(binding.textInput.getText()).length() + "/150");
         return binding.getRoot();
     }
@@ -112,7 +123,7 @@ public class SecondFragment2 extends Fragment {
                     binding.textInput.setText(text);
                 }
                 binding.characterLimit.setText("Character Limit: " + Objects.requireNonNull(binding.textInput.getText()).length() + "/150");
-                MainActivity.teleOpNotes = String.valueOf(binding.textInput.getText());
+                SecondFragment2.teleOpNotes = String.valueOf(binding.textInput.getText());
             }
         });
         binding.textInput.setOnTouchListener((v, event) -> {
@@ -128,15 +139,15 @@ public class SecondFragment2 extends Fragment {
             }
             return false;
         });
-        ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, MainActivity.chainAttempts);
+        ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, SecondFragment2.chainAttempts);
         binding.chainAttempt.setAdapter(chainAdapter);
-        binding.chainAttempt.setSelection(MainActivity.chainAttemptIndex);
+        binding.chainAttempt.setSelection(SecondFragment2.chainAttemptIndex);
         binding.chainAttempt.setTranslationY(height * 0.201f);
         binding.chainAttempt.setTranslationX(width * 0.366f);
         binding.chainAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                MainActivity.chainAttemptIndex = position;
+                SecondFragment2.chainAttemptIndex = position;
             }
 
             @Override
@@ -149,16 +160,16 @@ public class SecondFragment2 extends Fragment {
         binding.chain.setTranslationY(height * 0.201f);
         binding.chain.setTranslationX(width * 0.073f);
 
-        ArrayAdapter<String> harmonyAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, MainActivity.harmonyAttempts);
+        ArrayAdapter<String> harmonyAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, SecondFragment2.harmonyAttempts);
         binding.harmonyAttempt.setAdapter(harmonyAdapter);
-        binding.harmonyAttempt.setSelection(MainActivity.harmonyAttemptIndex);
+        binding.harmonyAttempt.setSelection(SecondFragment2.harmonyAttemptIndex);
         binding.harmonyAttempt.setTranslationY(height * 0.302f);
         binding.harmonyAttempt.setTranslationX(width * 0.366f);
         binding.harmonyAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                MainActivity.harmonyAttemptIndex = position;
+                SecondFragment2.harmonyAttemptIndex = position;
             }
 
             @Override
@@ -176,17 +187,17 @@ public class SecondFragment2 extends Fragment {
         binding.minusNotesStuck.setTranslationX(width * 0.366f);
         binding.minusNotesStuck.setTranslationY(height * 0.396f);
         binding.minusNotesStuck.setOnClickListener(view14 -> {
-            if (MainActivity.noteStuck > 0){
-                MainActivity.noteStuck --;
-                binding.notesStuckCounter.setText(String.valueOf(MainActivity.noteStuck));
+            if (SecondFragment2.noteStuck > 0){
+                SecondFragment2.noteStuck --;
+                binding.notesStuckCounter.setText(String.valueOf(SecondFragment2.noteStuck));
             }
         });
         binding.plusNotesStuck.setTranslationX(width * 0.732f);
         binding.plusNotesStuck.setTranslationY(height * 0.396f);
         binding.plusNotesStuck.setOnClickListener(view15 -> {
-            if (MainActivity.noteStuck < 3) {
-                MainActivity.noteStuck++;
-                binding.notesStuckCounter.setText(String.valueOf(MainActivity.noteStuck));
+            if (SecondFragment2.noteStuck < 3) {
+                SecondFragment2.noteStuck++;
+                binding.notesStuckCounter.setText(String.valueOf(SecondFragment2.noteStuck));
             }
         });
         binding.notesStuckCounter.setTranslationX(width * 0.598f);
@@ -197,17 +208,17 @@ public class SecondFragment2 extends Fragment {
         binding.minusNotesSuccess.setTranslationX(width * 0.366f);
         binding.minusNotesSuccess.setTranslationY(height * 0.525f);
         binding.minusNotesSuccess.setOnClickListener(view16 -> {
-            if (MainActivity.noteSuccess > 0){
-                MainActivity.noteSuccess --;
-                binding.notesSuccessCounter.setText(String.valueOf(MainActivity.noteSuccess));
+            if (SecondFragment2.noteSuccess > 0){
+                SecondFragment2.noteSuccess --;
+                binding.notesSuccessCounter.setText(String.valueOf(SecondFragment2.noteSuccess));
             }
         });
         binding.plusNotesSuccess.setTranslationX(width * 0.732f);
         binding.plusNotesSuccess.setTranslationY(height * 0.525f);
         binding.plusNotesSuccess.setOnClickListener(view17 -> {
-            if (MainActivity.noteSuccess < 3) {
-                MainActivity.noteSuccess++;
-                binding.notesSuccessCounter.setText(String.valueOf(MainActivity.noteSuccess));
+            if (SecondFragment2.noteSuccess < 3) {
+                SecondFragment2.noteSuccess++;
+                binding.notesSuccessCounter.setText(String.valueOf(SecondFragment2.noteSuccess));
             }
         });
         binding.notesSuccessCounter.setTranslationX(width * 0.598f);
@@ -217,24 +228,24 @@ public class SecondFragment2 extends Fragment {
         binding.human.setTranslationX(width * 0.073f);
         binding.human.setOnCheckedChangeListener((buttonView, isChecked) -> {
             humanOperation(binding.human.isChecked(), width, height);
-            MainActivity.human = binding.human.isChecked();
+            SecondFragment2.human = binding.human.isChecked();
         });
         binding.notesThrown.setTranslationY(binding.notesStuck.getTranslationY() + 530);
         binding.notesThrown.setTranslationX(binding.notesStuck.getTranslationX());
         binding.minusNotesThrown.setTranslationY(binding.minusNotesStuck.getTranslationY() + 500);
         binding.minusNotesThrown.setTranslationX(binding.minusNotesStuck.getTranslationX());
         binding.minusNotesThrown.setOnClickListener(v -> {
-            if (MainActivity.notesThrown > 0) {
-                MainActivity.notesThrown--;
-                binding.notesThrownCounter.setText(String.valueOf(MainActivity.notesThrown));
+            if (SecondFragment2.notesThrown > 0) {
+                SecondFragment2.notesThrown--;
+                binding.notesThrownCounter.setText(String.valueOf(SecondFragment2.notesThrown));
             }
         });
         binding.plusNotesThrown.setTranslationY(binding.plusNotesStuck.getTranslationY() + 500);
         binding.plusNotesThrown.setTranslationX(binding.plusNotesStuck.getTranslationX());
         binding.plusNotesThrown.setOnClickListener(v -> {
-            if (MainActivity.notesThrown < 3) {
-                MainActivity.notesThrown++;
-                binding.notesThrownCounter.setText(String.valueOf(MainActivity.notesThrown));
+            if (SecondFragment2.notesThrown < 3) {
+                SecondFragment2.notesThrown++;
+                binding.notesThrownCounter.setText(String.valueOf(SecondFragment2.notesThrown));
             }
         });
         binding.notesThrownCounter.setTranslationY(binding.notesStuckCounter.getTranslationY() + 500);
@@ -245,17 +256,17 @@ public class SecondFragment2 extends Fragment {
         binding.minusNotesHit.setTranslationY(binding.minusNotesSuccess.getTranslationY() + 500);
         binding.minusNotesHit.setTranslationX(binding.minusNotesSuccess.getTranslationX());
         binding.minusNotesHit.setOnClickListener(v -> {
-            if (MainActivity.notesHit > 0) {
-                MainActivity.notesHit--;
-                binding.notesHitCounter.setText(String.valueOf(MainActivity.notesHit));
+            if (SecondFragment2.notesHit > 0) {
+                SecondFragment2.notesHit--;
+                binding.notesHitCounter.setText(String.valueOf(SecondFragment2.notesHit));
             }
         });
         binding.plusNotesHit.setTranslationY(binding.plusNotesSuccess.getTranslationY() + 500);
         binding.plusNotesHit.setTranslationX(binding.plusNotesSuccess.getTranslationX());
         binding.plusNotesHit.setOnClickListener(v -> {
-            if (MainActivity.notesHit < 3) {
-                MainActivity.notesHit++;
-                binding.notesHitCounter.setText(String.valueOf(MainActivity.notesHit));
+            if (SecondFragment2.notesHit < 3) {
+                SecondFragment2.notesHit++;
+                binding.notesHitCounter.setText(String.valueOf(SecondFragment2.notesHit));
             }
         });
         binding.notesHitCounter.setTranslationY(binding.notesSuccessCounter.getTranslationY() + 500);

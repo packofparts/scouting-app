@@ -23,7 +23,13 @@ import com.example.myapplication.databinding.FragmentSecondBinding;
 public class SecondFragment extends Fragment {
 
     private FragmentSecondBinding binding;
-
+    public static int amp = 0;
+    public static int speakerUnamp = 0;
+    public static int speakerAmp = 0;
+    public static boolean broke = false;
+    public static boolean defense = false;
+    public static boolean ground = false;
+    public static boolean source = false;
     ViewGroup v = null;
 
     @SuppressLint("SetTextI18n")
@@ -36,17 +42,17 @@ public class SecondFragment extends Fragment {
         binding = FragmentSecondBinding.inflate(inflater, container, false);
         v = container;
         binding.team.setText("Team " + MainActivity.teamNumber);
-        binding.ampCounter.setText(String.valueOf(MainActivity.amp));
-        binding.speakerUnampCounter.setText(String.valueOf(MainActivity.speakerUnamp));
-        binding.speakerAmpCounter.setText(String.valueOf(MainActivity.speakerAmp));
-        binding.broke.setChecked(MainActivity.broke);
+        binding.ampCounter.setText(String.valueOf(SecondFragment.amp));
+        binding.speakerUnampCounter.setText(String.valueOf(SecondFragment.speakerUnamp));
+        binding.speakerAmpCounter.setText(String.valueOf(SecondFragment.speakerAmp));
+        binding.broke.setChecked(SecondFragment.broke);
 
         checkedOperation(binding.broke);
-        binding.defense.setChecked(MainActivity.defense);
+        binding.defense.setChecked(SecondFragment.defense);
         checkedOperation(binding.defense);
-        binding.ground.setChecked(MainActivity.ground);
+        binding.ground.setChecked(SecondFragment.ground);
         checkedOperation(binding.ground);
-        binding.source.setChecked(MainActivity.source);
+        binding.source.setChecked(SecondFragment.source);
         checkedOperation(binding.source);
         return binding.getRoot();
     }
@@ -88,41 +94,41 @@ public class SecondFragment extends Fragment {
         binding.broke.setOnCheckedChangeListener((buttonView, isChecked) -> {
 
             checkedOperation(binding.broke);
-            MainActivity.broke = binding.broke.isChecked();
+            SecondFragment.broke = binding.broke.isChecked();
         });
         binding.defense.setTranslationX(width * 0.073f);
         binding.defense.setTranslationY(height * 0.288f);
         binding.defense.setOnCheckedChangeListener((buttonView, isChecked) -> {
             checkedOperation(binding.defense);
-            MainActivity.defense = binding.defense.isChecked();
+            SecondFragment.defense = binding.defense.isChecked();
         });
         binding.ground.setTranslationX(width * 0.073f);
         binding.ground.setTranslationY(height * 0.360f);
         binding.ground.setOnCheckedChangeListener((buttonView, isChecked) -> {
             checkedOperation(binding.ground);
-            MainActivity.ground = binding.ground.isChecked();
+            SecondFragment.ground = binding.ground.isChecked();
         });
         binding.source.setTranslationX(width * 0.073f);
         binding.source.setTranslationY(height * 0.432f);
         binding.source.setOnCheckedChangeListener((buttonView, isChecked) -> {
             checkedOperation(binding.source);
-            MainActivity.source = binding.source.isChecked();
+            SecondFragment.source = binding.source.isChecked();
         });
         binding.ampNotes.setTranslationX(width * 0.073f);
         binding.ampNotes.setTranslationY(height * 0.504f);
         binding.minusAmp.setTranslationX(width * 0.366f);
         binding.minusAmp.setTranslationY(height * 0.453f);
         binding.minusAmp.setOnClickListener(view14 -> {
-            if (MainActivity.amp > 0){
-                MainActivity.amp --;
-                binding.ampCounter.setText(String.valueOf(MainActivity.amp));
+            if (SecondFragment.amp > 0){
+                SecondFragment.amp --;
+                binding.ampCounter.setText(String.valueOf(SecondFragment.amp));
             }
         });
         binding.plusAmp.setTranslationX(width * 0.732f);
         binding.plusAmp.setTranslationY(height * 0.453f);
         binding.plusAmp.setOnClickListener(view15 -> {
-            MainActivity.amp ++;
-            binding.ampCounter.setText(String.valueOf(MainActivity.amp));
+            SecondFragment.amp ++;
+            binding.ampCounter.setText(String.valueOf(SecondFragment.amp));
         });
         binding.ampCounter.setTranslationX(width * 0.598f);
         binding.ampCounter.setTranslationY(height * 0.511f);
@@ -132,16 +138,16 @@ public class SecondFragment extends Fragment {
         binding.minusSpeakerUnamp.setTranslationX(width * 0.366f);
         binding.minusSpeakerUnamp.setTranslationY(height * 0.576f);
         binding.minusSpeakerUnamp.setOnClickListener(view16 -> {
-            if (MainActivity.speakerUnamp > 0){
-                MainActivity.speakerUnamp --;
-                binding.speakerUnampCounter.setText(String.valueOf(MainActivity.speakerUnamp));
+            if (SecondFragment.speakerUnamp > 0){
+                SecondFragment.speakerUnamp --;
+                binding.speakerUnampCounter.setText(String.valueOf(SecondFragment.speakerUnamp));
             }
         });
         binding.plusSpeakerUnamp.setTranslationX(width * 0.732f);
         binding.plusSpeakerUnamp.setTranslationY(height * 0.576f);
         binding.plusSpeakerUnamp.setOnClickListener(view17 -> {
-            MainActivity.speakerUnamp ++;
-            binding.speakerUnampCounter.setText(String.valueOf(MainActivity.speakerUnamp));
+            SecondFragment.speakerUnamp ++;
+            binding.speakerUnampCounter.setText(String.valueOf(SecondFragment.speakerUnamp));
         });
         binding.speakerUnampCounter.setTranslationX(width * 0.598f);
         binding.speakerUnampCounter.setTranslationY(height * 0.633f);
@@ -151,16 +157,16 @@ public class SecondFragment extends Fragment {
         binding.minusSpeakerAmp.setTranslationX(width * 0.366f);
         binding.minusSpeakerAmp.setTranslationY(height * 0.727f);
         binding.minusSpeakerAmp.setOnClickListener(view18 -> {
-            if (MainActivity.speakerAmp > 0){
-                MainActivity.speakerAmp --;
-                binding.speakerAmpCounter.setText(String.valueOf(MainActivity.speakerAmp));
+            if (SecondFragment.speakerAmp > 0){
+                SecondFragment.speakerAmp --;
+                binding.speakerAmpCounter.setText(String.valueOf(SecondFragment.speakerAmp));
             }
         });
         binding.plusSpeakerAmp.setTranslationX(width * 0.732f);
         binding.plusSpeakerAmp.setTranslationY(height * 0.727f);
         binding.plusSpeakerAmp.setOnClickListener(view19 -> {
-            MainActivity.speakerAmp ++;
-            binding.speakerAmpCounter.setText(String.valueOf(MainActivity.speakerAmp));
+            SecondFragment.speakerAmp ++;
+            binding.speakerAmpCounter.setText(String.valueOf(SecondFragment.speakerAmp));
         });
         binding.speakerAmpCounter.setTranslationX(width * 0.598f);
         binding.speakerAmpCounter.setTranslationY(height * 0.784f);

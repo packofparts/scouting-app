@@ -28,26 +28,9 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity {
 //in-app variables
     private AppBarConfiguration appBarConfiguration;
-    private ActivityMainBinding binding; 
+    private ActivityMainBinding binding;
 
-    public static String[] chainAttempts = {"No Attempt", "Failed Attempt", "Successful Attempt"};
-    public static String[] harmonyAttempts = {"No Attempt", "Failed Attempt", "2 On Chain", "3 On Chain"};
-    public static String teleOpNotes = "";
-    public static int amp = 0;
-    public static int speakerUnamp = 0;
-    public static int speakerAmp = 0;
-    public static int noteStuck = 0;
-    public static int noteSuccess = 0;
-    public static int notesThrown = 0;
-    public static int notesHit = 0;
-    public static int chainAttemptIndex = 0;
-    public static int harmonyAttemptIndex = 0;
     public static String teamNumber = "0";
-    public static boolean broke = false;
-    public static boolean defense = false;
-    public static boolean ground = false;
-    public static boolean source = false;
-    public static boolean human = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,19 +47,19 @@ public class ThirdFragment extends Fragment {
             setSwitchColor(binding.switch3);
         binding.switch2.setChecked(MainActivity.defense);
         binding.switch3.setChecked(MainActivity.ground);
-        binding.switch3.setThumbTintList(blue);
-        binding.switch3.setTrackTintList(blue);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            binding.switch3.setThumbTintList(blue);
+            binding.switch3.setTrackTintList(blue);
+        }
 
         return binding.getRoot();
     }
 
     private void setSwitchColor(Switch switch1) {
-        if (switch1.isChecked()) {
-            switch1.setThumbTintList(purple);
-            switch1.setTrackTintList(purple);
-        } else {
-            switch1.setThumbTintList(blue);
-            switch1.setTrackTintList(blue);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            switch1.setThumbTintList(switch1.isChecked() ? purple : blue);
+            switch1.setTrackTintList(switch1.isChecked() ? purple : blue);
         }
     }
 

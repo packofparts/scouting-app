@@ -10,7 +10,7 @@ public class MatchData {
     boolean moveOutOfZone = false;
     int ampAuto = 0;
     int speakerAuto = 0;
-    enum ContactRobot {
+    public enum ContactRobot {
         None,
         Allies,
         Opposition
@@ -24,7 +24,7 @@ public class MatchData {
     int amplifiedSpeaker = 0;
     int speakerTeleop = 0;
     int dump = 0;
-    enum NoteAcquisition {
+    public enum NoteAcquisition {
         None,
         Floor,
         Source,
@@ -33,21 +33,21 @@ public class MatchData {
     NoteAcquisition noteAcquired;
 
     //End of Match data
-    enum Chain {
+    public enum Chain {
         Nope,
         Attempted,
         Succeeded
     }
     Chain chaining;
 
-    enum Trap {
+    public enum Trap {
         Nope,
         Stuck,
         Fell,
         Succeeded
     }
     Trap trapping;
-    enum Harmony {
+    public enum Harmony {
         Nope,
         Attempted,
         Succeeded
@@ -127,9 +127,7 @@ public class MatchData {
     public int getAmplifiedSpeaker() {
         return amplifiedSpeaker;
     }
-    public void setAmplifiedSpeaker(int amplifiedSpeaker) {
-        this.amplifiedSpeaker = amplifiedSpeaker;
-    }
+    public void setAmplifiedSpeaker(int amplifiedSpeaker) {   this.amplifiedSpeaker = amplifiedSpeaker;   }
 
     public int getSpeakerTeleop() {
         return speakerTeleop;
@@ -146,52 +144,18 @@ public class MatchData {
     }
 
     public NoteAcquisition getNoteAcquired() {   return noteAcquired;    }
-    public void setNoteAcquired(boolean floor, boolean source) {
-        if (floor && source){
-            this.noteAcquired =  NoteAcquisition.Both;
-        } else if (floor && !source) {
-            this.noteAcquired =  NoteAcquisition.Floor;
-        } else if (!floor && source) {
-            this.noteAcquired =  NoteAcquisition.Source;
-        } else {
-            this.noteAcquired = NoteAcquisition.None;
-        }
-    }
+    public void setNoteAcquired(NoteAcquisition noteAcquired) { this.noteAcquired = noteAcquired;  }
 
     //Endgame
 
     public Chain getChaining() {    return chaining;    }
-    public void setChaining(int index) {
-        switch (index){
-            case 0:
-                this.chaining = Chain.Nope;
-                break;
-            case 1:
-                this.chaining = Chain.Attempted;
-                break;
-            case 2:
-                this.chaining = Chain.Succeeded;
-                break;
-        }
-    }
+    public void setChaining(Chain chain) { this.chaining = chain;  }
 
     public Trap getTrapping() {     return trapping;    }
     public void setTrapping(Trap trapping) {    this.trapping = trapping;    }
 
     public Harmony getHarmo() {     return harmo;     }
-    public void setHarmo(int index) {
-        switch (index){
-            case 0:
-                this.harmo = Harmony.Nope;
-                break;
-            case 1:
-                this.harmo = Harmony.Attempted;
-                break;
-            case 2:
-                this.harmo = Harmony.Succeeded;
-                break;
-        }
-    }
+    public void setHarmo(Harmony harmony) { this.harmo = harmony;  }
 
     public boolean getHumanPlayerAtAmp(){    return this.humanPlayerAtAmp;    }
     public void setHumanPlayerAtAmp(boolean humanPlayerAtAmp){   this.humanPlayerAtAmp = humanPlayerAtAmp;    }

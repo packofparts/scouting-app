@@ -133,7 +133,7 @@ public class SecondFragment2 extends Fragment {
                     binding.textInput.setText(text);
                 }
                 binding.characterLimit.setText("Character Limit: " + binding.textInput.getText().length() + "/150");
-                UserModel.getMatchData().setNotes(String.format("%s", binding.textInput.getText()));
+                UserModel.getMatchData().setNotes(binding.textInput.getText().toString());
             }
         });
         binding.textInput.setOnTouchListener(new View.OnTouchListener(){
@@ -162,7 +162,7 @@ public class SecondFragment2 extends Fragment {
         binding.chainAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                UserModel.getMatchData().setChaining(position);
+                //TODO: UserModel.getMatchData().setChaining(position);
             }
 
             @Override
@@ -184,7 +184,7 @@ public class SecondFragment2 extends Fragment {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                UserModel.getMatchData().setHarmo(position);
+                //TODO: UserModel.getMatchData().setHarmo(position);
             }
 
             @Override

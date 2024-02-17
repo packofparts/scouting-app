@@ -1,13 +1,9 @@
 package com.example.myapplication;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -16,8 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.myapplication.databinding.FragmentPitBinding;
-
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,7 +24,6 @@ public class PitFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private boolean isTrue = false;
     private FragmentPitBinding binding;
 
     // TODO: Rename and change types of parameters
@@ -95,8 +88,6 @@ public class PitFragment extends Fragment {
         binding.checkBox.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               System.out.println(UserModel.getMatchData().isBroke());
-               isTrue = !isTrue;
            }
         });
 

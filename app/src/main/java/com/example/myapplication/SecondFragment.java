@@ -172,7 +172,7 @@ public class SecondFragment extends Fragment {
                     binding.ground.setThumbTintList(ColorStateList.valueOf(UIHelpers.teamColor));
                     binding.ground.setTrackTintList(ColorStateList.valueOf(UIHelpers.teamColor));
                 }
-                UserModel.getMatchData().setNoteAcquired(binding.defense.isChecked(), binding.source.isChecked());
+                //TODO: UserModel.getMatchData().setNoteAcquired(<input enum here>);
 
             }
         });
@@ -189,7 +189,7 @@ public class SecondFragment extends Fragment {
                     binding.source.setThumbTintList(ColorStateList.valueOf(UIHelpers.teamColor));
                     binding.source.setTrackTintList(ColorStateList.valueOf(UIHelpers.teamColor));
                 }
-                UserModel.getMatchData().setNoteAcquired(binding.defense.isChecked(), binding.source.isChecked());
+                //TODO:UserModel.getMatchData().setNoteAcquired(<input enum here>);
             }
         });
         binding.ampNotes.setTranslationX(width * 0.073f);

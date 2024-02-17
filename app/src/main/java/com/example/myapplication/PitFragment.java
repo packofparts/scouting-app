@@ -74,10 +74,6 @@ public class PitFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ViewModelProvider viewModelProvider = new ViewModelProvider(requireActivity());
-        UserModel userModel = viewModelProvider.get(UserModel.class);
-
-
         binding.Pit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,12 +81,6 @@ public class PitFragment extends Fragment {
                         .navigate(R.id.action_pitFragment_to_HomePage);
             }
         });
-        binding.checkBox.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-           }
-        });
-
     }
 
 }

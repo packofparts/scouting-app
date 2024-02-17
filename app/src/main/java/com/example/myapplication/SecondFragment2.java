@@ -3,55 +3,40 @@ package com.example.myapplication;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
-import static com.google.android.material.internal.ViewUtils.dpToPx;
 
 import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.res.ColorStateList;
-import android.database.DataSetObserver;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
-import android.widget.Switch;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentSecond2Binding;
-import com.example.myapplication.databinding.FragmentSecondBinding;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.Objects;
 
 public class SecondFragment2 extends Fragment {
 
     private FragmentSecond2Binding binding;
     ViewGroup v = null;
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
+            @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
 
@@ -59,38 +44,29 @@ public class SecondFragment2 extends Fragment {
         v = container;
         binding.team.setText("Team " + MainActivity.teamNumber);
         //binding.team.setText(getActivity().toString());
-        binding.notesStuckCounter.setText("" + MainActivity.noteStuck);
-        binding.notesSuccessCounter.setText("" + MainActivity.noteSuccess);
-        binding.notesThrownCounter.setText("" + MainActivity.notesThrown);
-        binding.notesHitCounter.setText("" + MainActivity.notesHit);
+        binding.notesStuckCounter.setText(String.valueOf(MainActivity.noteStuck));
+        binding.notesSuccessCounter.setText(String.valueOf(MainActivity.noteSuccess));
+        binding.notesThrownCounter.setText(String.valueOf(MainActivity.notesThrown));
+        binding.notesHitCounter.setText(String.valueOf(MainActivity.notesHit));
         binding.human.setChecked(MainActivity.human);
         binding.textInput.setText(MainActivity.teleOpNotes);
-        binding.characterLimit.setText("Character Limit: " + binding.textInput.getText().length() + "/150");
+        binding.characterLimit.setText("Character Limit: " + Objects.requireNonNull(binding.textInput.getText()).length() + "/150");
         return binding.getRoot();
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
 
-        binding.next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment2.this)
-                        .navigate(R.id.action_SecondFragment2_to_FirstFragment);
-            }
-        });
+        binding.next.setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment2.this)
+                .navigate(R.id.action_SecondFragment2_to_FirstFragment));
 
-        binding.prev.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment2.this)
-                        .navigate(R.id.action_SecondFragment2_to_SecondFragment);
-            }
-        });
+        binding.prev.setOnClickListener(view12 -> NavHostFragment.findNavController(SecondFragment2.this)
+                .navigate(R.id.action_SecondFragment2_to_SecondFragment));
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
-        ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         float height = displayMetrics.heightPixels;
         float width = displayMetrics.widthPixels;
         ViewGroup.LayoutParams layoutParams = binding.relativeLayoutFirst.getLayoutParams();
@@ -105,15 +81,12 @@ public class SecondFragment2 extends Fragment {
         binding.title.setTranslationX((width - 136)/ 2.0f);
         binding.team.setTranslationY(height * 0.127f);
         binding.team.setTranslationX(binding.title.getX());
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
+        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", 0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f);
         animation.setDuration(1000);
-        binding.pop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                animation.start();
-                UIHelpers.darkMode = !UIHelpers.darkMode;
-                UIHelpers.lightDark(v, UIHelpers.darkMode);
-            }
+        binding.pop.setOnClickListener(view13 -> {
+            animation.start();
+            UIHelpers.darkMode = !UIHelpers.darkMode;
+            UIHelpers.lightDark(v, UIHelpers.darkMode);
         });
 
         binding.input.setTranslationY(height * 0.784f);
@@ -121,10 +94,10 @@ public class SecondFragment2 extends Fragment {
         binding.characterLimit.setTranslationY(height * 0.875f);
         binding.characterLimit.setTranslationX(width * 0.073f);
         binding.textInput.addTextChangedListener(new TextWatcher() {
-            String text = binding.textInput.getText() + "";
+            String text = String.valueOf(binding.textInput.getText());
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                text = binding.textInput.getText() + "";
+                text = String.valueOf(binding.textInput.getText());
             }
 
             @Override
@@ -132,37 +105,30 @@ public class SecondFragment2 extends Fragment {
 
             }
 
+            @SuppressLint("SetTextI18n")
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.length() > 150) {
                     binding.textInput.setText(text);
                 }
-                binding.characterLimit.setText("Character Limit: " + binding.textInput.getText().length() + "/150");
-                MainActivity.teleOpNotes = binding.textInput.getText() + "";
+                binding.characterLimit.setText("Character Limit: " + Objects.requireNonNull(binding.textInput.getText()).length() + "/150");
+                MainActivity.teleOpNotes = String.valueOf(binding.textInput.getText());
             }
         });
-        binding.textInput.setOnTouchListener(new View.OnTouchListener(){
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                binding.relativeLayoutFirst.setTranslationY(-binding.input.getTranslationY() + 100);
-                return false;
-            }
-
+        binding.textInput.setOnTouchListener((v, event) -> {
+            binding.relativeLayoutFirst.setTranslationY(-binding.input.getTranslationY() + 100);
+            return false;
         });
         binding.textInput.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        binding.textInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE){
-                    binding.relativeLayoutFirst.setTranslationY(0f);
-                }else {
-                    Log.d("", actionId + "");
-                }
-                return false;
+        binding.textInput.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE){
+                binding.relativeLayoutFirst.setTranslationY(0f);
+            }else {
+                Log.d("", String.valueOf(actionId));
             }
+            return false;
         });
-        ArrayAdapter<String> chainAdapter = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, MainActivity.chainAttempts);
+        ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, MainActivity.chainAttempts);
         binding.chainAttempt.setAdapter(chainAdapter);
         binding.chainAttempt.setSelection(MainActivity.chainAttemptIndex);
         binding.chainAttempt.setTranslationY(height * 0.201f);
@@ -183,7 +149,7 @@ public class SecondFragment2 extends Fragment {
         binding.chain.setTranslationY(height * 0.201f);
         binding.chain.setTranslationX(width * 0.073f);
 
-        ArrayAdapter<String> harmonyAdapter = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, MainActivity.harmonyAttempts);
+        ArrayAdapter<String> harmonyAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, MainActivity.harmonyAttempts);
         binding.harmonyAttempt.setAdapter(harmonyAdapter);
         binding.harmonyAttempt.setSelection(MainActivity.harmonyAttemptIndex);
         binding.harmonyAttempt.setTranslationY(height * 0.302f);
@@ -209,24 +175,18 @@ public class SecondFragment2 extends Fragment {
         binding.notesStuck.setTranslationY(height * 0.417f);
         binding.minusNotesStuck.setTranslationX(width * 0.366f);
         binding.minusNotesStuck.setTranslationY(height * 0.396f);
-        binding.minusNotesStuck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (MainActivity.noteStuck > 0){
-                    MainActivity.noteStuck --;
-                    binding.notesStuckCounter.setText("" + MainActivity.noteStuck);
-                }
+        binding.minusNotesStuck.setOnClickListener(view14 -> {
+            if (MainActivity.noteStuck > 0){
+                MainActivity.noteStuck --;
+                binding.notesStuckCounter.setText(String.valueOf(MainActivity.noteStuck));
             }
         });
         binding.plusNotesStuck.setTranslationX(width * 0.732f);
         binding.plusNotesStuck.setTranslationY(height * 0.396f);
-        binding.plusNotesStuck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (MainActivity.noteStuck < 3) {
-                    MainActivity.noteStuck++;
-                    binding.notesStuckCounter.setText("" + MainActivity.noteStuck);
-                }
+        binding.plusNotesStuck.setOnClickListener(view15 -> {
+            if (MainActivity.noteStuck < 3) {
+                MainActivity.noteStuck++;
+                binding.notesStuckCounter.setText(String.valueOf(MainActivity.noteStuck));
             }
         });
         binding.notesStuckCounter.setTranslationX(width * 0.598f);
@@ -236,24 +196,18 @@ public class SecondFragment2 extends Fragment {
         binding.notesSuccess.setTranslationY(height * 0.576f);
         binding.minusNotesSuccess.setTranslationX(width * 0.366f);
         binding.minusNotesSuccess.setTranslationY(height * 0.525f);
-        binding.minusNotesSuccess.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (MainActivity.noteSuccess > 0){
-                    MainActivity.noteSuccess --;
-                    binding.notesSuccessCounter.setText("" + MainActivity.noteSuccess);
-                }
+        binding.minusNotesSuccess.setOnClickListener(view16 -> {
+            if (MainActivity.noteSuccess > 0){
+                MainActivity.noteSuccess --;
+                binding.notesSuccessCounter.setText(String.valueOf(MainActivity.noteSuccess));
             }
         });
         binding.plusNotesSuccess.setTranslationX(width * 0.732f);
         binding.plusNotesSuccess.setTranslationY(height * 0.525f);
-        binding.plusNotesSuccess.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (MainActivity.noteSuccess < 3) {
-                    MainActivity.noteSuccess++;
-                    binding.notesSuccessCounter.setText("" + MainActivity.noteSuccess);
-                }
+        binding.plusNotesSuccess.setOnClickListener(view17 -> {
+            if (MainActivity.noteSuccess < 3) {
+                MainActivity.noteSuccess++;
+                binding.notesSuccessCounter.setText(String.valueOf(MainActivity.noteSuccess));
             }
         });
         binding.notesSuccessCounter.setTranslationX(width * 0.598f);
@@ -261,35 +215,26 @@ public class SecondFragment2 extends Fragment {
 
         binding.human.setTranslationY(height * 0.719f);
         binding.human.setTranslationX(width * 0.073f);
-        binding.human.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                humanOperation(binding.human.isChecked(), width, height);
-                MainActivity.human = binding.human.isChecked();
-            }
+        binding.human.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            humanOperation(binding.human.isChecked(), width, height);
+            MainActivity.human = binding.human.isChecked();
         });
         binding.notesThrown.setTranslationY(binding.notesStuck.getTranslationY() + 530);
         binding.notesThrown.setTranslationX(binding.notesStuck.getTranslationX());
         binding.minusNotesThrown.setTranslationY(binding.minusNotesStuck.getTranslationY() + 500);
         binding.minusNotesThrown.setTranslationX(binding.minusNotesStuck.getTranslationX());
-        binding.minusNotesThrown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (MainActivity.notesThrown > 0) {
-                    MainActivity.notesThrown--;
-                    binding.notesThrownCounter.setText("" + MainActivity.notesThrown);
-                }
+        binding.minusNotesThrown.setOnClickListener(v -> {
+            if (MainActivity.notesThrown > 0) {
+                MainActivity.notesThrown--;
+                binding.notesThrownCounter.setText(String.valueOf(MainActivity.notesThrown));
             }
         });
         binding.plusNotesThrown.setTranslationY(binding.plusNotesStuck.getTranslationY() + 500);
         binding.plusNotesThrown.setTranslationX(binding.plusNotesStuck.getTranslationX());
-        binding.plusNotesThrown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (MainActivity.notesThrown < 3) {
-                    MainActivity.notesThrown++;
-                    binding.notesThrownCounter.setText("" + MainActivity.notesThrown);
-                }
+        binding.plusNotesThrown.setOnClickListener(v -> {
+            if (MainActivity.notesThrown < 3) {
+                MainActivity.notesThrown++;
+                binding.notesThrownCounter.setText(String.valueOf(MainActivity.notesThrown));
             }
         });
         binding.notesThrownCounter.setTranslationY(binding.notesStuckCounter.getTranslationY() + 500);
@@ -299,24 +244,18 @@ public class SecondFragment2 extends Fragment {
         binding.notesHit.setTranslationX(binding.notesSuccess.getTranslationX());
         binding.minusNotesHit.setTranslationY(binding.minusNotesSuccess.getTranslationY() + 500);
         binding.minusNotesHit.setTranslationX(binding.minusNotesSuccess.getTranslationX());
-        binding.minusNotesHit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (MainActivity.notesHit > 0) {
-                    MainActivity.notesHit--;
-                    binding.notesHitCounter.setText("" + MainActivity.notesHit);
-                }
+        binding.minusNotesHit.setOnClickListener(v -> {
+            if (MainActivity.notesHit > 0) {
+                MainActivity.notesHit--;
+                binding.notesHitCounter.setText(String.valueOf(MainActivity.notesHit));
             }
         });
         binding.plusNotesHit.setTranslationY(binding.plusNotesSuccess.getTranslationY() + 500);
         binding.plusNotesHit.setTranslationX(binding.plusNotesSuccess.getTranslationX());
-        binding.plusNotesHit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (MainActivity.notesHit < 3) {
-                    MainActivity.notesHit++;
-                    binding.notesHitCounter.setText("" + MainActivity.notesHit);
-                }
+        binding.plusNotesHit.setOnClickListener(v -> {
+            if (MainActivity.notesHit < 3) {
+                MainActivity.notesHit++;
+                binding.notesHitCounter.setText(String.valueOf(MainActivity.notesHit));
             }
         });
         binding.notesHitCounter.setTranslationY(binding.notesSuccessCounter.getTranslationY() + 500);

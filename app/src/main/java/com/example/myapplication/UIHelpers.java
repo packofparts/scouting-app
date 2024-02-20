@@ -14,7 +14,9 @@ import com.google.android.material.textfield.TextInputLayout;
 public class UIHelpers {
     public static int purple = Color.parseColor("#6750A3");
     public static int teamColor = Color.parseColor("#73C2F0");
+    public static boolean darkMode = false;
     public static void lightDark (ViewGroup v, boolean mode){
+        //background color and color of the actual ui elements
         String bgColor = !mode ? "#FFFFFF" : "#000000";
         String viewColor = !mode ? "#000000" : "#FFFFFF";
         for (int i = 0; i < v.getChildCount(); i ++){

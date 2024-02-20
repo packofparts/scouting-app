@@ -67,7 +67,7 @@ public class ThirdFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        binding.team.setText("Team " + MainActivity.teamNumber);
         //VARIABLES
         Switch switch1 = view.findViewById(R.id.switch1);
         Switch switch2 = view.findViewById(R.id.switch2);
@@ -75,6 +75,9 @@ public class ThirdFragment extends Fragment {
         EditText numNotes = view.findViewById(R.id.numNotes);
         EditText numNotesInAmp = view.findViewById(R.id.numNotesInAmp);
         Spinner Contact = view.findViewById(R.id.spinner);
+
+
+
 
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotationX", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
         animation.setDuration(1000);

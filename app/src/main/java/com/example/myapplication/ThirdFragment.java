@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +36,8 @@ public class ThirdFragment extends Fragment {
     private static ColorStateList purple = ColorStateList.valueOf(Color.parseColor("#6750A3"));
     private static ColorStateList blue = ColorStateList.valueOf(Color.parseColor("#73C2F0"));
 
+    public static boolean defense = false;
+    public static boolean ground = false;
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState
@@ -44,21 +47,21 @@ public class ThirdFragment extends Fragment {
             setSwitchColor(binding.switch1);
             setSwitchColor(binding.switch2);
             setSwitchColor(binding.switch3);
-        binding.switch2.setChecked(MainActivity.defense);
-        binding.switch3.setChecked(MainActivity.ground);
-        binding.switch3.setThumbTintList(blue);
-        binding.switch3.setTrackTintList(blue);
+        binding.switch2.setChecked(ThirdFragment.defense);
+        binding.switch3.setChecked(ThirdFragment.ground);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            binding.switch3.setThumbTintList(blue);
+            binding.switch3.setTrackTintList(blue);
+        }
 
         return binding.getRoot();
     }
 
     private void setSwitchColor(Switch switch1) {
-        if (switch1.isChecked()) {
-            switch1.setThumbTintList(purple);
-            switch1.setTrackTintList(purple);
-        } else {
-            switch1.setThumbTintList(blue);
-            switch1.setTrackTintList(blue);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            switch1.setThumbTintList(switch1.isChecked() ? purple : blue);
+            switch1.setTrackTintList(switch1.isChecked() ? purple : blue);
         }
     }
 
@@ -79,8 +82,8 @@ public class ThirdFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 animation.start();
-                MainActivity.darkMode = !MainActivity.darkMode;
-                UIHelpers.lightDark(v, MainActivity.darkMode);
+                UIHelpers.darkMode = !UIHelpers.darkMode;
+                UIHelpers.lightDark(v, UIHelpers.darkMode);
 
             }
         });
@@ -122,7 +125,7 @@ public class ThirdFragment extends Fragment {
         binding.spinner.setAdapter(contact);
 
 
-        UIHelpers.lightDark(v, MainActivity.darkMode);
+        UIHelpers.lightDark(v, UIHelpers.darkMode);
 
 
 

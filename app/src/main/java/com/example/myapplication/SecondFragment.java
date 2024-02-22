@@ -180,6 +180,7 @@ public class SecondFragment extends Fragment {
         binding = null;
 
     }
+    @SuppressLint("ObsoleteSdkInt")
     public void checkedOperation (View v){
         if (v instanceof Switch){
             @SuppressLint("UseSwitchCompatOrMaterialCode") Switch s = (Switch) v;

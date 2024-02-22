@@ -32,8 +32,21 @@ import java.util.Objects;
 public class SecondFragment2 extends Fragment {
 
     private FragmentSecond2Binding binding;
-    public static String[] chainAttempts = {"No Attempt", "Failed Attempt", "Successful Attempt"};
-    public static String[] harmonyAttempts = {"No Attempt", "Failed Attempt", "2 On Chain", "3 On Chain"};
+    public enum Chain{
+        NONE,
+        FAILED,
+        SUCCESS
+
+    }
+    public static Chain chainStatus = Chain.NONE;
+    public enum Harmony{
+        NONE,
+        FAILED,
+        TWO,
+        THREE
+
+    }
+    public static Harmony harmonyStatus = Harmony.NONE;
     public static String teleOpNotes = "";
     public static int noteStuck = 0;
     public static int noteSuccess = 0;
@@ -68,7 +81,6 @@ public class SecondFragment2 extends Fragment {
     @SuppressLint("ClickableViewAccessibility")
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
         binding.next.setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment2.this)
                 .navigate(R.id.action_SecondFragment2_to_FirstFragment));
@@ -139,7 +151,7 @@ public class SecondFragment2 extends Fragment {
             }
             return false;
         });
-        ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, SecondFragment2.chainAttempts);
+        ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Attempt", "Failed Attempt", "Successful Attempt"});
         binding.chainAttempt.setAdapter(chainAdapter);
         binding.chainAttempt.setSelection(SecondFragment2.chainAttemptIndex);
         binding.chainAttempt.setTranslationY(height * 0.201f);
@@ -148,6 +160,17 @@ public class SecondFragment2 extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 SecondFragment2.chainAttemptIndex = position;
+                switch (position){
+                    case 0:
+                        chainStatus = Chain.NONE;
+                        break;
+                    case 1:
+                        chainStatus = Chain.FAILED;
+                        break;
+                    case 2:
+                        chainStatus = Chain.SUCCESS;
+                        break;
+                }
             }
 
             @Override
@@ -160,7 +183,7 @@ public class SecondFragment2 extends Fragment {
         binding.chain.setTranslationY(height * 0.201f);
         binding.chain.setTranslationX(width * 0.073f);
 
-        ArrayAdapter<String> harmonyAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, SecondFragment2.harmonyAttempts);
+        ArrayAdapter<String> harmonyAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Attempt", "Failed Attempt", "2 On Chain", "3 On Chain"});
         binding.harmonyAttempt.setAdapter(harmonyAdapter);
         binding.harmonyAttempt.setSelection(SecondFragment2.harmonyAttemptIndex);
         binding.harmonyAttempt.setTranslationY(height * 0.302f);
@@ -170,6 +193,22 @@ public class SecondFragment2 extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 SecondFragment2.harmonyAttemptIndex = position;
+                switch (position){
+                    case 0:
+                        harmonyStatus = Harmony.NONE;
+                        break;
+                    case 1:
+                        harmonyStatus = Harmony.FAILED;
+                        break;
+                    case 2:
+                        harmonyStatus = Harmony.TWO;
+                        break;
+                    case 3:
+                        harmonyStatus = Harmony.THREE;
+                        break;
+
+                }
+
             }
 
             @Override
@@ -283,6 +322,7 @@ public class SecondFragment2 extends Fragment {
         binding = null;
     }
 
+    @SuppressLint("ObsoleteSdkInt")
     public void humanOperation(boolean checked, float width, float height){
         int layout = checked ? 500:-38;
         int view = checked? 500: 0;

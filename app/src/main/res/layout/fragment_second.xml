@@ -42,31 +42,40 @@
             android:translationX="30dp"
             android:translationY="200dp" />
 
-        <Switch
-            android:id="@+id/ground"
-            android:layout_width="330dp"
+        <TextView
+            android:id="@+id/intake"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Pick up from ground?"
+            android:text="Intake Method?"
             android:textColor="#000000"
             android:textSize="26dp"
             android:thumbTint="#73C2F0"
             android:trackTint="#73C2F0"
             android:trackTintMode="src_over"
             android:translationX="30dp"
-            android:translationY="250dp" />
+            android:translationY="260dp" />
+        <Button
+            android:id="@+id/intakeBackground"
+            android:layout_width="205dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="36dp"
+            android:backgroundTint="#73C2F0"
+            android:clickable="false"
+            android:textSize="26dp"
+            android:translationX="150dp"
+            android:translationY="223dp"
+            app:cornerRadius="100dp" />
 
-        <Switch
-            android:id="@+id/source"
-            android:layout_width="330dp"
-            android:layout_height="wrap_content"
-            android:text="Pick up from source?"
-            android:textColor="#000000"
-            android:textSize="26dp"
-            android:thumbTint="#73C2F0"
-            android:trackTint="#73C2F0"
-            android:trackTintMode="src_over"
-            android:translationX="30dp"
-            android:translationY="300dp" />
+        <Spinner
+            android:id="@+id/intakeMethod"
+            android:layout_width="205dp"
+            android:layout_height="58dp"
+            android:backgroundTint="#00FFFFFF"
+            android:backgroundTintMode="src_over"
+            android:spinnerMode="dropdown"
+            android:translationX="150dp"
+            android:translationY="255dp"
+            android:visibility="visible" />
 
         <TextView
             android:id="@+id/title"

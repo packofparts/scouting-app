@@ -39,14 +39,8 @@ public class MatchData {
         Succeeded
     }
     Chain chaining;
-
-    public enum Trap {
-        Nope,
-        Stuck,
-        Fell,
-        Succeeded
-    }
-    Trap trapping;
+    int trapSucess = 0;
+    int trapFail = 0;
     public enum Harmony {
         Nope,
         Attempted,
@@ -151,8 +145,11 @@ public class MatchData {
     public Chain getChaining() {    return chaining;    }
     public void setChaining(Chain chain) { this.chaining = chain;  }
 
-    public Trap getTrapping() {     return trapping;    }
-    public void setTrapping(Trap trapping) {    this.trapping = trapping;    }
+    public int getTrapSucess() {     return trapSucess;    }
+    public void setTrapSucess(int trapSucess) {    this.trapSucess = trapSucess;    }
+
+    public int getTrapFail() {     return trapFail;    }
+    public void setTrapFail(int trapFail) {    this.trapFail = trapFail;    }
 
     public Harmony getHarmo() {     return harmo;     }
     public void setHarmo(Harmony harmony) { this.harmo = harmony;  }

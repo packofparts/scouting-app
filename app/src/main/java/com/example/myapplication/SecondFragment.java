@@ -1,84 +1,59 @@
 package com.example.myapplication;
 
 import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.view.DragEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.Switch;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentSecondBinding;
-import com.google.android.material.textfield.TextInputEditText;
+
+
 
 public class SecondFragment extends Fragment {
 
     private FragmentSecondBinding binding;
-
+    public static int amp = 0;
+    public static int speakerUnamp = 0;
+    public static int speakerAmp = 0;
+    public static boolean broke = false;
+    public static boolean defense = false;
+    public static boolean ground = false;
+    public static boolean source = false;
     ViewGroup v = null;
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
+            @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
 
         binding = FragmentSecondBinding.inflate(inflater, container, false);
         v = container;
         binding.team.setText("Team " + MainActivity.teamNumber);
-        binding.ampCounter.setText("" + MainActivity.amp);
-        binding.speakerUnampCounter.setText("" + MainActivity.speakerUnamp);
-        binding.speakerAmpCounter.setText("" + MainActivity.speakerAmp);
-        binding.broke.setChecked(MainActivity.broke);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-        if (binding.broke.isChecked()){
-            binding.broke.setThumbTintList(ColorStateList.valueOf(UIHelpers.purple));
-            binding.broke.setTrackTintList(ColorStateList.valueOf(UIHelpers.purple));
-        } else {
-            binding.broke.setThumbTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-            binding.broke.setTrackTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-        }
-        binding.defense.setChecked(MainActivity.defense);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-        if (binding.defense.isChecked()){
-            binding.defense.setThumbTintList(ColorStateList.valueOf(UIHelpers.purple));
-            binding.defense.setTrackTintList(ColorStateList.valueOf(UIHelpers.purple));
-        } else {
-            binding.defense.setThumbTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-            binding.defense.setTrackTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-        }
-        binding.ground.setChecked(MainActivity.ground);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-        if (binding.ground.isChecked()){
-            binding.ground.setThumbTintList(ColorStateList.valueOf(UIHelpers.purple));
-            binding.ground.setTrackTintList(ColorStateList.valueOf(UIHelpers.purple));
-        } else {
-            binding.ground.setThumbTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-            binding.ground.setTrackTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-        }
-        binding.source.setChecked(MainActivity.source);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-        if (binding.source.isChecked()){
-            binding.source.setThumbTintList(ColorStateList.valueOf(UIHelpers.purple));
-            binding.source.setTrackTintList(ColorStateList.valueOf(UIHelpers.purple));
-        } else {
-            binding.source.setThumbTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-            binding.source.setTrackTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-        }
+        binding.ampCounter.setText(String.valueOf(SecondFragment.amp));
+        binding.speakerUnampCounter.setText(String.valueOf(SecondFragment.speakerUnamp));
+        binding.speakerAmpCounter.setText(String.valueOf(SecondFragment.speakerAmp));
+        binding.broke.setChecked(SecondFragment.broke);
+
+        checkedOperation(binding.broke);
+        binding.defense.setChecked(SecondFragment.defense);
+        checkedOperation(binding.defense);
+        binding.ground.setChecked(SecondFragment.ground);
+        checkedOperation(binding.ground);
+        binding.source.setChecked(SecondFragment.source);
+        checkedOperation(binding.source);
         return binding.getRoot();
     }
 
@@ -86,23 +61,13 @@ public class SecondFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        binding.next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_SecondFragment2);
-            }
-        });
-        binding.prev.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_ThirdFragment);
-            }
-        });
+        binding.next.setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
+                .navigate(R.id.action_SecondFragment_to_SecondFragment2));
+        binding.prev.setOnClickListener(view12 -> NavHostFragment.findNavController(SecondFragment.this)
+                .navigate(R.id.action_SecondFragment_to_ThirdFragment));
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
-        ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         float height = displayMetrics.heightPixels;
         float width = displayMetrics.widthPixels;
         ViewGroup.LayoutParams layoutParams = binding.relativeLayoutFirst.getLayoutParams();
@@ -117,104 +82,56 @@ public class SecondFragment extends Fragment {
         binding.title.setTranslationX((width - 136)/ 2.0f);
         binding.team.setTranslationY(height * 0.127f);
         binding.team.setTranslationX(binding.title.getX());
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
+        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", 0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f);
         animation.setDuration(1000);
-        binding.pop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                animation.start();
-                MainActivity.darkMode = !MainActivity.darkMode;
-                UIHelpers.lightDark(v, MainActivity.darkMode);
-            }
+        binding.pop.setOnClickListener(view13 -> {
+            animation.start();
+            UIHelpers.darkMode = !UIHelpers.darkMode;
+            UIHelpers.lightDark(v, UIHelpers.darkMode);
         });
         binding.broke.setTranslationX(width * 0.073f);
         binding.broke.setTranslationY(height * 0.216f);
-        binding.broke.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                if (binding.broke.isChecked()){
-                    binding.broke.setThumbTintList(ColorStateList.valueOf(UIHelpers.purple));
-                    binding.broke.setTrackTintList(ColorStateList.valueOf(UIHelpers.purple));
-                } else {
-                    binding.broke.setThumbTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-                    binding.broke.setTrackTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-                }
-                UserModel.getMatchData().setBroke(binding.broke.isChecked());
-            }
+        binding.broke.setOnCheckedChangeListener((buttonView, isChecked) -> {
+
+            checkedOperation(binding.broke);
+            UserModel.getMatchData().setBroke(binding.broke.isChecked());
         });
         binding.defense.setTranslationX(width * 0.073f);
         binding.defense.setTranslationY(height * 0.288f);
-        binding.defense.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                if (binding.defense.isChecked()){
-                    binding.defense.setThumbTintList(ColorStateList.valueOf(UIHelpers.purple));
-                    binding.defense.setTrackTintList(ColorStateList.valueOf(UIHelpers.purple));
-                } else {
-                    binding.defense.setThumbTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-                    binding.defense.setTrackTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-                }
-                UserModel.getMatchData().setDefense(binding.defense.isChecked());
-            }
+        binding.defense.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            checkedOperation(binding.defense);
+            UserModel.getMatchData().setDefense(binding.defense.isChecked());
         });
         binding.ground.setTranslationX(width * 0.073f);
         binding.ground.setTranslationY(height * 0.360f);
-        binding.ground.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                if (binding.ground.isChecked()){
-                    binding.ground.setThumbTintList(ColorStateList.valueOf(UIHelpers.purple));
-                    binding.ground.setTrackTintList(ColorStateList.valueOf(UIHelpers.purple));
-                } else {
-                    binding.ground.setThumbTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-                    binding.ground.setTrackTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-                }
-                //TODO: UserModel.getMatchData().setNoteAcquired(<input enum here>);
-
-            }
+        binding.ground.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            checkedOperation(binding.ground);
+            SecondFragment.ground = binding.ground.isChecked();
+            //TODO: merge with source
         });
         binding.source.setTranslationX(width * 0.073f);
         binding.source.setTranslationY(height * 0.432f);
-        binding.source.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                if (binding.source.isChecked()){
-                    binding.source.setThumbTintList(ColorStateList.valueOf(UIHelpers.purple));
-                    binding.source.setTrackTintList(ColorStateList.valueOf(UIHelpers.purple));
-                } else {
-                    binding.source.setThumbTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-                    binding.source.setTrackTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-                }
-                //TODO:UserModel.getMatchData().setNoteAcquired(<input enum here>);
-            }
+        binding.source.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            checkedOperation(binding.source);
+            SecondFragment.source = binding.source.isChecked();
+            //TODO: merge with ground
         });
         binding.ampNotes.setTranslationX(width * 0.073f);
         binding.ampNotes.setTranslationY(height * 0.504f);
         binding.minusAmp.setTranslationX(width * 0.366f);
         binding.minusAmp.setTranslationY(height * 0.453f);
-        binding.minusAmp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (MainActivity.amp > 0){
-                    MainActivity.amp --;
-                    UserModel.getMatchData().setAmpTeleop(MainActivity.amp);
-                    binding.ampCounter.setText("" + MainActivity.amp);
-                }
+        binding.minusAmp.setOnClickListener(view14 -> {
+            if (UserModel.getMatchData().getAmpTeleop() > 0){
+                UserModel.getMatchData().setAmpTeleop(UserModel.getMatchData().getAmpTeleop() - 1);
+                binding.ampCounter.setText(String.valueOf(UserModel.getMatchData().getAmpTeleop()));
             }
         });
         binding.plusAmp.setTranslationX(width * 0.732f);
         binding.plusAmp.setTranslationY(height * 0.453f);
-        binding.plusAmp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MainActivity.amp ++;
-                UserModel.getMatchData().setAmpTeleop(MainActivity.amp);
-                binding.ampCounter.setText("" + MainActivity.amp);
-            }
+        binding.plusAmp.setOnClickListener(view15 -> {
+            SecondFragment.amp ++;
+            UserModel.getMatchData().setAmpTeleop(UserModel.getMatchData().getAmpTeleop() + 1);
+            binding.ampCounter.setText(String.valueOf(UserModel.getMatchData().getAmpTeleop()));
         });
         binding.ampCounter.setTranslationX(width * 0.598f);
         binding.ampCounter.setTranslationY(height * 0.511f);
@@ -223,25 +140,18 @@ public class SecondFragment extends Fragment {
         binding.speakerNotesUnamp.setTranslationY(height * 0.619f);
         binding.minusSpeakerUnamp.setTranslationX(width * 0.366f);
         binding.minusSpeakerUnamp.setTranslationY(height * 0.576f);
-        binding.minusSpeakerUnamp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (MainActivity.speakerUnamp > 0){
-                    MainActivity.speakerUnamp --;
-                    UserModel.getMatchData().setSpeakerTeleop(MainActivity.speakerUnamp);
-                    binding.speakerUnampCounter.setText("" + MainActivity.speakerUnamp);
-                }
+        binding.minusSpeakerUnamp.setOnClickListener(view16 -> {
+            if (UserModel.getMatchData().getSpeakerTeleop() > 0){
+                UserModel.getMatchData().setSpeakerTeleop(UserModel.getMatchData().getSpeakerTeleop() - 1);
+                binding.speakerUnampCounter.setText("" + UserModel.getMatchData().getSpeakerTeleop());
             }
         });
         binding.plusSpeakerUnamp.setTranslationX(width * 0.732f);
         binding.plusSpeakerUnamp.setTranslationY(height * 0.576f);
-        binding.plusSpeakerUnamp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MainActivity.speakerUnamp ++;
-                UserModel.getMatchData().setSpeakerTeleop(MainActivity.speakerUnamp);
-                binding.speakerUnampCounter.setText("" + MainActivity.speakerUnamp);
-            }
+        binding.plusSpeakerUnamp.setOnClickListener(view17 -> {
+            SecondFragment.speakerUnamp ++;
+            UserModel.getMatchData().setSpeakerTeleop(UserModel.getMatchData().getSpeakerTeleop() + 1);
+            binding.speakerUnampCounter.setText(String.valueOf(UserModel.getMatchData().getSpeakerTeleop()));
         });
         binding.speakerUnampCounter.setTranslationX(width * 0.598f);
         binding.speakerUnampCounter.setTranslationY(height * 0.633f);
@@ -250,29 +160,23 @@ public class SecondFragment extends Fragment {
         binding.speakerNotesAmp.setTranslationY(height * 0.770f);
         binding.minusSpeakerAmp.setTranslationX(width * 0.366f);
         binding.minusSpeakerAmp.setTranslationY(height * 0.727f);
-        binding.minusSpeakerAmp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (MainActivity.speakerAmp > 0){
-                    MainActivity.speakerAmp --;
-                    UserModel.getMatchData().setAmplifiedSpeaker(MainActivity.speakerAmp);
-                    binding.speakerAmpCounter.setText("" + MainActivity.speakerAmp);
-                }
+
+        binding.minusSpeakerAmp.setOnClickListener(view18 -> {
+            if (UserModel.getMatchData().getAmplifiedSpeaker() > 0){
+                UserModel.getMatchData().setAmplifiedSpeaker(UserModel.getMatchData().getAmplifiedSpeaker() - 1);
+                binding.speakerAmpCounter.setText(String.valueOf(UserModel.getMatchData().getAmplifiedSpeaker()));
             }
         });
         binding.plusSpeakerAmp.setTranslationX(width * 0.732f);
         binding.plusSpeakerAmp.setTranslationY(height * 0.727f);
-        binding.plusSpeakerAmp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MainActivity.speakerAmp ++;
-                UserModel.getMatchData().setAmplifiedSpeaker(MainActivity.speakerAmp);
-                binding.speakerAmpCounter.setText("" + MainActivity.speakerAmp);
-            }
+
+        binding.plusSpeakerAmp.setOnClickListener(view19 -> {
+            UserModel.getMatchData().setAmplifiedSpeaker(UserModel.getMatchData().getAmplifiedSpeaker() + 1);
+            binding.speakerAmpCounter.setText(String.valueOf(UserModel.getMatchData().getAmplifiedSpeaker()));
         });
         binding.speakerAmpCounter.setTranslationX(width * 0.598f);
         binding.speakerAmpCounter.setTranslationY(height * 0.784f);
-        UIHelpers.lightDark(v, MainActivity.darkMode);
+        UIHelpers.lightDark(v, UIHelpers.darkMode);
     }
    
     @Override
@@ -281,5 +185,18 @@ public class SecondFragment extends Fragment {
 
         binding = null;
 
+    }
+    public void checkedOperation (View v){
+        if (v instanceof Switch){
+            @SuppressLint("UseSwitchCompatOrMaterialCode") Switch s = (Switch) v;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                if (s.isChecked()){
+                    s.setThumbTintList(ColorStateList.valueOf(UIHelpers.purple));
+                    s.setTrackTintList(ColorStateList.valueOf(UIHelpers.purple));
+                } else {
+                    s.setThumbTintList(ColorStateList.valueOf(UIHelpers.teamColor));
+                    s.setTrackTintList(ColorStateList.valueOf(UIHelpers.teamColor));
+                }
+        }
     }
 }

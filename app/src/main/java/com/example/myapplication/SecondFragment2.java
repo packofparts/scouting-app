@@ -3,89 +3,81 @@ package com.example.myapplication;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
+
 import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.res.ColorStateList;
-import android.database.DataSetObserver;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
-import android.view.KeyEvent;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
-import android.widget.Switch;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentSecond2Binding;
-import com.example.myapplication.databinding.FragmentSecondBinding;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.Objects;
 
 public class SecondFragment2 extends Fragment {
 
     private FragmentSecond2Binding binding;
+    public static String[] chainAttempts = {"No Attempt", "Failed Attempt", "Successful Attempt"};
+    public static String[] harmonyAttempts = {"No Attempt", "Failed Attempt", "2 On Chain", "3 On Chain"};
+    public static String teleOpNotes = "";
+    public static int noteStuck = 0;
+    public static int noteSuccess = 0;
+    public static int notesThrown = 0;
+    public static int notesHit = 0;
+    public static int chainAttemptIndex = 0;
+    public static int harmonyAttemptIndex = 0;
+    public static String teamNumber = "0";
+    public static boolean human = false;
     ViewGroup v = null;
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
+            @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
 
         binding = FragmentSecond2Binding.inflate(inflater, container, false);
         v = container;
-        binding.team.setText("Team " + MainActivity.teamNumber);
+        binding.team.setText("Team " + SecondFragment2.teamNumber);
         //binding.team.setText(getActivity().toString());
-        binding.notesStuckCounter.setText("" + MainActivity.noteStuck);
-        binding.notesSuccessCounter.setText("" + MainActivity.noteSuccess);
-        binding.notesThrownCounter.setText("" + MainActivity.notesThrown);
-        binding.notesHitCounter.setText("" + MainActivity.notesHit);
-        binding.human.setChecked(MainActivity.human);
-        binding.textInput.setText(MainActivity.teleOpNotes);
-        binding.characterLimit.setText("Character Limit: " + binding.textInput.getText().length() + "/150");
+        binding.notesStuckCounter.setText(String.valueOf(UserModel.getMatchData().getTrapFail()));
+        binding.notesSuccessCounter.setText(String.valueOf(UserModel.getMatchData().getTrapSucess()));
+        binding.notesThrownCounter.setText(String.valueOf(UserModel.getMatchData().getHumanPlayerNotesThrown()));
+        binding.notesHitCounter.setText(String.valueOf(UserModel.getMatchData().getHumanPlayerNotesSpotlighted()));
+        binding.human.setChecked(UserModel.getMatchData().getHumanPlayerAtAmp());
+        binding.textInput.setText(UserModel.getMatchData().getNotes());
+        binding.characterLimit.setText("Character Limit: " + Objects.requireNonNull(binding.textInput.getText()).length() + "/150");
         return binding.getRoot();
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
 
-        binding.next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment2.this)
-                        .navigate(R.id.action_SecondFragment2_to_FirstFragment);
-            }
-        });
+        binding.next.setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment2.this)
+                .navigate(R.id.action_SecondFragment2_to_FirstFragment));
 
-        binding.prev.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment2.this)
-                        .navigate(R.id.action_SecondFragment2_to_SecondFragment);
-            }
-        });
+        binding.prev.setOnClickListener(view12 -> NavHostFragment.findNavController(SecondFragment2.this)
+                .navigate(R.id.action_SecondFragment2_to_SecondFragment));
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
-        ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         float height = displayMetrics.heightPixels;
         float width = displayMetrics.widthPixels;
         ViewGroup.LayoutParams layoutParams = binding.relativeLayoutFirst.getLayoutParams();
@@ -100,15 +92,12 @@ public class SecondFragment2 extends Fragment {
         binding.title.setTranslationX((width - 136)/ 2.0f);
         binding.team.setTranslationY(height * 0.127f);
         binding.team.setTranslationX(binding.title.getX());
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
+        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", 0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f);
         animation.setDuration(1000);
-        binding.pop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                animation.start();
-                MainActivity.darkMode = !MainActivity.darkMode;
-                UIHelpers.lightDark(v, MainActivity.darkMode);
-            }
+        binding.pop.setOnClickListener(view13 -> {
+            animation.start();
+            UIHelpers.darkMode = !UIHelpers.darkMode;
+            UIHelpers.lightDark(v, UIHelpers.darkMode);
         });
 
         binding.input.setTranslationY(height * 0.784f);
@@ -116,10 +105,10 @@ public class SecondFragment2 extends Fragment {
         binding.characterLimit.setTranslationY(height * 0.875f);
         binding.characterLimit.setTranslationX(width * 0.073f);
         binding.textInput.addTextChangedListener(new TextWatcher() {
-            String text = binding.textInput.getText() + "";
+            String text = String.valueOf(binding.textInput.getText());
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                text = binding.textInput.getText() + "";
+                text = String.valueOf(binding.textInput.getText());
             }
 
             @Override
@@ -127,42 +116,39 @@ public class SecondFragment2 extends Fragment {
 
             }
 
+            @SuppressLint("SetTextI18n")
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.length() > 150) {
                     binding.textInput.setText(text);
                 }
-                binding.characterLimit.setText("Character Limit: " + binding.textInput.getText().length() + "/150");
+                binding.characterLimit.setText("Character Limit: " + Objects.requireNonNull(binding.textInput.getText()).length() + "/150");
                 UserModel.getMatchData().setNotes(binding.textInput.getText().toString());
             }
         });
-        binding.textInput.setOnTouchListener(new View.OnTouchListener(){
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                binding.relativeLayoutFirst.setTranslationY(-binding.input.getTranslationY() + 100);
-                return false;
-            }
+        binding.textInput.setOnTouchListener((v, event) -> {
+            binding.relativeLayoutFirst.setTranslationY(-binding.input.getTranslationY() + 100);
+            return false;
         });
         binding.textInput.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        binding.textInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE){
-                    binding.relativeLayoutFirst.setTranslationY(0f);
-                }
-                return false;
+        binding.textInput.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE){
+                binding.relativeLayoutFirst.setTranslationY(0f);
+            }else {
+                Log.d("", String.valueOf(actionId));
             }
+            return false;
         });
-        ArrayAdapter<String> chainAdapter = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, MainActivity.chainAttempts);
+        ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, SecondFragment2.chainAttempts);
         binding.chainAttempt.setAdapter(chainAdapter);
-        binding.chainAttempt.setSelection(MainActivity.chainAttemptIndex);
+        binding.chainAttempt.setSelection(SecondFragment2.chainAttemptIndex);
         binding.chainAttempt.setTranslationY(height * 0.201f);
         binding.chainAttempt.setTranslationX(width * 0.366f);
         binding.chainAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //TODO: UserModel.getMatchData().setChaining(position);
+                //TODO: UserModel.getMatchData().setChaining(<insert enum here>);
+                SecondFragment2.chainAttemptIndex = position;
             }
 
             @Override
@@ -175,16 +161,17 @@ public class SecondFragment2 extends Fragment {
         binding.chain.setTranslationY(height * 0.201f);
         binding.chain.setTranslationX(width * 0.073f);
 
-        ArrayAdapter<String> harmonyAdapter = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, MainActivity.harmonyAttempts);
+        ArrayAdapter<String> harmonyAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, SecondFragment2.harmonyAttempts);
         binding.harmonyAttempt.setAdapter(harmonyAdapter);
-        binding.harmonyAttempt.setSelection(MainActivity.harmonyAttemptIndex);
+        binding.harmonyAttempt.setSelection(SecondFragment2.harmonyAttemptIndex);
         binding.harmonyAttempt.setTranslationY(height * 0.302f);
         binding.harmonyAttempt.setTranslationX(width * 0.366f);
         binding.harmonyAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //TODO: UserModel.getMatchData().setHarmo(position);
+                //TODO: UserModel.getMatchData().setHarmo(<insert enum here>);
+                SecondFragment2.harmonyAttemptIndex = position;
             }
 
             @Override
@@ -201,25 +188,18 @@ public class SecondFragment2 extends Fragment {
         binding.notesStuck.setTranslationY(height * 0.417f);
         binding.minusNotesStuck.setTranslationX(width * 0.366f);
         binding.minusNotesStuck.setTranslationY(height * 0.396f);
-        binding.minusNotesStuck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (MainActivity.noteStuck > 0){
-                    MainActivity.noteStuck --;
-
-                    binding.notesStuckCounter.setText("" + MainActivity.noteStuck);
-                }
+        binding.minusNotesStuck.setOnClickListener(view14 -> {
+            if (UserModel.getMatchData().getTrapFail() > 0){
+                UserModel.getMatchData().setTrapFail(UserModel.getMatchData().getTrapFail() - 1);
+                binding.notesStuckCounter.setText(String.valueOf(UserModel.getMatchData().getTrapFail()));
             }
         });
         binding.plusNotesStuck.setTranslationX(width * 0.732f);
         binding.plusNotesStuck.setTranslationY(height * 0.396f);
-        binding.plusNotesStuck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (MainActivity.noteStuck < 3) {
-                    MainActivity.noteStuck++;
-                    binding.notesStuckCounter.setText("" + MainActivity.noteStuck);
-                }
+        binding.plusNotesStuck.setOnClickListener(view15 -> {
+            if (UserModel.getMatchData().getTrapFail() < 3) {;
+                UserModel.getMatchData().setTrapFail(UserModel.getMatchData().getTrapFail() + 1);
+                binding.notesStuckCounter.setText(String.valueOf(UserModel.getMatchData().getTrapFail()));
             }
         });
         binding.notesStuckCounter.setTranslationX(width * 0.598f);
@@ -229,24 +209,18 @@ public class SecondFragment2 extends Fragment {
         binding.notesSuccess.setTranslationY(height * 0.576f);
         binding.minusNotesSuccess.setTranslationX(width * 0.366f);
         binding.minusNotesSuccess.setTranslationY(height * 0.525f);
-        binding.minusNotesSuccess.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (MainActivity.noteSuccess > 0){
-                    MainActivity.noteSuccess --;
-                    binding.notesSuccessCounter.setText("" + MainActivity.noteSuccess);
-                }
+        binding.minusNotesSuccess.setOnClickListener(view16 -> {
+            if (UserModel.getMatchData().getTrapSucess() > 0){
+                UserModel.getMatchData().setTrapSucess(UserModel.getMatchData().getTrapSucess() - 1);
+                binding.notesSuccessCounter.setText(String.valueOf(UserModel.getMatchData().getTrapSucess()));
             }
         });
         binding.plusNotesSuccess.setTranslationX(width * 0.732f);
         binding.plusNotesSuccess.setTranslationY(height * 0.525f);
-        binding.plusNotesSuccess.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (MainActivity.noteSuccess < 3) {
-                    MainActivity.noteSuccess++;
-                    binding.notesSuccessCounter.setText("" + MainActivity.noteSuccess);
-                }
+        binding.plusNotesSuccess.setOnClickListener(view17 -> {
+            if (UserModel.getMatchData().getTrapSucess() < 3) {
+                UserModel.getMatchData().setTrapSucess(UserModel.getMatchData().getTrapSucess() + 1);
+                binding.notesSuccessCounter.setText(String.valueOf(UserModel.getMatchData().getTrapSucess()));
             }
         });
         binding.notesSuccessCounter.setTranslationX(width * 0.598f);
@@ -254,79 +228,27 @@ public class SecondFragment2 extends Fragment {
 
         binding.human.setTranslationY(height * 0.719f);
         binding.human.setTranslationX(width * 0.073f);
-        binding.human.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (binding.human.isChecked()){
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        binding.human.setThumbTintList(ColorStateList.valueOf(UIHelpers.purple));
-                        binding.human.setTrackTintList(ColorStateList.valueOf(UIHelpers.purple));
-                    }
-                    ViewGroup.LayoutParams layoutParams = binding.relativeLayoutFirst.getLayoutParams();
-                    layoutParams.width = (int) width;
-                    layoutParams.height = (int) height + 500;
-                    binding.relativeLayoutFirst.setLayoutParams(layoutParams);
-                    binding.next.setTranslationY(height * 0.863f + 500);
-                    binding.prev.setTranslationY(height * 0.863f + 500);
-                    binding.input.setTranslationY(binding.next.getTranslationY() - 118);
-                    binding.characterLimit.setTranslationY(binding.input.getTranslationY() + (height * 0.091f));
-                    binding.notesThrown.setVisibility(VISIBLE);
-                    binding.plusNotesThrown.setVisibility(VISIBLE);
-                    binding.minusNotesThrown.setVisibility(VISIBLE);
-                    binding.notesThrownCounter.setVisibility(VISIBLE);
-                    binding.notesHit.setVisibility(VISIBLE);
-                    binding.plusNotesHit.setVisibility(VISIBLE);
-                    binding.minusNotesHit.setVisibility(VISIBLE);
-                    binding.notesHitCounter.setVisibility(VISIBLE);
-                } else {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        binding.human.setThumbTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-                        binding.human.setTrackTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-                    }
-                    ViewGroup.LayoutParams layoutParams = binding.relativeLayoutFirst.getLayoutParams();
-                    layoutParams.width = (int) width;
-                    layoutParams.height = (int) height - 38;
-                    binding.relativeLayoutFirst.setLayoutParams(layoutParams);
-                    binding.next.setTranslationY(height * 0.863f);
-                    binding.prev.setTranslationY(height * 0.863f);
-                    binding.input.setTranslationY(height * 0.784f);
-                    binding.characterLimit.setTranslationY(height * 0.875f);
-                    binding.notesThrown.setVisibility(GONE);
-                    binding.plusNotesThrown.setVisibility(GONE);
-                    binding.minusNotesThrown.setVisibility(GONE);
-                    binding.notesThrownCounter.setVisibility(GONE);
-                    binding.notesHit.setVisibility(GONE);
-                    binding.plusNotesHit.setVisibility(GONE);
-                    binding.minusNotesHit.setVisibility(GONE);
-                    binding.notesHitCounter.setVisibility(GONE);
-                }
-                UserModel.getMatchData().setHumanPlayerAtAmp(binding.human.isChecked());
-            }
+        binding.human.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            humanOperation(binding.human.isChecked(), width, height);
+            UserModel.getMatchData().setHumanPlayerAtAmp(binding.human.isChecked());
+            SecondFragment2.human = binding.human.isChecked();
         });
         binding.notesThrown.setTranslationY(binding.notesStuck.getTranslationY() + 530);
         binding.notesThrown.setTranslationX(binding.notesStuck.getTranslationX());
         binding.minusNotesThrown.setTranslationY(binding.minusNotesStuck.getTranslationY() + 500);
         binding.minusNotesThrown.setTranslationX(binding.minusNotesStuck.getTranslationX());
-        binding.minusNotesThrown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (MainActivity.notesThrown > 0) {
-                    MainActivity.notesThrown--;
-                    UserModel.getMatchData().setHumanPlayerNotesThrown(MainActivity.notesThrown);
-                    binding.notesThrownCounter.setText("" + MainActivity.notesThrown);
-                }
+        binding.minusNotesThrown.setOnClickListener(v -> {
+            if (UserModel.getMatchData().getHumanPlayerNotesThrown() > 0) {
+                UserModel.getMatchData().setHumanPlayerNotesThrown(UserModel.getMatchData().getHumanPlayerNotesThrown() - 1);
+                binding.notesThrownCounter.setText(String.valueOf(UserModel.getMatchData().getHumanPlayerNotesThrown()));
             }
         });
         binding.plusNotesThrown.setTranslationY(binding.plusNotesStuck.getTranslationY() + 500);
         binding.plusNotesThrown.setTranslationX(binding.plusNotesStuck.getTranslationX());
-        binding.plusNotesThrown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (MainActivity.notesThrown < 3) {
-                    MainActivity.notesThrown++;
-                    UserModel.getMatchData().setHumanPlayerNotesThrown(MainActivity.notesThrown);
-                    binding.notesThrownCounter.setText("" + MainActivity.notesThrown);
-                }
+        binding.plusNotesThrown.setOnClickListener(v -> {
+            if (UserModel.getMatchData().getHumanPlayerNotesThrown() < 3) {
+                UserModel.getMatchData().setHumanPlayerNotesThrown(UserModel.getMatchData().getHumanPlayerNotesThrown() + 1);
+                binding.notesThrownCounter.setText(String.valueOf(UserModel.getMatchData().getHumanPlayerNotesThrown()));
             }
         });
         binding.notesThrownCounter.setTranslationY(binding.notesStuckCounter.getTranslationY() + 500);
@@ -336,74 +258,25 @@ public class SecondFragment2 extends Fragment {
         binding.notesHit.setTranslationX(binding.notesSuccess.getTranslationX());
         binding.minusNotesHit.setTranslationY(binding.minusNotesSuccess.getTranslationY() + 500);
         binding.minusNotesHit.setTranslationX(binding.minusNotesSuccess.getTranslationX());
-        binding.minusNotesHit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (MainActivity.notesHit > 0) {
-                    MainActivity.notesHit--;
-                    UserModel.getMatchData().setHumanPlayerNotesSpotlighted(MainActivity.notesHit);
-                    binding.notesHitCounter.setText("" + MainActivity.notesHit);
-                }
-            }
+        binding.minusNotesHit.setOnClickListener(v -> {
+            if (UserModel.getMatchData().getHumanPlayerNotesSpotlighted() > 0) {
+                UserModel.getMatchData().setHumanPlayerNotesSpotlighted(UserModel.getMatchData().getHumanPlayerNotesSpotlighted() - 1);
+                binding.notesHitCounter.setText(String.valueOf(UserModel.getMatchData().getHumanPlayerNotesSpotlighted()));            }
         });
         binding.plusNotesHit.setTranslationY(binding.plusNotesSuccess.getTranslationY() + 500);
         binding.plusNotesHit.setTranslationX(binding.plusNotesSuccess.getTranslationX());
-        binding.plusNotesHit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (MainActivity.notesHit < 3) {
-                    MainActivity.notesHit++;
-                    UserModel.getMatchData().setHumanPlayerNotesSpotlighted(MainActivity.notesHit);
-                    binding.notesHitCounter.setText("" + MainActivity.notesHit);
-                }
+        binding.plusNotesHit.setOnClickListener(v -> {
+            if (UserModel.getMatchData().getHumanPlayerNotesSpotlighted() < 3) {
+                UserModel.getMatchData().setHumanPlayerNotesSpotlighted(UserModel.getMatchData().getHumanPlayerNotesSpotlighted() + 1);
+                binding.notesHitCounter.setText(String.valueOf(UserModel.getMatchData().getHumanPlayerNotesSpotlighted()));
             }
         });
         binding.notesHitCounter.setTranslationY(binding.notesSuccessCounter.getTranslationY() + 500);
         binding.notesHitCounter.setTranslationX(binding.notesSuccessCounter.getTranslationX());
-        if (binding.human.isChecked()){
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                binding.human.setThumbTintList(ColorStateList.valueOf(UIHelpers.purple));
-                binding.human.setTrackTintList(ColorStateList.valueOf(UIHelpers.purple));
-            }
-            ViewGroup.LayoutParams layoutParam = binding.relativeLayoutFirst.getLayoutParams();
-            layoutParam.width = (int) width;
-            layoutParam.height = (int) height + 500;
-            binding.relativeLayoutFirst.setLayoutParams(layoutParam);
-            binding.next.setTranslationY(height * 0.863f + 500);
-            binding.prev.setTranslationY(height * 0.863f + 500);
-            binding.input.setTranslationY(binding.next.getTranslationY() - 118);
-            binding.characterLimit.setTranslationY(binding.input.getTranslationY() + (height * 0.091f));
-            binding.notesThrown.setVisibility(VISIBLE);
-            binding.plusNotesThrown.setVisibility(VISIBLE);
-            binding.minusNotesThrown.setVisibility(VISIBLE);
-            binding.notesThrownCounter.setVisibility(VISIBLE);
-            binding.notesHit.setVisibility(VISIBLE);
-            binding.plusNotesHit.setVisibility(VISIBLE);
-            binding.minusNotesHit.setVisibility(VISIBLE);
-            binding.notesHitCounter.setVisibility(VISIBLE);
-        } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                binding.human.setThumbTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-                binding.human.setTrackTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-            }
-            ViewGroup.LayoutParams layoutParam = binding.relativeLayoutFirst.getLayoutParams();
-            layoutParam.width = (int) width;
-            layoutParam.height = (int) height - 38;
-            binding.relativeLayoutFirst.setLayoutParams(layoutParam);
-            binding.next.setTranslationY(height * 0.863f);
-            binding.prev.setTranslationY(height * 0.863f);
-            binding.input.setTranslationY(height * 0.784f);
-            binding.characterLimit.setTranslationY(height * 0.875f);
-            binding.notesThrown.setVisibility(GONE);
-            binding.plusNotesThrown.setVisibility(GONE);
-            binding.minusNotesThrown.setVisibility(GONE);
-            binding.notesThrownCounter.setVisibility(GONE);
-            binding.notesHit.setVisibility(GONE);
-            binding.plusNotesHit.setVisibility(GONE);
-            binding.minusNotesHit.setVisibility(GONE);
-            binding.notesHitCounter.setVisibility(GONE);
-        }
-        UIHelpers.lightDark(v, MainActivity.darkMode);
+
+        humanOperation(binding.human.isChecked(), width, height);
+        UIHelpers.lightDark(v, UIHelpers.darkMode);
+
     }
 
     @Override
@@ -412,10 +285,32 @@ public class SecondFragment2 extends Fragment {
         binding = null;
     }
 
-    /**
-     *
-     * @param v current ViewGroup obtained from onCreateView
-     * @param mode false for light mode, true for dark mode
-     */
+    public void humanOperation(boolean checked, float width, float height){
+        int layout = checked ? 500:-38;
+        int view = checked? 500: 0;
+        int vis = checked? VISIBLE:GONE;
+        ColorStateList col = checked? ColorStateList.valueOf(UIHelpers.purple): ColorStateList.valueOf(UIHelpers.teamColor);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            binding.human.setThumbTintList(col);
+            binding.human.setTrackTintList(col);
+        }
+        ViewGroup.LayoutParams layoutParam = binding.relativeLayoutFirst.getLayoutParams();
+        layoutParam.width = (int) width;
+        layoutParam.height = (int) height + layout;
+        binding.relativeLayoutFirst.setLayoutParams(layoutParam);
+        binding.next.setTranslationY(height * 0.863f + view);
+        binding.prev.setTranslationY(height * 0.863f + view);
+        float input = checked? binding.next.getTranslationY() - 118: height * 0.784f;
+        binding.input.setTranslationY(input);
+        binding.characterLimit.setTranslationY(binding.input.getTranslationY() + (height * 0.091f));
+        binding.notesThrown.setVisibility(vis);
+        binding.plusNotesThrown.setVisibility(vis);
+        binding.minusNotesThrown.setVisibility(vis);
+        binding.notesThrownCounter.setVisibility(vis);
+        binding.notesHit.setVisibility(vis);
+        binding.plusNotesHit.setVisibility(vis);
+        binding.minusNotesHit.setVisibility(vis);
+        binding.notesHitCounter.setVisibility(vis);
+    }
 
 }

@@ -25,13 +25,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.myapplication.databinding.FragmentSecond2Binding;
+import com.example.myapplication.databinding.FragmentEndGameBinding;
 
 import java.util.Objects;
 
-public class SecondFragment2 extends Fragment {
+public class EndGamePage extends Fragment {
 
-    private FragmentSecond2Binding binding;
+    private FragmentEndGameBinding binding;
     public enum Chain{
         NONE,
         FAILED,
@@ -64,16 +64,16 @@ public class SecondFragment2 extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentSecond2Binding.inflate(inflater, container, false);
+        binding = FragmentEndGameBinding.inflate(inflater, container, false);
         v = container;
-        binding.team.setText("Team " + SecondFragment2.teamNumber);
+        binding.team.setText("Team " + EndGamePage.teamNumber);
         //binding.team.setText(getActivity().toString());
-        binding.notesStuckCounter.setText(String.valueOf(SecondFragment2.noteStuck));
-        binding.notesSuccessCounter.setText(String.valueOf(SecondFragment2.noteSuccess));
-        binding.notesThrownCounter.setText(String.valueOf(SecondFragment2.notesThrown));
-        binding.notesHitCounter.setText(String.valueOf(SecondFragment2.notesHit));
-        binding.human.setChecked(SecondFragment2.human);
-        binding.textInput.setText(SecondFragment2.teleOpNotes);
+        binding.notesStuckCounter.setText(String.valueOf(EndGamePage.noteStuck));
+        binding.notesSuccessCounter.setText(String.valueOf(EndGamePage.noteSuccess));
+        binding.notesThrownCounter.setText(String.valueOf(EndGamePage.notesThrown));
+        binding.notesHitCounter.setText(String.valueOf(EndGamePage.notesHit));
+        binding.human.setChecked(EndGamePage.human);
+        binding.textInput.setText(EndGamePage.teleOpNotes);
         binding.characterLimit.setText("Character Limit: " + Objects.requireNonNull(binding.textInput.getText()).length() + "/150");
         return binding.getRoot();
     }
@@ -82,10 +82,10 @@ public class SecondFragment2 extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.next.setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment2.this)
+        binding.next.setOnClickListener(view1 -> NavHostFragment.findNavController(EndGamePage.this)
                 .navigate(R.id.action_SecondFragment2_to_FirstFragment));
 
-        binding.prev.setOnClickListener(view12 -> NavHostFragment.findNavController(SecondFragment2.this)
+        binding.prev.setOnClickListener(view12 -> NavHostFragment.findNavController(EndGamePage.this)
                 .navigate(R.id.action_SecondFragment2_to_SecondFragment));
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -135,7 +135,7 @@ public class SecondFragment2 extends Fragment {
                     binding.textInput.setText(text);
                 }
                 binding.characterLimit.setText("Character Limit: " + Objects.requireNonNull(binding.textInput.getText()).length() + "/150");
-                SecondFragment2.teleOpNotes = String.valueOf(binding.textInput.getText());
+                EndGamePage.teleOpNotes = String.valueOf(binding.textInput.getText());
             }
         });
         binding.textInput.setOnTouchListener((v, event) -> {
@@ -153,13 +153,13 @@ public class SecondFragment2 extends Fragment {
         });
         ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Attempt", "Failed Attempt", "Successful Attempt"});
         binding.chainAttempt.setAdapter(chainAdapter);
-        binding.chainAttempt.setSelection(SecondFragment2.chainAttemptIndex);
+        binding.chainAttempt.setSelection(EndGamePage.chainAttemptIndex);
         binding.chainAttempt.setTranslationY(height * 0.201f);
         binding.chainAttempt.setTranslationX(width * 0.366f);
         binding.chainAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                SecondFragment2.chainAttemptIndex = position;
+                EndGamePage.chainAttemptIndex = position;
                 switch (position){
                     case 0:
                         chainStatus = Chain.NONE;
@@ -185,14 +185,14 @@ public class SecondFragment2 extends Fragment {
 
         ArrayAdapter<String> harmonyAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Attempt", "Failed Attempt", "2 On Chain", "3 On Chain"});
         binding.harmonyAttempt.setAdapter(harmonyAdapter);
-        binding.harmonyAttempt.setSelection(SecondFragment2.harmonyAttemptIndex);
+        binding.harmonyAttempt.setSelection(EndGamePage.harmonyAttemptIndex);
         binding.harmonyAttempt.setTranslationY(height * 0.302f);
         binding.harmonyAttempt.setTranslationX(width * 0.366f);
         binding.harmonyAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                SecondFragment2.harmonyAttemptIndex = position;
+                EndGamePage.harmonyAttemptIndex = position;
                 switch (position){
                     case 0:
                         harmonyStatus = Harmony.NONE;
@@ -226,17 +226,17 @@ public class SecondFragment2 extends Fragment {
         binding.minusNotesStuck.setTranslationX(width * 0.366f);
         binding.minusNotesStuck.setTranslationY(height * 0.396f);
         binding.minusNotesStuck.setOnClickListener(view14 -> {
-            if (SecondFragment2.noteStuck > 0){
-                SecondFragment2.noteStuck --;
-                binding.notesStuckCounter.setText(String.valueOf(SecondFragment2.noteStuck));
+            if (EndGamePage.noteStuck > 0){
+                EndGamePage.noteStuck --;
+                binding.notesStuckCounter.setText(String.valueOf(EndGamePage.noteStuck));
             }
         });
         binding.plusNotesStuck.setTranslationX(width * 0.732f);
         binding.plusNotesStuck.setTranslationY(height * 0.396f);
         binding.plusNotesStuck.setOnClickListener(view15 -> {
-            if (SecondFragment2.noteStuck < 3) {
-                SecondFragment2.noteStuck++;
-                binding.notesStuckCounter.setText(String.valueOf(SecondFragment2.noteStuck));
+            if (EndGamePage.noteStuck < 3) {
+                EndGamePage.noteStuck++;
+                binding.notesStuckCounter.setText(String.valueOf(EndGamePage.noteStuck));
             }
         });
         binding.notesStuckCounter.setTranslationX(width * 0.598f);
@@ -247,17 +247,17 @@ public class SecondFragment2 extends Fragment {
         binding.minusNotesSuccess.setTranslationX(width * 0.366f);
         binding.minusNotesSuccess.setTranslationY(height * 0.525f);
         binding.minusNotesSuccess.setOnClickListener(view16 -> {
-            if (SecondFragment2.noteSuccess > 0){
-                SecondFragment2.noteSuccess --;
-                binding.notesSuccessCounter.setText(String.valueOf(SecondFragment2.noteSuccess));
+            if (EndGamePage.noteSuccess > 0){
+                EndGamePage.noteSuccess --;
+                binding.notesSuccessCounter.setText(String.valueOf(EndGamePage.noteSuccess));
             }
         });
         binding.plusNotesSuccess.setTranslationX(width * 0.732f);
         binding.plusNotesSuccess.setTranslationY(height * 0.525f);
         binding.plusNotesSuccess.setOnClickListener(view17 -> {
-            if (SecondFragment2.noteSuccess < 3) {
-                SecondFragment2.noteSuccess++;
-                binding.notesSuccessCounter.setText(String.valueOf(SecondFragment2.noteSuccess));
+            if (EndGamePage.noteSuccess < 3) {
+                EndGamePage.noteSuccess++;
+                binding.notesSuccessCounter.setText(String.valueOf(EndGamePage.noteSuccess));
             }
         });
         binding.notesSuccessCounter.setTranslationX(width * 0.598f);
@@ -267,24 +267,24 @@ public class SecondFragment2 extends Fragment {
         binding.human.setTranslationX(width * 0.073f);
         binding.human.setOnCheckedChangeListener((buttonView, isChecked) -> {
             humanOperation(binding.human.isChecked(), width, height);
-            SecondFragment2.human = binding.human.isChecked();
+            EndGamePage.human = binding.human.isChecked();
         });
         binding.notesThrown.setTranslationY(binding.notesStuck.getTranslationY() + 530);
         binding.notesThrown.setTranslationX(binding.notesStuck.getTranslationX());
         binding.minusNotesThrown.setTranslationY(binding.minusNotesStuck.getTranslationY() + 500);
         binding.minusNotesThrown.setTranslationX(binding.minusNotesStuck.getTranslationX());
         binding.minusNotesThrown.setOnClickListener(v -> {
-            if (SecondFragment2.notesThrown > 0) {
-                SecondFragment2.notesThrown--;
-                binding.notesThrownCounter.setText(String.valueOf(SecondFragment2.notesThrown));
+            if (EndGamePage.notesThrown > 0) {
+                EndGamePage.notesThrown--;
+                binding.notesThrownCounter.setText(String.valueOf(EndGamePage.notesThrown));
             }
         });
         binding.plusNotesThrown.setTranslationY(binding.plusNotesStuck.getTranslationY() + 500);
         binding.plusNotesThrown.setTranslationX(binding.plusNotesStuck.getTranslationX());
         binding.plusNotesThrown.setOnClickListener(v -> {
-            if (SecondFragment2.notesThrown < 3) {
-                SecondFragment2.notesThrown++;
-                binding.notesThrownCounter.setText(String.valueOf(SecondFragment2.notesThrown));
+            if (EndGamePage.notesThrown < 3) {
+                EndGamePage.notesThrown++;
+                binding.notesThrownCounter.setText(String.valueOf(EndGamePage.notesThrown));
             }
         });
         binding.notesThrownCounter.setTranslationY(binding.notesStuckCounter.getTranslationY() + 500);
@@ -295,17 +295,17 @@ public class SecondFragment2 extends Fragment {
         binding.minusNotesHit.setTranslationY(binding.minusNotesSuccess.getTranslationY() + 500);
         binding.minusNotesHit.setTranslationX(binding.minusNotesSuccess.getTranslationX());
         binding.minusNotesHit.setOnClickListener(v -> {
-            if (SecondFragment2.notesHit > 0) {
-                SecondFragment2.notesHit--;
-                binding.notesHitCounter.setText(String.valueOf(SecondFragment2.notesHit));
+            if (EndGamePage.notesHit > 0) {
+                EndGamePage.notesHit--;
+                binding.notesHitCounter.setText(String.valueOf(EndGamePage.notesHit));
             }
         });
         binding.plusNotesHit.setTranslationY(binding.plusNotesSuccess.getTranslationY() + 500);
         binding.plusNotesHit.setTranslationX(binding.plusNotesSuccess.getTranslationX());
         binding.plusNotesHit.setOnClickListener(v -> {
-            if (SecondFragment2.notesHit < 3) {
-                SecondFragment2.notesHit++;
-                binding.notesHitCounter.setText(String.valueOf(SecondFragment2.notesHit));
+            if (EndGamePage.notesHit < 3) {
+                EndGamePage.notesHit++;
+                binding.notesHitCounter.setText(String.valueOf(EndGamePage.notesHit));
             }
         });
         binding.notesHitCounter.setTranslationY(binding.notesSuccessCounter.getTranslationY() + 500);

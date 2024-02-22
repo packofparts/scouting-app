@@ -19,19 +19,19 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.myapplication.databinding.FragmentThirdBinding;
+import com.example.myapplication.databinding.FragmentAutoBinding;
 
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ThirdFragment#newInstance} factory method to
+ * Use the {@link AutoPage#newInstance} factory method to
  * create an instance of this fragment.
  */
 
-public class ThirdFragment extends Fragment {
+public class AutoPage extends Fragment {
 
 
-    private FragmentThirdBinding binding;
+    private FragmentAutoBinding binding;
     ViewGroup v = null;
     private static ColorStateList purple = ColorStateList.valueOf(Color.parseColor("#6750A3"));
     private static ColorStateList blue = ColorStateList.valueOf(Color.parseColor("#73C2F0"));
@@ -42,13 +42,13 @@ public class ThirdFragment extends Fragment {
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState
     ){
-        binding = FragmentThirdBinding.inflate(inflater, container, false);
+        binding = FragmentAutoBinding.inflate(inflater, container, false);
         v = container;
             setSwitchColor(binding.switch1);
             setSwitchColor(binding.switch2);
             setSwitchColor(binding.switch3);
-        binding.switch2.setChecked(ThirdFragment.defense);
-        binding.switch3.setChecked(ThirdFragment.ground);
+        binding.switch2.setChecked(AutoPage.defense);
+        binding.switch3.setChecked(AutoPage.ground);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             binding.switch3.setThumbTintList(blue);
@@ -108,7 +108,7 @@ public class ThirdFragment extends Fragment {
         binding.toSecondFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(ThirdFragment.this)
+                NavHostFragment.findNavController(AutoPage.this)
                         .navigate(R.id.action_ThirdFragment_to_SecondFragment);
                 //getting the value of variables when switching to teleop from auto
                 switch1.isChecked();
@@ -144,12 +144,12 @@ public class ThirdFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ThirdFragment() {
+    public AutoPage() {
         // Required empty public constructor
     }
 
-    public static ThirdFragment newInstance(String param1, String param2) {
-        ThirdFragment fragment = new ThirdFragment();
+    public static AutoPage newInstance(String param1, String param2) {
+        AutoPage fragment = new AutoPage();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

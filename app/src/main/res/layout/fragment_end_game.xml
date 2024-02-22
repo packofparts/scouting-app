@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:barrierMargin="1dp"
-    tools:context=".SecondFragment2">
+    tools:context=".EndGamePage">
 
     <RelativeLayout
         android:id="@+id/relativeLayout_first"

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:barrierMargin="0dp"
-    tools:context=".SecondFragment">
+    tools:context=".TeleOpPage">
 
     <RelativeLayout
         android:id="@+id/relativeLayout_first"

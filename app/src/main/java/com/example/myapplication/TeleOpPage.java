@@ -16,13 +16,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.myapplication.databinding.FragmentSecondBinding;
+import com.example.myapplication.databinding.FragmentTeleBinding;
 
 
 
-public class SecondFragment extends Fragment {
+public class TeleOpPage extends Fragment {
 
-    private FragmentSecondBinding binding;
+    private FragmentTeleBinding binding;
     public static int amp = 0;
     public static int speakerUnamp = 0;
     public static int speakerAmp = 0;
@@ -39,20 +39,20 @@ public class SecondFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentSecondBinding.inflate(inflater, container, false);
+        binding = FragmentTeleBinding.inflate(inflater, container, false);
         v = container;
         binding.team.setText("Team " + MainActivity.teamNumber);
-        binding.ampCounter.setText(String.valueOf(SecondFragment.amp));
-        binding.speakerUnampCounter.setText(String.valueOf(SecondFragment.speakerUnamp));
-        binding.speakerAmpCounter.setText(String.valueOf(SecondFragment.speakerAmp));
-        binding.broke.setChecked(SecondFragment.broke);
+        binding.ampCounter.setText(String.valueOf(TeleOpPage.amp));
+        binding.speakerUnampCounter.setText(String.valueOf(TeleOpPage.speakerUnamp));
+        binding.speakerAmpCounter.setText(String.valueOf(TeleOpPage.speakerAmp));
+        binding.broke.setChecked(TeleOpPage.broke);
 
         checkedOperation(binding.broke);
-        binding.defense.setChecked(SecondFragment.defense);
+        binding.defense.setChecked(TeleOpPage.defense);
         checkedOperation(binding.defense);
-        binding.ground.setChecked(SecondFragment.ground);
+        binding.ground.setChecked(TeleOpPage.ground);
         checkedOperation(binding.ground);
-        binding.source.setChecked(SecondFragment.source);
+        binding.source.setChecked(TeleOpPage.source);
         checkedOperation(binding.source);
         return binding.getRoot();
     }
@@ -61,9 +61,9 @@ public class SecondFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        binding.next.setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
+        binding.next.setOnClickListener(view1 -> NavHostFragment.findNavController(TeleOpPage.this)
                 .navigate(R.id.action_SecondFragment_to_SecondFragment2));
-        binding.prev.setOnClickListener(view12 -> NavHostFragment.findNavController(SecondFragment.this)
+        binding.prev.setOnClickListener(view12 -> NavHostFragment.findNavController(TeleOpPage.this)
                 .navigate(R.id.action_SecondFragment_to_ThirdFragment));
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -94,41 +94,41 @@ public class SecondFragment extends Fragment {
         binding.broke.setOnCheckedChangeListener((buttonView, isChecked) -> {
 
             checkedOperation(binding.broke);
-            SecondFragment.broke = binding.broke.isChecked();
+            TeleOpPage.broke = binding.broke.isChecked();
         });
         binding.defense.setTranslationX(width * 0.073f);
         binding.defense.setTranslationY(height * 0.288f);
         binding.defense.setOnCheckedChangeListener((buttonView, isChecked) -> {
             checkedOperation(binding.defense);
-            SecondFragment.defense = binding.defense.isChecked();
+            TeleOpPage.defense = binding.defense.isChecked();
         });
         binding.ground.setTranslationX(width * 0.073f);
         binding.ground.setTranslationY(height * 0.360f);
         binding.ground.setOnCheckedChangeListener((buttonView, isChecked) -> {
             checkedOperation(binding.ground);
-            SecondFragment.ground = binding.ground.isChecked();
+            TeleOpPage.ground = binding.ground.isChecked();
         });
         binding.source.setTranslationX(width * 0.073f);
         binding.source.setTranslationY(height * 0.432f);
         binding.source.setOnCheckedChangeListener((buttonView, isChecked) -> {
             checkedOperation(binding.source);
-            SecondFragment.source = binding.source.isChecked();
+            TeleOpPage.source = binding.source.isChecked();
         });
         binding.ampNotes.setTranslationX(width * 0.073f);
         binding.ampNotes.setTranslationY(height * 0.504f);
         binding.minusAmp.setTranslationX(width * 0.366f);
         binding.minusAmp.setTranslationY(height * 0.453f);
         binding.minusAmp.setOnClickListener(view14 -> {
-            if (SecondFragment.amp > 0){
-                SecondFragment.amp --;
-                binding.ampCounter.setText(String.valueOf(SecondFragment.amp));
+            if (TeleOpPage.amp > 0){
+                TeleOpPage.amp --;
+                binding.ampCounter.setText(String.valueOf(TeleOpPage.amp));
             }
         });
         binding.plusAmp.setTranslationX(width * 0.732f);
         binding.plusAmp.setTranslationY(height * 0.453f);
         binding.plusAmp.setOnClickListener(view15 -> {
-            SecondFragment.amp ++;
-            binding.ampCounter.setText(String.valueOf(SecondFragment.amp));
+            TeleOpPage.amp ++;
+            binding.ampCounter.setText(String.valueOf(TeleOpPage.amp));
         });
         binding.ampCounter.setTranslationX(width * 0.598f);
         binding.ampCounter.setTranslationY(height * 0.511f);
@@ -138,16 +138,16 @@ public class SecondFragment extends Fragment {
         binding.minusSpeakerUnamp.setTranslationX(width * 0.366f);
         binding.minusSpeakerUnamp.setTranslationY(height * 0.576f);
         binding.minusSpeakerUnamp.setOnClickListener(view16 -> {
-            if (SecondFragment.speakerUnamp > 0){
-                SecondFragment.speakerUnamp --;
-                binding.speakerUnampCounter.setText(String.valueOf(SecondFragment.speakerUnamp));
+            if (TeleOpPage.speakerUnamp > 0){
+                TeleOpPage.speakerUnamp --;
+                binding.speakerUnampCounter.setText(String.valueOf(TeleOpPage.speakerUnamp));
             }
         });
         binding.plusSpeakerUnamp.setTranslationX(width * 0.732f);
         binding.plusSpeakerUnamp.setTranslationY(height * 0.576f);
         binding.plusSpeakerUnamp.setOnClickListener(view17 -> {
-            SecondFragment.speakerUnamp ++;
-            binding.speakerUnampCounter.setText(String.valueOf(SecondFragment.speakerUnamp));
+            TeleOpPage.speakerUnamp ++;
+            binding.speakerUnampCounter.setText(String.valueOf(TeleOpPage.speakerUnamp));
         });
         binding.speakerUnampCounter.setTranslationX(width * 0.598f);
         binding.speakerUnampCounter.setTranslationY(height * 0.633f);
@@ -157,16 +157,16 @@ public class SecondFragment extends Fragment {
         binding.minusSpeakerAmp.setTranslationX(width * 0.366f);
         binding.minusSpeakerAmp.setTranslationY(height * 0.727f);
         binding.minusSpeakerAmp.setOnClickListener(view18 -> {
-            if (SecondFragment.speakerAmp > 0){
-                SecondFragment.speakerAmp --;
-                binding.speakerAmpCounter.setText(String.valueOf(SecondFragment.speakerAmp));
+            if (TeleOpPage.speakerAmp > 0){
+                TeleOpPage.speakerAmp --;
+                binding.speakerAmpCounter.setText(String.valueOf(TeleOpPage.speakerAmp));
             }
         });
         binding.plusSpeakerAmp.setTranslationX(width * 0.732f);
         binding.plusSpeakerAmp.setTranslationY(height * 0.727f);
         binding.plusSpeakerAmp.setOnClickListener(view19 -> {
-            SecondFragment.speakerAmp ++;
-            binding.speakerAmpCounter.setText(String.valueOf(SecondFragment.speakerAmp));
+            TeleOpPage.speakerAmp ++;
+            binding.speakerAmpCounter.setText(String.valueOf(TeleOpPage.speakerAmp));
         });
         binding.speakerAmpCounter.setTranslationX(width * 0.598f);
         binding.speakerAmpCounter.setTranslationY(height * 0.784f);

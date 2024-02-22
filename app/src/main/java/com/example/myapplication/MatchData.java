@@ -2,15 +2,15 @@ package com.example.myapplication;
 
 public class MatchData {
 
-    //Test Data
-    boolean testBool = false;
+    //Pre-Game
+    int teamNumber = 0;
 
     //Auto Data
     boolean workingAuto = false;
     boolean moveOutOfZone = false;
     int ampAuto = 0;
     int speakerAuto = 0;
-    enum ContactRobot {
+    public enum ContactRobot {
         None,
         Allies,
         Opposition
@@ -21,10 +21,10 @@ public class MatchData {
     boolean broke = false;
     boolean defense = false;
     int ampTeleop = 0;
-    int ampSpeaker = 0;
+    int amplifiedSpeaker = 0;
     int speakerTeleop = 0;
     int dump = 0;
-    enum NoteAcquisition {
+    public enum NoteAcquisition {
         None,
         Floor,
         Source,
@@ -33,25 +33,23 @@ public class MatchData {
     NoteAcquisition noteAcquired;
 
     //End of Match data
-    enum Chain {
+    public enum Chain {
         Nope,
         Attempted,
         Succeeded
     }
     Chain chaining;
-
-    enum Trap {
-        Nope,
-        Attempted,
-        Succeeded
-    }
-    Trap trapping;
-    enum Harmony {
+    int trapSucess = 0;
+    int trapFail = 0;
+    public enum Harmony {
         Nope,
         Attempted,
         Succeeded
     }
     Harmony harmo;
+    Boolean humanPlayerAtAmp = false;
+    int humanPlayerNotesThrown = 0;
+    int humanPlayerNotesSpotlighted = 0;
     String notes = "";
     // add human player spotlight data later
 
@@ -60,8 +58,8 @@ public class MatchData {
 
     //Test
 
-    public boolean getTestBool() {    return testBool;    }
-    public void setTestBool(boolean testBool) { this.testBool = testBool;    }
+    public int getTeamNumber() {    return teamNumber;    }
+    public void setTeamNumber(int teamNumber) { this.teamNumber = teamNumber;    }
 
     //Auto
 
@@ -120,12 +118,10 @@ public class MatchData {
         this.ampTeleop = ampTeleop;
     }
 
-    public int getAmpSpeaker() {
-        return ampSpeaker;
+    public int getAmplifiedSpeaker() {
+        return amplifiedSpeaker;
     }
-    public void setAmpSpeaker(int ampSpeaker) {
-        this.ampSpeaker = ampSpeaker;
-    }
+    public void setAmplifiedSpeaker(int amplifiedSpeaker) {   this.amplifiedSpeaker = amplifiedSpeaker;   }
 
     public int getSpeakerTeleop() {
         return speakerTeleop;
@@ -142,18 +138,28 @@ public class MatchData {
     }
 
     public NoteAcquisition getNoteAcquired() {   return noteAcquired;    }
-    public void setNoteAcquired(NoteAcquisition noteAcquired) {   this.noteAcquired = noteAcquired;   }
+    public void setNoteAcquired(NoteAcquisition noteAcquired) { this.noteAcquired = noteAcquired;  }
 
     //Endgame
 
     public Chain getChaining() {    return chaining;    }
-    public void setChaining(Chain chaining) {    this.chaining = chaining;    }
+    public void setChaining(Chain chain) { this.chaining = chain;  }
 
-    public Trap getTrapping() {     return trapping;    }
-    public void setTrapping(Trap trapping) {    this.trapping = trapping;    }
+    public int getTrapSucess() {     return trapSucess;    }
+    public void setTrapSucess(int trapSucess) {    this.trapSucess = trapSucess;    }
+
+    public int getTrapFail() {     return trapFail;    }
+    public void setTrapFail(int trapFail) {    this.trapFail = trapFail;    }
 
     public Harmony getHarmo() {     return harmo;     }
-    public void setHarmo(Harmony harmo) {     this.harmo = harmo;    }
+    public void setHarmo(Harmony harmony) { this.harmo = harmony;  }
+
+    public boolean getHumanPlayerAtAmp(){    return this.humanPlayerAtAmp;    }
+    public void setHumanPlayerAtAmp(boolean humanPlayerAtAmp){   this.humanPlayerAtAmp = humanPlayerAtAmp;    }
+    public int getHumanPlayerNotesThrown() {   return this.humanPlayerNotesThrown;    }
+    public void setHumanPlayerNotesThrown(int notes) {    this.humanPlayerNotesThrown = notes;    }
+    public int getHumanPlayerNotesSpotlighted(){    return this.humanPlayerNotesSpotlighted;    }
+    public void setHumanPlayerNotesSpotlighted(int notesSpotlighted){    this.humanPlayerNotesSpotlighted = notesSpotlighted;    }
 
     public String getNotes() {
         return notes;
@@ -161,5 +167,4 @@ public class MatchData {
     public void setNotes(String notes) {
         this.notes = notes;
     }
-  //Hello Test
 }

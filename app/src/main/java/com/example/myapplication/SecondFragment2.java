@@ -33,20 +33,20 @@ public class SecondFragment2 extends Fragment {
 
     private FragmentSecond2Binding binding;
     public enum Chain{
-        NoAttempt,
-        FailedAttempt,
-        SuccessfulAttempt
+        NONE,
+        FAILED,
+        SUCCESS
 
     }
-    public static Chain chainStatus = Chain.NoAttempt;
+    public static Chain chainStatus = Chain.NONE;
     public enum Harmony{
-        NoAttempt,
-        FailedAttempt,
-        TwoOnChain,
-        ThreeOnChain
+        NONE,
+        FAILED,
+        TWO,
+        THREE
 
     }
-    public static Harmony harmonyStatus = Harmony.NoAttempt;
+    public static Harmony harmonyStatus = Harmony.NONE;
     public static String teleOpNotes = "";
     public static int noteStuck = 0;
     public static int noteSuccess = 0;
@@ -162,13 +162,13 @@ public class SecondFragment2 extends Fragment {
                 SecondFragment2.chainAttemptIndex = position;
                 switch (position){
                     case 0:
-                        chainStatus = Chain.NoAttempt;
+                        chainStatus = Chain.NONE;
                         break;
                     case 1:
-                        chainStatus = Chain.FailedAttempt;
+                        chainStatus = Chain.FAILED;
                         break;
                     case 2:
-                        chainStatus = Chain.SuccessfulAttempt;
+                        chainStatus = Chain.SUCCESS;
                         break;
                 }
             }
@@ -195,16 +195,16 @@ public class SecondFragment2 extends Fragment {
                 SecondFragment2.harmonyAttemptIndex = position;
                 switch (position){
                     case 0:
-                        harmonyStatus = Harmony.NoAttempt;
+                        harmonyStatus = Harmony.NONE;
                         break;
                     case 1:
-                        harmonyStatus = Harmony.FailedAttempt;
+                        harmonyStatus = Harmony.FAILED;
                         break;
                     case 2:
-                        harmonyStatus = Harmony.TwoOnChain;
+                        harmonyStatus = Harmony.TWO;
                         break;
                     case 3:
-                        harmonyStatus = Harmony.ThreeOnChain;
+                        harmonyStatus = Harmony.THREE;
                         break;
 
                 }
@@ -322,6 +322,7 @@ public class SecondFragment2 extends Fragment {
         binding = null;
     }
 
+    @SuppressLint("ObsoleteSdkInt")
     public void humanOperation(boolean checked, float width, float height){
         int layout = checked ? 500:-38;
         int view = checked? 500: 0;

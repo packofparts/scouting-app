@@ -92,10 +92,10 @@ public class HomePage extends Fragment {
             @Override
             public void onClick(View view) {
                 animation.start();
-                MainActivity.darkMode = !MainActivity.darkMode;
-                uiHelpers.lightDark(v, MainActivity.darkMode);
+                UIHelpers.darkMode = !UIHelpers.darkMode;
+                UIHelpers.lightDark(v, UIHelpers.darkMode);
             }
         });
-        uiHelpers.lightDark(v, MainActivity.darkMode);
+        UIHelpers.lightDark(v, UIHelpers.darkMode);
     }
 }

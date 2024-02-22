@@ -467,7 +467,7 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:gravity="left"
-                    android:text="Notes in Trap (Stuck)"
+                    android:text="Notes in Trap (Failed)"
                     android:textColor="@color/white"
                     android:textSize="30sp"
                     android:padding="10dp"
@@ -479,7 +479,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:padding="26dp"
-                    android:text="The number of stuck notes means the number of notes the robot attempted to put in the trap but got it stuck and not fully in. "
+                    android:text="The number of failed notes means the number of notes the robot attempted to put in the trap but got stuck or fell out. "
                     android:textColor="@color/white"
                     android:textSize="15sp" />
             </TableRow>

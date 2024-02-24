@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.view.View;
@@ -38,7 +39,7 @@ public class UIHelpers {
                     }
                 }
                 if (child instanceof Switch) {
-                    Switch tx = (Switch) child;
+                    @SuppressLint("UseSwitchCompatOrMaterialCode") Switch tx = (Switch) child;
                     tx.setTextColor(Color.parseColor(viewColor));
                 }
                 if (child instanceof ViewGroup) {

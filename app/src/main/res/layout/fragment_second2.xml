@@ -94,7 +94,7 @@
             android:id="@+id/notesStuck"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:text="Notes in Trap (Stuck)"
+            android:text="Notes in Trap (Failed)"
             android:textSize="26dp"
             android:translationX="30dp"
             android:translationY="290dp" />

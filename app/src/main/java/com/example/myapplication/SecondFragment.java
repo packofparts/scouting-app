@@ -3,13 +3,14 @@ package com.example.myapplication;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Switch;
 
 import androidx.annotation.NonNull;
@@ -28,8 +29,15 @@ public class SecondFragment extends Fragment {
     public static int speakerAmp = 0;
     public static boolean broke = false;
     public static boolean defense = false;
-    public static boolean ground = false;
-    public static boolean source = false;
+    public enum Intake{
+        NONE,
+        GROUND,
+        SOURCE,
+        BOTH
+
+    }
+    public static SecondFragment.Intake intakeMethod = SecondFragment.Intake.NONE;
+    public static int intakeMethodIndex = 0;
     ViewGroup v = null;
 
     @SuppressLint("SetTextI18n")
@@ -50,10 +58,6 @@ public class SecondFragment extends Fragment {
         checkedOperation(binding.broke);
         binding.defense.setChecked(SecondFragment.defense);
         checkedOperation(binding.defense);
-        binding.ground.setChecked(SecondFragment.ground);
-        checkedOperation(binding.ground);
-        binding.source.setChecked(SecondFragment.source);
-        checkedOperation(binding.source);
         return binding.getRoot();
     }
 
@@ -102,20 +106,41 @@ public class SecondFragment extends Fragment {
             checkedOperation(binding.defense);
             UserModel.getMatchData().setDefense(binding.defense.isChecked());
         });
-        binding.ground.setTranslationX(width * 0.073f);
-        binding.ground.setTranslationY(height * 0.360f);
-        binding.ground.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            checkedOperation(binding.ground);
-            SecondFragment.ground = binding.ground.isChecked();
-            //TODO: merge with source
+        binding.intake.setTranslationX(width * 0.073f);
+        binding.intake.setTranslationY(height * 0.360f);
+        binding.intakeBackground.setTranslationX(width * 0.366f);
+        binding.intakeBackground.setTranslationY(height * 0.321f);
+        ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Intake", "Ground Intake", "Source Intake", "Both"});
+        binding.intakeMethod.setAdapter(chainAdapter);
+        binding.intakeMethod.setSelection(SecondFragment2.chainAttemptIndex);
+        binding.intakeMethod.setTranslationX(width * 0.366f);
+        binding.intakeMethod.setTranslationY(height * 0.367f);
+        binding.intakeMethod.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                SecondFragment.intakeMethodIndex = position;
+                switch (position){
+                    case 0:
+                        intakeMethod = SecondFragment.Intake.NONE;
+                        break;
+                    case 1:
+                        intakeMethod = SecondFragment.Intake.GROUND;
+                        break;
+                    case 2:
+                        intakeMethod = SecondFragment.Intake.SOURCE;
+                        break;
+                    case 3:
+                        intakeMethod = SecondFragment.Intake.BOTH;
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
         });
-        binding.source.setTranslationX(width * 0.073f);
-        binding.source.setTranslationY(height * 0.432f);
-        binding.source.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            checkedOperation(binding.source);
-            SecondFragment.source = binding.source.isChecked();
-            //TODO: merge with ground
-        });
+
         binding.ampNotes.setTranslationX(width * 0.073f);
         binding.ampNotes.setTranslationY(height * 0.504f);
         binding.minusAmp.setTranslationX(width * 0.366f);
@@ -192,11 +217,11 @@ public class SecondFragment extends Fragment {
             @SuppressLint("UseSwitchCompatOrMaterialCode") Switch s = (Switch) v;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                 if (s.isChecked()){
-                    s.setThumbTintList(ColorStateList.valueOf(UIHelpers.purple));
-                    s.setTrackTintList(ColorStateList.valueOf(UIHelpers.purple));
+                    s.setThumbTintList(UIHelpers.purpleAsList);
+                    s.setTrackTintList(UIHelpers.purpleAsList);
                 } else {
-                    s.setThumbTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-                    s.setTrackTintList(ColorStateList.valueOf(UIHelpers.teamColor));
+                    s.setThumbTintList(UIHelpers.teamColorAsList);
+                    s.setTrackTintList(UIHelpers.teamColorAsList);
                 }
         }
     }

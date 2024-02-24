@@ -329,7 +329,7 @@ public class SecondFragment2 extends Fragment {
         int layout = checked ? 500:-38;
         int view = checked? 500: 0;
         int vis = checked? VISIBLE:GONE;
-        ColorStateList col = checked? ColorStateList.valueOf(UIHelpers.purple): ColorStateList.valueOf(UIHelpers.teamColor);
+        ColorStateList col = checked? UIHelpers.purpleAsList: UIHelpers.teamColorAsList;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             binding.human.setThumbTintList(col);
             binding.human.setTrackTintList(col);

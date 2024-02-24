@@ -54,7 +54,7 @@ public class ThirdFragment extends Fragment {
             binding.switch3.setThumbTintList(blue);
             binding.switch3.setTrackTintList(blue);
         }
-
+        binding.textView4.setText("Autonomous Team " + MainActivity.teamNumber);
         return binding.getRoot();
     }
 
@@ -76,10 +76,7 @@ public class ThirdFragment extends Fragment {
         EditText numNotesInAmp = view.findViewById(R.id.numNotesInAmp);
         Spinner Contact = view.findViewById(R.id.spinner);
 
-
-
-
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotationX", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
+        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
         animation.setDuration(1000);
         binding.pop.setOnClickListener(new View.OnClickListener() {
             @Override

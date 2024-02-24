@@ -94,41 +94,44 @@ public class SecondFragment extends Fragment {
         binding.broke.setOnCheckedChangeListener((buttonView, isChecked) -> {
 
             checkedOperation(binding.broke);
-            SecondFragment.broke = binding.broke.isChecked();
+            UserModel.getMatchData().setBroke(binding.broke.isChecked());
         });
         binding.defense.setTranslationX(width * 0.073f);
         binding.defense.setTranslationY(height * 0.288f);
         binding.defense.setOnCheckedChangeListener((buttonView, isChecked) -> {
             checkedOperation(binding.defense);
-            SecondFragment.defense = binding.defense.isChecked();
+            UserModel.getMatchData().setDefense(binding.defense.isChecked());
         });
         binding.ground.setTranslationX(width * 0.073f);
         binding.ground.setTranslationY(height * 0.360f);
         binding.ground.setOnCheckedChangeListener((buttonView, isChecked) -> {
             checkedOperation(binding.ground);
             SecondFragment.ground = binding.ground.isChecked();
+            //TODO: merge with source
         });
         binding.source.setTranslationX(width * 0.073f);
         binding.source.setTranslationY(height * 0.432f);
         binding.source.setOnCheckedChangeListener((buttonView, isChecked) -> {
             checkedOperation(binding.source);
             SecondFragment.source = binding.source.isChecked();
+            //TODO: merge with ground
         });
         binding.ampNotes.setTranslationX(width * 0.073f);
         binding.ampNotes.setTranslationY(height * 0.504f);
         binding.minusAmp.setTranslationX(width * 0.366f);
         binding.minusAmp.setTranslationY(height * 0.453f);
         binding.minusAmp.setOnClickListener(view14 -> {
-            if (SecondFragment.amp > 0){
-                SecondFragment.amp --;
-                binding.ampCounter.setText(String.valueOf(SecondFragment.amp));
+            if (UserModel.getMatchData().getAmpTeleop() > 0){
+                UserModel.getMatchData().setAmpTeleop(UserModel.getMatchData().getAmpTeleop() - 1);
+                binding.ampCounter.setText(String.valueOf(UserModel.getMatchData().getAmpTeleop()));
             }
         });
         binding.plusAmp.setTranslationX(width * 0.732f);
         binding.plusAmp.setTranslationY(height * 0.453f);
         binding.plusAmp.setOnClickListener(view15 -> {
             SecondFragment.amp ++;
-            binding.ampCounter.setText(String.valueOf(SecondFragment.amp));
+            UserModel.getMatchData().setAmpTeleop(UserModel.getMatchData().getAmpTeleop() + 1);
+            binding.ampCounter.setText(String.valueOf(UserModel.getMatchData().getAmpTeleop()));
         });
         binding.ampCounter.setTranslationX(width * 0.598f);
         binding.ampCounter.setTranslationY(height * 0.511f);
@@ -138,16 +141,17 @@ public class SecondFragment extends Fragment {
         binding.minusSpeakerUnamp.setTranslationX(width * 0.366f);
         binding.minusSpeakerUnamp.setTranslationY(height * 0.576f);
         binding.minusSpeakerUnamp.setOnClickListener(view16 -> {
-            if (SecondFragment.speakerUnamp > 0){
-                SecondFragment.speakerUnamp --;
-                binding.speakerUnampCounter.setText(String.valueOf(SecondFragment.speakerUnamp));
+            if (UserModel.getMatchData().getSpeakerTeleop() > 0){
+                UserModel.getMatchData().setSpeakerTeleop(UserModel.getMatchData().getSpeakerTeleop() - 1);
+                binding.speakerUnampCounter.setText("" + UserModel.getMatchData().getSpeakerTeleop());
             }
         });
         binding.plusSpeakerUnamp.setTranslationX(width * 0.732f);
         binding.plusSpeakerUnamp.setTranslationY(height * 0.576f);
         binding.plusSpeakerUnamp.setOnClickListener(view17 -> {
             SecondFragment.speakerUnamp ++;
-            binding.speakerUnampCounter.setText(String.valueOf(SecondFragment.speakerUnamp));
+            UserModel.getMatchData().setSpeakerTeleop(UserModel.getMatchData().getSpeakerTeleop() + 1);
+            binding.speakerUnampCounter.setText(String.valueOf(UserModel.getMatchData().getSpeakerTeleop()));
         });
         binding.speakerUnampCounter.setTranslationX(width * 0.598f);
         binding.speakerUnampCounter.setTranslationY(height * 0.633f);
@@ -156,17 +160,19 @@ public class SecondFragment extends Fragment {
         binding.speakerNotesAmp.setTranslationY(height * 0.770f);
         binding.minusSpeakerAmp.setTranslationX(width * 0.366f);
         binding.minusSpeakerAmp.setTranslationY(height * 0.727f);
+
         binding.minusSpeakerAmp.setOnClickListener(view18 -> {
-            if (SecondFragment.speakerAmp > 0){
-                SecondFragment.speakerAmp --;
-                binding.speakerAmpCounter.setText(String.valueOf(SecondFragment.speakerAmp));
+            if (UserModel.getMatchData().getAmplifiedSpeaker() > 0){
+                UserModel.getMatchData().setAmplifiedSpeaker(UserModel.getMatchData().getAmplifiedSpeaker() - 1);
+                binding.speakerAmpCounter.setText(String.valueOf(UserModel.getMatchData().getAmplifiedSpeaker()));
             }
         });
         binding.plusSpeakerAmp.setTranslationX(width * 0.732f);
         binding.plusSpeakerAmp.setTranslationY(height * 0.727f);
+
         binding.plusSpeakerAmp.setOnClickListener(view19 -> {
-            SecondFragment.speakerAmp ++;
-            binding.speakerAmpCounter.setText(String.valueOf(SecondFragment.speakerAmp));
+            UserModel.getMatchData().setAmplifiedSpeaker(UserModel.getMatchData().getAmplifiedSpeaker() + 1);
+            binding.speakerAmpCounter.setText(String.valueOf(UserModel.getMatchData().getAmplifiedSpeaker()));
         });
         binding.speakerAmpCounter.setTranslationX(width * 0.598f);
         binding.speakerAmpCounter.setTranslationY(height * 0.784f);
@@ -180,6 +186,7 @@ public class SecondFragment extends Fragment {
         binding = null;
 
     }
+    @SuppressLint("ObsoleteSdkInt")
     public void checkedOperation (View v){
         if (v instanceof Switch){
             @SuppressLint("UseSwitchCompatOrMaterialCode") Switch s = (Switch) v;

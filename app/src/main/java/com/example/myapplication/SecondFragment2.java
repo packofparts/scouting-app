@@ -25,6 +25,11 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentSecond2Binding;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Objects;
 
 public class SecondFragment2 extends Fragment {
@@ -71,12 +76,36 @@ public class SecondFragment2 extends Fragment {
         return binding.getRoot();
     }
 
+    /*Suppressed due to server having no way to get the dynamic path
+        TODO: Add matchNumber to file name once added
+    */
+    @SuppressLint("SdCardPath")
+    public void writeFile() throws IOException {
+        new File("/sdcard/Documents/ScoutingData/").mkdirs();
+
+        File dataFile = new File("/sdcard/Documents/ScoutingData/data.txt");
+        dataFile.createNewFile();
+        PrintWriter pw = new PrintWriter(dataFile);
+        pw.print(UserModel.getMatchData().returnAllData());
+        pw.close();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            Files.deleteIfExists(Paths.get("/sdcard/Documents/ScoutingData/lock.txt"));
+        }
+    }
+
     @SuppressLint("ClickableViewAccessibility")
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.next.setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment2.this)
-                .navigate(R.id.action_SecondFragment2_to_FirstFragment));
+        binding.next.setOnClickListener(view1 -> {
+            try {
+                writeFile();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            NavHostFragment.findNavController(SecondFragment2.this).navigate(R.id.action_SecondFragment2_to_FirstFragment);
+        });
+
 
         binding.prev.setOnClickListener(view12 -> NavHostFragment.findNavController(SecondFragment2.this)
                 .navigate(R.id.action_SecondFragment2_to_SecondFragment));

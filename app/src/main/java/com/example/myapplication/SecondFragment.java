@@ -41,14 +41,14 @@ public class SecondFragment extends Fragment {
 
         binding = FragmentSecondBinding.inflate(inflater, container, false);
         v = container;
-        binding.team.setText("Team " + MainActivity.teamNumber);
-        binding.ampCounter.setText(String.valueOf(SecondFragment.amp));
-        binding.speakerUnampCounter.setText(String.valueOf(SecondFragment.speakerUnamp));
-        binding.speakerAmpCounter.setText(String.valueOf(SecondFragment.speakerAmp));
-        binding.broke.setChecked(SecondFragment.broke);
+        binding.team.setText("Team " + UserModel.getMatchData().getMatchNumber());
+        binding.ampCounter.setText(String.valueOf(UserModel.getMatchData().getAmpTeleop()));
+        binding.speakerUnampCounter.setText(String.valueOf(UserModel.getMatchData().getSpeakerTeleop()));
+        binding.speakerAmpCounter.setText(String.valueOf(UserModel.getMatchData().getAmplifiedSpeaker()));
+        binding.broke.setChecked(UserModel.getMatchData().isBroke());
 
         checkedOperation(binding.broke);
-        binding.defense.setChecked(SecondFragment.defense);
+        binding.defense.setChecked(UserModel.getMatchData().isDefense());
         checkedOperation(binding.defense);
         binding.ground.setChecked(SecondFragment.ground);
         checkedOperation(binding.ground);

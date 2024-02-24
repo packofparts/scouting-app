@@ -4,6 +4,7 @@ public class MatchData {
 
     //Pre-Game
     int teamNumber = 0;
+    int matchNumber = 0;
 
     //Auto Data
     boolean workingAuto = false;
@@ -56,10 +57,12 @@ public class MatchData {
 
     //Getters and Setters
 
-    //Test
+    //Pre-match
 
     public int getTeamNumber() {    return teamNumber;    }
     public void setTeamNumber(int teamNumber) { this.teamNumber = teamNumber;    }
+    public int getMatchNumber() {    return matchNumber;    }
+    public void setMatchNumber(int matchNumber) { this.matchNumber = matchNumber;    }
 
     //Auto
 

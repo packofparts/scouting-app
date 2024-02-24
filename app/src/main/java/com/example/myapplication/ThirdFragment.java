@@ -6,11 +6,14 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Switch;
 
 import androidx.annotation.NonNull;
@@ -19,6 +22,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentThirdBinding;
 
+import java.util.Objects;
 
 
 /**
@@ -32,18 +36,7 @@ public class ThirdFragment extends Fragment {
 
     private FragmentThirdBinding binding;
     ViewGroup v = null;
-
-    public static boolean defense = false;
     public static boolean ground = false;
-
-    public enum Contact{
-        NONE,
-        TEAMMATE,
-        OPPONENT,
-
-    }
-    public static ThirdFragment.Contact contactMethod = ThirdFragment.Contact.NONE;
-    public static int contactIndex = 0;
     @SuppressLint({"ObsoleteSdkInt", "SetTextI18n"})
     @Override
     public View onCreateView(
@@ -54,14 +47,13 @@ public class ThirdFragment extends Fragment {
             setSwitchColor(binding.switch1);
             setSwitchColor(binding.switch2);
             setSwitchColor(binding.switch3);
-        binding.switch2.setChecked(ThirdFragment.defense);
         binding.switch3.setChecked(ThirdFragment.ground);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             binding.switch3.setThumbTintList(UIHelpers.teamColorAsList);
             binding.switch3.setTrackTintList(UIHelpers.teamColorAsList);
         }
-        binding.textView4.setText("Autonomous Team " + MainActivity.teamNumber);
+        binding.textView4.setText("Autonomous Team " + UserModel.getMatchData().getTeamNumber());
         return binding.getRoot();
     }
 
@@ -76,7 +68,7 @@ public class ThirdFragment extends Fragment {
     @SuppressLint("SetTextI18n")
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.team.setText("Team " + MainActivity.teamNumber);
+        binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
         //VARIABLES
 
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", 0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f);
@@ -87,52 +79,66 @@ public class ThirdFragment extends Fragment {
             UIHelpers.lightDark(v, UIHelpers.darkMode);
 
         });
-        binding.switch1.setOnCheckedChangeListener((buttonView, isChecked) -> setSwitchColor(binding.switch1));
-        binding.switch2.setOnCheckedChangeListener((buttonView, isChecked) -> setSwitchColor(binding.switch2));
+        binding.switch1.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            setSwitchColor(binding.switch1);
+            UserModel.getMatchData().setWorkingAuto(isChecked);
+        });
+        binding.switch2.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            setSwitchColor(binding.switch2);
+            UserModel.getMatchData().setMoveOutOfZone(isChecked);
+        });
         binding.switch3.setOnCheckedChangeListener((buttonView, isChecked) -> setSwitchColor(binding.switch3));
         binding.toSecondFragment.setOnClickListener(view12 -> {
             NavHostFragment.findNavController(ThirdFragment.this)
                     .navigate(R.id.action_ThirdFragment_to_SecondFragment);
-            //getting the value of variables when switching to teleop from auto
-            /*binding.switch1.isChecked();
-            binding.switch2.isChecked();
-            binding.switch3.isChecked();
-            numNotes.getText();
-            numNotesInAmp.getText();
-            Contact.getSelectedItem();*/
         });
-        String[] typeContact = {"No contact", "Teammate to Teammate", "Teammate to opponent"};
-        ArrayAdapter<String> contact = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, typeContact);
-        binding.spinner.setAdapter(contact);
-        binding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ThirdFragment.contactIndex = position;
-                switch (position){
-                    case 0:
-                        contactMethod = ThirdFragment.Contact.NONE;
-                        break;
-                    case 1:
-                        contactMethod = ThirdFragment.Contact.TEAMMATE;
-                        break;
-                    case 2:
-                        contactMethod = ThirdFragment.Contact.OPPONENT;
-                        break;
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
         UIHelpers.lightDark(v, UIHelpers.darkMode);
 
+        updateEditTextBackground(binding.numNotes);
+        updateEditTextBackground(binding.numNotesInAmp);
 
+        binding.numNotesInAmp.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
-        binding.numNotes.getBackground().setColorFilter(Color.parseColor("#73C2F0"), PorterDuff.Mode.SRC_ATOP);
-        binding.numNotesInAmp.getBackground().setColorFilter(Color.parseColor("#73C2F0"), PorterDuff.Mode.SRC_ATOP);
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void afterTextChanged(Editable s) {
+                Editable input = binding.numNotesInAmp.getText();
+                if (input == null || input.length() == 0){
+                    return;
+                } else {
+                    UserModel.getMatchData().setAmpAuto(Integer.parseInt(input.toString()));
+                }
+            }
+        });
+        binding.numNotes.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void afterTextChanged(Editable s) {
+                Editable input = binding.numNotes.getText();
+                if (input == null || input.length() == 0){
+                    return;
+                } else {
+                    UserModel.getMatchData().setSpeakerAuto(Integer.parseInt(input.toString()));
+                }
+            }
+        });
     }
     @Override
     public void onDestroyView() {
@@ -155,6 +161,14 @@ public class ThirdFragment extends Fragment {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    private static void updateEditTextBackground(EditText editText) {
+        editText
+                .getBackground()
+                .setColorFilter(
+                        Color.parseColor("#73C2F0"),
+                        PorterDuff.Mode.SRC_ATOP);
     }
 
 

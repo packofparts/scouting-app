@@ -4,7 +4,6 @@ public class MatchData {
 
     //Pre-Game
     int teamNumber = 0;
-
     int matchNumber = 0;
 
     //Auto Data
@@ -12,12 +11,6 @@ public class MatchData {
     boolean moveOutOfZone = false;
     int ampAuto = 0;
     int speakerAuto = 0;
-    public enum ContactRobot {
-        None,
-        Allies,
-        Opposition
-    }
-    ContactRobot contactBot;
 
     //Teleop Data
     boolean broke = false;
@@ -25,28 +18,28 @@ public class MatchData {
     int ampTeleop = 0;
     int amplifiedSpeaker = 0;
     int speakerTeleop = 0;
-    int dump = 0;
     public enum NoteAcquisition {
-        None,
-        Floor,
-        Source,
-        Both
+        NONE,
+        FLOOR,
+        SOURCE,
+        BOTH
     }
     NoteAcquisition noteAcquired;
 
     //End of Match data
     public enum Chain {
-        Nope,
-        Attempted,
-        Succeeded
+        NOPE,
+        ATTEMPTED,
+        SUCCEDED
     }
     Chain chaining;
     int trapSucess = 0;
     int trapFail = 0;
     public enum Harmony {
-        Nope,
-        Attempted,
-        Succeeded
+        NOPE,
+        ATTEMPTED,
+        TWO,
+        THREE
     }
     Harmony harmo;
     Boolean humanPlayerAtAmp = false;
@@ -58,22 +51,24 @@ public class MatchData {
     public String returnAllData() {
         //TODO: Consider use of JSON library
         return "{\"teamNumber\":\"" + teamNumber + "\"," + "\"matchNumber\":\"" + matchNumber + "\"," + "\"workingAuto\":\"" + workingAuto + "\"," + "\"moveOutOfZone\":\""
-                + moveOutOfZone + "\"," + "\"ampAuto\":\"" + ampAuto + "\"," + "\"speakerAuto\":\"" + speakerAuto + "\"," + "\"contactBot\":\"" + contactBot + "\","
+                + moveOutOfZone + "\"," + "\"ampAuto\":\"" + ampAuto + "\"," + "\"speakerAuto\":\"" + speakerAuto + "\","
                 + "\"isBroke\":\"" + broke + "\"," + "\"isDefense\":\"" + defense + "\"," + "\"ampTeleop\":\"" + ampTeleop + "\"," + "\"amplifiedSpeaker\":\"" + amplifiedSpeaker + "\","
-                + "\"speakerTeleop\":\"" + speakerTeleop + "\"," + "\"dump\":\"" + dump + "\"," + "\"noteAcquired\":\"" + noteAcquired + "\"," + "\"chaining\":\"" + chaining + "\","
+                + "\"speakerTeleop\":\"" + speakerTeleop + "\"," + "\"noteAcquired\":\"" + noteAcquired + "\"," + "\"chaining\":\"" + chaining + "\","
                 + "\"trapSucess\":\"" + trapSucess + "\"," + "\"trapFail\":\"" + trapFail + "\"," + "\"harmo\":\"" + harmo + "\"," + "\"humanPlayerAtAmp\":\"" + humanPlayerAtAmp + "\","
                 + "\"humanPlayerNotesThrown\":\"" + humanPlayerNotesThrown + "\"," + "\"humanPlayerNotesThrown\":\"" + humanPlayerNotesThrown + "\"," + "\"notes\":\"" + notes + "\"}";
     }
     //Getters and Setters
 
+
     //Pre Match
+
 
     public int getTeamNumber() {    return teamNumber;    }
     public void setTeamNumber(int teamNumber) { this.teamNumber = teamNumber;    }
+    public int getMatchNumber() {    return matchNumber;    }
+    public void setMatchNumber(int matchNumber) { this.matchNumber = matchNumber;    }
 
-    public int getMatchNumber() {return matchNumber;}
 
-    public void setMatchNumber(int matchNumber) {this.matchNumber = matchNumber;}
 
 
     //Auto
@@ -102,13 +97,6 @@ public class MatchData {
     }
     public void setSpeakerAuto(int speakerAuto) {
         this.speakerAuto = speakerAuto;
-    }
-
-    public ContactRobot getContactBot() {
-        return contactBot;
-    }
-    public void setContactBot(ContactRobot contactBot) {
-        this.contactBot = contactBot;
     }
 
     //Teleop
@@ -143,13 +131,6 @@ public class MatchData {
     }
     public void setSpeakerTeleop(int speakerTeleop) {
         this.speakerTeleop = speakerTeleop;
-    }
-
-    public int getDump() {
-        return dump;
-    }
-    public void setDump(int dump) {
-        this.dump = dump;
     }
 
     public NoteAcquisition getNoteAcquired() {   return noteAcquired;    }

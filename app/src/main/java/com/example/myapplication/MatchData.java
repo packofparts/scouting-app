@@ -48,15 +48,30 @@ public class MatchData {
     String notes = "";
     // add human player spotlight data later
 
+    public String returnAllData() {
 
+        String sanitizedNotes = notes.replace("\"", "\\\"");
+        return "{\"teamNumber\":\"" + teamNumber + "\"," + "\"matchNumber\":\"" + matchNumber + "\"," + "\"workingAuto\":\"" + workingAuto + "\"," + "\"moveOutOfZone\":\""
+                + moveOutOfZone + "\"," + "\"ampAuto\":\"" + ampAuto + "\"," + "\"speakerAuto\":\"" + speakerAuto + "\","
+                + "\"isBroke\":\"" + broke + "\"," + "\"isDefense\":\"" + defense + "\"," + "\"ampTeleop\":\"" + ampTeleop + "\"," + "\"amplifiedSpeaker\":\"" + amplifiedSpeaker + "\","
+                + "\"speakerTeleop\":\"" + speakerTeleop + "\"," + "\"noteAcquired\":\"" + noteAcquired + "\"," + "\"chaining\":\"" + chaining + "\","
+                + "\"trapSucess\":\"" + trapSucess + "\"," + "\"trapFail\":\"" + trapFail + "\"," + "\"harmo\":\"" + harmo + "\"," + "\"humanPlayerAtAmp\":\"" + humanPlayerAtAmp + "\","
+                + "\"humanPlayerNotesThrown\":\"" + humanPlayerNotesThrown + "\"," + "\"humanPlayerNotesThrown\":\"" + humanPlayerNotesThrown + "\"," + "\"notes\":\"" + sanitizedNotes + "\"}";
+    }
     //Getters and Setters
 
-    //Pre-match
+
+
+    //Pre Match
+
 
     public int getTeamNumber() {    return teamNumber;    }
     public void setTeamNumber(int teamNumber) { this.teamNumber = teamNumber;    }
     public int getMatchNumber() {    return matchNumber;    }
     public void setMatchNumber(int matchNumber) { this.matchNumber = matchNumber;    }
+
+
+
 
     //Auto
 

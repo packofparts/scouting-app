@@ -32,29 +32,10 @@ import java.util.Objects;
 public class SecondFragment2 extends Fragment {
 
     private FragmentSecond2Binding binding;
-    public enum Chain{
-        NONE,
-        FAILED,
-        SUCCESS
-
-    }
-    public static Chain chainStatus = Chain.NONE;
-    public enum Harmony{
-        NONE,
-        FAILED,
-        TWO,
-        THREE
-
-    }
-    public static Harmony harmonyStatus = Harmony.NONE;
-    public static String teleOpNotes = "";
-    public static int noteStuck = 0;
-    public static int noteSuccess = 0;
-    public static int notesThrown = 0;
-    public static int notesHit = 0;
+    MatchData.Chain chainStatus = MatchData.Chain.NOPE;
+    MatchData.Harmony harmonyStatus = MatchData.Harmony.NOPE;
     public static int chainAttemptIndex = 0;
     public static int harmonyAttemptIndex = 0;
-    public static String teamNumber = "0";
     public static boolean human = false;
     ViewGroup v = null;
     @SuppressLint("SetTextI18n")
@@ -66,8 +47,7 @@ public class SecondFragment2 extends Fragment {
 
         binding = FragmentSecond2Binding.inflate(inflater, container, false);
         v = container;
-        binding.team.setText("Team " + SecondFragment2.teamNumber);
-        //binding.team.setText(getActivity().toString());
+        binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
         binding.notesStuckCounter.setText(String.valueOf(UserModel.getMatchData().getTrapFail()));
         binding.notesSuccessCounter.setText(String.valueOf(UserModel.getMatchData().getTrapSucess()));
         binding.notesThrownCounter.setText(String.valueOf(UserModel.getMatchData().getHumanPlayerNotesThrown()));
@@ -159,19 +139,19 @@ public class SecondFragment2 extends Fragment {
         binding.chainAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //TODO: UserModel.getMatchData().setChaining(<insert enum here>);
                 SecondFragment2.chainAttemptIndex = position;
                 switch (position){
                     case 0:
-                        chainStatus = Chain.NONE;
+                        chainStatus = MatchData.Chain.NOPE;
                         break;
                     case 1:
-                        chainStatus = Chain.FAILED;
+                        chainStatus = MatchData.Chain.ATTEMPTED;
                         break;
                     case 2:
-                        chainStatus = Chain.SUCCESS;
+                        chainStatus = MatchData.Chain.SUCCEDED;
                         break;
                 }
+                UserModel.getMatchData().setChaining(chainStatus);
             }
 
             @Override
@@ -193,24 +173,23 @@ public class SecondFragment2 extends Fragment {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //TODO: UserModel.getMatchData().setHarmo(<insert enum here>);
                 SecondFragment2.harmonyAttemptIndex = position;
                 switch (position){
                     case 0:
-                        harmonyStatus = Harmony.NONE;
+                        harmonyStatus = MatchData.Harmony.NOPE;
                         break;
                     case 1:
-                        harmonyStatus = Harmony.FAILED;
+                        harmonyStatus = MatchData.Harmony.ATTEMPTED;
                         break;
                     case 2:
-                        harmonyStatus = Harmony.TWO;
+                        harmonyStatus = MatchData.Harmony.TWO;
                         break;
                     case 3:
-                        harmonyStatus = Harmony.THREE;
+                        harmonyStatus = MatchData.Harmony.THREE;
                         break;
 
                 }
-
+                UserModel.getMatchData().setHarmo(harmonyStatus);
             }
 
             @Override

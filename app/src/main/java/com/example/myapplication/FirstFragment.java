@@ -1,7 +1,6 @@
 package com.example.myapplication;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,17 +8,12 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Switch;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentFirstBinding;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.textfield.TextInputEditText;
-
 public class FirstFragment extends Fragment {
     private FragmentFirstBinding binding;
     ViewGroup v;
@@ -30,8 +24,11 @@ public class FirstFragment extends Fragment {
     ) {
         binding = FragmentFirstBinding.inflate(inflater, container, false);
         v = container;
-        binding.input.setText(MainActivity.teamNumber.equals("0") ? "" : MainActivity.teamNumber);
-        binding.input.setText(MainActivity.matchNumber.equals("0") ? "" : MainActivity.teamNumber);
+        int currentTeamNumber = UserModel.getMatchData().getTeamNumber();
+        binding.input.setText(currentTeamNumber == 0 ? "" : String.valueOf(currentTeamNumber));
+
+        int currentMatchNumber = UserModel.getMatchData().getTeamNumber();
+        binding.input.setText(currentMatchNumber == 0 ? "" : String.valueOf(currentMatchNumber));
 
         return binding.getRoot();
     }
@@ -44,13 +41,13 @@ public class FirstFragment extends Fragment {
         binding.cont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (MainActivity.teamNumber.length() > 0 && MainActivity.teamNumber.length() < 6) {
+                String teamNumber = String.valueOf(binding.input.getText());
+                if (teamNumber.length() > 0 && teamNumber.length() < 6) {
                     NavHostFragment.findNavController(FirstFragment.this)
                             .navigate(R.id.action_FirstFragment_to_ThirdFragment);
                 } else {
                     Snackbar.make(view, "Invalid team number", 600).show();
-                    MainActivity.teamNumber = "0";
-                    binding.input.setText(MainActivity.teamNumber.equals("0") ? "" : MainActivity.teamNumber);
+                    binding.input.setText("");
                 }
             }
         });
@@ -97,8 +94,29 @@ public class FirstFragment extends Fragment {
                 if (binding.input.getText() == null){
                     return;
                 }
-                MainActivity.teamNumber = String.valueOf(binding.input.getText());
-                UserModel.getMatchData().setTeamNumber(Integer.parseInt(MainActivity.teamNumber));
+                String teamNumber = String.valueOf(binding.input.getText());
+                UserModel.getMatchData().setTeamNumber(Integer.parseInt(teamNumber));
+            }
+        });
+
+        binding.matchInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (binding.matchInput.getText() == null){
+                    return;
+                }
+                String matchNumber = String.valueOf(binding.matchInput.getText());
+                UserModel.getMatchData().setMatchNumber(Integer.parseInt(matchNumber));
             }
         });
         binding.cont.setTranslationY(height * 0.270f);

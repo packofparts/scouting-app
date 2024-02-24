@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -13,8 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.myapplication.databinding.FragmentPitBinding;
-
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,20 +24,15 @@ public class PitFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private boolean isTrue = false;
     private FragmentPitBinding binding;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    UserModel userModel;
+
 
     public PitFragment() {
-        try {
-            FragmentActivity fragmentActivity = getActivity();
-            ViewModelProvider viewModelProvider = new ViewModelProvider(fragmentActivity);
-            userModel = viewModelProvider.get(UserModel.class);
-        } catch(Exception e){}
+
     }
 
     /**
@@ -77,38 +69,18 @@ public class PitFragment extends Fragment {
         binding = FragmentPitBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
-        //return inflater.inflate(R.layout.fragment_pit, container, false);
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         binding.Pit.setOnClickListener(new View.OnClickListener() {
-            /*Intent intent = new Intent(getActivity().getBaseContext(), TargetActivity.class);
-            intent.putExtra("message", message);
-            getActivity().startActivity(intent);*/
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(PitFragment.this)
                         .navigate(R.id.action_pitFragment_to_HomePage);
             }
         });
-        binding.checkBox.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               isTrue = !isTrue;
-                Objects.requireNonNull(userModel.getData().getValue()).setTestBool(isTrue);
-           }
-        });
-
-        /*binding.toAuto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(PitFragment.this)
-                        .navigate(R.id.action_pitFragment_to_ThirdFragment);
-            }
-        });*/
-
     }
 
 }

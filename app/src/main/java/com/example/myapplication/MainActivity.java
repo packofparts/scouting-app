@@ -15,6 +15,8 @@ import android.view.KeyEvent;
 import android.view.View;
 
 import androidx.core.view.WindowCompat;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;

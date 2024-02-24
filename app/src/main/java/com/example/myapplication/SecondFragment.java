@@ -56,7 +56,7 @@ public class SecondFragment extends Fragment {
         checkedOperation(binding.source);
         return binding.getRoot();
     }
-//Hi
+
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 

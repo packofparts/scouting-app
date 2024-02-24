@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentFirstBinding;
@@ -22,6 +23,10 @@ public class FirstFragment extends Fragment {
             @NonNull LayoutInflater  inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
+        ViewModelProvider viewModelProvider = new ViewModelProvider(requireActivity());
+        UserModel userModel = viewModelProvider.get(UserModel.class);
+        MatchData matchData = new MatchData();
+        userModel.setMatchData(matchData);
         binding = FragmentFirstBinding.inflate(inflater, container, false);
         v = container;
         int currentTeamNumber = UserModel.getMatchData().getTeamNumber();
@@ -37,12 +42,24 @@ public class FirstFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
                 binding.cont.setOnClickListener(v -> {
             String teamNumber = String.valueOf(binding.input.getText());
-            if (teamNumber.length() > 0 && teamNumber.length() < 6) {
+            String matchNumber = String.valueOf(binding.matchInput.getText());
+            boolean teamNumberCheck = (teamNumber.length() > 0 && teamNumber.length() < 5);
+            boolean matchNumCheck = matchNumber.length() > 0;
+            if (teamNumberCheck && matchNumCheck) {
                 NavHostFragment.findNavController(FirstFragment.this)
                         .navigate(R.id.action_FirstFragment_to_ThirdFragment);
             } else {
-                Snackbar.make(view, "Invalid team number", 600).show();
-                binding.input.setText(teamNumber.equals("0") ? "" : teamNumber);
+                if (!teamNumberCheck){
+                    Snackbar.make(view, "Invalid team number", 600).show();
+                    binding.input.setText(UserModel.getMatchData().getMatchNumber() == 0 ? "" :
+                            String.valueOf(UserModel.getMatchData().getMatchNumber()));
+                } else{
+                    Snackbar.make(view, "Invalid match number", 600).show();
+
+                    binding.input.setText(UserModel.getMatchData().getTeamNumber() == 0 ? "" :
+                            String.valueOf(UserModel.getMatchData().getTeamNumber()));
+                }
+
             }
         });
         binding.back.setOnClickListener(v -> NavHostFragment.findNavController(FirstFragment.this)
@@ -119,6 +136,8 @@ public class FirstFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
 }
 
 

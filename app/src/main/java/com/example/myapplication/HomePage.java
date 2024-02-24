@@ -75,10 +75,6 @@ public class HomePage extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ViewModelProvider viewModelProvider = new ViewModelProvider(requireActivity());
-        UserModel userModel = viewModelProvider.get(UserModel.class);
-        MatchData matchData = new MatchData();
-        userModel.setMatchData(matchData);
         binding.previousInfoButton.setOnClickListener(v -> NavHostFragment.findNavController(HomePage.this)
                 .navigate(R.id.action_HomePage_to_pitFragment));
         binding.nextInfoButton.setOnClickListener(v -> UserModel.getMatchData().setBroke(true));

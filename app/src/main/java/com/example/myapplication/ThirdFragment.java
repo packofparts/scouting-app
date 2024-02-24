@@ -92,6 +92,11 @@ public class ThirdFragment extends Fragment {
             NavHostFragment.findNavController(ThirdFragment.this)
                     .navigate(R.id.action_ThirdFragment_to_SecondFragment);
         });
+        binding.toHomePage.setOnClickListener(view12 -> {
+            NavHostFragment.findNavController(ThirdFragment.this)
+                    .navigate(R.id.action_ThirdFragment_to_FirstFragment                                                                      );
+        });
+
         UIHelpers.lightDark(v, UIHelpers.darkMode);
 
         updateEditTextBackground(binding.numNotes);

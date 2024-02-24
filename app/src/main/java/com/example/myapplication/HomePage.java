@@ -1,4 +1,6 @@
 package com.example.myapplication;
+import android.os.Bundle;
+import androidx.fragment.app.Fragment;
 
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
@@ -16,8 +18,7 @@ import com.example.myapplication.databinding.FragmentHomepageBinding;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link HomePage#newInstance} factory method to
- * create an instance of this fragment.
+ * Use the {@link HomePage#newInstance} factory method to * create an instance of this fragment.
  */
 public class HomePage extends Fragment {
 

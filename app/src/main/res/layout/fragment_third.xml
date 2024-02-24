@@ -16,9 +16,10 @@
         android:layout_marginStart="5dp"
         android:layout_marginEnd="220dp"
         android:layout_marginBottom="16dp"
-        android:text="If so how many times?"
+        android:text="Number of notes in Speaker"
         app:layout_constraintBottom_toTopOf="@+id/numNotes"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switch3" />
 

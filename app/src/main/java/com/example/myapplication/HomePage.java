@@ -109,6 +109,13 @@ public class HomePage extends Fragment {
                 UIHelpers.lightDark(v, UIHelpers.darkMode);
             }
         });
+        binding.nextInfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(HomePage.this)
+                        .navigate(R.id.action_HomePage_to_FirstFragment);
+            }
+        });
         UIHelpers.lightDark(v, UIHelpers.darkMode);
     }
 }

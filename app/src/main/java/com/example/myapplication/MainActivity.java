@@ -23,9 +23,6 @@ public class MainActivity extends AppCompatActivity {
     // In-app variables
     private AppBarConfiguration appBarConfiguration;
 
-    public static String teamNumber = "0";
-    public static String matchNumber = "0"; // Add this line for matchNumber
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

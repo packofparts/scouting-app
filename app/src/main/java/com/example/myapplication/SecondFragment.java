@@ -24,20 +24,6 @@ import com.example.myapplication.databinding.FragmentSecondBinding;
 public class SecondFragment extends Fragment {
 
     private FragmentSecondBinding binding;
-    public static int amp = 0;
-    public static int speakerUnamp = 0;
-    public static int speakerAmp = 0;
-    public static boolean broke = false;
-    public static boolean defense = false;
-    public enum Intake{
-        NONE,
-        GROUND,
-        SOURCE,
-        BOTH
-
-    }
-    public static SecondFragment.Intake intakeMethod = SecondFragment.Intake.NONE;
-    public static int intakeMethodIndex = 0;
     ViewGroup v = null;
 
     @SuppressLint("SetTextI18n")
@@ -49,14 +35,14 @@ public class SecondFragment extends Fragment {
 
         binding = FragmentSecondBinding.inflate(inflater, container, false);
         v = container;
-        binding.team.setText("Team " + MainActivity.teamNumber);
-        binding.ampCounter.setText(String.valueOf(SecondFragment.amp));
-        binding.speakerUnampCounter.setText(String.valueOf(SecondFragment.speakerUnamp));
-        binding.speakerAmpCounter.setText(String.valueOf(SecondFragment.speakerAmp));
-        binding.broke.setChecked(SecondFragment.broke);
+        binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
+        binding.ampCounter.setText(String.valueOf(UserModel.getMatchData().getAmpTeleop()));
+        binding.speakerUnampCounter.setText(String.valueOf(UserModel.getMatchData().getSpeakerTeleop()));
+        binding.speakerAmpCounter.setText(String.valueOf(UserModel.getMatchData().getAmplifiedSpeaker()));
+        binding.broke.setChecked(UserModel.getMatchData().isBroke());
 
         checkedOperation(binding.broke);
-        binding.defense.setChecked(SecondFragment.defense);
+        binding.defense.setChecked(UserModel.getMatchData().isDefense());
         checkedOperation(binding.defense);
         return binding.getRoot();
     }
@@ -119,21 +105,22 @@ public class SecondFragment extends Fragment {
         binding.intakeMethod.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                SecondFragment.intakeMethodIndex = position;
+                MatchData.NoteAcquisition intakeMethod;
                 switch (position){
                     case 0:
-                        intakeMethod = SecondFragment.Intake.NONE;
+                        intakeMethod = MatchData.NoteAcquisition.NONE;
                         break;
                     case 1:
-                        intakeMethod = SecondFragment.Intake.GROUND;
+                        intakeMethod = MatchData.NoteAcquisition.FLOOR;
                         break;
                     case 2:
-                        intakeMethod = SecondFragment.Intake.SOURCE;
+                        intakeMethod = MatchData.NoteAcquisition.SOURCE;
                         break;
-                    case 3:
-                        intakeMethod = SecondFragment.Intake.BOTH;
+                    default:
+                        intakeMethod = MatchData.NoteAcquisition.BOTH;
                         break;
                 }
+                UserModel.getMatchData().setNoteAcquired(intakeMethod);
             }
 
             @Override
@@ -155,7 +142,6 @@ public class SecondFragment extends Fragment {
         binding.plusAmp.setTranslationX(width * 0.732f);
         binding.plusAmp.setTranslationY(height * 0.453f);
         binding.plusAmp.setOnClickListener(view15 -> {
-            SecondFragment.amp ++;
             UserModel.getMatchData().setAmpTeleop(UserModel.getMatchData().getAmpTeleop() + 1);
             binding.ampCounter.setText(String.valueOf(UserModel.getMatchData().getAmpTeleop()));
         });
@@ -175,7 +161,6 @@ public class SecondFragment extends Fragment {
         binding.plusSpeakerUnamp.setTranslationX(width * 0.732f);
         binding.plusSpeakerUnamp.setTranslationY(height * 0.576f);
         binding.plusSpeakerUnamp.setOnClickListener(view17 -> {
-            SecondFragment.speakerUnamp ++;
             UserModel.getMatchData().setSpeakerTeleop(UserModel.getMatchData().getSpeakerTeleop() + 1);
             binding.speakerUnampCounter.setText(String.valueOf(UserModel.getMatchData().getSpeakerTeleop()));
         });

@@ -14,7 +14,6 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentFirstBinding;
 import com.google.android.material.snackbar.Snackbar;
-
 public class FirstFragment extends Fragment {
     private FragmentFirstBinding binding;
     ViewGroup v;
@@ -25,24 +24,25 @@ public class FirstFragment extends Fragment {
     ) {
         binding = FragmentFirstBinding.inflate(inflater, container, false);
         v = container;
-        binding.input.setText(MainActivity.teamNumber.equals("0") ? "" : MainActivity.teamNumber);
-        binding.input.setText(MainActivity.matchNumber.equals("0") ? "" : MainActivity.teamNumber);
+        int currentTeamNumber = UserModel.getMatchData().getTeamNumber();
+        binding.input.setText(currentTeamNumber == 0 ? "" : String.valueOf(currentTeamNumber));
+
+        int currentMatchNumber = UserModel.getMatchData().getTeamNumber();
+        binding.input.setText(currentMatchNumber == 0 ? "" : String.valueOf(currentMatchNumber));
 
         return binding.getRoot();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
-        
-        binding.cont.setOnClickListener(v -> {
-            if (MainActivity.teamNumber.length() > 0 && MainActivity.teamNumber.length() < 6) {
+                binding.cont.setOnClickListener(v -> {
+            String teamNumber = String.valueOf(binding.input.getText());
+            if (teamNumber.length() > 0 && teamNumber.length() < 6) {
                 NavHostFragment.findNavController(FirstFragment.this)
                         .navigate(R.id.action_FirstFragment_to_ThirdFragment);
             } else {
                 Snackbar.make(view, "Invalid team number", 600).show();
-                binding.input.setText(MainActivity.teamNumber.equals("0") ? "" : MainActivity.teamNumber);
+                binding.input.setText(teamNumber.equals("0") ? "" : teamNumber);
             }
         });
         binding.back.setOnClickListener(v -> NavHostFragment.findNavController(FirstFragment.this)
@@ -77,11 +77,34 @@ public class FirstFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (binding.input.getText() == null){
+                Editable input = binding.input.getText();
+                if (input == null || input.length() == 0){
                     return;
                 }
-                MainActivity.teamNumber = String.valueOf(binding.input.getText());
-                UserModel.getMatchData().setTeamNumber(Integer.parseInt(MainActivity.teamNumber));
+                String teamNumber = String.valueOf(input);
+                UserModel.getMatchData().setTeamNumber(Integer.parseInt(teamNumber));
+            }
+        });
+
+        binding.matchInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Editable input = binding.matchInput.getText();
+                if (input == null || input.length() == 0){
+                    return;
+                }
+                String matchNumber = String.valueOf(input);
+                UserModel.getMatchData().setMatchNumber(Integer.parseInt(matchNumber));
             }
         });
         binding.cont.setTranslationY(height * 0.270f);

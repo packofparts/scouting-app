@@ -54,5 +54,14 @@
             android:translationX="133dp"
             android:translationY="110dp" />
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/matchInput"
+            android:layout_width="140dp"
+            android:layout_height="66dp"
+            android:hint="Match Number"
+            android:inputType="number"
+            android:translationX="133dp"
+            android:translationY="200dp" />
+
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>

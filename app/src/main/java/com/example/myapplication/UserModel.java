@@ -14,6 +14,7 @@ public class UserModel extends ViewModel {
     public MutableLiveData<MatchData> userLiveData = new MutableLiveData<>(matchData);
 
     public LiveData<MatchData> getData() {
+
         return userLiveData;
     }
 

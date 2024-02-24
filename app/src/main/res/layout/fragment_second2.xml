@@ -344,7 +344,7 @@
             android:id="@+id/input"
             android:layout_width="330dp"
             android:layout_height="wrap_content"
-            android:background="#73C2F0"
+            android:background="#0095EC"
             android:backgroundTint="#73C2F0"
             android:translationX="30dp"
             android:translationY="545dp"

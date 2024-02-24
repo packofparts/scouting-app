@@ -3,7 +3,6 @@ package com.example.myapplication;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -214,11 +213,11 @@ public class SecondFragment extends Fragment {
             @SuppressLint("UseSwitchCompatOrMaterialCode") Switch s = (Switch) v;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                 if (s.isChecked()){
-                    s.setThumbTintList(ColorStateList.valueOf(UIHelpers.purple));
-                    s.setTrackTintList(ColorStateList.valueOf(UIHelpers.purple));
+                    s.setThumbTintList(UIHelpers.purpleAsList);
+                    s.setTrackTintList(UIHelpers.purpleAsList);
                 } else {
-                    s.setThumbTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-                    s.setTrackTintList(ColorStateList.valueOf(UIHelpers.teamColor));
+                    s.setThumbTintList(UIHelpers.teamColorAsList);
+                    s.setTrackTintList(UIHelpers.teamColorAsList);
                 }
         }
     }

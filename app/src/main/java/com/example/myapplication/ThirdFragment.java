@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Build;
@@ -19,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentThirdBinding;
+
 
 
 /**
@@ -58,8 +58,8 @@ public class ThirdFragment extends Fragment {
         binding.switch3.setChecked(ThirdFragment.ground);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            binding.switch3.setThumbTintList(ColorStateList.valueOf(UIHelpers.teamColor));
-            binding.switch3.setTrackTintList(ColorStateList.valueOf(UIHelpers.teamColor));
+            binding.switch3.setThumbTintList(UIHelpers.teamColorAsList);
+            binding.switch3.setTrackTintList(UIHelpers.teamColorAsList);
         }
         binding.textView4.setText("Autonomous Team " + MainActivity.teamNumber);
         return binding.getRoot();
@@ -68,8 +68,8 @@ public class ThirdFragment extends Fragment {
     @SuppressLint("ObsoleteSdkInt")
     private void setSwitchColor(@SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch1) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            switch1.setThumbTintList(switch1.isChecked() ? ColorStateList.valueOf(UIHelpers.purple) : ColorStateList.valueOf(UIHelpers.teamColor));
-            switch1.setTrackTintList(switch1.isChecked() ? ColorStateList.valueOf(UIHelpers.purple) : ColorStateList.valueOf(UIHelpers.teamColor));
+            switch1.setThumbTintList(switch1.isChecked() ? UIHelpers.purpleAsList : UIHelpers.teamColorAsList);
+            switch1.setTrackTintList(switch1.isChecked() ? UIHelpers.purpleAsList : UIHelpers.teamColorAsList);
         }
     }
 

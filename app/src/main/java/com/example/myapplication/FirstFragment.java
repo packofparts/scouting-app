@@ -19,7 +19,7 @@ public class FirstFragment extends Fragment {
     ViewGroup v;
     @Override
     public View onCreateView(
-            LayoutInflater  inflater, ViewGroup container,
+            @NonNull LayoutInflater  inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
         binding = FragmentFirstBinding.inflate(inflater, container, false);
@@ -35,41 +35,27 @@ public class FirstFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
-
-        binding.cont.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String teamNumber = String.valueOf(binding.input.getText());
-                if (teamNumber.length() > 0 && teamNumber.length() < 6) {
-                    NavHostFragment.findNavController(FirstFragment.this)
-                            .navigate(R.id.action_FirstFragment_to_ThirdFragment);
-                } else {
-                    Snackbar.make(view, "Invalid team number", 600).show();
-                    binding.input.setText("");
-                }
-            }
-        });
-        binding.back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                binding.cont.setOnClickListener(v -> {
+            String teamNumber = String.valueOf(binding.input.getText());
+            if (teamNumber.length() > 0 && teamNumber.length() < 6) {
                 NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_HomePage);
+                        .navigate(R.id.action_FirstFragment_to_ThirdFragment);
+            } else {
+                Snackbar.make(view, "Invalid team number", 600).show();
+                binding.input.setText(teamNumber.equals("0") ? "" : teamNumber);
             }
         });
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
+        binding.back.setOnClickListener(v -> NavHostFragment.findNavController(FirstFragment.this)
+                .navigate(R.id.action_FirstFragment_to_HomePage));
+        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", 0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f);
         animation.setDuration(1000);
-        binding.pop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                animation.start();
-                UIHelpers.darkMode = !UIHelpers.darkMode;
-                UIHelpers.lightDark(v, UIHelpers.darkMode);
-            }
+        binding.pop.setOnClickListener(view1 -> {
+            animation.start();
+            UIHelpers.darkMode = !UIHelpers.darkMode;
+            UIHelpers.lightDark(v, UIHelpers.darkMode);
         });
         DisplayMetrics dm = new DisplayMetrics();
-        ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
+        ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
         float width = dm.widthPixels;
         float height = dm.heightPixels;
         binding.title.setTranslationX(height * 0.072f);

@@ -13,11 +13,9 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
@@ -132,19 +130,6 @@ public class SecondFragment2 extends Fragment {
                 binding.characterLimit.setText("Character Limit: " + Objects.requireNonNull(binding.textInput.getText()).length() + "/150");
                 UserModel.getMatchData().setNotes(binding.textInput.getText().toString());
             }
-        });
-        binding.textInput.setOnTouchListener((v, event) -> {
-            binding.relativeLayoutFirst.setTranslationY(-binding.input.getTranslationY() + 100);
-            return false;
-        });
-        binding.textInput.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        binding.textInput.setOnEditorActionListener((v, actionId, event) -> {
-            if (actionId == EditorInfo.IME_ACTION_DONE){
-                binding.relativeLayoutFirst.setTranslationY(0f);
-            }else {
-                Log.d("", String.valueOf(actionId));
-            }
-            return false;
         });
         ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Attempt", "Failed Attempt", "Successful Attempt"});
         binding.chainAttempt.setAdapter(chainAdapter);
@@ -321,7 +306,7 @@ public class SecondFragment2 extends Fragment {
 
     @SuppressLint("ObsoleteSdkInt")
     public void humanOperation(boolean checked, float width, float height){
-        int layout = checked ? 500:-38;
+        int layout = checked ? 1000:500;
         int view = checked? 500: 0;
         int vis = checked? VISIBLE:GONE;
         ColorStateList col = checked? UIHelpers.purpleAsList: UIHelpers.teamColorAsList;

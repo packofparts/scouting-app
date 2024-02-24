@@ -604,7 +604,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:padding="26dp"
-                    android:text="In the end, type any additional notes you have here with a character limit of 150. Note: it is an obligation for you to click the (✓) symbol after you're done typing!"
+                    android:text="In the end, type any additional notes you have here with a character limit of 150. "
                     android:textColor="@color/white"
                     android:textSize="15sp" />
             </TableRow>

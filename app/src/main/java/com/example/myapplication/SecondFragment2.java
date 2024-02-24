@@ -13,11 +13,9 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
@@ -32,29 +30,8 @@ import java.util.Objects;
 public class SecondFragment2 extends Fragment {
 
     private FragmentSecond2Binding binding;
-    public enum Chain{
-        NONE,
-        FAILED,
-        SUCCESS
-
-    }
-    public static Chain chainStatus = Chain.NONE;
-    public enum Harmony{
-        NONE,
-        FAILED,
-        TWO,
-        THREE
-
-    }
-    public static Harmony harmonyStatus = Harmony.NONE;
-    public static String teleOpNotes = "";
-    public static int noteStuck = 0;
-    public static int noteSuccess = 0;
-    public static int notesThrown = 0;
-    public static int notesHit = 0;
     public static int chainAttemptIndex = 0;
     public static int harmonyAttemptIndex = 0;
-    public static String teamNumber = "0";
     public static boolean human = false;
     ViewGroup v = null;
     @SuppressLint("SetTextI18n")
@@ -66,8 +43,7 @@ public class SecondFragment2 extends Fragment {
 
         binding = FragmentSecond2Binding.inflate(inflater, container, false);
         v = container;
-        binding.team.setText("Team " + SecondFragment2.teamNumber);
-        //binding.team.setText(getActivity().toString());
+        binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
         binding.notesStuckCounter.setText(String.valueOf(UserModel.getMatchData().getTrapFail()));
         binding.notesSuccessCounter.setText(String.valueOf(UserModel.getMatchData().getTrapSucess()));
         binding.notesThrownCounter.setText(String.valueOf(UserModel.getMatchData().getHumanPlayerNotesThrown()));
@@ -138,19 +114,6 @@ public class SecondFragment2 extends Fragment {
                 UserModel.getMatchData().setNotes(binding.textInput.getText().toString());
             }
         });
-        binding.textInput.setOnTouchListener((v, event) -> {
-            binding.relativeLayoutFirst.setTranslationY(-binding.input.getTranslationY() + 100);
-            return false;
-        });
-        binding.textInput.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        binding.textInput.setOnEditorActionListener((v, actionId, event) -> {
-            if (actionId == EditorInfo.IME_ACTION_DONE){
-                binding.relativeLayoutFirst.setTranslationY(0f);
-            }else {
-                Log.d("", String.valueOf(actionId));
-            }
-            return false;
-        });
         ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Attempt", "Failed Attempt", "Successful Attempt"});
         binding.chainAttempt.setAdapter(chainAdapter);
         binding.chainAttempt.setSelection(SecondFragment2.chainAttemptIndex);
@@ -159,19 +122,20 @@ public class SecondFragment2 extends Fragment {
         binding.chainAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //TODO: UserModel.getMatchData().setChaining(<insert enum here>);
                 SecondFragment2.chainAttemptIndex = position;
+                MatchData.Chain chainStatus;
                 switch (position){
                     case 0:
-                        chainStatus = Chain.NONE;
+                        chainStatus = MatchData.Chain.NOPE;
                         break;
                     case 1:
-                        chainStatus = Chain.FAILED;
+                        chainStatus = MatchData.Chain.ATTEMPTED;
                         break;
-                    case 2:
-                        chainStatus = Chain.SUCCESS;
+                    default:
+                        chainStatus = MatchData.Chain.SUCCEDED;
                         break;
                 }
+                UserModel.getMatchData().setChaining(chainStatus);
             }
 
             @Override
@@ -193,24 +157,24 @@ public class SecondFragment2 extends Fragment {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //TODO: UserModel.getMatchData().setHarmo(<insert enum here>);
                 SecondFragment2.harmonyAttemptIndex = position;
+                MatchData.Harmony harmonyStatus;
                 switch (position){
                     case 0:
-                        harmonyStatus = Harmony.NONE;
+                        harmonyStatus = MatchData.Harmony.NOPE;
                         break;
                     case 1:
-                        harmonyStatus = Harmony.FAILED;
+                        harmonyStatus = MatchData.Harmony.ATTEMPTED;
                         break;
                     case 2:
-                        harmonyStatus = Harmony.TWO;
+                        harmonyStatus = MatchData.Harmony.TWO;
                         break;
-                    case 3:
-                        harmonyStatus = Harmony.THREE;
+                    default:
+                        harmonyStatus = MatchData.Harmony.THREE;
                         break;
 
                 }
-
+                UserModel.getMatchData().setHarmo(harmonyStatus);
             }
 
             @Override
@@ -236,7 +200,7 @@ public class SecondFragment2 extends Fragment {
         binding.plusNotesStuck.setTranslationX(width * 0.732f);
         binding.plusNotesStuck.setTranslationY(height * 0.396f);
         binding.plusNotesStuck.setOnClickListener(view15 -> {
-            if (UserModel.getMatchData().getTrapFail() < 3) {;
+            if (UserModel.getMatchData().getTrapFail() < 3) {
                 UserModel.getMatchData().setTrapFail(UserModel.getMatchData().getTrapFail() + 1);
                 binding.notesStuckCounter.setText(String.valueOf(UserModel.getMatchData().getTrapFail()));
             }
@@ -326,7 +290,7 @@ public class SecondFragment2 extends Fragment {
 
     @SuppressLint("ObsoleteSdkInt")
     public void humanOperation(boolean checked, float width, float height){
-        int layout = checked ? 500:-38;
+        int layout = checked ? 1000:500;
         int view = checked? 500: 0;
         int vis = checked? VISIBLE:GONE;
         ColorStateList col = checked? UIHelpers.purpleAsList: UIHelpers.teamColorAsList;

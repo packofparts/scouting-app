@@ -3,11 +3,8 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.animation.ObjectAnimator;
-import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;

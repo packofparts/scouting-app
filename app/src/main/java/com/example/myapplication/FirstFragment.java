@@ -1,5 +1,4 @@
 package com.example.myapplication;
-
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.graphics.Color;
@@ -13,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
@@ -33,6 +31,8 @@ public class FirstFragment extends Fragment {
         binding = FragmentFirstBinding.inflate(inflater, container, false);
         v = container;
         binding.input.setText(MainActivity.teamNumber.equals("0") ? "" : MainActivity.teamNumber);
+        binding.input.setText(MainActivity.matchNumber.equals("0") ? "" : MainActivity.teamNumber);
+
         return binding.getRoot();
     }
 
@@ -40,7 +40,7 @@ public class FirstFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        
+
         binding.cont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +77,7 @@ public class FirstFragment extends Fragment {
         float height = dm.heightPixels;
         binding.title.setTranslationX(height * 0.072f);
         binding.title.setTranslationX(width * 0.146f);
-        binding.back.setTranslationY(height * 0.170f);
+        binding.back.setTranslationY(height * 0.270f);
         binding.back.setTranslationX(width * 0.024f);
         binding.input.setTranslationY(height * 0.158f);
 
@@ -101,7 +101,7 @@ public class FirstFragment extends Fragment {
                 UserModel.getMatchData().setTeamNumber(Integer.parseInt(MainActivity.teamNumber));
             }
         });
-        binding.cont.setTranslationY(height * 0.170f);
+        binding.cont.setTranslationY(height * 0.270f);
         binding.cont.setTranslationX(width * 0.707f);
         binding.pop.setTranslationY(height * 0.719f);
         binding.pop.setTranslationX(width * 0.073f);
@@ -114,3 +114,6 @@ public class FirstFragment extends Fragment {
         binding = null;
     }
 }
+
+
+

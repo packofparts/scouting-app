@@ -47,11 +47,6 @@ public class SecondFragment2 extends Fragment {
 
     }
     public static Harmony harmonyStatus = Harmony.NONE;
-    public static String teleOpNotes = "";
-    public static int noteStuck = 0;
-    public static int noteSuccess = 0;
-    public static int notesThrown = 0;
-    public static int notesHit = 0;
     public static int chainAttemptIndex = 0;
     public static int harmonyAttemptIndex = 0;
     public static String teamNumber = "0";
@@ -236,7 +231,7 @@ public class SecondFragment2 extends Fragment {
         binding.plusNotesStuck.setTranslationX(width * 0.732f);
         binding.plusNotesStuck.setTranslationY(height * 0.396f);
         binding.plusNotesStuck.setOnClickListener(view15 -> {
-            if (UserModel.getMatchData().getTrapFail() < 3) {;
+            if (UserModel.getMatchData().getTrapFail() < 3) {
                 UserModel.getMatchData().setTrapFail(UserModel.getMatchData().getTrapFail() + 1);
                 binding.notesStuckCounter.setText(String.valueOf(UserModel.getMatchData().getTrapFail()));
             }

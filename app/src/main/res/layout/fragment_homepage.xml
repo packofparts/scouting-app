@@ -208,22 +208,6 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/End_Game"
-                    android:layout_width="79dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="End Game"
-                    android:textColor="@color/white"
-                    android:textSize="42sp" />
-
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <ImageView
@@ -404,6 +388,21 @@
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     tools:ignore="HardcodedText,RtlHardcoded" />
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/End_Game"
+                    android:layout_width="79dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="End Game"
+                    android:textColor="@color/white"
+                    android:textSize="42sp" />
+
+
             </TableRow>
 
             <TableRow

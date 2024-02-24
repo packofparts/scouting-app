@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Switch;
 
 import androidx.annotation.NonNull;
@@ -93,8 +94,8 @@ public class ThirdFragment extends Fragment {
         });
         UIHelpers.lightDark(v, UIHelpers.darkMode);
 
-        binding.numNotes.getBackground().setColorFilter(Color.parseColor("#73C2F0"), PorterDuff.Mode.SRC_ATOP);
-        binding.numNotesInAmp.getBackground().setColorFilter(Color.parseColor("#73C2F0"), PorterDuff.Mode.SRC_ATOP);
+        updateEditTextBackground(binding.numNotes);
+        updateEditTextBackground(binding.numNotesInAmp);
 
         binding.numNotesInAmp.addTextChangedListener(new TextWatcher() {
             @Override
@@ -109,7 +110,12 @@ public class ThirdFragment extends Fragment {
             @SuppressLint("SetTextI18n")
             @Override
             public void afterTextChanged(Editable s) {
-                UserModel.getMatchData().setAmpAuto(Integer.parseInt(binding.numNotesInAmp.getText().toString()));
+                Editable input = binding.numNotesInAmp.getText();
+                if (input == null || input.length() == 0){
+                    return;
+                } else {
+                    UserModel.getMatchData().setAmpAuto(Integer.parseInt(input.toString()));
+                }
             }
         });
         binding.numNotes.addTextChangedListener(new TextWatcher() {
@@ -125,7 +131,12 @@ public class ThirdFragment extends Fragment {
             @SuppressLint("SetTextI18n")
             @Override
             public void afterTextChanged(Editable s) {
-                UserModel.getMatchData().setSpeakerAuto(Integer.parseInt(binding.numNotes.getText().toString()));
+                Editable input = binding.numNotes.getText();
+                if (input == null || input.length() == 0){
+                    return;
+                } else {
+                    UserModel.getMatchData().setSpeakerAuto(Integer.parseInt(input.toString()));
+                }
             }
         });
     }
@@ -150,6 +161,14 @@ public class ThirdFragment extends Fragment {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    private static void updateEditTextBackground(EditText editText) {
+        editText
+                .getBackground()
+                .setColorFilter(
+                        Color.parseColor("#73C2F0"),
+                        PorterDuff.Mode.SRC_ATOP);
     }
 
 

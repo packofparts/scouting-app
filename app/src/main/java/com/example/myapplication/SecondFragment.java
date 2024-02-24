@@ -24,8 +24,6 @@ import com.example.myapplication.databinding.FragmentSecondBinding;
 public class SecondFragment extends Fragment {
 
     private FragmentSecondBinding binding;
-    MatchData.NoteAcquisition intakeMethod = MatchData.NoteAcquisition.NONE;
-    public static int intakeMethodIndex = 0;
     ViewGroup v = null;
 
     @SuppressLint("SetTextI18n")
@@ -107,7 +105,7 @@ public class SecondFragment extends Fragment {
         binding.intakeMethod.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                SecondFragment.intakeMethodIndex = position;
+                MatchData.NoteAcquisition intakeMethod;
                 switch (position){
                     case 0:
                         intakeMethod = MatchData.NoteAcquisition.NONE;
@@ -118,10 +116,11 @@ public class SecondFragment extends Fragment {
                     case 2:
                         intakeMethod = MatchData.NoteAcquisition.SOURCE;
                         break;
-                    case 3:
+                    default:
                         intakeMethod = MatchData.NoteAcquisition.BOTH;
                         break;
                 }
+                UserModel.getMatchData().setNoteAcquired(intakeMethod);
             }
 
             @Override

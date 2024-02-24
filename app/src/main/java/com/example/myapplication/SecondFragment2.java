@@ -30,8 +30,6 @@ import java.util.Objects;
 public class SecondFragment2 extends Fragment {
 
     private FragmentSecond2Binding binding;
-    MatchData.Chain chainStatus = MatchData.Chain.NOPE;
-    MatchData.Harmony harmonyStatus = MatchData.Harmony.NOPE;
     public static int chainAttemptIndex = 0;
     public static int harmonyAttemptIndex = 0;
     public static boolean human = false;
@@ -125,6 +123,7 @@ public class SecondFragment2 extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 SecondFragment2.chainAttemptIndex = position;
+                MatchData.Chain chainStatus;
                 switch (position){
                     case 0:
                         chainStatus = MatchData.Chain.NOPE;
@@ -132,7 +131,7 @@ public class SecondFragment2 extends Fragment {
                     case 1:
                         chainStatus = MatchData.Chain.ATTEMPTED;
                         break;
-                    case 2:
+                    default:
                         chainStatus = MatchData.Chain.SUCCEDED;
                         break;
                 }
@@ -159,6 +158,7 @@ public class SecondFragment2 extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 SecondFragment2.harmonyAttemptIndex = position;
+                MatchData.Harmony harmonyStatus;
                 switch (position){
                     case 0:
                         harmonyStatus = MatchData.Harmony.NOPE;
@@ -169,7 +169,7 @@ public class SecondFragment2 extends Fragment {
                     case 2:
                         harmonyStatus = MatchData.Harmony.TWO;
                         break;
-                    case 3:
+                    default:
                         harmonyStatus = MatchData.Harmony.THREE;
                         break;
 

@@ -77,10 +77,11 @@ public class FirstFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (binding.input.getText() == null){
+                Editable input = binding.input.getText();
+                if (input == null || input.length() == 0){
                     return;
                 }
-                String teamNumber = String.valueOf(binding.input.getText());
+                String teamNumber = String.valueOf(input);
                 UserModel.getMatchData().setTeamNumber(Integer.parseInt(teamNumber));
             }
         });
@@ -98,10 +99,11 @@ public class FirstFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (binding.matchInput.getText() == null){
+                Editable input = binding.matchInput.getText();
+                if (input == null || input.length() == 0){
                     return;
                 }
-                String matchNumber = String.valueOf(binding.matchInput.getText());
+                String matchNumber = String.valueOf(input);
                 UserModel.getMatchData().setMatchNumber(Integer.parseInt(matchNumber));
             }
         });

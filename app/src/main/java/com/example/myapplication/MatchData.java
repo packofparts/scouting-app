@@ -49,13 +49,14 @@ public class MatchData {
     // add human player spotlight data later
 
     public String returnAllData() {
-        //TODO: Consider use of JSON library
+
+        String sanitizedNotes = notes.replace("\"", "\\\"");
         return "{\"teamNumber\":\"" + teamNumber + "\"," + "\"matchNumber\":\"" + matchNumber + "\"," + "\"workingAuto\":\"" + workingAuto + "\"," + "\"moveOutOfZone\":\""
                 + moveOutOfZone + "\"," + "\"ampAuto\":\"" + ampAuto + "\"," + "\"speakerAuto\":\"" + speakerAuto + "\","
                 + "\"isBroke\":\"" + broke + "\"," + "\"isDefense\":\"" + defense + "\"," + "\"ampTeleop\":\"" + ampTeleop + "\"," + "\"amplifiedSpeaker\":\"" + amplifiedSpeaker + "\","
                 + "\"speakerTeleop\":\"" + speakerTeleop + "\"," + "\"noteAcquired\":\"" + noteAcquired + "\"," + "\"chaining\":\"" + chaining + "\","
                 + "\"trapSucess\":\"" + trapSucess + "\"," + "\"trapFail\":\"" + trapFail + "\"," + "\"harmo\":\"" + harmo + "\"," + "\"humanPlayerAtAmp\":\"" + humanPlayerAtAmp + "\","
-                + "\"humanPlayerNotesThrown\":\"" + humanPlayerNotesThrown + "\"," + "\"humanPlayerNotesThrown\":\"" + humanPlayerNotesThrown + "\"," + "\"notes\":\"" + notes + "\"}";
+                + "\"humanPlayerNotesThrown\":\"" + humanPlayerNotesThrown + "\"," + "\"humanPlayerNotesThrown\":\"" + humanPlayerNotesThrown + "\"," + "\"notes\":\"" + sanitizedNotes + "\"}";
     }
     //Getters and Setters
 

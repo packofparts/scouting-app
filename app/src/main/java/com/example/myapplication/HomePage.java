@@ -71,9 +71,6 @@ public class HomePage extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        binding.previousInfoButton.setOnClickListener(v -> NavHostFragment.findNavController(HomePage.this)
-                .navigate(R.id.action_HomePage_to_pitFragment));
         binding.nextInfoButton.setOnClickListener(v -> UserModel.getMatchData().setBroke(true));
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.WolfLogoInfo, "rotation", 0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f);
         animation.setDuration(1000);

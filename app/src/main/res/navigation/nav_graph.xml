@@ -45,22 +45,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/pitFragment"
-        android:name="com.example.myapplication.PitFragment"
-        android:label="fragment_pit"
-        tools:layout="@layout/fragment_pit" >
-        <action
-            android:id="@+id/action_pitFragment_to_HomePage"
-            app:destination="@id/HomePage" />
-    </fragment>
-    <fragment
         android:id="@+id/HomePage"
         android:name="com.example.myapplication.HomePage"
         android:label="fragment_homepage"
         tools:layout="@layout/fragment_homepage" >
-        <action
-            android:id="@+id/action_HomePage_to_pitFragment"
-            app:destination="@id/pitFragment" />
         <action
             android:id="@+id/action_HomePage_to_FirstFragment"
             app:destination="@id/FirstFragment" />

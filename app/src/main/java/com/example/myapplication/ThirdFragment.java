@@ -11,8 +11,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Switch;
 
@@ -21,8 +19,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentThirdBinding;
-
-import java.util.Objects;
 
 
 /**
@@ -92,6 +88,11 @@ public class ThirdFragment extends Fragment {
             NavHostFragment.findNavController(ThirdFragment.this)
                     .navigate(R.id.action_ThirdFragment_to_SecondFragment);
         });
+        binding.toHomePage.setOnClickListener(view12 -> {
+            NavHostFragment.findNavController(ThirdFragment.this)
+                    .navigate(R.id.action_ThirdFragment_to_FirstFragment                                                                      );
+        });
+
         UIHelpers.lightDark(v, UIHelpers.darkMode);
 
         updateEditTextBackground(binding.numNotes);

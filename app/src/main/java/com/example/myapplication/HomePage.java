@@ -3,11 +3,8 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.animation.ObjectAnimator;
-import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
@@ -74,13 +71,6 @@ public class HomePage extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        ViewModelProvider viewModelProvider = new ViewModelProvider(requireActivity());
-        UserModel userModel = viewModelProvider.get(UserModel.class);
-        MatchData matchData = new MatchData();
-        userModel.setMatchData(matchData);
-        binding.previousInfoButton.setOnClickListener(v -> NavHostFragment.findNavController(HomePage.this)
-                .navigate(R.id.action_HomePage_to_pitFragment));
         binding.nextInfoButton.setOnClickListener(v -> UserModel.getMatchData().setBroke(true));
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.WolfLogoInfo, "rotation", 0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f);
         animation.setDuration(1000);

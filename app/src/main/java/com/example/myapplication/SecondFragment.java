@@ -35,6 +35,7 @@ public class SecondFragment extends Fragment {
 
         binding = FragmentSecondBinding.inflate(inflater, container, false);
         v = container;
+        binding.team.setText("Team " + UserModel.getMatchData().getMatchNumber());
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
         binding.ampCounter.setText(String.valueOf(UserModel.getMatchData().getAmpTeleop()));
         binding.speakerUnampCounter.setText(String.valueOf(UserModel.getMatchData().getSpeakerTeleop()));

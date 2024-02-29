@@ -78,10 +78,8 @@ public class FirstFragment extends Fragment {
         binding.input.setTranslationY(height * 0.158f);
 
         binding.input.addTextChangedListener(new TextWatcher() {
-            String text = String.valueOf(binding.input.getText());
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                text = String.valueOf(binding.input.getText());
             }
 
             @Override
@@ -91,9 +89,6 @@ public class FirstFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.length() > 5){
-                    binding.input.setText(text);
-                }
                 Editable input = binding.input.getText();
                 if (input == null){
                     return;
@@ -104,10 +99,8 @@ public class FirstFragment extends Fragment {
         });
 
         binding.matchInput.addTextChangedListener(new TextWatcher() {
-            String text = String.valueOf(binding.matchInput.getText());
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                text = String.valueOf(binding.matchInput.getText());
             }
 
             @Override
@@ -117,9 +110,6 @@ public class FirstFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.length() > 3){
-                    binding.matchInput.setText(text);
-                }
                 Editable input = binding.matchInput.getText();
                 if (input == null){
                     return;

@@ -28,6 +28,7 @@
                 android:text="Auto"
                 android:textColor="@color/white"
                 android:textSize="35sp"
+                android:padding="5dp"
                 tools:ignore="HardcodedText" />
             <TableRow
                 android:layout_width="match_parent"
@@ -47,12 +48,12 @@
                 <TextView
                     android:id="@+id/Working_auto_info"
                     android:layout_width="230dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="158dp"
                     android:gravity="left"
                     android:padding="40dp"
                     android:text="This means that if the robot moved in the auto section, even just a centimeter."
                     android:textColor="@color/white"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
             </TableRow>
 
             <TableRow
@@ -114,19 +115,19 @@
                 <TextView
                     android:id="@+id/If_so_how_many_times"
                     android:layout_width="170dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="117dp"
                     android:gravity="center"
+                    android:padding="20dp"
                     android:text="If so, how many times?"
                     android:textColor="@color/white"
                     android:textSize="30sp"
-                    android:padding="20dp"
                     tools:ignore="HardcodedText,RtlHardcoded" />
 
                 <TextView
                     android:id="@+id/If_so_how_many_times_info"
                     android:layout_width="33dp"
                     android:layout_height="match_parent"
-                    android:gravity="left"
+                    android:gravity="center"
                     android:padding="40dp"
                     android:text="In the blank below, click it and enter how many times the robot scored in the speaker."
                     android:textColor="@color/white"
@@ -166,7 +167,7 @@
                 <TextView
                     android:id="@+id/Any_robot_contacts"
                     android:layout_width="170dp"
-                    android:layout_height="160dp"
+                    android:layout_height="match_parent"
                     android:gravity="center"
                     android:padding="0dp"
                     android:text="Any robot contacts? "
@@ -210,12 +211,12 @@
                 <TextView
                     android:id="@+id/Wolf_info"
                     android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="26dp"
                     android:text="The wolf logo switches the backdrop, toggling between a white and black mode. "
                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:padding="26dp"
                     tools:ignore="HardcodedText,RtlHardcoded" />
             </TableRow>
 
@@ -227,7 +228,7 @@
                 <ImageView
                     android:id="@+id/Switch_off"
                     android:layout_width="105dp"
-                    android:layout_height="87dp"
+                    android:layout_height="match_parent"
                     android:src="@drawable/switchoff" />
 
                 <TextView
@@ -249,8 +250,9 @@
                 <ImageView
                     android:id="@+id/Switch_on"
                     android:layout_width="125dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="103dp"
                     android:src="@drawable/switchon" />
+
                 <TextView
                     android:id="@+id/Switch_on_info"
                     android:layout_width="244dp"
@@ -267,127 +269,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/Plus"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/plus" />
-
-                <TextView
-                    android:id="@+id/Plus_info"
-                    android:layout_width="204dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:padding="26dp"
-                    android:text="Use the plus icon to signal the increase of the value."
-                    android:textColor="@color/white"
-                    android:textSize="15sp" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/Minus"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/minus" />
-
-                <TextView
-                    android:id="@+id/Minus_info"
-                    android:layout_width="246dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:text="Use the minus icon to signal the decrease of the value."
-                    android:textColor="@color/white"
-                    android:padding="26dp"
-                    android:textSize="15sp" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <Button
-                    android:id="@+id/next_info_button"
-                    android:layout_width="27dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="36dp"
-                    android:backgroundTint="#3280B4"
-                    android:text="@string/next" />
-
-                <TextView
-                    android:id="@+id/Next_info"
-                    android:layout_width="244dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:padding="26dp"
-                    android:text="The Next button will transport you to the next page. \n(← try me)"
-                    android:textColor="@color/white"
-                    android:textSize="15sp"
-                    tools:ignore="HardcodedText,RtlHardcoded" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <Button
-                    android:id="@+id/previous_info_button"
-                    android:layout_width="106dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="36dp"
-                    android:backgroundTint="#3280B4"
-                    android:text="Previous"
-                    app:cornerRadius="100dp" />
-
-                <TextView
-                    android:id="@+id/Previous_info"
-                    android:layout_width="244dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:text="The Previous button will take you back to the previous page."
-                    android:textColor="@color/white"
-                    android:textSize="15sp"
-                    android:padding="26dp"
-                    tools:ignore="HardcodedText,RtlHardcoded" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/Spinner"
-                    android:layout_width="180dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/spinner" />
-
-                <TextView
-                    android:id="@+id/Spinner_info"
-                    android:layout_width="246dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:padding="26dp"
-                    android:text="Click on the Spinner's triangle to select on an option from the dropdown. "
-                    android:textColor="@color/white"
-                    android:textSize="15sp" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
                 <TextView
                     android:id="@+id/Broke"
                     android:layout_width="117dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
                     android:text="Broke?"
                     android:textColor="@color/white"
                     android:textSize="30sp"
-                    android:padding="10dp"
                     tools:ignore="HardcodedText,RtlHardcoded" />
 
                 <TextView
@@ -409,12 +299,12 @@
                 <TextView
                     android:id="@+id/Defense"
                     android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
                     android:text="Defense?"
                     android:textColor="@color/white"
                     android:textSize="30sp"
-                    android:padding="10dp"
                     tools:ignore="HardcodedText,RtlHardcoded" />
 
                 <TextView
@@ -437,7 +327,7 @@
                     android:id="@+id/Ground"
                     android:layout_width="181dp"
                     android:layout_height="wrap_content"
-                    android:gravity="left"
+                    android:gravity="center"
                     android:text="Pick up from ground?"
                     android:textColor="@color/white"
                     android:textSize="30sp"
@@ -447,7 +337,7 @@
                 <TextView
                     android:id="@+id/Ground_info"
                     android:layout_width="207dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="left"
                     android:padding="26dp"
                     android:text="Pick up from the ground means that the robot has picked up notes from the ground. "
@@ -464,12 +354,12 @@
                 <TextView
                     android:id="@+id/Source_Pick_up"
                     android:layout_width="173dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
                     android:text="Pick up from source?"
                     android:textColor="@color/white"
                     android:textSize="30sp"
-                    android:padding="10dp"
                     tools:ignore="HardcodedText,RtlHardcoded" />
 
                 <TextView
@@ -491,12 +381,12 @@
                 <TextView
                     android:id="@+id/Amp_Pick_up"
                     android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
+                    android:layout_height="125dp"
+                    android:gravity="center"
+                    android:padding="10dp"
                     android:text="Notes in Amp"
                     android:textColor="@color/white"
                     android:textSize="28sp"
-                    android:padding="10dp"
                     tools:ignore="HardcodedText,RtlHardcoded" />
 
                 <TextView
@@ -519,7 +409,7 @@
                     android:id="@+id/Note_in_Speaker"
                     android:layout_width="14dp"
                     android:layout_height="wrap_content"
-                    android:gravity="left"
+                    android:gravity="center"
                     android:text="Notes in Speaker Amplified/Unamplified"
                     android:textColor="@color/white"
                     android:textSize="30sp"
@@ -529,7 +419,7 @@
                 <TextView
                     android:id="@+id/Note_in_Speaker_info"
                     android:layout_width="139dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="left"
                     android:padding="26dp"
                     android:text="Notes in Speaker means scoring in the big structure in the middle with two categories for Amplified and another for non-Amplified scoring. "
@@ -544,6 +434,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="End Game"
+                android:padding="10dp"
                 android:textColor="@color/white"
                 android:textSize="42sp"/>
 
@@ -560,12 +451,12 @@
                 <TextView
                     android:id="@+id/ChainStatus"
                     android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
                     android:text="Chain Status"
                     android:textColor="@color/white"
                     android:textSize="30sp"
-                    android:padding="10dp"
                     tools:ignore="HardcodedText,RtlHardcoded" />
 
                 <TextView
@@ -586,12 +477,12 @@
                 <TextView
                     android:id="@+id/HarmonyStatus"
                     android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
                     android:text="Harmony Status"
                     android:textColor="@color/white"
                     android:textSize="30sp"
-                    android:padding="10dp"
                     tools:ignore="HardcodedText,RtlHardcoded" />
 
                 <TextView
@@ -612,12 +503,12 @@
                 <TextView
                     android:id="@+id/NotesStuck"
                     android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
                     android:text="Notes in Trap (Failed)"
                     android:textColor="@color/white"
                     android:textSize="30sp"
-                    android:padding="10dp"
                     tools:ignore="HardcodedText,RtlHardcoded" />
 
                 <TextView
@@ -638,12 +529,12 @@
                 <TextView
                     android:id="@+id/NotesSuccess"
                     android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
                     android:text="Notes in Trap\n(Success)"
                     android:textColor="@color/white"
                     android:textSize="30sp"
-                    android:padding="10dp"
                     tools:ignore="HardcodedText,RtlHardcoded" />
 
                 <TextView
@@ -664,12 +555,12 @@
                 <TextView
                     android:id="@+id/Human"
                     android:layout_width="170dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
                     android:text="Human Player?"
                     android:textColor="@color/white"
                     android:textSize="30sp"
-                    android:padding="10dp"
                     tools:ignore="HardcodedText,RtlHardcoded" />
 
                 <TextView
@@ -691,7 +582,7 @@
                     android:id="@+id/NotesThrown"
                     android:layout_width="170dp"
                     android:layout_height="wrap_content"
-                    android:gravity="left"
+                    android:gravity="center"
                     android:text="Notes Thrown by Player"
                     android:textColor="@color/white"
                     android:textSize="30sp"
@@ -701,7 +592,7 @@
                 <TextView
                     android:id="@+id/NotesThrown_info"
                     android:layout_width="230dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="left"
                     android:padding="26dp"
                     android:text="Notes thrown by player means the number of notes that the human player threw."
@@ -716,12 +607,12 @@
                 <TextView
                     android:id="@+id/NotesHit"
                     android:layout_width="170dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
                     android:text="Notes Spotlighted by Player"
                     android:textColor="@color/white"
                     android:textSize="30sp"
-                    android:padding="10dp"
                     tools:ignore="HardcodedText,RtlHardcoded" />
 
                 <TextView
@@ -742,7 +633,7 @@
                 <ImageView
                     android:id="@+id/Notes"
                     android:layout_width="150dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:padding="10dp"
                     android:src="@drawable/notes" />
 

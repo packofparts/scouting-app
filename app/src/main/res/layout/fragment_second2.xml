@@ -352,6 +352,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInput"
+                android:maxLength="150"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#73C2F0"

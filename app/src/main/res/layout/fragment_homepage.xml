@@ -212,7 +212,7 @@
                     android:id="@+id/Wolf_info"
                     android:layout_width="150dp"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:gravity="left"
                     android:padding="26dp"
                     android:text="The wolf logo switches the backdrop, toggling between a white and black mode. "
                     android:textColor="@color/white"
@@ -647,6 +647,15 @@
                     android:textColor="@color/white"
                     android:textSize="15sp" />
             </TableRow>
+
+            <Button
+                android:id="@+id/prevInfoBack"
+                android:layout_width="300px"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="#73C2F0"
+                android:text="Back to Team Selection"
+                app:cornerRadius="100dp"/>
 
         </TableLayout>
     </ScrollView>

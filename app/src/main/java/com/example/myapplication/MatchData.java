@@ -3,8 +3,8 @@ package com.example.myapplication;
 public class MatchData {
 
     //Pre-Game
-    int teamNumber = 0;
-    int matchNumber = 0;
+    String teamNumber = "";
+    String matchNumber = "";
 
     //Auto Data
     boolean workingAuto = false;
@@ -65,10 +65,10 @@ public class MatchData {
     //Pre Match
 
 
-    public int getTeamNumber() {    return teamNumber;    }
-    public void setTeamNumber(int teamNumber) { this.teamNumber = teamNumber;    }
-    public int getMatchNumber() {    return matchNumber;    }
-    public void setMatchNumber(int matchNumber) { this.matchNumber = matchNumber;    }
+    public String getTeamNumber() {    return teamNumber;    }
+    public void setTeamNumber(String teamNumber) { this.teamNumber = teamNumber;    }
+    public String getMatchNumber() {    return matchNumber;    }
+    public void setMatchNumber(String matchNumber) { this.matchNumber = matchNumber;    }
 
 
 

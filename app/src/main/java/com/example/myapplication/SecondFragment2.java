@@ -122,10 +122,8 @@ public class SecondFragment2 extends Fragment {
         binding.characterLimit.setTranslationY(height * 0.875f);
         binding.characterLimit.setTranslationX(width * 0.073f);
         binding.textInput.addTextChangedListener(new TextWatcher() {
-            String text = String.valueOf(binding.textInput.getText());
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                text = String.valueOf(binding.textInput.getText());
             }
 
             @Override
@@ -136,9 +134,6 @@ public class SecondFragment2 extends Fragment {
             @SuppressLint("SetTextI18n")
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.length() > 150) {
-                    binding.textInput.setText(text);
-                }
                 binding.characterLimit.setText("Character Limit: " + Objects.requireNonNull(binding.textInput.getText()).length() + "/150");
                 UserModel.getMatchData().setNotes(binding.textInput.getText().toString());
             }

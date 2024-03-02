@@ -29,11 +29,11 @@ public class FirstFragment extends Fragment {
         userModel.setMatchData(matchData);
         binding = FragmentFirstBinding.inflate(inflater, container, false);
         v = container;
-        int currentTeamNumber = UserModel.getMatchData().getTeamNumber();
-        binding.input.setText(currentTeamNumber == 0 ? "" : String.valueOf(currentTeamNumber));
+        String currentTeamNumber = UserModel.getMatchData().getTeamNumber();
+        binding.input.setText(currentTeamNumber);
 
-        int currentMatchNumber = UserModel.getMatchData().getTeamNumber();
-        binding.input.setText(currentMatchNumber == 0 ? "" : String.valueOf(currentMatchNumber));
+        String currentMatchNumber = UserModel.getMatchData().getTeamNumber();
+        binding.input.setText(currentMatchNumber);
 
         return binding.getRoot();
     }
@@ -51,13 +51,9 @@ public class FirstFragment extends Fragment {
             } else {
                 if (!teamNumberCheck){
                     Snackbar.make(view, "Invalid team number", 600).show();
-                    binding.input.setText(UserModel.getMatchData().getMatchNumber() == 0 ? "" :
-                            String.valueOf(UserModel.getMatchData().getMatchNumber()));
-                } else{
+                }
+                if (!matchNumCheck) {
                     Snackbar.make(view, "Invalid match number", 600).show();
-
-                    binding.input.setText(UserModel.getMatchData().getTeamNumber() == 0 ? "" :
-                            String.valueOf(UserModel.getMatchData().getTeamNumber()));
                 }
 
             }
@@ -84,7 +80,6 @@ public class FirstFragment extends Fragment {
         binding.input.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
@@ -95,18 +90,17 @@ public class FirstFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 Editable input = binding.input.getText();
-                if (input == null || input.length() == 0){
+                if (input == null){
                     return;
                 }
                 String teamNumber = String.valueOf(input);
-                UserModel.getMatchData().setTeamNumber(Integer.parseInt(teamNumber));
+                UserModel.getMatchData().setTeamNumber(teamNumber);
             }
         });
 
         binding.matchInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
@@ -117,11 +111,11 @@ public class FirstFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 Editable input = binding.matchInput.getText();
-                if (input == null || input.length() == 0){
+                if (input == null){
                     return;
                 }
                 String matchNumber = String.valueOf(input);
-                UserModel.getMatchData().setMatchNumber(Integer.parseInt(matchNumber));
+                UserModel.getMatchData().setMatchNumber(matchNumber);
             }
         });
         binding.cont.setTranslationY(height * 0.270f);

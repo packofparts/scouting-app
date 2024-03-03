@@ -38,6 +38,6 @@
         android:id="@+id/FirstFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.example.myapplication.FirstFragment" />-->
+        android:name="com.example.myapplication.HomePage" />-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

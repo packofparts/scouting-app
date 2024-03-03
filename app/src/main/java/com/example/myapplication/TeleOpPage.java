@@ -17,13 +17,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.myapplication.databinding.FragmentSecondBinding;
+import com.example.myapplication.databinding.FragmentTeleopBinding;
 
 
 
-public class SecondFragment extends Fragment {
+public class TeleOpPage extends Fragment {
 
-    private FragmentSecondBinding binding;
+    private FragmentTeleopBinding binding;
     ViewGroup v = null;
 
     @SuppressLint("SetTextI18n")
@@ -33,7 +33,7 @@ public class SecondFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentSecondBinding.inflate(inflater, container, false);
+        binding = FragmentTeleopBinding.inflate(inflater, container, false);
         v = container;
         binding.team.setText("Team " + UserModel.getMatchData().getMatchNumber());
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
@@ -53,9 +53,9 @@ public class SecondFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        binding.next.setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
+        binding.next.setOnClickListener(view1 -> NavHostFragment.findNavController(TeleOpPage.this)
                 .navigate(R.id.action_SecondFragment_to_SecondFragment2));
-        binding.prev.setOnClickListener(view12 -> NavHostFragment.findNavController(SecondFragment.this)
+        binding.prev.setOnClickListener(view12 -> NavHostFragment.findNavController(TeleOpPage.this)
                 .navigate(R.id.action_SecondFragment_to_ThirdFragment));
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -100,7 +100,7 @@ public class SecondFragment extends Fragment {
         binding.intakeBackground.setTranslationY(height * 0.321f);
         ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Intake", "Ground Intake", "Source Intake", "Both"});
         binding.intakeMethod.setAdapter(chainAdapter);
-        binding.intakeMethod.setSelection(SecondFragment2.chainAttemptIndex);
+        binding.intakeMethod.setSelection(EndGamePage.chainAttemptIndex);
         binding.intakeMethod.setTranslationX(width * 0.366f);
         binding.intakeMethod.setTranslationY(height * 0.367f);
         binding.intakeMethod.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

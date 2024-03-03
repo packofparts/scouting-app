@@ -1,13 +1,9 @@
 package com.example.myapplication;
 
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
-
 
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -23,7 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.myapplication.databinding.FragmentSecond2Binding;
+import com.example.myapplication.databinding.FragmentEndgameBinding;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,9 +28,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Objects;
 
-public class SecondFragment2 extends Fragment {
+public class EndGamePage extends Fragment {
 
-    private FragmentSecond2Binding binding;
+    private FragmentEndgameBinding binding;
     public static int chainAttemptIndex = 0;
     public static int harmonyAttemptIndex = 0;
     ViewGroup v = null;
@@ -45,7 +41,7 @@ public class SecondFragment2 extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentSecond2Binding.inflate(inflater, container, false);
+        binding = FragmentEndgameBinding.inflate(inflater, container, false);
         v = container;
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
         binding.notesStuckCounter.setText(String.valueOf(UserModel.getMatchData().getTrapFail()));
@@ -82,11 +78,11 @@ public class SecondFragment2 extends Fragment {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            NavHostFragment.findNavController(SecondFragment2.this).navigate(R.id.action_SecondFragment2_to_FirstFragment);
+            NavHostFragment.findNavController(EndGamePage.this).navigate(R.id.action_SecondFragment2_to_FirstFragment);
         });
 
 
-        binding.prev.setOnClickListener(view12 -> NavHostFragment.findNavController(SecondFragment2.this)
+        binding.prev.setOnClickListener(view12 -> NavHostFragment.findNavController(EndGamePage.this)
                 .navigate(R.id.action_SecondFragment2_to_SecondFragment));
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -136,13 +132,13 @@ public class SecondFragment2 extends Fragment {
         });
         ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Attempt", "Failed Attempt", "Successful Attempt"});
         binding.chainAttempt.setAdapter(chainAdapter);
-        binding.chainAttempt.setSelection(SecondFragment2.chainAttemptIndex);
+        binding.chainAttempt.setSelection(EndGamePage.chainAttemptIndex);
         binding.chainAttempt.setTranslationY(height * 0.201f);
         binding.chainAttempt.setTranslationX(width * 0.366f);
         binding.chainAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                SecondFragment2.chainAttemptIndex = position;
+                EndGamePage.chainAttemptIndex = position;
                 MatchData.Chain chainStatus;
                 switch (position){
                     case 0:
@@ -170,14 +166,14 @@ public class SecondFragment2 extends Fragment {
 
         ArrayAdapter<String> harmonyAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Attempt", "Failed Attempt", "2 On Chain", "3 On Chain"});
         binding.harmonyAttempt.setAdapter(harmonyAdapter);
-        binding.harmonyAttempt.setSelection(SecondFragment2.harmonyAttemptIndex);
+        binding.harmonyAttempt.setSelection(EndGamePage.harmonyAttemptIndex);
         binding.harmonyAttempt.setTranslationY(height * 0.302f);
         binding.harmonyAttempt.setTranslationX(width * 0.366f);
         binding.harmonyAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                SecondFragment2.harmonyAttemptIndex = position;
+                EndGamePage.harmonyAttemptIndex = position;
                 MatchData.Harmony harmonyStatus;
                 switch (position){
                     case 0:

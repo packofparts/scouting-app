@@ -18,19 +18,19 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.myapplication.databinding.FragmentThirdBinding;
+import com.example.myapplication.databinding.FragmentAutoBinding;
 
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ThirdFragment#newInstance} factory method to
+ * Use the {@link AutoPage#newInstance} factory method to
  * create an instance of this fragment.
  */
 
-public class ThirdFragment extends Fragment {
+public class AutoPage extends Fragment {
 
 
-    private FragmentThirdBinding binding;
+    private FragmentAutoBinding binding;
     ViewGroup v = null;
     public static boolean ground = false;
     @SuppressLint({"ObsoleteSdkInt", "SetTextI18n"})
@@ -38,12 +38,12 @@ public class ThirdFragment extends Fragment {
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState
     ){
-        binding = FragmentThirdBinding.inflate(inflater, container, false);
+        binding = FragmentAutoBinding.inflate(inflater, container, false);
         v = container;
             setSwitchColor(binding.switch1);
             setSwitchColor(binding.switch2);
             setSwitchColor(binding.switch3);
-        binding.switch3.setChecked(ThirdFragment.ground);
+        binding.switch3.setChecked(AutoPage.ground);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             binding.switch3.setThumbTintList(UIHelpers.teamColorAsList);
@@ -85,11 +85,11 @@ public class ThirdFragment extends Fragment {
         });
         binding.switch3.setOnCheckedChangeListener((buttonView, isChecked) -> setSwitchColor(binding.switch3));
         binding.toSecondFragment.setOnClickListener(view12 -> {
-            NavHostFragment.findNavController(ThirdFragment.this)
+            NavHostFragment.findNavController(AutoPage.this)
                     .navigate(R.id.action_ThirdFragment_to_SecondFragment);
         });
         binding.toHomePage.setOnClickListener(view12 -> {
-            NavHostFragment.findNavController(ThirdFragment.this)
+            NavHostFragment.findNavController(AutoPage.this)
                     .navigate(R.id.action_ThirdFragment_to_FirstFragment                                                                      );
         });
 
@@ -151,12 +151,12 @@ public class ThirdFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
 
-    public ThirdFragment() {
+    public AutoPage() {
         // Required empty public constructor
     }
 
-    public static ThirdFragment newInstance(String param1, String param2) {
-        ThirdFragment fragment = new ThirdFragment();
+    public static AutoPage newInstance(String param1, String param2) {
+        AutoPage fragment = new AutoPage();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

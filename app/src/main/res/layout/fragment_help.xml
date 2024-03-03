@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:orientation="vertical"
+    tools:context=".HelpPage"
+    app:navGraph="@navigation/nav_graph">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/Auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Auto"
+                android:textColor="@color/white"
+                android:textSize="35sp"
+                android:padding="5dp"
+                tools:ignore="HardcodedText" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/Working_auto"
+                    android:layout_width="112dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Working Auto"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/Working_auto_info"
+                    android:layout_width="230dp"
+                    android:layout_height="158dp"
+                    android:gravity="left"
+                    android:padding="40dp"
+                    android:text="This means that if the robot moved in the auto section, even just a centimeter."
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/move_out_of_the_zone"
+                    android:layout_width="33dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="0dp"
+                    android:text="Does the robot move out of the zone? "
+                    android:textColor="@color/white"
+                    android:textSize="28sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/move_out_of_the_zone_info"
+                    android:layout_width="230dp"
+                    android:layout_height="match_parent"
+                    android:gravity="left"
+                    android:padding="40dp"
+                    android:text="This means did it move past the red lines on the field."
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/Did_the_robot_score"
+                    android:layout_width="170dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="0dp"
+                    android:text="Did the robot score?"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/Did_the_robot_score_info"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:padding="40dp"
+                    android:text="This means did the robot scored in the speaker which is the big structure on each side of the field."
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/If_so_how_many_times"
+                    android:layout_width="170dp"
+                    android:layout_height="117dp"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:text="If so, how many times?"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/If_so_how_many_times_info"
+                    android:layout_width="33dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="40dp"
+                    android:text="In the blank below, click it and enter how many times the robot scored in the speaker."
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/Number_of_notes_scored_in_amp"
+                    android:layout_width="170dp"
+                    android:layout_height="212dp"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:text="Number of notes scored in amp"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/Number_of_notes_scored_in_amp_info"
+                    android:layout_width="33dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="35dp"
+                    android:text="This means how many notes were scored in the place on the side of the field, where you push in a note."
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/Any_robot_contacts"
+                    android:layout_width="170dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="0dp"
+                    android:text="Any robot contacts? "
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/Any_robot_contacts_info"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="40dp"
+                    android:text="Pick from the 3 options no contact which means that the robot you were assigned didn’t touch anything, teammate to teammate means it touched a teammate, or teammate to opponent which means that the robot touched the opponent robot."
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </TableRow>
+
+
+            <TextView
+                android:id="@+id/Tele_op_info"
+                android:layout_width="match_parent"
+                android:layout_height="73dp"
+                android:gravity="center"
+                android:text="Tele-Op"
+                android:textColor="@color/white"
+                android:textSize="32sp"
+                tools:ignore="HardcodedText" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/Wolf_logo_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/pop"/>
+
+
+                <TextView
+                    android:id="@+id/Wolf_info"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="left"
+                    android:padding="26dp"
+                    android:text="The wolf logo switches the backdrop, toggling between a white and black mode. "
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/Switch_off"
+                    android:layout_width="105dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/switchoff" />
+
+                <TextView
+                    android:id="@+id/Switch_off_Info"
+                    android:layout_width="205dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:padding="26dp"
+                    android:text="When the switch is positioned to the left and lacks a purple color, the switch tells us that the statement is false. "
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/Switch_on"
+                    android:layout_width="125dp"
+                    android:layout_height="103dp"
+                    android:src="@drawable/switchon" />
+
+                <TextView
+                    android:id="@+id/Switch_on_info"
+                    android:layout_width="244dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="When the switch is positioned to the right with a purple color, it tells us that that the statement is true."
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:padding="26dp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/Broke"
+                    android:layout_width="117dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Broke?"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/Broke_info"
+                    android:layout_width="257dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:padding="26dp"
+                    android:text="Broke means the robot broke down and stopped working."
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/Defense"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Defense?"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/Defense_info"
+                    android:layout_width="244dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:padding="26dp"
+                    android:text="Defense means that if the robot did any kind of defense to stop the other team from scoring or obtaining notes. "
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/Ground"
+                    android:layout_width="181dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Pick up from ground?"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:padding="10dp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/Ground_info"
+                    android:layout_width="207dp"
+                    android:layout_height="match_parent"
+                    android:gravity="left"
+                    android:padding="26dp"
+                    android:text="Pick up from the ground means that the robot has picked up notes from the ground. "
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/Source_Pick_up"
+                    android:layout_width="173dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Pick up from source?"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/Source_Pick_up_info"
+                    android:layout_width="205dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:padding="26dp"
+                    android:text="Pick up from the source means that the robot has picked up notes from the person handing them out for the wall. "
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/Amp_Pick_up"
+                    android:layout_width="150dp"
+                    android:layout_height="125dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Notes in Amp"
+                    android:textColor="@color/white"
+                    android:textSize="28sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/Amp_Pick_up_info"
+                    android:layout_width="205dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="Notes in Amp means if the robot scored in the Amp which is needed to amplify the speaker. "
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:padding="26dp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/Note_in_Speaker"
+                    android:layout_width="14dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Notes in Speaker Amplified/Unamplified"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:padding="10dp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/Note_in_Speaker_info"
+                    android:layout_width="139dp"
+                    android:layout_height="match_parent"
+                    android:gravity="left"
+                    android:padding="26dp"
+                    android:text="Notes in Speaker means scoring in the big structure in the middle with two categories for Amplified and another for non-Amplified scoring. "
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+            </TableRow>
+
+            <TextView
+                android:id="@+id/End_Game"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="End Game"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="42sp"/>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/ChainStatus"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Chain Status"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/ChainStatus_info"
+                    android:layout_width="246dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:padding="26dp"
+                    android:text="The chain status means whether if the robot (attempted) to climb the chain. "
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/HarmonyStatus"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Harmony Status"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/HarmonyStatus_info"
+                    android:layout_width="246dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:padding="26dp"
+                    android:text="The harmony status means whether if the robot (attempted) to climb a chain with other robots on it. "
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/NotesStuck"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Notes in Trap (Failed)"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/NotesStuck_info"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:padding="26dp"
+                    android:text="The number of failed notes means the number of notes the robot attempted to put in the trap but got stuck or fell out. "
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/NotesSuccess"
+                    android:layout_width="180dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Notes in Trap\n(Success)"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/NotesSuccess_info"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:padding="26dp"
+                    android:text="The number of successful notes means the number of notes the robot attempted to put in the trap and got it fully in. "
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/Human"
+                    android:layout_width="170dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Human Player?"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/Human_info"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:padding="26dp"
+                    android:text="Human player means weather if the player throwing the notes is on their team. "
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/NotesThrown"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Notes Thrown by Player"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:padding="10dp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/NotesThrown_info"
+                    android:layout_width="230dp"
+                    android:layout_height="match_parent"
+                    android:gravity="left"
+                    android:padding="26dp"
+                    android:text="Notes thrown by player means the number of notes that the human player threw."
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/NotesHit"
+                    android:layout_width="170dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Notes Spotlighted by Player"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/NotesHit_info"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:padding="26dp"
+                    android:text="Notes spotlighted by player means the number of notes that the human player threw AND landed either one of the three microphones."
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/Notes"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:src="@drawable/notes" />
+
+                <TextView
+                    android:id="@+id/Notes_info"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:padding="26dp"
+                    android:text="In the end, type any additional notes you have here with a character limit of 150. "
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </TableRow>
+
+            <Button
+                android:id="@+id/prevInfoBack"
+                android:layout_width="300px"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="#73C2F0"
+                android:text="Back to Team Selection"
+                app:cornerRadius="100dp"/>
+
+        </TableLayout>
+    </ScrollView>
+
+</LinearLayout>

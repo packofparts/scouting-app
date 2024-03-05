@@ -40,6 +40,7 @@ public class SecondFragment2 extends Fragment {
     public static int harmonyAttemptIndex = 0;
     public static boolean human = false;
     public boolean confirm = false;
+
     ViewGroup v = null;
     @SuppressLint("SetTextI18n")
     @Override
@@ -53,9 +54,6 @@ public class SecondFragment2 extends Fragment {
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
         binding.notesStuckCounter.setText(String.valueOf(UserModel.getMatchData().getTrapFail()));
         binding.notesSuccessCounter.setText(String.valueOf(UserModel.getMatchData().getTrapSucess()));
-        binding.notesThrownCounter.setText(String.valueOf(UserModel.getMatchData().getHumanPlayerNotesThrown()));
-        binding.notesHitCounter.setText(String.valueOf(UserModel.getMatchData().getHumanPlayerNotesSpotlighted()));
-        binding.human.setChecked(UserModel.getMatchData().getHumanPlayerAtAmp());
         binding.textInput.setText(UserModel.getMatchData().getNotes());
         binding.characterLimit.setText("Character Limit: " + Objects.requireNonNull(binding.textInput.getText()).length() + "/150");
         return binding.getRoot();
@@ -134,10 +132,8 @@ public class SecondFragment2 extends Fragment {
         binding.characterLimit.setTranslationY(height * 0.875f);
         binding.characterLimit.setTranslationX(width * 0.073f);
         binding.textInput.addTextChangedListener(new TextWatcher() {
-            String text = String.valueOf(binding.textInput.getText());
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                text = String.valueOf(binding.textInput.getText());
             }
 
             @Override
@@ -148,9 +144,6 @@ public class SecondFragment2 extends Fragment {
             @SuppressLint("SetTextI18n")
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.length() > 150) {
-                    binding.textInput.setText(text);
-                }
                 binding.characterLimit.setText("Character Limit: " + Objects.requireNonNull(binding.textInput.getText()).length() + "/150");
                 UserModel.getMatchData().setNotes(binding.textInput.getText().toString());
             }
@@ -269,56 +262,6 @@ public class SecondFragment2 extends Fragment {
         });
         binding.notesSuccessCounter.setTranslationX(width * 0.598f);
         binding.notesSuccessCounter.setTranslationY(height * 0.583f);
-
-        binding.human.setTranslationY(height * 0.719f);
-        binding.human.setTranslationX(width * 0.073f);
-        binding.human.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            humanOperation(binding.human.isChecked(), width, height);
-            UserModel.getMatchData().setHumanPlayerAtAmp(binding.human.isChecked());
-            SecondFragment2.human = binding.human.isChecked();
-        });
-        binding.notesThrown.setTranslationY(binding.notesStuck.getTranslationY() + 530);
-        binding.notesThrown.setTranslationX(binding.notesStuck.getTranslationX());
-        binding.minusNotesThrown.setTranslationY(binding.minusNotesStuck.getTranslationY() + 500);
-        binding.minusNotesThrown.setTranslationX(binding.minusNotesStuck.getTranslationX());
-        binding.minusNotesThrown.setOnClickListener(v -> {
-            if (UserModel.getMatchData().getHumanPlayerNotesThrown() > 0) {
-                UserModel.getMatchData().setHumanPlayerNotesThrown(UserModel.getMatchData().getHumanPlayerNotesThrown() - 1);
-                binding.notesThrownCounter.setText(String.valueOf(UserModel.getMatchData().getHumanPlayerNotesThrown()));
-            }
-        });
-        binding.plusNotesThrown.setTranslationY(binding.plusNotesStuck.getTranslationY() + 500);
-        binding.plusNotesThrown.setTranslationX(binding.plusNotesStuck.getTranslationX());
-        binding.plusNotesThrown.setOnClickListener(v -> {
-            if (UserModel.getMatchData().getHumanPlayerNotesThrown() < 3) {
-                UserModel.getMatchData().setHumanPlayerNotesThrown(UserModel.getMatchData().getHumanPlayerNotesThrown() + 1);
-                binding.notesThrownCounter.setText(String.valueOf(UserModel.getMatchData().getHumanPlayerNotesThrown()));
-            }
-        });
-        binding.notesThrownCounter.setTranslationY(binding.notesStuckCounter.getTranslationY() + 500);
-        binding.notesThrownCounter.setTranslationX(binding.notesStuckCounter.getTranslationX());
-
-        binding.notesHit.setTranslationY(binding.notesSuccess.getTranslationY() + 530);
-        binding.notesHit.setTranslationX(binding.notesSuccess.getTranslationX());
-        binding.minusNotesHit.setTranslationY(binding.minusNotesSuccess.getTranslationY() + 500);
-        binding.minusNotesHit.setTranslationX(binding.minusNotesSuccess.getTranslationX());
-        binding.minusNotesHit.setOnClickListener(v -> {
-            if (UserModel.getMatchData().getHumanPlayerNotesSpotlighted() > 0) {
-                UserModel.getMatchData().setHumanPlayerNotesSpotlighted(UserModel.getMatchData().getHumanPlayerNotesSpotlighted() - 1);
-                binding.notesHitCounter.setText(String.valueOf(UserModel.getMatchData().getHumanPlayerNotesSpotlighted()));            }
-        });
-        binding.plusNotesHit.setTranslationY(binding.plusNotesSuccess.getTranslationY() + 500);
-        binding.plusNotesHit.setTranslationX(binding.plusNotesSuccess.getTranslationX());
-        binding.plusNotesHit.setOnClickListener(v -> {
-            if (UserModel.getMatchData().getHumanPlayerNotesSpotlighted() < 3) {
-                UserModel.getMatchData().setHumanPlayerNotesSpotlighted(UserModel.getMatchData().getHumanPlayerNotesSpotlighted() + 1);
-                binding.notesHitCounter.setText(String.valueOf(UserModel.getMatchData().getHumanPlayerNotesSpotlighted()));
-            }
-        });
-        binding.notesHitCounter.setTranslationY(binding.notesSuccessCounter.getTranslationY() + 500);
-        binding.notesHitCounter.setTranslationX(binding.notesSuccessCounter.getTranslationX());
-
-        humanOperation(binding.human.isChecked(), width, height);
         UIHelpers.lightDark(v, UIHelpers.darkMode);
 
     }
@@ -327,35 +270,6 @@ public class SecondFragment2 extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-    }
-
-    @SuppressLint("ObsoleteSdkInt")
-    public void humanOperation(boolean checked, float width, float height){
-        int layout = checked ? 1000:500;
-        int view = checked? 500: 0;
-        int vis = checked? VISIBLE:GONE;
-        ColorStateList col = checked? UIHelpers.purpleAsList: UIHelpers.teamColorAsList;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            binding.human.setThumbTintList(col);
-            binding.human.setTrackTintList(col);
-        }
-        ViewGroup.LayoutParams layoutParam = binding.relativeLayoutFirst.getLayoutParams();
-        layoutParam.width = (int) width;
-        layoutParam.height = (int) height + layout;
-        binding.relativeLayoutFirst.setLayoutParams(layoutParam);
-        binding.next.setTranslationY(height * 0.863f + view);
-        binding.prev.setTranslationY(height * 0.863f + view);
-        float input = checked? binding.next.getTranslationY() - 118: height * 0.784f;
-        binding.input.setTranslationY(input);
-        binding.characterLimit.setTranslationY(binding.input.getTranslationY() + (height * 0.091f));
-        binding.notesThrown.setVisibility(vis);
-        binding.plusNotesThrown.setVisibility(vis);
-        binding.minusNotesThrown.setVisibility(vis);
-        binding.notesThrownCounter.setVisibility(vis);
-        binding.notesHit.setVisibility(vis);
-        binding.plusNotesHit.setVisibility(vis);
-        binding.minusNotesHit.setVisibility(vis);
-        binding.notesHitCounter.setVisibility(vis);
     }
 
 }

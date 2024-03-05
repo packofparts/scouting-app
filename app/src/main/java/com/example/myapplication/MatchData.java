@@ -3,8 +3,8 @@ package com.example.myapplication;
 public class MatchData {
 
     //Pre-Game
-    int teamNumber = 0;
-    int matchNumber = 0;
+    String teamNumber = "";
+    String matchNumber = "";
 
     //Auto Data
     boolean workingAuto = false;
@@ -42,9 +42,6 @@ public class MatchData {
         THREE
     }
     Harmony harmo;
-    Boolean humanPlayerAtAmp = false;
-    int humanPlayerNotesThrown = 0;
-    int humanPlayerNotesSpotlighted = 0;
     String notes = "";
     // add human player spotlight data later
 
@@ -55,23 +52,16 @@ public class MatchData {
                 + moveOutOfZone + "\"," + "\"ampAuto\":\"" + ampAuto + "\"," + "\"speakerAuto\":\"" + speakerAuto + "\","
                 + "\"isBroke\":\"" + broke + "\"," + "\"isDefense\":\"" + defense + "\"," + "\"ampTeleop\":\"" + ampTeleop + "\"," + "\"amplifiedSpeaker\":\"" + amplifiedSpeaker + "\","
                 + "\"speakerTeleop\":\"" + speakerTeleop + "\"," + "\"noteAcquired\":\"" + noteAcquired + "\"," + "\"chaining\":\"" + chaining + "\","
-                + "\"trapSucess\":\"" + trapSucess + "\"," + "\"trapFail\":\"" + trapFail + "\"," + "\"harmo\":\"" + harmo + "\"," + "\"humanPlayerAtAmp\":\"" + humanPlayerAtAmp + "\","
-                + "\"humanPlayerNotesThrown\":\"" + humanPlayerNotesThrown + "\"," + "\"humanPlayerNotesThrown\":\"" + humanPlayerNotesThrown + "\"," + "\"notes\":\"" + sanitizedNotes + "\"}";
+                + "\"trapSucess\":\"" + trapSucess + "\"," + "\"trapFail\":\"" + trapFail + "\"," + "\"harmo\":\"" + harmo + "\"," + "\"notes\":\"" + sanitizedNotes + "\"}";
     }
+
     //Getters and Setters
 
-
-
     //Pre Match
-
-
-    public int getTeamNumber() {    return teamNumber;    }
-    public void setTeamNumber(int teamNumber) { this.teamNumber = teamNumber;    }
-    public int getMatchNumber() {    return matchNumber;    }
-    public void setMatchNumber(int matchNumber) { this.matchNumber = matchNumber;    }
-
-
-
+    public String getTeamNumber() {    return teamNumber;    }
+    public void setTeamNumber(String teamNumber) { this.teamNumber = teamNumber;    }
+    public String getMatchNumber() {    return matchNumber;    }
+    public void setMatchNumber(String matchNumber) { this.matchNumber = matchNumber;    }
 
     //Auto
 
@@ -151,13 +141,6 @@ public class MatchData {
 
     public Harmony getHarmo() {     return harmo;     }
     public void setHarmo(Harmony harmony) { this.harmo = harmony;  }
-
-    public boolean getHumanPlayerAtAmp(){    return this.humanPlayerAtAmp;    }
-    public void setHumanPlayerAtAmp(boolean humanPlayerAtAmp){   this.humanPlayerAtAmp = humanPlayerAtAmp;    }
-    public int getHumanPlayerNotesThrown() {   return this.humanPlayerNotesThrown;    }
-    public void setHumanPlayerNotesThrown(int notes) {    this.humanPlayerNotesThrown = notes;    }
-    public int getHumanPlayerNotesSpotlighted(){    return this.humanPlayerNotesSpotlighted;    }
-    public void setHumanPlayerNotesSpotlighted(int notesSpotlighted){    this.humanPlayerNotesSpotlighted = notesSpotlighted;    }
 
     public String getNotes() {
         return notes;

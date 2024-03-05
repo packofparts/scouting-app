@@ -327,18 +327,7 @@
             android:src="@drawable/pop"
             android:translationX="0dp"
             android:translationY="0dp" />
-        <Switch
-            android:id="@+id/human"
-            android:layout_width="330dp"
-            android:layout_height="wrap_content"
-            android:text="Human Player?"
-            android:textColor="#000000"
-            android:textSize="26dp"
-            android:thumbTint="#73C2F0"
-            android:trackTint="#73C2F0"
-            android:trackTintMode="src_over"
-            android:translationX="30dp"
-            android:translationY="500dp" />
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input"
@@ -352,6 +341,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInput"
+                android:maxLength="150"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#73C2F0"

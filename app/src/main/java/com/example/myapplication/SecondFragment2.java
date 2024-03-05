@@ -24,6 +24,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentSecond2Binding;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,6 +39,7 @@ public class SecondFragment2 extends Fragment {
     public static int chainAttemptIndex = 0;
     public static int harmonyAttemptIndex = 0;
     public static boolean human = false;
+    public boolean confirm = false;
     ViewGroup v = null;
     @SuppressLint("SetTextI18n")
     @Override
@@ -76,17 +78,27 @@ public class SecondFragment2 extends Fragment {
         }
     }
 
-    @SuppressLint("ClickableViewAccessibility")
+    @SuppressLint({"ClickableViewAccessibility", "SetTextI18n"})
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         binding.next.setOnClickListener(view1 -> {
-            try {
-                writeFile();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            if (confirm) {
+                try {
+                    writeFile();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                NavHostFragment.findNavController(SecondFragment2.this).navigate(R.id.action_SecondFragment2_to_FirstFragment);
+            } else {
+                binding.next.setText("Confirm");
+                Snackbar.make(view, "Plug into computer and click again to confirm data transfer. Click somewhere else to cancel.", 600).show();
+                confirm = true;
             }
-            NavHostFragment.findNavController(SecondFragment2.this).navigate(R.id.action_SecondFragment2_to_FirstFragment);
+        });
+        binding.relativeLayoutFirst.setOnClickListener(v -> {
+            binding.next.setText("Next");
+            confirm = false;
         });
 
 

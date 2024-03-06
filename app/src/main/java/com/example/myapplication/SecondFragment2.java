@@ -66,7 +66,7 @@ public class SecondFragment2 extends Fragment {
     public void writeFile() throws IOException {
         new File("/sdcard/Documents/ScoutingData/").mkdirs();
 
-        File dataFile = new File("/sdcard/Documents/ScoutingData/" + UserModel.getMatchData().getMatchNumber() + ".txt");
+        File dataFile = new File("/sdcard/Documents/ScoutingData/match" + UserModel.getMatchData().getMatchNumber() + "_team" + UserModel.getMatchData().getTeamNumber() +".json");
         dataFile.createNewFile();
         PrintWriter pw = new PrintWriter(dataFile);
         pw.print(UserModel.getMatchData().returnAllData());

@@ -71,9 +71,8 @@ public class SecondFragment2 extends Fragment {
         PrintWriter pw = new PrintWriter(dataFile);
         pw.print(UserModel.getMatchData().returnAllData());
         pw.close();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Files.deleteIfExists(Paths.get("/sdcard/Documents/ScoutingData/lock.txt"));
-        }
+        File newDataFlag = new File("/sdcard/Documents/ScoutingData/newDataFlag.txt");
+        newDataFlag.createNewFile();
     }
 
     @SuppressLint({"ClickableViewAccessibility", "SetTextI18n"})

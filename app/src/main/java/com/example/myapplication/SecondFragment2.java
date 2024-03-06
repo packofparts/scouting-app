@@ -66,14 +66,13 @@ public class SecondFragment2 extends Fragment {
     public void writeFile() throws IOException {
         new File("/sdcard/Documents/ScoutingData/").mkdirs();
 
-        File dataFile = new File("/sdcard/Documents/ScoutingData/" + UserModel.getMatchData().getMatchNumber() + ".txt");
+        File dataFile = new File("/sdcard/Documents/ScoutingData/match" + UserModel.getMatchData().getMatchNumber() + "_team" + UserModel.getMatchData().getTeamNumber() +".json");
         dataFile.createNewFile();
         PrintWriter pw = new PrintWriter(dataFile);
         pw.print(UserModel.getMatchData().returnAllData());
         pw.close();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Files.deleteIfExists(Paths.get("/sdcard/Documents/ScoutingData/lock.txt"));
-        }
+        File newDataFlag = new File("/sdcard/Documents/ScoutingData/newDataFlag.txt");
+        newDataFlag.createNewFile();
     }
 
     @SuppressLint({"ClickableViewAccessibility", "SetTextI18n"})

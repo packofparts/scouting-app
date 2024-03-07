@@ -38,7 +38,6 @@ public class SecondFragment2 extends Fragment {
     private FragmentSecond2Binding binding;
     public static int chainAttemptIndex = 0;
     public static int harmonyAttemptIndex = 0;
-    public static boolean human = false;
     public boolean confirm = false;
 
     ViewGroup v = null;
@@ -149,7 +148,7 @@ public class SecondFragment2 extends Fragment {
         });
         ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Attempt", "Failed Attempt", "Successful Attempt"});
         binding.chainAttempt.setAdapter(chainAdapter);
-        binding.chainAttempt.setSelection(SecondFragment2.chainAttemptIndex);
+        binding.chainAttempt.setSelection(0);
         binding.chainAttempt.setTranslationY(height * 0.201f);
         binding.chainAttempt.setTranslationX(width * 0.366f);
         binding.chainAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -183,7 +182,7 @@ public class SecondFragment2 extends Fragment {
 
         ArrayAdapter<String> harmonyAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Attempt", "Failed Attempt", "2 On Chain", "3 On Chain"});
         binding.harmonyAttempt.setAdapter(harmonyAdapter);
-        binding.harmonyAttempt.setSelection(SecondFragment2.harmonyAttemptIndex);
+        binding.harmonyAttempt.setSelection(0);
         binding.harmonyAttempt.setTranslationY(height * 0.302f);
         binding.harmonyAttempt.setTranslationX(width * 0.366f);
         binding.harmonyAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){

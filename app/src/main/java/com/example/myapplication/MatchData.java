@@ -64,15 +64,7 @@ public class MatchData {
     public void setMatchNumber(String matchNumber) { this.matchNumber = matchNumber;    }
 
     //Auto
-
-    public boolean isWorkingAuto() {
-        return workingAuto;
-    }
     public void setWorkingAuto(boolean workingAuto) {    this.workingAuto = workingAuto;    }
-
-    public boolean isMoveOutOfZone() {
-        return moveOutOfZone;
-    }
     public void setMoveOutOfZone(boolean moveOutOfZone) {
         this.moveOutOfZone = moveOutOfZone;
     }

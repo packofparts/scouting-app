@@ -43,8 +43,8 @@ public class FirstFragment extends Fragment {
                 binding.cont.setOnClickListener(v -> {
             String teamNumber = String.valueOf(binding.input.getText());
             String matchNumber = String.valueOf(binding.matchInput.getText());
-            boolean teamNumberCheck = (teamNumber.length() > 0 && teamNumber.length() < 5);
-            boolean matchNumCheck = matchNumber.length() > 0;
+            boolean teamNumberCheck = (teamNumber.length() > 0 && teamNumber.length() < 5 && !teamNumber.equals("0"));
+            boolean matchNumCheck = (matchNumber.length() > 0 && !matchNumber.equals("0"));
             if (teamNumberCheck && matchNumCheck) {
                 NavHostFragment.findNavController(FirstFragment.this)
                         .navigate(R.id.action_FirstFragment_to_ThirdFragment);

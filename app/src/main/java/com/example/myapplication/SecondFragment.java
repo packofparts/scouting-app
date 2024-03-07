@@ -100,7 +100,7 @@ public class SecondFragment extends Fragment {
         binding.intakeBackground.setTranslationY(height * 0.321f);
         ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Intake", "Ground Intake", "Source Intake", "Both"});
         binding.intakeMethod.setAdapter(chainAdapter);
-        binding.intakeMethod.setSelection(SecondFragment2.chainAttemptIndex);
+        binding.intakeMethod.setSelection(getPickUpIndex());
         binding.intakeMethod.setTranslationX(width * 0.366f);
         binding.intakeMethod.setTranslationY(height * 0.367f);
         binding.intakeMethod.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -210,6 +210,19 @@ public class SecondFragment extends Fragment {
                     s.setThumbTintList(UIHelpers.teamColorAsList);
                     s.setTrackTintList(UIHelpers.teamColorAsList);
                 }
+        }
+    }
+
+    private static int getPickUpIndex(){
+        MatchData.NoteAcquisition noteAcquired = UserModel.getMatchData().getNoteAcquired();
+        if(noteAcquired == MatchData.NoteAcquisition.NONE) {
+            return 0;
+        } else if (noteAcquired == MatchData.NoteAcquisition.FLOOR) {
+            return 1;
+        } else if (noteAcquired == MatchData.NoteAcquisition.SOURCE) {
+            return 2;
+        } else {
+            return 3;
         }
     }
 }

@@ -16,7 +16,7 @@ public class MatchData {
     boolean broke = false;
     boolean defense = false;
     int ampTeleop = 0;
-    int amplifiedSpeaker = 0;
+    int missedNotes = 0;
     int speakerTeleop = 0;
     public enum NoteAcquisition {
         NONE,
@@ -50,7 +50,7 @@ public class MatchData {
         String sanitizedNotes = notes.replace("\"", "\\\"");
         return "{\"teamNumber\":\"" + teamNumber + "\"," + "\"matchNumber\":\"" + matchNumber + "\"," + "\"workingAuto\":\"" + workingAuto + "\"," + "\"moveOutOfZone\":\""
                 + moveOutOfZone + "\"," + "\"ampAuto\":\"" + ampAuto + "\"," + "\"speakerAuto\":\"" + speakerAuto + "\","
-                + "\"isBroke\":\"" + broke + "\"," + "\"isDefense\":\"" + defense + "\"," + "\"ampTeleop\":\"" + ampTeleop + "\"," + "\"amplifiedSpeaker\":\"" + amplifiedSpeaker + "\","
+                + "\"isBroke\":\"" + broke + "\"," + "\"isDefense\":\"" + defense + "\"," + "\"ampTeleop\":\"" + ampTeleop + "\"," + "\"missedNotes\":\"" + missedNotes + "\","
                 + "\"speakerTeleop\":\"" + speakerTeleop + "\"," + "\"noteAcquired\":\"" + noteAcquired + "\"," + "\"chaining\":\"" + chaining + "\","
                 + "\"trapSucess\":\"" + trapSucess + "\"," + "\"trapFail\":\"" + trapFail + "\"," + "\"harmo\":\"" + harmo + "\"," + "\"notes\":\"" + sanitizedNotes + "\"}";
     }
@@ -113,15 +113,15 @@ public class MatchData {
         this.ampTeleop = ampTeleop;
     }
 
-    public int getAmplifiedSpeaker() {
-        return amplifiedSpeaker;
+    public int getMissedNotes() {
+        return missedNotes;
     }
-    public void setAmplifiedSpeaker(int amplifiedSpeaker) {   this.amplifiedSpeaker = amplifiedSpeaker;   }
+    public void setMissedNotes(int missedNotes) {   this.missedNotes = missedNotes;   }
 
-    public int getSpeakerTeleop() {
+    public int getSpeakerNotes() {
         return speakerTeleop;
     }
-    public void setSpeakerTeleop(int speakerTeleop) {
+    public void setSpeakerNotes(int speakerTeleop) {
         this.speakerTeleop = speakerTeleop;
     }
 

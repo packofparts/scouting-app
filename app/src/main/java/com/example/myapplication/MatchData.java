@@ -24,7 +24,7 @@ public class MatchData {
         SOURCE,
         BOTH
     }
-    NoteAcquisition noteAcquired;
+    NoteAcquisition noteAcquired = NoteAcquisition.NONE;
 
     //End of Match data
     public enum Chain {
@@ -32,7 +32,7 @@ public class MatchData {
         ATTEMPTED,
         SUCCEDED
     }
-    Chain chaining;
+    Chain chaining = Chain.NOPE;
     int trapSucess = 0;
     int trapFail = 0;
     public enum Harmony {
@@ -41,7 +41,7 @@ public class MatchData {
         TWO,
         THREE
     }
-    Harmony harmo;
+    Harmony harmo = Harmony.NOPE;
     String notes = "";
     // add human player spotlight data later
 

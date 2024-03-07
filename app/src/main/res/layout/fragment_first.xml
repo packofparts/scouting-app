@@ -22,7 +22,7 @@
             android:id="@+id/back"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:text="Back"
+            android:text="Info"
             android:translationY="118dp"
             android:translationX="10dp"/>
 

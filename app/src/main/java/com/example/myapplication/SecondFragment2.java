@@ -148,7 +148,7 @@ public class SecondFragment2 extends Fragment {
         });
         ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Attempt", "Failed Attempt", "Successful Attempt"});
         binding.chainAttempt.setAdapter(chainAdapter);
-        binding.chainAttempt.setSelection(0);
+        binding.chainAttempt.setSelection(getChainIndex());
         binding.chainAttempt.setTranslationY(height * 0.201f);
         binding.chainAttempt.setTranslationX(width * 0.366f);
         binding.chainAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -182,7 +182,7 @@ public class SecondFragment2 extends Fragment {
 
         ArrayAdapter<String> harmonyAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Attempt", "Failed Attempt", "2 On Chain", "3 On Chain"});
         binding.harmonyAttempt.setAdapter(harmonyAdapter);
-        binding.harmonyAttempt.setSelection(0);
+        binding.harmonyAttempt.setSelection(getHarmonyIndex());
         binding.harmonyAttempt.setTranslationY(height * 0.302f);
         binding.harmonyAttempt.setTranslationX(width * 0.366f);
         binding.harmonyAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
@@ -268,6 +268,30 @@ public class SecondFragment2 extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private static int getChainIndex(){
+        MatchData.Chain chain = UserModel.getMatchData().getChaining();
+        if(chain == MatchData.Chain.NOPE) {
+            return 0;
+        } else if (chain == MatchData.Chain.ATTEMPTED) {
+            return 1;
+        } else {
+            return 2;
+        }
+    }
+
+    private static int getHarmonyIndex(){
+        MatchData.Harmony harmony = UserModel.getMatchData().getHarmo();
+        if(harmony == MatchData.Harmony.NOPE) {
+            return 0;
+        } else if (harmony == MatchData.Harmony.ATTEMPTED) {
+            return 1;
+        } else if (harmony == MatchData.Harmony.TWO) {
+            return 2;
+        } else {
+            return 3;
+        }
     }
 
 }

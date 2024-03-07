@@ -112,16 +112,16 @@
             android:translationY="355dp" />
 
         <TextView
-            android:id="@+id/speakerNotesUnamp"
+            android:id="@+id/speakerNotes"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
-            android:text="Notes in Speaker (Unamplified)"
+            android:text="Notes in Speaker"
             android:textSize="26dp"
             android:translationX="30dp"
             android:translationY="460dp" />
 
         <TextView
-            android:id="@+id/speakerUnampCounter"
+            android:id="@+id/speakerNotesCounter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
@@ -129,7 +129,7 @@
             android:translationX="245dp"
             android:translationY="440dp" />
         <TextView
-            android:id="@+id/speakerAmpCounter"
+            android:id="@+id/missedNotesCounter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
@@ -138,10 +138,10 @@
             android:translationY="545dp" />
 
         <TextView
-            android:id="@+id/speakerNotesAmp"
-            android:layout_width="170dp"
+            android:id="@+id/missedNotes"
+            android:layout_width="106dp"
             android:layout_height="wrap_content"
-            android:text="Notes in Speaker (Amplified)"
+            android:text="Missed Notes"
             android:textSize="26dp"
             android:translationX="30dp"
             android:translationY="535dp" />
@@ -205,7 +205,7 @@
             app:cornerRadius="100dp" />
 
         <Button
-            android:id="@+id/minusSpeakerUnamp"
+            android:id="@+id/minus_speaker"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="36dp"
@@ -217,7 +217,7 @@
             app:cornerRadius="100dp" />
 
         <Button
-            android:id="@+id/plusSpeakerUnamp"
+            android:id="@+id/plus_speaker"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="36dp"
@@ -229,7 +229,7 @@
             app:cornerRadius="100dp" />
 
         <Button
-            android:id="@+id/minusSpeakerAmp"
+            android:id="@+id/minus_missed_notes"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="36dp"
@@ -241,7 +241,7 @@
             app:cornerRadius="100dp" />
 
         <Button
-            android:id="@+id/plusSpeakerAmp"
+            android:id="@+id/plus_missed_notes"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="36dp"

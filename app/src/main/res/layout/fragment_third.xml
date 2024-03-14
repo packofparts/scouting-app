@@ -16,23 +16,24 @@
         android:layout_marginStart="5dp"
         android:layout_marginEnd="220dp"
         android:layout_marginBottom="16dp"
-        android:text="Number of notes in Speaker"
+        android:layout_marginTop="50dp"
+        android:text="Notes in Speaker"
+        android:textSize="26dp"
         app:layout_constraintBottom_toTopOf="@+id/numNotes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch3" />
+        app:layout_constraintTop_toBottomOf="@+id/switch2" />
 
-    <EditText
+    <TextView
         android:id="@+id/numNotes"
-        android:layout_width="120dp"
-        android:layout_height="57dp"
+        android:layout_width="95dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="225dp"
-        android:layout_marginBottom="27dp"
-        android:ems="10"
-        android:inputType="number"
-        app:boxBackgroundMode="filled"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="26dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,60 +41,35 @@
 
     <Button
         android:id="@+id/toSecondFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="84dp"
+        android:layout_height="51dp"
         android:layout_marginStart="269dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="7dp"
+        android:layout_marginBottom="-150dp"
         android:text="Next"
+        android:backgroundTint="#73C2F0"
         android:translationY="-300dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="228dp"
-        android:layout_marginBottom="17dp"
-        android:text="Working Auto?"
-        app:layout_constraintBottom_toTopOf="@+id/switch2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pop"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
 
     <Switch
         android:id="@+id/switch2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="134dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="110dp"
         android:layout_marginBottom="20dp"
-        android:text="Did robot move out of zone?"
-        app:layout_constraintBottom_toTopOf="@+id/switch3"
+        android:text="Move out of zone?"
+        android:textSize="26dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch1"
+        app:layout_constraintTop_toBottomOf="@+id/pop"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
-    <Switch
-        android:id="@+id/switch3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="180dp"
-        android:layout_marginBottom="21dp"
-        android:text="Did the robot score ?"
-        app:layout_constraintBottom_toTopOf="@+id/textView7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch2"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <TextView
         android:id="@+id/textView4"
@@ -114,57 +90,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="-75dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="170dp"
         android:layout_marginEnd="128dp"
         android:layout_marginBottom="2dp"
-        android:text="Number of notes in Amp"
+        android:text="Notes in Amp"
+        android:textSize="26dp"
         app:layout_constraintBottom_toTopOf="@+id/numNotesInAmp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
         app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
-        android:id="@+id/numNotesInAmp"
-        android:layout_width="120dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="-150dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="175dp"
-        android:layout_marginBottom="10dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/switch3"
-        app:layout_constraintVertical_bias="0.808" />
 
     <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="-220dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="22dp"
-        android:text="Any robot contact?"
-        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        android:id="@+id/numNotesInAmp"
+        android:layout_width="92dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="225dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="26dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="282dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginEnd="95dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <ImageView
         android:id="@+id/pop"
@@ -174,7 +124,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="9dp"
         android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/switch1"
+
         app:layout_constraintEnd_toStartOf="@+id/textView4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -196,6 +146,7 @@
         android:layout_marginEnd="106dp"
         android:layout_marginBottom="71dp"
         android:text=""
+        android:textSize="26dp"
         app:layout_constraintBottom_toTopOf="@+id/switch2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/pop"
@@ -203,13 +154,66 @@
 
     <Button
         android:id="@+id/toHomePage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="108dp"
-        android:layout_marginBottom="118dp"
+        android:layout_width="112dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="-50dp"
         android:text="Previous"
-        app:layout_constraintBottom_toTopOf="@+id/spinner"
-        app:layout_constraintStart_toEndOf="@+id/textView6" />
+        android:backgroundTint="#73C2F0"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/toSecondFragment"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="1.0" />
 
+    <Button
+        android:id="@+id/plusSpeaker"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="#73C2F0"
+        android:text="+"
+        android:textSize="26dp"
+        app:cornerRadius="100dp"
+        app:layout_constraintStart_toEndOf="@+id/numNotes"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <Button
+        android:id="@+id/minusSpeaker"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="#73C2F0"
+        android:text="-"
+        android:textSize="26dp"
+        app:cornerRadius="100dp"
+        app:layout_constraintEnd_toStartOf="@+id/numNotes"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <Button
+        android:id="@+id/plusAmp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#73C2F0"
+        android:text="+"
+        android:textSize="26dp"
+        app:cornerRadius="100dp"
+        app:layout_constraintStart_toEndOf="@+id/numNotesInAmp"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+    <Button
+        android:id="@+id/minusAmp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#73C2F0"
+        android:text="-"
+        android:textSize="26dp"
+        app:cornerRadius="100dp"
+        app:layout_constraintEnd_toStartOf="@+id/numNotesInAmp"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 

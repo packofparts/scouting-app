@@ -24,6 +24,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentSecond2Binding;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,7 +38,8 @@ public class SecondFragment2 extends Fragment {
     private FragmentSecond2Binding binding;
     public static int chainAttemptIndex = 0;
     public static int harmonyAttemptIndex = 0;
-    public static boolean human = false;
+    public boolean confirm = false;
+
     ViewGroup v = null;
     @SuppressLint("SetTextI18n")
     @Override
@@ -51,9 +53,6 @@ public class SecondFragment2 extends Fragment {
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
         binding.notesStuckCounter.setText(String.valueOf(UserModel.getMatchData().getTrapFail()));
         binding.notesSuccessCounter.setText(String.valueOf(UserModel.getMatchData().getTrapSucess()));
-        binding.notesThrownCounter.setText(String.valueOf(UserModel.getMatchData().getHumanPlayerNotesThrown()));
-        binding.notesHitCounter.setText(String.valueOf(UserModel.getMatchData().getHumanPlayerNotesSpotlighted()));
-        binding.human.setChecked(UserModel.getMatchData().getHumanPlayerAtAmp());
         binding.textInput.setText(UserModel.getMatchData().getNotes());
         binding.characterLimit.setText("Character Limit: " + Objects.requireNonNull(binding.textInput.getText()).length() + "/150");
         return binding.getRoot();
@@ -66,27 +65,36 @@ public class SecondFragment2 extends Fragment {
     public void writeFile() throws IOException {
         new File("/sdcard/Documents/ScoutingData/").mkdirs();
 
-        File dataFile = new File("/sdcard/Documents/ScoutingData/" + UserModel.getMatchData().getMatchNumber() + ".txt");
+        File dataFile = new File("/sdcard/Documents/ScoutingData/match" + UserModel.getMatchData().getMatchNumber() + "_team" + UserModel.getMatchData().getTeamNumber() +".json");
         dataFile.createNewFile();
         PrintWriter pw = new PrintWriter(dataFile);
         pw.print(UserModel.getMatchData().returnAllData());
         pw.close();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Files.deleteIfExists(Paths.get("/sdcard/Documents/ScoutingData/lock.txt"));
-        }
+        File newDataFlag = new File("/sdcard/Documents/ScoutingData/newDataFlag.txt");
+        newDataFlag.createNewFile();
     }
 
-    @SuppressLint("ClickableViewAccessibility")
+    @SuppressLint({"ClickableViewAccessibility", "SetTextI18n"})
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         binding.next.setOnClickListener(view1 -> {
-            try {
-                writeFile();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            if (confirm) {
+                try {
+                    writeFile();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                NavHostFragment.findNavController(SecondFragment2.this).navigate(R.id.action_SecondFragment2_to_FirstFragment);
+            } else {
+                binding.next.setText("Confirm");
+                Snackbar.make(view, "Plug into computer and click again to confirm data transfer. Click somewhere else to cancel.", 600).show();
+                confirm = true;
             }
-            NavHostFragment.findNavController(SecondFragment2.this).navigate(R.id.action_SecondFragment2_to_FirstFragment);
+        });
+        binding.relativeLayoutFirst.setOnClickListener(v -> {
+            binding.next.setText("Next");
+            confirm = false;
         });
 
 
@@ -122,10 +130,8 @@ public class SecondFragment2 extends Fragment {
         binding.characterLimit.setTranslationY(height * 0.875f);
         binding.characterLimit.setTranslationX(width * 0.073f);
         binding.textInput.addTextChangedListener(new TextWatcher() {
-            String text = String.valueOf(binding.textInput.getText());
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                text = String.valueOf(binding.textInput.getText());
             }
 
             @Override
@@ -136,16 +142,13 @@ public class SecondFragment2 extends Fragment {
             @SuppressLint("SetTextI18n")
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.length() > 150) {
-                    binding.textInput.setText(text);
-                }
                 binding.characterLimit.setText("Character Limit: " + Objects.requireNonNull(binding.textInput.getText()).length() + "/150");
                 UserModel.getMatchData().setNotes(binding.textInput.getText().toString());
             }
         });
         ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Attempt", "Failed Attempt", "Successful Attempt"});
         binding.chainAttempt.setAdapter(chainAdapter);
-        binding.chainAttempt.setSelection(SecondFragment2.chainAttemptIndex);
+        binding.chainAttempt.setSelection(getChainIndex());
         binding.chainAttempt.setTranslationY(height * 0.201f);
         binding.chainAttempt.setTranslationX(width * 0.366f);
         binding.chainAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -179,7 +182,7 @@ public class SecondFragment2 extends Fragment {
 
         ArrayAdapter<String> harmonyAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Attempt", "Failed Attempt", "2 On Chain", "3 On Chain"});
         binding.harmonyAttempt.setAdapter(harmonyAdapter);
-        binding.harmonyAttempt.setSelection(SecondFragment2.harmonyAttemptIndex);
+        binding.harmonyAttempt.setSelection(getHarmonyIndex());
         binding.harmonyAttempt.setTranslationY(height * 0.302f);
         binding.harmonyAttempt.setTranslationX(width * 0.366f);
         binding.harmonyAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
@@ -257,56 +260,6 @@ public class SecondFragment2 extends Fragment {
         });
         binding.notesSuccessCounter.setTranslationX(width * 0.598f);
         binding.notesSuccessCounter.setTranslationY(height * 0.583f);
-
-        binding.human.setTranslationY(height * 0.719f);
-        binding.human.setTranslationX(width * 0.073f);
-        binding.human.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            humanOperation(binding.human.isChecked(), width, height);
-            UserModel.getMatchData().setHumanPlayerAtAmp(binding.human.isChecked());
-            SecondFragment2.human = binding.human.isChecked();
-        });
-        binding.notesThrown.setTranslationY(binding.notesStuck.getTranslationY() + 530);
-        binding.notesThrown.setTranslationX(binding.notesStuck.getTranslationX());
-        binding.minusNotesThrown.setTranslationY(binding.minusNotesStuck.getTranslationY() + 500);
-        binding.minusNotesThrown.setTranslationX(binding.minusNotesStuck.getTranslationX());
-        binding.minusNotesThrown.setOnClickListener(v -> {
-            if (UserModel.getMatchData().getHumanPlayerNotesThrown() > 0) {
-                UserModel.getMatchData().setHumanPlayerNotesThrown(UserModel.getMatchData().getHumanPlayerNotesThrown() - 1);
-                binding.notesThrownCounter.setText(String.valueOf(UserModel.getMatchData().getHumanPlayerNotesThrown()));
-            }
-        });
-        binding.plusNotesThrown.setTranslationY(binding.plusNotesStuck.getTranslationY() + 500);
-        binding.plusNotesThrown.setTranslationX(binding.plusNotesStuck.getTranslationX());
-        binding.plusNotesThrown.setOnClickListener(v -> {
-            if (UserModel.getMatchData().getHumanPlayerNotesThrown() < 3) {
-                UserModel.getMatchData().setHumanPlayerNotesThrown(UserModel.getMatchData().getHumanPlayerNotesThrown() + 1);
-                binding.notesThrownCounter.setText(String.valueOf(UserModel.getMatchData().getHumanPlayerNotesThrown()));
-            }
-        });
-        binding.notesThrownCounter.setTranslationY(binding.notesStuckCounter.getTranslationY() + 500);
-        binding.notesThrownCounter.setTranslationX(binding.notesStuckCounter.getTranslationX());
-
-        binding.notesHit.setTranslationY(binding.notesSuccess.getTranslationY() + 530);
-        binding.notesHit.setTranslationX(binding.notesSuccess.getTranslationX());
-        binding.minusNotesHit.setTranslationY(binding.minusNotesSuccess.getTranslationY() + 500);
-        binding.minusNotesHit.setTranslationX(binding.minusNotesSuccess.getTranslationX());
-        binding.minusNotesHit.setOnClickListener(v -> {
-            if (UserModel.getMatchData().getHumanPlayerNotesSpotlighted() > 0) {
-                UserModel.getMatchData().setHumanPlayerNotesSpotlighted(UserModel.getMatchData().getHumanPlayerNotesSpotlighted() - 1);
-                binding.notesHitCounter.setText(String.valueOf(UserModel.getMatchData().getHumanPlayerNotesSpotlighted()));            }
-        });
-        binding.plusNotesHit.setTranslationY(binding.plusNotesSuccess.getTranslationY() + 500);
-        binding.plusNotesHit.setTranslationX(binding.plusNotesSuccess.getTranslationX());
-        binding.plusNotesHit.setOnClickListener(v -> {
-            if (UserModel.getMatchData().getHumanPlayerNotesSpotlighted() < 3) {
-                UserModel.getMatchData().setHumanPlayerNotesSpotlighted(UserModel.getMatchData().getHumanPlayerNotesSpotlighted() + 1);
-                binding.notesHitCounter.setText(String.valueOf(UserModel.getMatchData().getHumanPlayerNotesSpotlighted()));
-            }
-        });
-        binding.notesHitCounter.setTranslationY(binding.notesSuccessCounter.getTranslationY() + 500);
-        binding.notesHitCounter.setTranslationX(binding.notesSuccessCounter.getTranslationX());
-
-        humanOperation(binding.human.isChecked(), width, height);
         UIHelpers.lightDark(v, UIHelpers.darkMode);
 
     }
@@ -317,33 +270,28 @@ public class SecondFragment2 extends Fragment {
         binding = null;
     }
 
-    @SuppressLint("ObsoleteSdkInt")
-    public void humanOperation(boolean checked, float width, float height){
-        int layout = checked ? 1000:500;
-        int view = checked? 500: 0;
-        int vis = checked? VISIBLE:GONE;
-        ColorStateList col = checked? UIHelpers.purpleAsList: UIHelpers.teamColorAsList;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            binding.human.setThumbTintList(col);
-            binding.human.setTrackTintList(col);
+    private static int getChainIndex(){
+        MatchData.Chain chain = UserModel.getMatchData().getChaining();
+        if(chain == MatchData.Chain.NOPE) {
+            return 0;
+        } else if (chain == MatchData.Chain.ATTEMPTED) {
+            return 1;
+        } else {
+            return 2;
         }
-        ViewGroup.LayoutParams layoutParam = binding.relativeLayoutFirst.getLayoutParams();
-        layoutParam.width = (int) width;
-        layoutParam.height = (int) height + layout;
-        binding.relativeLayoutFirst.setLayoutParams(layoutParam);
-        binding.next.setTranslationY(height * 0.863f + view);
-        binding.prev.setTranslationY(height * 0.863f + view);
-        float input = checked? binding.next.getTranslationY() - 118: height * 0.784f;
-        binding.input.setTranslationY(input);
-        binding.characterLimit.setTranslationY(binding.input.getTranslationY() + (height * 0.091f));
-        binding.notesThrown.setVisibility(vis);
-        binding.plusNotesThrown.setVisibility(vis);
-        binding.minusNotesThrown.setVisibility(vis);
-        binding.notesThrownCounter.setVisibility(vis);
-        binding.notesHit.setVisibility(vis);
-        binding.plusNotesHit.setVisibility(vis);
-        binding.minusNotesHit.setVisibility(vis);
-        binding.notesHitCounter.setVisibility(vis);
+    }
+
+    private static int getHarmonyIndex(){
+        MatchData.Harmony harmony = UserModel.getMatchData().getHarmo();
+        if(harmony == MatchData.Harmony.NOPE) {
+            return 0;
+        } else if (harmony == MatchData.Harmony.ATTEMPTED) {
+            return 1;
+        } else if (harmony == MatchData.Harmony.TWO) {
+            return 2;
+        } else {
+            return 3;
+        }
     }
 
 }

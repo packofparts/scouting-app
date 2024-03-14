@@ -22,7 +22,7 @@
             android:id="@+id/back"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:text="Back"
+            android:text="Info"
             android:translationY="118dp"
             android:translationX="10dp"/>
 
@@ -50,6 +50,7 @@
             android:layout_width="140dp"
             android:layout_height="66dp"
             android:hint="Team Number"
+            android:maxLength="4"
             android:inputType="number"
             android:translationX="133dp"
             android:translationY="110dp" />
@@ -59,6 +60,7 @@
             android:layout_width="140dp"
             android:layout_height="66dp"
             android:hint="Match Number"
+            android:maxLength="3"
             android:inputType="number"
             android:translationX="133dp"
             android:translationY="200dp" />

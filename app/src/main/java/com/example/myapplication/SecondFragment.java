@@ -38,8 +38,8 @@ public class SecondFragment extends Fragment {
         binding.team.setText("Team " + UserModel.getMatchData().getMatchNumber());
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
         binding.ampCounter.setText(String.valueOf(UserModel.getMatchData().getAmpTeleop()));
-        binding.speakerUnampCounter.setText(String.valueOf(UserModel.getMatchData().getSpeakerTeleop()));
-        binding.speakerAmpCounter.setText(String.valueOf(UserModel.getMatchData().getAmplifiedSpeaker()));
+        binding.speakerNotesCounter.setText(String.valueOf(UserModel.getMatchData().getSpeakerNotes()));
+        binding.missedNotesCounter.setText(String.valueOf(UserModel.getMatchData().getMissedNotes()));
         binding.broke.setChecked(UserModel.getMatchData().isBroke());
 
         checkedOperation(binding.broke);
@@ -100,7 +100,7 @@ public class SecondFragment extends Fragment {
         binding.intakeBackground.setTranslationY(height * 0.321f);
         ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Intake", "Ground Intake", "Source Intake", "Both"});
         binding.intakeMethod.setAdapter(chainAdapter);
-        binding.intakeMethod.setSelection(SecondFragment2.chainAttemptIndex);
+        binding.intakeMethod.setSelection(getPickUpIndex());
         binding.intakeMethod.setTranslationX(width * 0.366f);
         binding.intakeMethod.setTranslationY(height * 0.367f);
         binding.intakeMethod.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -149,45 +149,45 @@ public class SecondFragment extends Fragment {
         binding.ampCounter.setTranslationX(width * 0.598f);
         binding.ampCounter.setTranslationY(height * 0.511f);
 
-        binding.speakerNotesUnamp.setTranslationX(width * 0.073f);
-        binding.speakerNotesUnamp.setTranslationY(height * 0.619f);
-        binding.minusSpeakerUnamp.setTranslationX(width * 0.366f);
-        binding.minusSpeakerUnamp.setTranslationY(height * 0.576f);
-        binding.minusSpeakerUnamp.setOnClickListener(view16 -> {
-            if (UserModel.getMatchData().getSpeakerTeleop() > 0){
-                UserModel.getMatchData().setSpeakerTeleop(UserModel.getMatchData().getSpeakerTeleop() - 1);
-                binding.speakerUnampCounter.setText("" + UserModel.getMatchData().getSpeakerTeleop());
+        binding.speakerNotes.setTranslationX(width * 0.073f);
+        binding.speakerNotes.setTranslationY(height * 0.619f);
+        binding.minusSpeaker.setTranslationX(width * 0.366f);
+        binding.minusSpeaker.setTranslationY(height * 0.576f);
+        binding.minusSpeaker.setOnClickListener(view16 -> {
+            if (UserModel.getMatchData().getSpeakerNotes() > 0){
+                UserModel.getMatchData().setSpeakerNotes(UserModel.getMatchData().getSpeakerNotes() - 1);
+                binding.speakerNotesCounter.setText("" + UserModel.getMatchData().getSpeakerNotes());
             }
         });
-        binding.plusSpeakerUnamp.setTranslationX(width * 0.732f);
-        binding.plusSpeakerUnamp.setTranslationY(height * 0.576f);
-        binding.plusSpeakerUnamp.setOnClickListener(view17 -> {
-            UserModel.getMatchData().setSpeakerTeleop(UserModel.getMatchData().getSpeakerTeleop() + 1);
-            binding.speakerUnampCounter.setText(String.valueOf(UserModel.getMatchData().getSpeakerTeleop()));
+        binding.plusSpeaker.setTranslationX(width * 0.732f);
+        binding.plusSpeaker.setTranslationY(height * 0.576f);
+        binding.plusSpeaker.setOnClickListener(view17 -> {
+            UserModel.getMatchData().setSpeakerNotes(UserModel.getMatchData().getSpeakerNotes() + 1);
+            binding.speakerNotesCounter.setText(String.valueOf(UserModel.getMatchData().getSpeakerNotes()));
         });
-        binding.speakerUnampCounter.setTranslationX(width * 0.598f);
-        binding.speakerUnampCounter.setTranslationY(height * 0.633f);
+        binding.speakerNotesCounter.setTranslationX(width * 0.598f);
+        binding.speakerNotesCounter.setTranslationY(height * 0.633f);
 
-        binding.speakerNotesAmp.setTranslationX(width * 0.073f);
-        binding.speakerNotesAmp.setTranslationY(height * 0.770f);
-        binding.minusSpeakerAmp.setTranslationX(width * 0.366f);
-        binding.minusSpeakerAmp.setTranslationY(height * 0.727f);
+        binding.missedNotes.setTranslationX(width * 0.073f);
+        binding.missedNotes.setTranslationY(height * 0.770f);
+        binding.minusMissedNotes.setTranslationX(width * 0.366f);
+        binding.minusMissedNotes.setTranslationY(height * 0.727f);
 
-        binding.minusSpeakerAmp.setOnClickListener(view18 -> {
-            if (UserModel.getMatchData().getAmplifiedSpeaker() > 0){
-                UserModel.getMatchData().setAmplifiedSpeaker(UserModel.getMatchData().getAmplifiedSpeaker() - 1);
-                binding.speakerAmpCounter.setText(String.valueOf(UserModel.getMatchData().getAmplifiedSpeaker()));
+        binding.minusMissedNotes.setOnClickListener(view18 -> {
+            if (UserModel.getMatchData().getMissedNotes() > 0){
+                UserModel.getMatchData().setMissedNotes(UserModel.getMatchData().getMissedNotes() - 1);
+                binding.missedNotesCounter.setText(String.valueOf(UserModel.getMatchData().getMissedNotes()));
             }
         });
-        binding.plusSpeakerAmp.setTranslationX(width * 0.732f);
-        binding.plusSpeakerAmp.setTranslationY(height * 0.727f);
+        binding.plusMissedNotes.setTranslationX(width * 0.732f);
+        binding.plusMissedNotes.setTranslationY(height * 0.727f);
 
-        binding.plusSpeakerAmp.setOnClickListener(view19 -> {
-            UserModel.getMatchData().setAmplifiedSpeaker(UserModel.getMatchData().getAmplifiedSpeaker() + 1);
-            binding.speakerAmpCounter.setText(String.valueOf(UserModel.getMatchData().getAmplifiedSpeaker()));
+        binding.plusMissedNotes.setOnClickListener(view19 -> {
+            UserModel.getMatchData().setMissedNotes(UserModel.getMatchData().getMissedNotes() + 1);
+            binding.missedNotesCounter.setText(String.valueOf(UserModel.getMatchData().getMissedNotes()));
         });
-        binding.speakerAmpCounter.setTranslationX(width * 0.598f);
-        binding.speakerAmpCounter.setTranslationY(height * 0.784f);
+        binding.missedNotesCounter.setTranslationX(width * 0.598f);
+        binding.missedNotesCounter.setTranslationY(height * 0.784f);
         UIHelpers.lightDark(v, UIHelpers.darkMode);
     }
    
@@ -210,6 +210,19 @@ public class SecondFragment extends Fragment {
                     s.setThumbTintList(UIHelpers.teamColorAsList);
                     s.setTrackTintList(UIHelpers.teamColorAsList);
                 }
+        }
+    }
+
+    private static int getPickUpIndex(){
+        MatchData.NoteAcquisition noteAcquired = UserModel.getMatchData().getNoteAcquired();
+        if(noteAcquired == MatchData.NoteAcquisition.NONE) {
+            return 0;
+        } else if (noteAcquired == MatchData.NoteAcquisition.FLOOR) {
+            return 1;
+        } else if (noteAcquired == MatchData.NoteAcquisition.SOURCE) {
+            return 2;
+        } else {
+            return 3;
         }
     }
 }

@@ -1,18 +1,17 @@
 package com.example.myapplication;
 
 import android.animation.ObjectAnimator;
-import android.content.res.ColorStateList;
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Switch;
 
 import androidx.annotation.NonNull;
@@ -33,104 +32,114 @@ public class ThirdFragment extends Fragment {
 
     private FragmentThirdBinding binding;
     ViewGroup v = null;
-    private static ColorStateList purple = ColorStateList.valueOf(Color.parseColor("#6750A3"));
-    private static ColorStateList blue = ColorStateList.valueOf(Color.parseColor("#73C2F0"));
-
-    public static boolean defense = false;
     public static boolean ground = false;
+    @SuppressLint({"ObsoleteSdkInt", "SetTextI18n"})
     @Override
     public View onCreateView(
-            LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState
+            @NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState
     ){
         binding = FragmentThirdBinding.inflate(inflater, container, false);
         v = container;
             setSwitchColor(binding.switch1);
             setSwitchColor(binding.switch2);
             setSwitchColor(binding.switch3);
-        binding.switch2.setChecked(ThirdFragment.defense);
         binding.switch3.setChecked(ThirdFragment.ground);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            binding.switch3.setThumbTintList(blue);
-            binding.switch3.setTrackTintList(blue);
+            binding.switch3.setThumbTintList(UIHelpers.teamColorAsList);
+            binding.switch3.setTrackTintList(UIHelpers.teamColorAsList);
         }
-        binding.textView4.setText("Autonomous Team " + MainActivity.teamNumber);
+        binding.textView4.setText("Autonomous Team " + UserModel.getMatchData().getTeamNumber());
         return binding.getRoot();
     }
 
-    private void setSwitchColor(Switch switch1) {
+    @SuppressLint("ObsoleteSdkInt")
+    private void setSwitchColor(@SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch1) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            switch1.setThumbTintList(switch1.isChecked() ? purple : blue);
-            switch1.setTrackTintList(switch1.isChecked() ? purple : blue);
+            switch1.setThumbTintList(switch1.isChecked() ? UIHelpers.purpleAsList : UIHelpers.teamColorAsList);
+            switch1.setTrackTintList(switch1.isChecked() ? UIHelpers.purpleAsList : UIHelpers.teamColorAsList);
         }
     }
 
+    @SuppressLint("SetTextI18n")
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.team.setText("Team " + MainActivity.teamNumber);
+        binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
         //VARIABLES
-        Switch switch1 = view.findViewById(R.id.switch1);
-        Switch switch2 = view.findViewById(R.id.switch2);
-        Switch switch3 = view.findViewById(R.id.switch3);
-        EditText numNotes = view.findViewById(R.id.numNotes);
-        EditText numNotesInAmp = view.findViewById(R.id.numNotesInAmp);
-        Spinner Contact = view.findViewById(R.id.spinner);
 
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
+        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", 0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f);
         animation.setDuration(1000);
-        binding.pop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                animation.start();
-                UIHelpers.darkMode = !UIHelpers.darkMode;
-                UIHelpers.lightDark(v, UIHelpers.darkMode);
-
-            }
-        });
-        binding.switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
-                setSwitchColor(binding.switch1);
-            }
-        });
-        binding.switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
-                setSwitchColor(binding.switch2);
-            }
-        });
-        binding.switch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)  {
-                setSwitchColor(binding.switch3);
-            }
-        });
-        binding.toSecondFragment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(ThirdFragment.this)
-                        .navigate(R.id.action_ThirdFragment_to_SecondFragment);
-                //getting the value of variables when switching to teleop from auto
-                switch1.isChecked();
-                switch2.isChecked();
-                switch3.isChecked();
-                numNotes.getText();
-                numNotesInAmp.getText();
-                Contact.getSelectedItem();
-            }
+        binding.pop.setOnClickListener(view1 -> {
+            animation.start();
+            UIHelpers.darkMode = !UIHelpers.darkMode;
+            UIHelpers.lightDark(v, UIHelpers.darkMode);
 
         });
-        String[] typeContact = {"No contact", "Teammate to Teammate", "Teammate to opponent"};
-        ArrayAdapter<String> contact = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, typeContact);
-        binding.spinner.setAdapter(contact);
-
+        binding.switch1.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            setSwitchColor(binding.switch1);
+            UserModel.getMatchData().setWorkingAuto(isChecked);
+        });
+        binding.switch2.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            setSwitchColor(binding.switch2);
+            UserModel.getMatchData().setMoveOutOfZone(isChecked);
+        });
+        binding.switch3.setOnCheckedChangeListener((buttonView, isChecked) -> setSwitchColor(binding.switch3));
+        binding.toSecondFragment.setOnClickListener(view12 -> {
+            NavHostFragment.findNavController(ThirdFragment.this)
+                    .navigate(R.id.action_ThirdFragment_to_SecondFragment);
+        });
+        binding.toHomePage.setOnClickListener(view12 -> {
+            NavHostFragment.findNavController(ThirdFragment.this)
+                    .navigate(R.id.action_ThirdFragment_to_FirstFragment                                                                      );
+        });
 
         UIHelpers.lightDark(v, UIHelpers.darkMode);
 
+        updateEditTextBackground(binding.numNotes);
+        updateEditTextBackground(binding.numNotesInAmp);
 
+        binding.numNotesInAmp.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
-        numNotes.getBackground().setColorFilter(Color.parseColor("#73C2F0"), PorterDuff.Mode.SRC_ATOP);
-        numNotesInAmp.getBackground().setColorFilter(Color.parseColor("#73C2F0"), PorterDuff.Mode.SRC_ATOP);
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void afterTextChanged(Editable s) {
+                Editable input = binding.numNotesInAmp.getText();
+                if (input == null || input.length() == 0){
+                    return;
+                } else {
+                    UserModel.getMatchData().setAmpAuto(Integer.parseInt(input.toString()));
+                }
+            }
+        });
+        binding.numNotes.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void afterTextChanged(Editable s) {
+                Editable input = binding.numNotes.getText();
+                if (input == null || input.length() == 0){
+                    return;
+                } else {
+                    UserModel.getMatchData().setSpeakerAuto(Integer.parseInt(input.toString()));
+                }
+            }
+        });
     }
     @Override
     public void onDestroyView() {
@@ -141,8 +150,6 @@ public class ThirdFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private String mParam1;
-    private String mParam2;
 
     public ThirdFragment() {
         // Required empty public constructor
@@ -155,6 +162,14 @@ public class ThirdFragment extends Fragment {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    private static void updateEditTextBackground(EditText editText) {
+        editText
+                .getBackground()
+                .setColorFilter(
+                        Color.parseColor("#73C2F0"),
+                        PorterDuff.Mode.SRC_ATOP);
     }
 
 

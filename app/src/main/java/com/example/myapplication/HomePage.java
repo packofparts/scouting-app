@@ -3,26 +3,15 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.animation.ObjectAnimator;
-import android.graphics.Color;
-import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Switch;
-import android.widget.TextView;
 
 import com.example.myapplication.databinding.FragmentHomepageBinding;
-import com.example.myapplication.databinding.FragmentSecondBinding;
-import com.google.android.material.textfield.TextInputEditText;
-
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -72,7 +61,7 @@ public class HomePage extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentHomepageBinding.inflate(inflater, container, false);
@@ -82,34 +71,16 @@ public class HomePage extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        ViewModelProvider viewModelProvider = new ViewModelProvider(requireActivity());
-        UserModel userModel = viewModelProvider.get(UserModel.class);
-        MatchData matchData = new MatchData();
-        userModel.setMatchData(matchData);
-        binding.previousInfoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavHostFragment.findNavController(HomePage.this)
-                        .navigate(R.id.action_HomePage_to_pitFragment);
-            }
-        });
-        binding.nextInfoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UserModel.getMatchData().setBroke(true);
-            }
-        });
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.WolfLogoInfo, "rotation", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
+        binding.prevInfoBack.setOnClickListener(v -> UserModel.getMatchData().setBroke(true));
+        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.WolfLogoInfo, "rotation", 0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f);
         animation.setDuration(1000);
-        binding.WolfLogoInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                animation.start();
-                UIHelpers.darkMode = !UIHelpers.darkMode;
-                UIHelpers.lightDark(v, UIHelpers.darkMode);
-            }
+        binding.WolfLogoInfo.setOnClickListener(view1 -> {
+            animation.start();
+            UIHelpers.darkMode = !UIHelpers.darkMode;
+            UIHelpers.lightDark(v, UIHelpers.darkMode);
         });
+        binding.prevInfoBack.setOnClickListener(view12 -> NavHostFragment.findNavController(HomePage.this)
+                .navigate(R.id.action_HomePage_to_FirstFragment));
         UIHelpers.lightDark(v, UIHelpers.darkMode);
     }
 }

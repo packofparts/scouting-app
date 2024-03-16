@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,8 @@ import com.google.android.material.textfield.TextInputLayout;
 public class UIHelpers {
     public static int purple = Color.parseColor("#6750A3");
     public static int teamColor = Color.parseColor("#73C2F0");
+    public static ColorStateList purpleAsList = ColorStateList.valueOf(purple);
+    public static ColorStateList teamColorAsList = ColorStateList.valueOf(teamColor);
     public static boolean darkMode = false;
     public static void lightDark (ViewGroup v, boolean mode){
         //background color and color of the actual ui elements
@@ -35,7 +39,7 @@ public class UIHelpers {
                     }
                 }
                 if (child instanceof Switch) {
-                    Switch tx = (Switch) child;
+                    @SuppressLint("UseSwitchCompatOrMaterialCode") Switch tx = (Switch) child;
                     tx.setTextColor(Color.parseColor(viewColor));
                 }
                 if (child instanceof ViewGroup) {

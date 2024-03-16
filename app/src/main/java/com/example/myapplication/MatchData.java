@@ -3,74 +3,68 @@ package com.example.myapplication;
 public class MatchData {
 
     //Pre-Game
-    int teamNumber = 0;
+    String teamNumber = "";
+    String matchNumber = "";
 
     //Auto Data
     boolean workingAuto = false;
     boolean moveOutOfZone = false;
     int ampAuto = 0;
     int speakerAuto = 0;
-    public enum ContactRobot {
-        None,
-        Allies,
-        Opposition
-    }
-    ContactRobot contactBot;
 
     //Teleop Data
     boolean broke = false;
     boolean defense = false;
     int ampTeleop = 0;
-    int amplifiedSpeaker = 0;
+    int missedNotes = 0;
     int speakerTeleop = 0;
-    int dump = 0;
     public enum NoteAcquisition {
-        None,
-        Floor,
-        Source,
-        Both
+        NONE,
+        FLOOR,
+        SOURCE,
+        BOTH
     }
-    NoteAcquisition noteAcquired;
+    NoteAcquisition noteAcquired = NoteAcquisition.NONE;
 
     //End of Match data
     public enum Chain {
-        Nope,
-        Attempted,
-        Succeeded
+        NOPE,
+        ATTEMPTED,
+        SUCCEDED
     }
-    Chain chaining;
+    Chain chaining = Chain.NOPE;
     int trapSucess = 0;
     int trapFail = 0;
     public enum Harmony {
-        Nope,
-        Attempted,
-        Succeeded
+        NOPE,
+        ATTEMPTED,
+        TWO,
+        THREE
     }
-    Harmony harmo;
-    Boolean humanPlayerAtAmp = false;
-    int humanPlayerNotesThrown = 0;
-    int humanPlayerNotesSpotlighted = 0;
+    Harmony harmo = Harmony.NOPE;
     String notes = "";
     // add human player spotlight data later
 
+    public String returnAllData() {
+
+        String sanitizedNotes = notes.replace("\"", "\\\"");
+        return "{\"teamNumber\":\"" + teamNumber + "\"," + "\"matchNumber\":\"" + matchNumber + "\"," + "\"workingAuto\":\"" + workingAuto + "\"," + "\"moveOutOfZone\":\""
+                + moveOutOfZone + "\"," + "\"ampAuto\":\"" + ampAuto + "\"," + "\"speakerAuto\":\"" + speakerAuto + "\","
+                + "\"isBroke\":\"" + broke + "\"," + "\"isDefense\":\"" + defense + "\"," + "\"ampTeleop\":\"" + ampTeleop + "\"," + "\"missedNotes\":\"" + missedNotes + "\","
+                + "\"speakerTeleop\":\"" + speakerTeleop + "\"," + "\"noteAcquired\":\"" + noteAcquired + "\"," + "\"chaining\":\"" + chaining + "\","
+                + "\"trapSucess\":\"" + trapSucess + "\"," + "\"trapFail\":\"" + trapFail + "\"," + "\"harmo\":\"" + harmo + "\"," + "\"notes\":\"" + sanitizedNotes + "\"}";
+    }
 
     //Getters and Setters
 
-    //Test
-
-    public int getTeamNumber() {    return teamNumber;    }
-    public void setTeamNumber(int teamNumber) { this.teamNumber = teamNumber;    }
+    //Pre Match
+    public String getTeamNumber() {    return teamNumber;    }
+    public void setTeamNumber(String teamNumber) { this.teamNumber = teamNumber;    }
+    public String getMatchNumber() {    return matchNumber;    }
+    public void setMatchNumber(String matchNumber) { this.matchNumber = matchNumber;    }
 
     //Auto
-
-    public boolean isWorkingAuto() {
-        return workingAuto;
-    }
     public void setWorkingAuto(boolean workingAuto) {    this.workingAuto = workingAuto;    }
-
-    public boolean isMoveOutOfZone() {
-        return moveOutOfZone;
-    }
     public void setMoveOutOfZone(boolean moveOutOfZone) {
         this.moveOutOfZone = moveOutOfZone;
     }
@@ -87,13 +81,6 @@ public class MatchData {
     }
     public void setSpeakerAuto(int speakerAuto) {
         this.speakerAuto = speakerAuto;
-    }
-
-    public ContactRobot getContactBot() {
-        return contactBot;
-    }
-    public void setContactBot(ContactRobot contactBot) {
-        this.contactBot = contactBot;
     }
 
     //Teleop
@@ -118,23 +105,16 @@ public class MatchData {
         this.ampTeleop = ampTeleop;
     }
 
-    public int getAmplifiedSpeaker() {
-        return amplifiedSpeaker;
+    public int getMissedNotes() {
+        return missedNotes;
     }
-    public void setAmplifiedSpeaker(int amplifiedSpeaker) {   this.amplifiedSpeaker = amplifiedSpeaker;   }
+    public void setMissedNotes(int missedNotes) {   this.missedNotes = missedNotes;   }
 
-    public int getSpeakerTeleop() {
+    public int getSpeakerNotes() {
         return speakerTeleop;
     }
-    public void setSpeakerTeleop(int speakerTeleop) {
+    public void setSpeakerNotes(int speakerTeleop) {
         this.speakerTeleop = speakerTeleop;
-    }
-
-    public int getDump() {
-        return dump;
-    }
-    public void setDump(int dump) {
-        this.dump = dump;
     }
 
     public NoteAcquisition getNoteAcquired() {   return noteAcquired;    }
@@ -153,13 +133,6 @@ public class MatchData {
 
     public Harmony getHarmo() {     return harmo;     }
     public void setHarmo(Harmony harmony) { this.harmo = harmony;  }
-
-    public boolean getHumanPlayerAtAmp(){    return this.humanPlayerAtAmp;    }
-    public void setHumanPlayerAtAmp(boolean humanPlayerAtAmp){   this.humanPlayerAtAmp = humanPlayerAtAmp;    }
-    public int getHumanPlayerNotesThrown() {   return this.humanPlayerNotesThrown;    }
-    public void setHumanPlayerNotesThrown(int notes) {    this.humanPlayerNotesThrown = notes;    }
-    public int getHumanPlayerNotesSpotlighted(){    return this.humanPlayerNotesSpotlighted;    }
-    public void setHumanPlayerNotesSpotlighted(int notesSpotlighted){    this.humanPlayerNotesSpotlighted = notesSpotlighted;    }
 
     public String getNotes() {
         return notes;

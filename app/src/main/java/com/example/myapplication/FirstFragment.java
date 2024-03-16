@@ -1,7 +1,6 @@
 package com.example.myapplication;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,35 +8,50 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+<<<<<<< HEAD
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
+=======
+>>>>>>> 98df0e7003e2ee48630cf48abe38a38141c215a7
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentFirstBinding;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.textfield.TextInputEditText;
-
 public class FirstFragment extends Fragment {
     private FragmentFirstBinding binding;
     ViewGroup v;
     @Override
     public View onCreateView(
-            LayoutInflater  inflater, ViewGroup container,
+            @NonNull LayoutInflater  inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
+        ViewModelProvider viewModelProvider = new ViewModelProvider(requireActivity());
+        UserModel userModel = viewModelProvider.get(UserModel.class);
+        MatchData matchData = new MatchData();
+        userModel.setMatchData(matchData);
         binding = FragmentFirstBinding.inflate(inflater, container, false);
         v = container;
+<<<<<<< HEAD
         binding.input.setText(MainActivity.teamNumber.equals("0") ? "" : MainActivity.teamNumber);
         binding.input.setText(MainActivity.matchNumber.equals("0") ? "" : MainActivity.teamNumber);
+=======
+        String currentTeamNumber = UserModel.getMatchData().getTeamNumber();
+        binding.input.setText(currentTeamNumber);
+
+        String currentMatchNumber = UserModel.getMatchData().getTeamNumber();
+        binding.input.setText(currentMatchNumber);
+>>>>>>> 98df0e7003e2ee48630cf48abe38a38141c215a7
 
         return binding.getRoot();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+<<<<<<< HEAD
 
 
 
@@ -57,22 +71,37 @@ public class FirstFragment extends Fragment {
         binding.back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+=======
+                binding.cont.setOnClickListener(v -> {
+            String teamNumber = String.valueOf(binding.input.getText());
+            String matchNumber = String.valueOf(binding.matchInput.getText());
+            boolean teamNumberCheck = (teamNumber.length() > 0 && teamNumber.length() < 5 && !teamNumber.equals("0"));
+            boolean matchNumCheck = (matchNumber.length() > 0 && !matchNumber.equals("0"));
+            if (teamNumberCheck && matchNumCheck) {
+>>>>>>> 98df0e7003e2ee48630cf48abe38a38141c215a7
                 NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_HomePage);
+                        .navigate(R.id.action_FirstFragment_to_ThirdFragment);
+            } else {
+                if (!teamNumberCheck){
+                    Snackbar.make(view, "Invalid team number", 600).show();
+                }
+                if (!matchNumCheck) {
+                    Snackbar.make(view, "Invalid match number", 600).show();
+                }
+
             }
         });
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", new float[]{0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f});
+        binding.back.setOnClickListener(v -> NavHostFragment.findNavController(FirstFragment.this)
+                .navigate(R.id.action_FirstFragment_to_HomePage));
+        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", 0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f);
         animation.setDuration(1000);
-        binding.pop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                animation.start();
-                UIHelpers.darkMode = !UIHelpers.darkMode;
-                UIHelpers.lightDark(v, UIHelpers.darkMode);
-            }
+        binding.pop.setOnClickListener(view1 -> {
+            animation.start();
+            UIHelpers.darkMode = !UIHelpers.darkMode;
+            UIHelpers.lightDark(v, UIHelpers.darkMode);
         });
         DisplayMetrics dm = new DisplayMetrics();
-        ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
+        ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
         float width = dm.widthPixels;
         float height = dm.heightPixels;
         binding.title.setTranslationX(height * 0.072f);
@@ -84,7 +113,6 @@ public class FirstFragment extends Fragment {
         binding.input.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
@@ -94,13 +122,38 @@ public class FirstFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (binding.input.getText() == null){
+                Editable input = binding.input.getText();
+                if (input == null){
                     return;
                 }
-                MainActivity.teamNumber = String.valueOf(binding.input.getText());
-                UserModel.getMatchData().setTeamNumber(Integer.parseInt(MainActivity.teamNumber));
+                String teamNumber = String.valueOf(input);
+                UserModel.getMatchData().setTeamNumber(teamNumber);
             }
         });
+<<<<<<< HEAD
+=======
+
+        binding.matchInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Editable input = binding.matchInput.getText();
+                if (input == null){
+                    return;
+                }
+                String matchNumber = String.valueOf(input);
+                UserModel.getMatchData().setMatchNumber(matchNumber);
+            }
+        });
+>>>>>>> 98df0e7003e2ee48630cf48abe38a38141c215a7
         binding.cont.setTranslationY(height * 0.270f);
         binding.cont.setTranslationX(width * 0.707f);
         binding.pop.setTranslationY(height * 0.719f);
@@ -113,6 +166,11 @@ public class FirstFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 98df0e7003e2ee48630cf48abe38a38141c215a7
 }
 
 

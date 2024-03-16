@@ -4,11 +4,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-//J
 public class UserModel extends ViewModel {
     private static MatchData matchData = new MatchData();
     public MutableLiveData<MatchData> userLiveData = new MutableLiveData<>(matchData);

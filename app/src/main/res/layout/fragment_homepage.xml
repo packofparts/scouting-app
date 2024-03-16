@@ -138,31 +138,7 @@
                     android:textSize="15sp" />
             </TableRow>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/Any_robot_contacts"
-                    android:layout_width="170dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:padding="0dp"
-                    android:text="Any robot contacts? "
-                    android:textColor="@color/white"
-                    android:textSize="30sp"
-                    tools:ignore="HardcodedText,RtlHardcoded" />
-
-                <TextView
-                    android:id="@+id/Any_robot_contacts_info"
-                    android:layout_width="230dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="40dp"
-                    android:text="Pick from the 3 options no contact which means that the robot you were assigned didn’t touch anything, teammate to teammate means it touched a teammate, or teammate to opponent which means that the robot touched the opponent robot."
-                    android:textColor="@color/white"
-                    android:textSize="15sp" />
-            </TableRow>
 
 
             <TextView
@@ -551,83 +527,10 @@
                     android:textSize="15sp" />
             </TableRow>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/Human"
-                    android:layout_width="170dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="Human Player?"
-                    android:textColor="@color/white"
-                    android:textSize="30sp"
-                    tools:ignore="HardcodedText,RtlHardcoded" />
 
-                <TextView
-                    android:id="@+id/Human_info"
-                    android:layout_width="230dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:padding="26dp"
-                    android:text="Human player means weather if the player throwing the notes is on their team. "
-                    android:textColor="@color/white"
-                    android:textSize="15sp" />
-            </TableRow>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/NotesThrown"
-                    android:layout_width="170dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Notes Thrown by Player"
-                    android:textColor="@color/white"
-                    android:textSize="30sp"
-                    android:padding="10dp"
-                    tools:ignore="HardcodedText,RtlHardcoded" />
-
-                <TextView
-                    android:id="@+id/NotesThrown_info"
-                    android:layout_width="230dp"
-                    android:layout_height="match_parent"
-                    android:gravity="left"
-                    android:padding="26dp"
-                    android:text="Notes thrown by player means the number of notes that the human player threw."
-                    android:textColor="@color/white"
-                    android:textSize="15sp" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/NotesHit"
-                    android:layout_width="170dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="Notes Spotlighted by Player"
-                    android:textColor="@color/white"
-                    android:textSize="30sp"
-                    tools:ignore="HardcodedText,RtlHardcoded" />
-
-                <TextView
-                    android:id="@+id/NotesHit_info"
-                    android:layout_width="230dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:padding="26dp"
-                    android:text="Notes spotlighted by player means the number of notes that the human player threw AND landed either one of the three microphones."
-                    android:textColor="@color/white"
-                    android:textSize="15sp" />
-            </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"

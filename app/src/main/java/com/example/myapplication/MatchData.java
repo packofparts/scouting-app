@@ -68,6 +68,7 @@ public class MatchData {
     public void setMoveOutOfZone(boolean moveOutOfZone) {
         this.moveOutOfZone = moveOutOfZone;
     }
+    public boolean getMoveOutOfZone() {return moveOutOfZone;}
 
     public int getAmpAuto() {
         return ampAuto;

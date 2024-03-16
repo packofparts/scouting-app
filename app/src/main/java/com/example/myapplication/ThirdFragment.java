@@ -34,16 +34,26 @@ public class ThirdFragment extends Fragment {
     ){
         binding = FragmentThirdBinding.inflate(inflater, container, false);
         v = container;
-            setSwitchColor(binding.switch2);
-        binding.textView4.setText("Autonomous Team " + UserModel.getMatchData().getTeamNumber());
+        binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
+        binding.numNotes.setText(String.valueOf(UserModel.getMatchData().getSpeakerAuto()));
+        binding.numNotesInAmp.setText(String.valueOf(UserModel.getMatchData().getAmpAuto()));
+        binding.switch2.setChecked(UserModel.getMatchData().getMoveOutOfZone());
+        checkedOperation(binding.switch2);
         return binding.getRoot();
     }
 
     @SuppressLint("ObsoleteSdkInt")
-    private void setSwitchColor(@SuppressLint("UseSwitchCompatOrMaterialCode") Switch switch1) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            switch1.setThumbTintList(switch1.isChecked() ? UIHelpers.purpleAsList : UIHelpers.teamColorAsList);
-            switch1.setTrackTintList(switch1.isChecked() ? UIHelpers.purpleAsList : UIHelpers.teamColorAsList);
+    public void checkedOperation (View v){
+        if (v instanceof Switch){
+            @SuppressLint("UseSwitchCompatOrMaterialCode") Switch s = (Switch) v;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                if (s.isChecked()){
+                    s.setThumbTintList(UIHelpers.purpleAsList);
+                    s.setTrackTintList(UIHelpers.purpleAsList);
+                } else {
+                    s.setThumbTintList(UIHelpers.teamColorAsList);
+                    s.setTrackTintList(UIHelpers.teamColorAsList);
+                }
         }
     }
 
@@ -62,13 +72,29 @@ public class ThirdFragment extends Fragment {
 
         });
         binding.switch2.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            setSwitchColor(binding.switch2);
+            checkedOperation(binding.switch2);
             UserModel.getMatchData().setMoveOutOfZone(isChecked);
         });
         binding.toSecondFragment.setOnClickListener(view12 -> NavHostFragment.findNavController(ThirdFragment.this)
                 .navigate(R.id.action_ThirdFragment_to_SecondFragment));
         binding.toHomePage.setOnClickListener(view12 -> NavHostFragment.findNavController(ThirdFragment.this)
                 .navigate(R.id.action_ThirdFragment_to_FirstFragment));
+        binding.plusSpeaker.setOnClickListener(v -> {
+            UserModel.getMatchData().setSpeakerAuto(UserModel.getMatchData().getSpeakerAuto() + 1);
+            binding.numNotes.setText(String.valueOf(UserModel.getMatchData().getSpeakerAuto()));
+        });
+        binding.minusSpeaker.setOnClickListener(v -> {
+            UserModel.getMatchData().setSpeakerAuto(UserModel.getMatchData().getSpeakerAuto() - (UserModel.getMatchData().getSpeakerAuto() <= 0 ? 0 : 1));
+            binding.numNotes.setText(String.valueOf(UserModel.getMatchData().getSpeakerAuto()));
+        });
+        binding.plusAmp.setOnClickListener(v -> {
+            UserModel.getMatchData().setAmpAuto(UserModel.getMatchData().getAmpAuto() + 1);
+            binding.numNotesInAmp.setText(String.valueOf(UserModel.getMatchData().getAmpAuto()));
+        });
+        binding.minusAmp.setOnClickListener(v -> {
+            UserModel.getMatchData().setAmpAuto(UserModel.getMatchData().getAmpAuto() - (UserModel.getMatchData().getAmpAuto() <= 0 ? 0 : 1));
+            binding.numNotesInAmp.setText(String.valueOf(UserModel.getMatchData().getAmpAuto()));
+        });
         UIHelpers.lightDark(v, UIHelpers.darkMode);
     }
     @Override

@@ -84,29 +84,7 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/Did_the_robot_score"
-                    android:layout_width="170dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:padding="0dp"
-                    android:text="Did the robot score?"
-                    android:textColor="@color/white"
-                    android:textSize="30sp"
-                    tools:ignore="HardcodedText,RtlHardcoded" />
-
-                <TextView
-                    android:id="@+id/Did_the_robot_score_info"
-                    android:layout_width="230dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:padding="40dp"
-                    android:text="This means did the robot scored in the speaker which is the big structure on each side of the field."
-                    android:textColor="@color/white"
-                    android:textSize="15sp" />
-            </TableRow>
+                android:layout_height="match_parent"/>
 
             <TableRow
                 android:layout_width="match_parent"
@@ -114,11 +92,11 @@
 
                 <TextView
                     android:id="@+id/If_so_how_many_times"
-                    android:layout_width="170dp"
-                    android:layout_height="117dp"
+                    android:layout_width="200dp"
+                    android:layout_height="184dp"
                     android:gravity="center"
                     android:padding="20dp"
-                    android:text="If so, how many times?"
+                    android:text="Number of notes scored in speaker"
                     android:textColor="@color/white"
                     android:textSize="30sp"
                     tools:ignore="HardcodedText,RtlHardcoded" />
@@ -129,7 +107,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:padding="40dp"
-                    android:text="In the blank below, click it and enter how many times the robot scored in the speaker."
+                    android:text="You can see + and - click on + when they score a speaker in autonomous period"
                     android:textColor="@color/white"
                     android:textSize="15sp" />
             </TableRow>
@@ -326,18 +304,18 @@
                 <TextView
                     android:id="@+id/Ground"
                     android:layout_width="181dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="center"
+                    android:padding="10dp"
                     android:text="Pick up from ground?"
                     android:textColor="@color/white"
                     android:textSize="30sp"
-                    android:padding="10dp"
                     tools:ignore="HardcodedText,RtlHardcoded" />
 
                 <TextView
                     android:id="@+id/Ground_info"
                     android:layout_width="207dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:gravity="left"
                     android:padding="26dp"
                     android:text="Pick up from the ground means that the robot has picked up notes from the ground. "
@@ -373,7 +351,6 @@
                     android:textSize="15sp"
                     tools:ignore="HardcodedText,RtlHardcoded" />
             </TableRow>
-
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -391,16 +368,42 @@
 
                 <TextView
                     android:id="@+id/Amp_Pick_up_info"
-                    android:layout_width="205dp"
+                    android:layout_width="235dp"
                     android:layout_height="wrap_content"
                     android:gravity="left"
+                    android:padding="26dp"
                     android:text="Notes in Amp means if the robot scored in the Amp which is needed to amplify the speaker. "
                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:padding="26dp"
                     tools:ignore="HardcodedText,RtlHardcoded" />
             </TableRow>
 
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/Missed_Notes"
+                    android:layout_width="14dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Missed Notes in Speaker or Amp"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:padding="10dp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/Missed_Notes_info"
+                    android:layout_width="259dp"
+                    android:layout_height="151dp"
+                    android:gravity="left"
+                    android:padding="26dp"
+                    android:text="If the robot missed a note to a speaker or amp. Press the + button. "
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+            </TableRow>
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -410,7 +413,7 @@
                     android:layout_width="14dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Notes in Speaker Amplified/Unamplified"
+                    android:text="Notes in Speaker"
                     android:textColor="@color/white"
                     android:textSize="30sp"
                     android:padding="10dp"
@@ -418,11 +421,11 @@
 
                 <TextView
                     android:id="@+id/Note_in_Speaker_info"
-                    android:layout_width="139dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="202dp"
+                    android:layout_height="wrap_content"
                     android:gravity="left"
                     android:padding="26dp"
-                    android:text="Notes in Speaker means scoring in the big structure in the middle with two categories for Amplified and another for non-Amplified scoring. "
+                    android:text="Notes in Speaker means scoring in the big structure in the middle. "
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     tools:ignore="HardcodedText,RtlHardcoded" />

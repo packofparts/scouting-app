@@ -60,6 +60,7 @@
             android:layout_width="140dp"
             android:layout_height="66dp"
             android:hint="Match Number"
+
             android:maxLength="3"
             android:inputType="number"
             android:translationX="133dp"

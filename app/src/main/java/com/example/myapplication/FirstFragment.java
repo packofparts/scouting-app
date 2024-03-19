@@ -80,8 +80,8 @@ public class FirstFragment extends Fragment {
         float width = dm.widthPixels;
         float height = dm.heightPixels;
 
-        binding.title.setTranslationX(height * 0.072f);
-        binding.title.setTranslationY(width * 0.146f);
+        binding.title.setTranslationY(height * 0.072f);
+        binding.title.setTranslationX(width * 0.146f);
         binding.back.setTranslationY(height * 0.270f);
         binding.back.setTranslationX(width * 0.024f);
         binding.input.setTranslationY(height * 0.158f);

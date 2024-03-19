@@ -375,7 +375,7 @@
                     android:layout_height="151dp"
                     android:gravity="left"
                     android:padding="26dp"
-                    android:text="If the robot missed a note to a speaker or amp. Press the + button. "
+                    android:text="If the robot missed a note to a speaker or amp during teleop, press the + button. "
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     tools:ignore="HardcodedText,RtlHardcoded" />

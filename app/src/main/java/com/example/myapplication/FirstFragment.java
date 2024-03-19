@@ -46,44 +46,33 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.cont.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String teamNumber = String.valueOf(binding.input.getText());
-                String matchNumber = String.valueOf(binding.matchInput.getText());
-                boolean teamNumberCheck = (teamNumber.length() > 0 && teamNumber.length() < 5 && !teamNumber.equals("0"));
-                boolean matchNumCheck = (matchNumber.length() > 0 && !matchNumber.equals("0"));
-                if (teamNumberCheck && matchNumCheck) {
-                    NavHostFragment.findNavController(FirstFragment.this)
-                            .navigate(R.id.action_FirstFragment_to_ThirdFragment);
-                } else {
-                    if (!teamNumberCheck) {
-                        Snackbar.make(view, "Invalid team number", 600).show();
-                    }
-                    if (!matchNumCheck) {
-                        Snackbar.make(view, "Invalid match number", 600).show();
-                    }
+        binding.cont.setOnClickListener(v -> {
+            String teamNumber = String.valueOf(binding.input.getText());
+            String matchNumber = String.valueOf(binding.matchInput.getText());
+            boolean teamNumberCheck = (teamNumber.length() > 0 && teamNumber.length() < 5 && !teamNumber.equals("0"));
+            boolean matchNumCheck = (matchNumber.length() > 0 && !matchNumber.equals("0"));
+            if (teamNumberCheck && matchNumCheck) {
+                NavHostFragment.findNavController(FirstFragment.this)
+                        .navigate(R.id.action_FirstFragment_to_ThirdFragment);
+            } else {
+                if (!teamNumberCheck) {
+                    Snackbar.make(view, "Invalid team number", 600).show();
+                }
+                if (!matchNumCheck) {
+                    Snackbar.make(view, "Invalid match number", 600).show();
                 }
             }
         });
 
-        binding.back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_HomePage);
-            }
-        });
+        binding.back.setOnClickListener(v -> NavHostFragment.findNavController(FirstFragment.this)
+                .navigate(R.id.action_FirstFragment_to_HomePage));
 
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", 0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f);
         animation.setDuration(1000);
-        binding.pop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view1) {
-                animation.start();
-                UIHelpers.darkMode = !UIHelpers.darkMode;
-                UIHelpers.lightDark(v, UIHelpers.darkMode);
-            }
+        binding.pop.setOnClickListener(view1 -> {
+            animation.start();
+            UIHelpers.darkMode = !UIHelpers.darkMode;
+            UIHelpers.lightDark(v, UIHelpers.darkMode);
         });
 
         DisplayMetrics dm = new DisplayMetrics();

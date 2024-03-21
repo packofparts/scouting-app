@@ -35,13 +35,11 @@ public class SecondFragment extends Fragment {
 
         binding = FragmentSecondBinding.inflate(inflater, container, false);
         v = container;
-        binding.team.setText("Team " + UserModel.getMatchData().getMatchNumber());
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
         binding.ampCounter.setText(String.valueOf(UserModel.getMatchData().getAmpTeleop()));
         binding.speakerNotesCounter.setText(String.valueOf(UserModel.getMatchData().getSpeakerNotes()));
         binding.missedNotesCounter.setText(String.valueOf(UserModel.getMatchData().getMissedNotes()));
         binding.broke.setChecked(UserModel.getMatchData().isBroke());
-
         checkedOperation(binding.broke);
         binding.defense.setChecked(UserModel.getMatchData().isDefense());
         checkedOperation(binding.defense);
@@ -76,11 +74,11 @@ public class SecondFragment extends Fragment {
         binding.team.setTranslationX(binding.title.getX());
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", 0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f);
         animation.setDuration(1000);
-        binding.pop.setOnClickListener(view13 -> {
-            animation.start();
-            UIHelpers.darkMode = !UIHelpers.darkMode;
-            UIHelpers.lightDark(v, UIHelpers.darkMode);
-        });
+        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
+        binding.AMP.setTranslationX(width * 0.000f);
+        binding.AMP.setTranslationY(height * 0.381f);
+        binding.SPEAKER.setTranslationX(width * 0.000f);
+        binding.SPEAKER.setTranslationY(height * 0.547f);
         binding.broke.setTranslationX(width * 0.073f);
         binding.broke.setTranslationY(height * 0.216f);
         binding.broke.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -88,21 +86,21 @@ public class SecondFragment extends Fragment {
             checkedOperation(binding.broke);
             UserModel.getMatchData().setBroke(binding.broke.isChecked());
         });
-        binding.defense.setTranslationX(width * 0.073f);
-        binding.defense.setTranslationY(height * 0.288f);
+        binding.defense.setTranslationX(width * 0.512f);
+        binding.defense.setTranslationY(height * 0.216f);
         binding.defense.setOnCheckedChangeListener((buttonView, isChecked) -> {
             checkedOperation(binding.defense);
             UserModel.getMatchData().setDefense(binding.defense.isChecked());
         });
         binding.intake.setTranslationX(width * 0.073f);
-        binding.intake.setTranslationY(height * 0.360f);
+        binding.intake.setTranslationY(height * 0.288f);
         binding.intakeBackground.setTranslationX(width * 0.366f);
-        binding.intakeBackground.setTranslationY(height * 0.321f);
+        binding.intakeBackground.setTranslationY(height * 0.242f);
         ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Intake", "Ground Intake", "Source Intake", "Both"});
         binding.intakeMethod.setAdapter(chainAdapter);
         binding.intakeMethod.setSelection(getPickUpIndex());
         binding.intakeMethod.setTranslationX(width * 0.366f);
-        binding.intakeMethod.setTranslationY(height * 0.367f);
+        binding.intakeMethod.setTranslationY(height * 0.288f);
         binding.intakeMethod.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -131,9 +129,9 @@ public class SecondFragment extends Fragment {
         });
 
         binding.ampNotes.setTranslationX(width * 0.073f);
-        binding.ampNotes.setTranslationY(height * 0.504f);
+        binding.ampNotes.setTranslationY(height * 0.475f);
         binding.minusAmp.setTranslationX(width * 0.366f);
-        binding.minusAmp.setTranslationY(height * 0.453f);
+        binding.minusAmp.setTranslationY(height * 0.403f);
         binding.minusAmp.setOnClickListener(view14 -> {
             if (UserModel.getMatchData().getAmpTeleop() > 0){
                 UserModel.getMatchData().setAmpTeleop(UserModel.getMatchData().getAmpTeleop() - 1);
@@ -141,18 +139,18 @@ public class SecondFragment extends Fragment {
             }
         });
         binding.plusAmp.setTranslationX(width * 0.732f);
-        binding.plusAmp.setTranslationY(height * 0.453f);
+        binding.plusAmp.setTranslationY(height * 0.403f);
         binding.plusAmp.setOnClickListener(view15 -> {
             UserModel.getMatchData().setAmpTeleop(UserModel.getMatchData().getAmpTeleop() + 1);
             binding.ampCounter.setText(String.valueOf(UserModel.getMatchData().getAmpTeleop()));
         });
         binding.ampCounter.setTranslationX(width * 0.598f);
-        binding.ampCounter.setTranslationY(height * 0.511f);
+        binding.ampCounter.setTranslationY(height * 0.460f);
 
         binding.speakerNotes.setTranslationX(width * 0.073f);
-        binding.speakerNotes.setTranslationY(height * 0.619f);
+        binding.speakerNotes.setTranslationY(height * 0.655f);
         binding.minusSpeaker.setTranslationX(width * 0.366f);
-        binding.minusSpeaker.setTranslationY(height * 0.576f);
+        binding.minusSpeaker.setTranslationY(height * 0.583f);
         binding.minusSpeaker.setOnClickListener(view16 -> {
             if (UserModel.getMatchData().getSpeakerNotes() > 0){
                 UserModel.getMatchData().setSpeakerNotes(UserModel.getMatchData().getSpeakerNotes() - 1);
@@ -160,13 +158,13 @@ public class SecondFragment extends Fragment {
             }
         });
         binding.plusSpeaker.setTranslationX(width * 0.732f);
-        binding.plusSpeaker.setTranslationY(height * 0.576f);
+        binding.plusSpeaker.setTranslationY(height * 0.583f);
         binding.plusSpeaker.setOnClickListener(view17 -> {
             UserModel.getMatchData().setSpeakerNotes(UserModel.getMatchData().getSpeakerNotes() + 1);
             binding.speakerNotesCounter.setText(String.valueOf(UserModel.getMatchData().getSpeakerNotes()));
         });
         binding.speakerNotesCounter.setTranslationX(width * 0.598f);
-        binding.speakerNotesCounter.setTranslationY(height * 0.633f);
+        binding.speakerNotesCounter.setTranslationY(height * 0.640f);
 
         binding.missedNotes.setTranslationX(width * 0.073f);
         binding.missedNotes.setTranslationY(height * 0.770f);

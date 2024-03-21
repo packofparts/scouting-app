@@ -14,10 +14,33 @@
         android:layout_height="730dp"
         android:padding="0dp">
 
+        <ImageView
+            android:id="@+id/pop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotationX="360"
+            android:src="@drawable/pop"
+            android:translationX="0dp"
+            android:translationY="0dp" />
+
+        <ImageView
+            android:id="@+id/AMP"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:src="@drawable/amp"
+            android:translationX="0dp"
+            android:translationY="265dp" />
+        <ImageView
+            android:id="@+id/SPEAKER"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:src="@drawable/speaker"
+            android:translationX="0dp"
+            android:translationY="380dp" />
 
         <Switch
             android:id="@+id/broke"
-            android:layout_width="410px"
+            android:layout_width="280px"
             android:layout_height="wrap_content"
             android:text="Broke?     "
             android:textColor="#000000"
@@ -31,7 +54,7 @@
 
         <Switch
             android:id="@+id/defense"
-            android:layout_width="410px"
+            android:layout_width="300px"
             android:layout_height="wrap_content"
             android:text="Defense? "
             android:textColor="#000000"
@@ -39,8 +62,8 @@
             android:thumbTint="#73C2F0"
             android:trackTint="#73C2F0"
             android:trackTintMode="src_over"
-            android:translationX="30dp"
-            android:translationY="200dp" />
+            android:translationX="210dp"
+            android:translationY="150dp" />
 
         <TextView
             android:id="@+id/intake"
@@ -53,7 +76,7 @@
             android:trackTint="#73C2F0"
             android:trackTintMode="src_over"
             android:translationX="30dp"
-            android:translationY="260dp" />
+            android:translationY="200dp" />
         <Button
             android:id="@+id/intakeBackground"
             android:layout_width="205dp"
@@ -63,7 +86,7 @@
             android:clickable="false"
             android:textSize="26dp"
             android:translationX="150dp"
-            android:translationY="223dp"
+            android:translationY="168dp"
             app:cornerRadius="100dp" />
 
         <Spinner
@@ -74,7 +97,7 @@
             android:backgroundTintMode="src_over"
             android:spinnerMode="dropdown"
             android:translationX="150dp"
-            android:translationY="255dp"
+            android:translationY="200dp"
             android:visibility="visible" />
 
         <TextView
@@ -101,7 +124,7 @@
             android:text="Notes in Amp"
             android:textSize="26dp"
             android:translationX="30dp"
-            android:translationY="350dp" />
+            android:translationY="330dp" />
         <TextView
             android:id="@+id/ampCounter"
             android:layout_width="wrap_content"
@@ -109,7 +132,7 @@
             android:text="0"
             android:textSize="26dp"
             android:translationX="245dp"
-            android:translationY="355dp" />
+            android:translationY="320dp" />
 
         <TextView
             android:id="@+id/speakerNotes"
@@ -118,7 +141,7 @@
             android:text="Notes in Speaker"
             android:textSize="26dp"
             android:translationX="30dp"
-            android:translationY="460dp" />
+            android:translationY="455dp" />
 
         <TextView
             android:id="@+id/speakerNotesCounter"
@@ -127,7 +150,7 @@
             android:text="0"
             android:textSize="26dp"
             android:translationX="245dp"
-            android:translationY="440dp" />
+            android:translationY="445dp" />
         <TextView
             android:id="@+id/missedNotesCounter"
             android:layout_width="wrap_content"
@@ -188,7 +211,7 @@
             android:text="-"
             android:textSize="26dp"
             android:translationX="150dp"
-            android:translationY="315dp"
+            android:translationY="280dp"
             app:cornerRadius="100dp" />
 
         <Button
@@ -201,7 +224,7 @@
             android:text="+"
             android:textSize="26dp"
             android:translationX="300dp"
-            android:translationY="315dp"
+            android:translationY="280dp"
             app:cornerRadius="100dp" />
 
         <Button
@@ -213,7 +236,7 @@
             android:text="-"
             android:textSize="26dp"
             android:translationX="150dp"
-            android:translationY="400dp"
+            android:translationY="405dp"
             app:cornerRadius="100dp" />
 
         <Button
@@ -225,7 +248,7 @@
             android:text="+"
             android:textSize="26dp"
             android:translationX="300dp"
-            android:translationY="400dp"
+            android:translationY="405dp"
             app:cornerRadius="100dp" />
 
         <Button
@@ -252,14 +275,6 @@
             android:translationY="505dp"
             app:cornerRadius="100dp" />
 
-        <ImageView
-            android:id="@+id/pop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:rotationX="360"
-            android:src="@drawable/pop"
-            android:translationX="0dp"
-            android:translationY="0dp" />
 
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>

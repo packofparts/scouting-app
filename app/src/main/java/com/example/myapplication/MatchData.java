@@ -43,6 +43,7 @@ public class MatchData {
     }
     Harmony harmo = Harmony.NOPE;
     String notes = "";
+
     // add human player spotlight data later
 
     public String returnAllData() {
@@ -68,6 +69,7 @@ public class MatchData {
     public void setMoveOutOfZone(boolean moveOutOfZone) {
         this.moveOutOfZone = moveOutOfZone;
     }
+    public boolean getMoveOutOfZone() {return moveOutOfZone;}
 
     public int getAmpAuto() {
         return ampAuto;

@@ -1,14 +1,11 @@
 package com.example.myapplication;
 
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
+
 
 
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.res.ColorStateList;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -29,15 +26,11 @@ import com.google.android.material.snackbar.Snackbar;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Objects;
 
 public class SecondFragment2 extends Fragment {
 
     private FragmentSecond2Binding binding;
-    public static int chainAttemptIndex = 0;
-    public static int harmonyAttemptIndex = 0;
     public boolean confirm = false;
 
     ViewGroup v = null;
@@ -119,11 +112,7 @@ public class SecondFragment2 extends Fragment {
         binding.team.setTranslationX(binding.title.getX());
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", 0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f);
         animation.setDuration(1000);
-        binding.pop.setOnClickListener(view13 -> {
-            animation.start();
-            UIHelpers.darkMode = !UIHelpers.darkMode;
-            UIHelpers.lightDark(v, UIHelpers.darkMode);
-        });
+        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
 
         binding.input.setTranslationY(height * 0.784f);
         binding.input.setTranslationX(width * 0.073f);
@@ -154,7 +143,6 @@ public class SecondFragment2 extends Fragment {
         binding.chainAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                SecondFragment2.chainAttemptIndex = position;
                 MatchData.Chain chainStatus;
                 switch (position){
                     case 0:
@@ -189,7 +177,6 @@ public class SecondFragment2 extends Fragment {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                SecondFragment2.harmonyAttemptIndex = position;
                 MatchData.Harmony harmonyStatus;
                 switch (position){
                     case 0:

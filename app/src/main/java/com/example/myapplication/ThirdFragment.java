@@ -65,12 +65,7 @@ public class ThirdFragment extends Fragment {
 
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", 0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f);
         animation.setDuration(1000);
-        binding.pop.setOnClickListener(view1 -> {
-            animation.start();
-            UIHelpers.darkMode = !UIHelpers.darkMode;
-            UIHelpers.lightDark(v, UIHelpers.darkMode);
-            UIHelpers.playHowlSound(this.getContext());
-        });
+        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
         binding.switch2.setOnCheckedChangeListener((buttonView, isChecked) -> {
             checkedOperation(binding.switch2);
             UserModel.getMatchData().setMoveOutOfZone(isChecked);

@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -57,5 +58,11 @@ public class UIHelpers {
             mp = MediaPlayer.create(c, R.raw.howl);
         }
         mp.start();
+    }
+    public static void darkModeToggle(ViewGroup v, ObjectAnimator animation, Context context) {
+        animation.start();
+        darkMode = !darkMode;
+        lightDark(v, darkMode);
+        playHowlSound(context);
     }
 }

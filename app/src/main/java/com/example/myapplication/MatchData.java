@@ -43,6 +43,7 @@ public class MatchData {
     }
     Harmony harmo = Harmony.NOPE;
     String notes = "";
+
     // add human player spotlight data later
 
     public String returnAllData() {

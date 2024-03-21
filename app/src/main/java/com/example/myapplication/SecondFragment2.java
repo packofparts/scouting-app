@@ -116,6 +116,7 @@ public class SecondFragment2 extends Fragment {
             animation.start();
             UIHelpers.darkMode = !UIHelpers.darkMode;
             UIHelpers.lightDark(v, UIHelpers.darkMode);
+            UIHelpers.playHowlSound(this.getContext());
         });
 
         binding.input.setTranslationY(height * 0.784f);

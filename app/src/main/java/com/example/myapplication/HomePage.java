@@ -78,6 +78,7 @@ public class HomePage extends Fragment {
             animation.start();
             UIHelpers.darkMode = !UIHelpers.darkMode;
             UIHelpers.lightDark(v, UIHelpers.darkMode);
+            UIHelpers.playHowlSound(this.getContext());
         });
         binding.prevInfoBack.setOnClickListener(view12 -> NavHostFragment.findNavController(HomePage.this)
                 .navigate(R.id.action_HomePage_to_FirstFragment));

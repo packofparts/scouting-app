@@ -69,7 +69,7 @@ public class ThirdFragment extends Fragment {
             animation.start();
             UIHelpers.darkMode = !UIHelpers.darkMode;
             UIHelpers.lightDark(v, UIHelpers.darkMode);
-
+            UIHelpers.playHowlSound(this.getContext());
         });
         binding.switch2.setOnCheckedChangeListener((buttonView, isChecked) -> {
             checkedOperation(binding.switch2);

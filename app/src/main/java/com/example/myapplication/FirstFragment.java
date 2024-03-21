@@ -49,8 +49,8 @@ public class FirstFragment extends Fragment {
         binding.cont.setOnClickListener(v -> {
             String teamNumber = String.valueOf(binding.input.getText());
             String matchNumber = String.valueOf(binding.matchInput.getText());
-            boolean teamNumberCheck = (teamNumber.length() > 0 && teamNumber.length() < 5 && !teamNumber.equals("0"));
-            boolean matchNumCheck = (matchNumber.length() > 0 && !matchNumber.equals("0"));
+            boolean teamNumberCheck = (!teamNumber.isEmpty() && teamNumber.length() < 5 && !teamNumber.equals("0"));
+            boolean matchNumCheck = (!matchNumber.isEmpty() && !matchNumber.equals("0"));
             if (teamNumberCheck && matchNumCheck) {
                 NavHostFragment.findNavController(FirstFragment.this)
                         .navigate(R.id.action_FirstFragment_to_ThirdFragment);
@@ -73,6 +73,7 @@ public class FirstFragment extends Fragment {
             animation.start();
             UIHelpers.darkMode = !UIHelpers.darkMode;
             UIHelpers.lightDark(v, UIHelpers.darkMode);
+            UIHelpers.playHowlSound(this.getContext());
         });
 
         DisplayMetrics dm = new DisplayMetrics();
@@ -82,10 +83,12 @@ public class FirstFragment extends Fragment {
 
         binding.title.setTranslationY(height * 0.072f);
         binding.title.setTranslationX(width * 0.146f);
-        binding.back.setTranslationY(height * 0.270f);
+        binding.back.setTranslationY(height * 0.288f);
         binding.back.setTranslationX(width * 0.024f);
+        binding.cont.setTranslationY(height * 0.288f);
+        binding.cont.setTranslationX(width * 0.707f);
         binding.input.setTranslationY(height * 0.158f);
-        binding.matchInput.setTranslationY(height * 0.158f);
+        binding.matchInput.setTranslationY(height * 0.271f);
 
         binding.input.addTextChangedListener(new TextWatcher() {
             @Override
@@ -121,8 +124,6 @@ public class FirstFragment extends Fragment {
             }
         });
 
-        binding.cont.setTranslationY(height * 0.270f);
-        binding.cont.setTranslationX(width * 0.707f);
         binding.pop.setTranslationY(height * 0.719f);
         binding.pop.setTranslationX(width * 0.073f);
 

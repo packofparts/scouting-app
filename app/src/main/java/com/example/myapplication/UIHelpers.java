@@ -1,11 +1,13 @@
 package com.example.myapplication;
 
 
-
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.util.Log;
+import android.media.MediaPlayer;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -21,6 +23,8 @@ public class UIHelpers {
     public static int teamColor = Color.parseColor("#73C2F0");
     public static ColorStateList purpleAsList = ColorStateList.valueOf(purple);
     public static ColorStateList teamColorAsList = ColorStateList.valueOf(teamColor);
+
+    public static MediaPlayer mp;
     public static boolean darkMode = false;
     public static void lightDark (ViewGroup v, boolean mode){
         //background color and color of the actual ui elements
@@ -68,5 +72,17 @@ public class UIHelpers {
                 relate((ViewGroup) child, height, width, density);
             }
         }
+    }
+    public static void playHowlSound(Context c) {
+        if (mp == null) {
+            mp = MediaPlayer.create(c, R.raw.howl);
+        }
+        mp.start();
+    }
+    public static void darkModeToggle(ViewGroup v, ObjectAnimator animation, Context context) {
+        animation.start();
+        darkMode = !darkMode;
+        lightDark(v, darkMode);
+        playHowlSound(context);
     }
 }

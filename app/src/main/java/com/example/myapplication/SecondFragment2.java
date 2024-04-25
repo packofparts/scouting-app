@@ -106,11 +106,7 @@ public class SecondFragment2 extends Fragment {
         binding.team.setTranslationX(binding.title.getX());
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", 0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f);
         animation.setDuration(1000);
-        binding.pop.setOnClickListener(view13 -> {
-            animation.start();
-            UIHelpers.darkMode = !UIHelpers.darkMode;
-            UIHelpers.lightDark(v, UIHelpers.darkMode);
-        });
+        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
 
         binding.textInput.addTextChangedListener(new TextWatcher() {
             @Override

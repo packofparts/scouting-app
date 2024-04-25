@@ -49,8 +49,8 @@ public class FirstFragment extends Fragment {
         binding.cont.setOnClickListener(v -> {
             String teamNumber = String.valueOf(binding.input.getText());
             String matchNumber = String.valueOf(binding.matchInput.getText());
-            boolean teamNumberCheck = (teamNumber.length() > 0 && teamNumber.length() < 5 && !teamNumber.equals("0"));
-            boolean matchNumCheck = (matchNumber.length() > 0 && !matchNumber.equals("0"));
+            boolean teamNumberCheck = (!teamNumber.isEmpty() && teamNumber.length() < 5 && !teamNumber.equals("0"));
+            boolean matchNumCheck = (!matchNumber.isEmpty() && !matchNumber.equals("0"));
             if (teamNumberCheck && matchNumCheck) {
                 NavHostFragment.findNavController(FirstFragment.this)
                         .navigate(R.id.action_FirstFragment_to_ThirdFragment);
@@ -69,11 +69,7 @@ public class FirstFragment extends Fragment {
 
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", 0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f);
         animation.setDuration(1000);
-        binding.pop.setOnClickListener(view1 -> {
-            animation.start();
-            UIHelpers.darkMode = !UIHelpers.darkMode;
-            UIHelpers.lightDark(v, UIHelpers.darkMode);
-        });
+        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
 
         DisplayMetrics dm = new DisplayMetrics();
         ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -82,8 +78,10 @@ public class FirstFragment extends Fragment {
 
         /*binding.title.setTranslationY(height * 0.072f);
         binding.title.setTranslationX(width * 0.146f);
-        binding.back.setTranslationY(height * 0.270f);
+        binding.back.setTranslationY(height * 0.288f);
         binding.back.setTranslationX(width * 0.024f);
+        binding.cont.setTranslationY(height * 0.288f);
+        binding.cont.setTranslationX(width * 0.707f);
         binding.input.setTranslationY(height * 0.158f);
         binding.matchInput.setTranslationY(height * 0.158f);*/
 

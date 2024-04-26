@@ -15,7 +15,6 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentThirdBinding;
 
-
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ThirdFragment#newInstance} factory method to
@@ -23,7 +22,6 @@ import com.example.myapplication.databinding.FragmentThirdBinding;
  */
 
 public class ThirdFragment extends Fragment {
-
 
     private FragmentThirdBinding binding;
     ViewGroup v = null;

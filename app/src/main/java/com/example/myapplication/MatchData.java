@@ -59,21 +59,38 @@ public class MatchData {
     //Getters and Setters
 
     //Pre Match
-    public String getTeamNumber() {    return teamNumber;    }
-    public void setTeamNumber(String teamNumber) { this.teamNumber = teamNumber;    }
-    public String getMatchNumber() {    return matchNumber;    }
-    public void setMatchNumber(String matchNumber) { this.matchNumber = matchNumber;    }
+    public String getTeamNumber() {    
+        return teamNumber;    
+    
+    }
+    public void setTeamNumber(String teamNumber) { 
+        this.teamNumber = teamNumber;   
+    }
+    
+    public String getMatchNumber() {    
+        return matchNumber;    
+    }
+
+    public void setMatchNumber(String matchNumber) { 
+        this.matchNumber = matchNumber;    
+    }
 
     //Auto
-    public void setWorkingAuto(boolean workingAuto) {    this.workingAuto = workingAuto;    }
+    public void setWorkingAuto(boolean workingAuto) {    
+        this.workingAuto = workingAuto;    
+    }
     public void setMoveOutOfZone(boolean moveOutOfZone) {
         this.moveOutOfZone = moveOutOfZone;
     }
-    public boolean getMoveOutOfZone() {return moveOutOfZone;}
+
+    public boolean getMoveOutOfZone() {
+        return moveOutOfZone;
+    }
 
     public int getAmpAuto() {
         return ampAuto;
     }
+
     public void setAmpAuto(int ampAuto) {
         this.ampAuto = ampAuto;
     }
@@ -81,6 +98,7 @@ public class MatchData {
     public int getSpeakerAuto() {
         return speakerAuto;
     }
+
     public void setSpeakerAuto(int speakerAuto) {
         this.speakerAuto = speakerAuto;
     }
@@ -89,6 +107,7 @@ public class MatchData {
     public boolean isBroke() {
         return broke;
     }
+
     public void setBroke(boolean broke) {
         this.broke = broke;
     }
@@ -96,6 +115,7 @@ public class MatchData {
     public boolean isDefense() {
         return defense;
     }
+
     public void setDefense(boolean defense) {
         this.defense = defense;
     }
@@ -103,6 +123,7 @@ public class MatchData {
     public int getAmpTeleop() {
         return ampTeleop;
     }
+
     public void setAmpTeleop(int ampTeleop) {
         this.ampTeleop = ampTeleop;
     }
@@ -110,35 +131,63 @@ public class MatchData {
     public int getMissedNotes() {
         return missedNotes;
     }
+
     public void setMissedNotes(int missedNotes) {   this.missedNotes = missedNotes;   }
 
     public int getSpeakerNotes() {
         return speakerTeleop;
     }
+
     public void setSpeakerNotes(int speakerTeleop) {
         this.speakerTeleop = speakerTeleop;
     }
 
-    public NoteAcquisition getNoteAcquired() {   return noteAcquired;    }
-    public void setNoteAcquired(NoteAcquisition noteAcquired) { this.noteAcquired = noteAcquired;  }
+    public NoteAcquisition getNoteAcquired() {   
+        return noteAcquired;    
+    }
+
+    public void setNoteAcquired(NoteAcquisition noteAcquired) { 
+        this.noteAcquired = noteAcquired;  
+    }
 
     //Endgame
 
-    public Chain getChaining() {    return chaining;    }
-    public void setChaining(Chain chain) { this.chaining = chain;  }
+    public Chain getChaining() {    
+        return chaining;    
+    }
 
-    public int getTrapSucess() {     return trapSucess;    }
-    public void setTrapSucess(int trapSucess) {    this.trapSucess = trapSucess;    }
+    public void setChaining(Chain chain) { 
+        this.chaining = chain;  
+    }
 
-    public int getTrapFail() {     return trapFail;    }
-    public void setTrapFail(int trapFail) {    this.trapFail = trapFail;    }
+    public int getTrapSucess() {     
+        return trapSucess;    
+    }
 
-    public Harmony getHarmo() {     return harmo;     }
-    public void setHarmo(Harmony harmony) { this.harmo = harmony;  }
+    public void setTrapSucess(int trapSucess) {    
+        this.trapSucess = trapSucess;    
+    }
+
+    public int getTrapFail() {     
+        return trapFail;    
+    }
+
+    public void setTrapFail(int trapFail) {    
+        this.trapFail = trapFail;    
+    }
+
+    public Harmony getHarmo() {     
+        return harmo;
+    }
+
+    public void setHarmo(Harmony harmony) { 
+        this.harmo = harmony;  
+    }
 
     public String getNotes() {
         return notes;
     }
+    
     public void setNotes(String notes) {
         this.notes = notes;
     }

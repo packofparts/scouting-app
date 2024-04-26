@@ -53,12 +53,14 @@ public class UIHelpers {
             }
         }
     }
+
     public static void playHowlSound(Context c) {
         if (mp == null) {
             mp = MediaPlayer.create(c, R.raw.howl);
         }
         mp.start();
     }
+    
     public static void darkModeToggle(ViewGroup v, ObjectAnimator animation, Context context) {
         animation.start();
         darkMode = !darkMode;

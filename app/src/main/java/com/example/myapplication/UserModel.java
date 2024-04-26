@@ -21,8 +21,8 @@ public class UserModel extends ViewModel {
     public void setMatchData(MatchData matchData){
         UserModel.matchData = matchData;
     }
+
     public static MatchData getMatchData(){
         return UserModel.matchData;
     }
-
 }

@@ -19,8 +19,6 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentSecondBinding;
 
-
-
 public class SecondFragment extends Fragment {
 
     private FragmentSecondBinding binding;
@@ -32,7 +30,6 @@ public class SecondFragment extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-
         binding = FragmentSecondBinding.inflate(inflater, container, false);
         v = container;
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
@@ -49,7 +46,6 @@ public class SecondFragment extends Fragment {
     @SuppressLint("SetTextI18n")
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
         binding.next.setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
                 .navigate(R.id.action_SecondFragment_to_SecondFragment2));
@@ -138,6 +134,7 @@ public class SecondFragment extends Fragment {
                 binding.ampCounter.setText(String.valueOf(UserModel.getMatchData().getAmpTeleop()));
             }
         });
+
         binding.plusAmp.setTranslationX(width * 0.732f);
         binding.plusAmp.setTranslationY(height * 0.403f);
         binding.plusAmp.setOnClickListener(view15 -> {
@@ -163,6 +160,7 @@ public class SecondFragment extends Fragment {
             UserModel.getMatchData().setSpeakerNotes(UserModel.getMatchData().getSpeakerNotes() + 1);
             binding.speakerNotesCounter.setText(String.valueOf(UserModel.getMatchData().getSpeakerNotes()));
         });
+
         binding.speakerNotesCounter.setTranslationX(width * 0.598f);
         binding.speakerNotesCounter.setTranslationY(height * 0.640f);
 
@@ -177,6 +175,7 @@ public class SecondFragment extends Fragment {
                 binding.missedNotesCounter.setText(String.valueOf(UserModel.getMatchData().getMissedNotes()));
             }
         });
+
         binding.plusMissedNotes.setTranslationX(width * 0.732f);
         binding.plusMissedNotes.setTranslationY(height * 0.727f);
 
@@ -184,6 +183,7 @@ public class SecondFragment extends Fragment {
             UserModel.getMatchData().setMissedNotes(UserModel.getMatchData().getMissedNotes() + 1);
             binding.missedNotesCounter.setText(String.valueOf(UserModel.getMatchData().getMissedNotes()));
         });
+
         binding.missedNotesCounter.setTranslationX(width * 0.598f);
         binding.missedNotesCounter.setTranslationY(height * 0.784f);
         UIHelpers.lightDark(v, UIHelpers.darkMode);
@@ -194,7 +194,6 @@ public class SecondFragment extends Fragment {
         super.onDestroyView();
 
         binding = null;
-
     }
     @SuppressLint("ObsoleteSdkInt")
     public void checkedOperation (View v){

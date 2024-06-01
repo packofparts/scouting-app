@@ -1,10 +1,12 @@
 package com.example.myapplication;
 
+
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.util.Log;
 import android.media.MediaPlayer;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +52,24 @@ public class UIHelpers {
                 if (child instanceof ViewGroup) {
                     lightDark((ViewGroup) child, mode);
                 }
+            }
+        }
+    }
+    public static void relate (ViewGroup v, float width, float height, float density){
+        float relX = 410.0f * density;
+        float relY = 730.0f * density;
+        //background color and color of the actual ui elements
+        for (int i = 0; i < v.getChildCount(); i ++){
+            View child = v.getChildAt(i);
+            if (! (child instanceof ViewGroup)){
+                child.setTranslationX(width * (child.getTranslationX() / relX));
+                child.setTranslationY(height * (child.getTranslationY() / relY));
+                if (width < relX && height < relY) {
+                    child.setScaleX(width / relX);
+                    child.setScaleY(height / relY);
+                }
+            } else {
+                relate((ViewGroup) child, height, width, density);
             }
         }
     }

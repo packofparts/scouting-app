@@ -70,8 +70,16 @@
             android:text="Character Limit: 0/150"
             android:textSize="15dp"
             android:translationX="30dp"
-            android:translationY="608dp" />
-
+            android:translationY="580dp" />
+        <TextView
+            android:id="@+id/analScore"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
+            android:text="Analyzer Score: 0.0"
+            android:textSize="15dp"
+            android:translationX="30dp"
+            android:translationY="600dp" />
 
         <TextView
             android:id="@+id/title"
@@ -336,7 +344,7 @@
             android:background="#0095EC"
             android:backgroundTint="#73C2F0"
             android:translationX="30dp"
-            android:translationY="545dp"
+            android:translationY="515dp"
             app:boxCollapsedPaddingTop="0dp">
 
             <com.google.android.material.textfield.TextInputEditText

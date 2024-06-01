@@ -122,6 +122,7 @@ public class SecondFragment2 extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 binding.characterLimit.setText("Character Limit: " + Objects.requireNonNull(binding.textInput.getText()).length() + "/150");
+                binding.analScore.setText("Analyzer Score: " + Analyzer.analyze(binding.textInput.getText().toString()));
                 UserModel.getMatchData().setNotes(binding.textInput.getText().toString());
             }
         });

@@ -344,7 +344,7 @@
             android:background="#0095EC"
             android:backgroundTint="#73C2F0"
             android:translationX="30dp"
-            android:translationY="515dp"
+            android:translationY="555dp"
             app:boxCollapsedPaddingTop="0dp">
 
             <com.google.android.material.textfield.TextInputEditText

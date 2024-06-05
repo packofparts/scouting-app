@@ -51,7 +51,7 @@ public class MatchData {
         String sanitizedNotes = notes.replace("\"", "\\\"");
         return "{\"teamNumber\":\"" + teamNumber + "\"," + "\"matchNumber\":\"" + matchNumber + "\"," + "\"workingAuto\":\"" + workingAuto + "\"," + "\"moveOutOfZone\":\""
                 + moveOutOfZone + "\"," + "\"ampAuto\":\"" + ampAuto + "\"," + "\"speakerAuto\":\"" + speakerAuto + "\","
-                + "\"isBroke\":\"" + broke + "\"," + "\"isDefense\":\"" + defense + "\"," + "\"ampTeleop\":\"" + ampTeleop + "\"," + "\"missedNotes\":\"" + missedNotes + "\","
+                + "\"getBroke\":\"" + broke + "\"," + "\"getDefense\":\"" + defense + "\"," + "\"ampTeleop\":\"" + ampTeleop + "\"," + "\"missedNotes\":\"" + missedNotes + "\","
                 + "\"speakerTeleop\":\"" + speakerTeleop + "\"," + "\"noteAcquired\":\"" + noteAcquired + "\"," + "\"chaining\":\"" + chaining + "\","
                 + "\"trapSucess\":\"" + trapSucess + "\"," + "\"trapFail\":\"" + trapFail + "\"," + "\"harmo\":\"" + harmo + "\"," + "\"notes\":\"" + sanitizedNotes + "\"}";
     }
@@ -59,26 +59,27 @@ public class MatchData {
     //Getters and Setters
 
     //Pre Match
-    public String getTeamNumber() {    
-        return teamNumber;    
-    
-    }
     public void setTeamNumber(String teamNumber) { 
         this.teamNumber = teamNumber;   
     }
-    
-    public String getMatchNumber() {    
-        return matchNumber;    
-    }
 
+    public String getTeamNumber() {    
+        return teamNumber;
+    }
+ 
     public void setMatchNumber(String matchNumber) { 
         this.matchNumber = matchNumber;    
+    }
+
+    public String getMatchNumber() {    
+        return matchNumber;    
     }
 
     //Auto
     public void setWorkingAuto(boolean workingAuto) {    
         this.workingAuto = workingAuto;    
     }
+
     public void setMoveOutOfZone(boolean moveOutOfZone) {
         this.moveOutOfZone = moveOutOfZone;
     }
@@ -87,108 +88,110 @@ public class MatchData {
         return moveOutOfZone;
     }
 
-    public int getAmpAuto() {
-        return ampAuto;
-    }
-
     public void setAmpAuto(int ampAuto) {
         this.ampAuto = ampAuto;
     }
 
-    public int getSpeakerAuto() {
-        return speakerAuto;
+    public int getAmpAuto() {
+        return ampAuto;
     }
 
     public void setSpeakerAuto(int speakerAuto) {
         this.speakerAuto = speakerAuto;
     }
 
-    //Teleop
-    public boolean isBroke() {
-        return broke;
+    public int getSpeakerAuto() {
+        return speakerAuto;
     }
 
+    //Teleop
+    
     public void setBroke(boolean broke) {
         this.broke = broke;
     }
-
-    public boolean isDefense() {
-        return defense;
+    
+    public boolean getBroke() {
+        return broke;
     }
 
     public void setDefense(boolean defense) {
         this.defense = defense;
     }
 
-    public int getAmpTeleop() {
-        return ampTeleop;
+    public boolean getDefense() {
+        return defense;
     }
 
     public void setAmpTeleop(int ampTeleop) {
         this.ampTeleop = ampTeleop;
     }
 
-    public int getMissedNotes() {
-        return missedNotes;
+    public int getAmpTeleop() {
+        return ampTeleop;
     }
 
-    public void setMissedNotes(int missedNotes) {   this.missedNotes = missedNotes;   }
+    public void setMissedNotes(int missedNotes) {   
+        this.missedNotes = missedNotes;   
+    }
 
-    public int getSpeakerNotes() {
-        return speakerTeleop;
+    public int getMissedNotes() {
+        return missedNotes;
     }
 
     public void setSpeakerNotes(int speakerTeleop) {
         this.speakerTeleop = speakerTeleop;
     }
 
-    public NoteAcquisition getNoteAcquired() {   
-        return noteAcquired;    
+    public int getSpeakerNotes() {
+        return speakerTeleop;
     }
 
     public void setNoteAcquired(NoteAcquisition noteAcquired) { 
         this.noteAcquired = noteAcquired;  
     }
 
+    public NoteAcquisition getNoteAcquired() {   
+        return noteAcquired;    
+    }
+
     //Endgame
+    public void setChaining(Chain chain) { 
+        this.chaining = chain;  
+    }
 
     public Chain getChaining() {    
         return chaining;    
     }
 
-    public void setChaining(Chain chain) { 
-        this.chaining = chain;  
+    public void setTrapSucess(int trapSuccess) {    
+        this.trapSuccess = trapSuccess;    
     }
 
-    public int getTrapSucess() {     
-        return trapSucess;    
-    }
-
-    public void setTrapSucess(int trapSucess) {    
-        this.trapSucess = trapSucess;    
-    }
-
-    public int getTrapFail() {     
-        return trapFail;    
+    public int getTrapSuccess() {     
+        return trapSuccess;    
     }
 
     public void setTrapFail(int trapFail) {    
         this.trapFail = trapFail;    
     }
-
-    public Harmony getHarmo() {     
-        return harmo;
+    
+    public int getTrapFail() {     
+        return trapFail;    
     }
-
+    
     public void setHarmo(Harmony harmony) { 
         this.harmo = harmony;  
     }
 
-    public String getNotes() {
-        return notes;
+    public Harmony getHarmo() {     
+        return harmo;
     }
     
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+        
+    public String getNotes() {
+        return notes;
     }
 }

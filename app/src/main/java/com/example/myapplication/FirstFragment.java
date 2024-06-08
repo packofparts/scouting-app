@@ -76,14 +76,14 @@ public class FirstFragment extends Fragment {
         float width = dm.widthPixels;
         float height = dm.heightPixels;
 
-        binding.title.setTranslationY(height * 0.072f);
+        /*binding.title.setTranslationY(height * 0.072f);
         binding.title.setTranslationX(width * 0.146f);
         binding.back.setTranslationY(height * 0.288f);
         binding.back.setTranslationX(width * 0.024f);
         binding.cont.setTranslationY(height * 0.288f);
         binding.cont.setTranslationX(width * 0.707f);
         binding.input.setTranslationY(height * 0.158f);
-        binding.matchInput.setTranslationY(height * 0.271f);
+        binding.matchInput.setTranslationY(height * 0.158f);*/
 
         binding.input.addTextChangedListener(new TextWatcher() {
             @Override
@@ -119,9 +119,11 @@ public class FirstFragment extends Fragment {
             }
         });
 
+        /*binding.cont.setTranslationY(height * 0.270f);
+        binding.cont.setTranslationX(width * 0.707f);
         binding.pop.setTranslationY(height * 0.719f);
-        binding.pop.setTranslationX(width * 0.073f);
-
+        binding.pop.setTranslationX(width * 0.073f);*/
+        UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
         UIHelpers.lightDark(v, UIHelpers.darkMode);
     }
 

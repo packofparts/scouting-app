@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -9,13 +11,19 @@ public class Analyzer {
 	private static String[] goodWords = {"good","wonderful!","excellent","amazing","serene!",
 										"strong!","beautiful!","perfect!","fast","perfection",
 										"gorgeous!","best","charming","gracious!","better",
-										"well","accurate!","reliable!"};
-	private static String[] badWords = {"bad!","terrible!","suck@","acts","sucks",
+										"well","accurate!","reliable!","extreme","awesome",
+										"nice!","cool","quality","effective!","efficient!",
+										"strategic!","robust!","consistent!","sufficient!"};
+	private static String[] badWords = {"bad!","terrible!","suck@","acts","crazy!",
 										"old","delicate!","intent","tragedy","awful!",
 										"vile!","tragic!","weak!","worst","traumatic!",
 										"stinging","accident!","nightmare","victim", "poor!",
-										"slow!", "unreliable!"};
-	private static String[] multiWords = {"-0.5,not","1.8,very","0.9,most!","0.6,mild!","1.5,too"};
+										"slow!", "unreliable!","worse","boring","trash",
+										"doesnt","cannot","inconsistent!","jittery","broken",
+										"inefficient!","horrible!","insufficient!","broke","intentional!",
+										"blind!"};
+	private static String[] multiWords = {"-0.6,not","1.8,very","0.9,most!","0.6,mild!","1.5,too",
+										"2.3,extremely","1.3,high!","1.4,completely"};
 	private static boolean populated = false;
 	public static int contains(String[] list, String str) {
 		for (int i = 0; i < list.length; i ++) {
@@ -49,7 +57,7 @@ public class Analyzer {
 				cur *= Double.parseDouble(multiWords[index].substring(0, multiWords[index].indexOf(",")));
 			}
 		}
-		return total;
+		return Math.round(total * 10)/10.0;
 	}
 	public static String keepLettersOnly(String str) {
 		String[] words = str.split("");
@@ -67,7 +75,7 @@ public class Analyzer {
 		for (String cur: str){
 			if (cur.endsWith("!")){
 				String word = cur.substring(0, cur.length() - 1);
-				res.add(word.endsWith("le") ? word.substring(0, word.length() - 1) + "y" : (word.endsWith("ic") ? word + "ally" : word + "ly"));
+				res.add(word.endsWith("le") ? word.substring(0, word.length() - 1) + "y" : (word.endsWith("ic") ? word + "ally" : (word.endsWith("y") ? word.substring(0, word.length() - 1)  + "ily" : word + "ly")));
 				res.add(word);
 			} else if (cur.endsWith("@")){
 				String word = cur.substring(0, cur.length() - 1);
@@ -77,7 +85,7 @@ public class Analyzer {
 				res.add(cur);
 			}
 		}
-		System.out.println(res);
+		Log.d("Result: ", res.toString());
 		return res.toArray(new String[] {});
 	}
 }

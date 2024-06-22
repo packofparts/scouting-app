@@ -36,7 +36,7 @@ public class MatchData {
     int trapSucess = 0;
     int trapFail = 0;
 
-    double analScore = 0.0;
+    double analyzerScore = 0.0;
 
     public enum Harmony {
         NOPE,
@@ -146,7 +146,7 @@ public class MatchData {
     }
 
     public double getAnalScore() {
-        return analScore;
+        return analyzerScore;
     }
-    public void setAnalScore(double analScore) {this.analScore = analScore;}
+    public void setAnalScore(double analScore) {this.analyzerScore = analScore;}
 }

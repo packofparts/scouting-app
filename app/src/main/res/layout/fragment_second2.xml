@@ -72,7 +72,7 @@
             android:translationX="30dp"
             android:translationY="580dp" />
         <TextView
-            android:id="@+id/analScore"
+            android:id="@+id/analyzerScore"
             android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:background="#00FFFFFF"

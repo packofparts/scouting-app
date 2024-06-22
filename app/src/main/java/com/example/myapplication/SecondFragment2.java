@@ -116,7 +116,7 @@ public class SecondFragment2 extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-            }
+            } 
 
             @SuppressLint("SetTextI18n")
             @Override

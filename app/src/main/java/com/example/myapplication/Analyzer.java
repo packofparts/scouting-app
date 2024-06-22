@@ -60,14 +60,7 @@ public class Analyzer {
 		return Math.round(total * 10)/10.0;
 	}
 	public static String keepLettersOnly(String str) {
-		String[] words = str.split("");
-		String res = "";
-		for (String s: words) {
-			if ("abcdefghijklmnopqrstuvwxyz ".contains(s)) {
-				res += s;
-			}
-		}
-		return res;
+		return str.replaceAll("[^a-z ]", "");
 	}
 	public static String[] populateForms(String[] list){
 		ArrayList<String> str = new ArrayList<>(Arrays.asList(list));

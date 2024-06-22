@@ -35,6 +35,9 @@ public class MatchData {
     Chain chaining = Chain.NOPE;
     int trapSucess = 0;
     int trapFail = 0;
+
+    double analyzerScore = 0.0;
+
     public enum Harmony {
         NOPE,
         ATTEMPTED,
@@ -44,7 +47,6 @@ public class MatchData {
     Harmony harmo = Harmony.NOPE;
     String notes = "";
 
-    // add human player spotlight data later
 
     public String returnAllData() {
 
@@ -142,4 +144,9 @@ public class MatchData {
     public void setNotes(String notes) {
         this.notes = notes;
     }
+
+    public double getAnalScore() {
+        return analyzerScore;
+    }
+    public void setAnalScore(double analScore) {this.analyzerScore = analScore;}
 }

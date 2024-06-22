@@ -116,13 +116,16 @@ public class SecondFragment2 extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-            }
+            } 
 
             @SuppressLint("SetTextI18n")
             @Override
             public void afterTextChanged(Editable s) {
                 binding.characterLimit.setText("Character Limit: " + Objects.requireNonNull(binding.textInput.getText()).length() + "/150");
+                double score = Analyzer.analyze(binding.textInput.getText().toString());
+                binding.analyzerScore.setText("Analyzer Score: " + score);
                 UserModel.getMatchData().setNotes(binding.textInput.getText().toString());
+                UserModel.getMatchData().setAnalScore(score);
             }
         });
         ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Attempt", "Failed Attempt", "Successful Attempt"});

@@ -13,7 +13,9 @@ public class Analyzer {
 										"gorgeous!","best","charming","gracious!","better",
 										"well","accurate!","reliable!","extreme","awesome",
 										"nice!","cool","quality","effective!","efficient!",
-										"strategic!","robust!","consistent!","sufficient!"};
+										"strategic!","robust!","consistent!","sufficient!",
+										"powerful!","solid","far","able","great!",
+										"long"};
 	private static String[] badWords = {"bad!","terrible!","suck@","acts","crazy!",
 										"old","delicate!","intent","tragedy","awful!",
 										"vile!","tragic!","weak!","worst","traumatic!",
@@ -21,9 +23,10 @@ public class Analyzer {
 										"slow!", "unreliable!","worse","boring","trash",
 										"doesnt","cannot","inconsistent!","jittery","broken",
 										"inefficient!","horrible!","insufficient!","broke","intentional!",
-										"blind!"};
-	private static String[] multiWords = {"-0.6,not","1.8,very","0.9,most!","0.6,mild!","1.5,too",
-										"2.3,extremely","1.3,high!","1.4,completely"};
+										"blind!","big","broken","limited","didnt",
+										"unable","failed","short"};
+	private static String[] multiWords = {"-0.6,not","1.8,very","0.9,most!","0s.6,mild!","1.5,too",
+										"2.3,extremely","1.3,high!","1.4,completely","1.3,real!"};
 	private static boolean populated = false;
 	public static int contains(String[] list, String str) {
 		for (int i = 0; i < list.length; i ++) {

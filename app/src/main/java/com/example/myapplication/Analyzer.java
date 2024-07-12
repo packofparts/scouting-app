@@ -16,6 +16,7 @@ public class Analyzer {
 										"strategic!","robust!","consistent!","sufficient!",
 										"powerful!","solid","far","able","great!",
 										"long","smooth!","capable!","small"};
+
 	private static String[] badWords = {"bad!","terrible!","suck@","acts","crazy!",
 										"old","delicate!","intent","tragedy","awful!",
 										"vile!","tragic!","weak!","worst","traumatic!",

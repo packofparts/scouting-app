@@ -125,7 +125,7 @@ public class SecondFragment2 extends Fragment {
                 double score = Analyzer.analyze(binding.textInput.getText().toString());
                 binding.analyzerScore.setText("Analyzer Score: " + score);
                 UserModel.getMatchData().setNotes(binding.textInput.getText().toString());
-                UserModel.getMatchData().setAnalScore(score);
+                UserModel.getMatchData().setAnalyzerScore(score);
             }
         });
         ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Attempt", "Failed Attempt", "Successful Attempt"});

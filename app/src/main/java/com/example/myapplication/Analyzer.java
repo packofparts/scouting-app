@@ -27,7 +27,7 @@ public class Analyzer {
 										"blind!","big","broken","limited","didnt",
 										"unable","failed","stuck","lack@","tall",
 										"choppy"};
-	private static String[] multiWords = {"-0.6,not","1.8,very","0.9,most!","0s.6,mild!","1.5,too",
+	private static String[] multiWords = {"-0.6,not","1.8,very","0.9,most!","0.6,mild!","1.5,too",
 										"2.3,extremely","1.3,high!","1.4,completely","1.3,real!","1.1,pretty"};
 	private static boolean populated = false;
 	public static int contains(String[] list, String str) {

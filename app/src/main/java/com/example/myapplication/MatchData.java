@@ -55,7 +55,7 @@ public class MatchData {
                 + moveOutOfZone + "\"," + "\"ampAuto\":\"" + ampAuto + "\"," + "\"speakerAuto\":\"" + speakerAuto + "\","
                 + "\"isBroke\":\"" + broke + "\"," + "\"isDefense\":\"" + defense + "\"," + "\"ampTeleop\":\"" + ampTeleop + "\"," + "\"missedNotes\":\"" + missedNotes + "\","
                 + "\"speakerTeleop\":\"" + speakerTeleop + "\"," + "\"noteAcquired\":\"" + noteAcquired + "\"," + "\"chaining\":\"" + chaining + "\","
-                + "\"trapSucess\":\"" + trapSucess + "\"," + "\"trapFail\":\"" + trapFail + "\"," + "\"harmo\":\"" + harmo + "\"," + "\"notes\":\"" + sanitizedNotes + "\"}";
+                + "\"trapSucess\":\"" + trapSucess + "\"," + "\"trapFail\":\"" + trapFail + "\"," + "\"harmo\":\"" + harmo + "\"," + "\"notes\":\"" + sanitizedNotes + "\"," + "\"analyzerScore\":\"" + analyzerScore + "\"}";
     }
 
     //Getters and Setters
@@ -145,8 +145,8 @@ public class MatchData {
         this.notes = notes;
     }
 
-    public double getAnalScore() {
+    public double getAnalyzerScore() {
         return analyzerScore;
     }
-    public void setAnalScore(double analScore) {this.analyzerScore = analScore;}
+    public void setAnalyzerScore(double analyzerScore) {this.analyzerScore = analyzerScore;}
 }

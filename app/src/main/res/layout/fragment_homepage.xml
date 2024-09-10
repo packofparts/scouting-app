@@ -465,7 +465,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:padding="10dp"
-                    android:text="Notes in Trap (Failed)"
+                    android:text="Notes in Trap (Missed)"
                     android:textColor="@color/white"
                     android:textSize="30sp"
                     tools:ignore="HardcodedText,RtlHardcoded" />
@@ -478,7 +478,7 @@
                     android:paddingRight="50dp"
                     android:paddingTop="26dp"
                     android:paddingLeft="17dp"
-                    android:text="The number of failed notes means the number of notes the robot attempted to put in the trap but got stuck or fell out. "
+                    android:text="The number of missed notes means the number of notes the robot attempted to put in the trap but got stuck or fell out. "
                     android:textColor="@color/white"
                     android:textSize="15sp" />
             </TableRow>
@@ -493,7 +493,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:padding="0dp"
-                    android:text="Notes in Trap\n(Success)"
+                    android:text="Notes in Trap\n(Scored)"
                     android:textColor="@color/white"
                     android:textSize="30sp"
                     tools:ignore="HardcodedText,RtlHardcoded" />
@@ -506,7 +506,7 @@
                     android:paddingRight="50dp"
                     android:paddingTop="26dp"
                     android:paddingLeft="17dp"
-                    android:text="The number of successful notes means the number of notes the robot attempted to put in the trap and got it fully in. "
+                    android:text="The number of scored notes means the number of notes the robot attempted to put in the trap and got it fully in. "
                     android:textColor="@color/white"
                     android:textSize="15sp" />
             </TableRow>

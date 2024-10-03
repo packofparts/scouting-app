@@ -48,6 +48,7 @@ public class SecondFragment2 extends Fragment {
         binding.notesSuccessCounter.setText(String.valueOf(UserModel.getMatchData().getTrapSucess()));
         binding.textInput.setText(UserModel.getMatchData().getNotes());
         binding.characterLimit.setText("Character Limit: " + Objects.requireNonNull(binding.textInput.getText()).length() + "/150");
+        binding.analyzerScore.setText("Analyzer Score: " + UserModel.getMatchData().getAnalyzerScore());
         return binding.getRoot();
     }
 
@@ -122,7 +123,8 @@ public class SecondFragment2 extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 binding.characterLimit.setText("Character Limit: " + Objects.requireNonNull(binding.textInput.getText()).length() + "/150");
-                double score = Analyzer.analyze(binding.textInput.getText().toString());
+                Analyzer2.populate(getResources().openRawResource(R.raw.cleansentiment));
+                double score = Analyzer2.analyze(binding.textInput.getText().toString());
                 binding.analyzerScore.setText("Analyzer Score: " + score);
                 UserModel.getMatchData().setNotes(binding.textInput.getText().toString());
                 UserModel.getMatchData().setAnalyzerScore(score);

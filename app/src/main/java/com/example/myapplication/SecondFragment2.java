@@ -79,6 +79,11 @@ public class SecondFragment2 extends Fragment {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
+                int num = Integer.parseInt(UserModel.getMatchData().getMatchNumber());
+                num ++;
+                num = num < 1 ? 1 : num;
+                num = num > MainActivity.teams.size() ? MainActivity.teams.size() : num;
+                UserModel.getMatchData().setMatchNumber(String.valueOf(num));
                 NavHostFragment.findNavController(SecondFragment2.this).navigate(R.id.action_SecondFragment2_to_FirstFragment);
             } else {
                 binding.next.setText("Confirm");

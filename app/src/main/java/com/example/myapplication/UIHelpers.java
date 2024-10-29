@@ -11,6 +11,7 @@ import android.media.MediaPlayer;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -32,6 +33,7 @@ public class UIHelpers {
         String viewColor = !mode ? "#000000" : "#FFFFFF";
         for (int i = 0; i < v.getChildCount(); i ++){
             View child = v.getChildAt(i);
+
             if (!(child instanceof Spinner) && !(child instanceof TextInputLayout)) {
                 if (!(child instanceof Button)) {
                     child.setBackgroundColor(Color.parseColor(bgColor));
@@ -58,6 +60,14 @@ public class UIHelpers {
     public static void relate (ViewGroup v, float width, float height, float density){
         float relX = 410.0f * density;
         float relY = 730.0f * density;
+
+        float w = Math.min(width, height);
+        float h = Math.max(width, height);
+        width = w;
+        height = h;
+        if (v instanceof CustomScrollView || v instanceof RelativeLayout) {
+            v.setMinimumHeight((int) h);
+        }
         //background color and color of the actual ui elements
         for (int i = 0; i < v.getChildCount(); i ++){
             View child = v.getChildAt(i);
@@ -69,10 +79,11 @@ public class UIHelpers {
                     child.setScaleY(height / relY);
                 }
             } else {
-                relate((ViewGroup) child, height, width, density);
+                relate((ViewGroup) child, width, height, density);
             }
         }
     }
+
     public static void playHowlSound(Context c) {
         if (mp == null) {
             mp = MediaPlayer.create(c, R.raw.howl);

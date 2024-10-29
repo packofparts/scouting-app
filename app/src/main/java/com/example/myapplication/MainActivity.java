@@ -8,16 +8,29 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import com.example.myapplication.databinding.ActivityMainBinding;
+
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
     // In-app variables
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
+    public static ArrayList<String> teams = new ArrayList<>();
 
+    public static int scoutLocation = 5;
+    //0 - Red 1
+    //1 - Red 2
+    //2 - Red 3
+    //3 - Blue 1
+    //4 - Blue 2
+    //5 - Blue 3
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +45,15 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
         getSupportActionBar().hide();
+        if (teams.size() == 0) {
+            Scanner scanner = new Scanner(getResources().openRawResource(R.raw.schedule));
+
+            while (scanner.hasNext()) {
+                scanner.nextLine();
+                teams.add(scanner.nextLine().split("\t")[scoutLocation]);
+
+            }
+        }
     }
 
     @Override
@@ -62,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
 }
 
 

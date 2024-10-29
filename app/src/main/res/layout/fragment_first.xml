@@ -35,14 +35,22 @@
             android:translationX="60dp"
             android:translationY="50dp"/>
 
-
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Red 1"
+            android:textSize="42dp"
+            android:translationX="140dp"
+            android:translationY="110dp"/>
         <ImageView
             android:id="@+id/pop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/pop"
-            android:translationY="500dp"
-            android:translationX="410dp"/>
+            android:translationY="380dp"
+            android:translationX="130dp"/>
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -50,10 +58,10 @@
             android:layout_width="140dp"
             android:layout_height="66dp"
             android:hint="Team Number"
-            android:maxLength="4"
+            android:maxLength="5"
             android:inputType="number"
             android:translationX="133dp"
-            android:translationY="110dp" />
+            android:translationY="190dp" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/matchInput"
@@ -64,7 +72,7 @@
             android:maxLength="3"
             android:inputType="number"
             android:translationX="133dp"
-            android:translationY="188dp" />
+            android:translationY="260dp" />
 
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>

@@ -78,14 +78,14 @@ public class FirstFragment extends Fragment {
 
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", 0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f);
         animation.setDuration(1000);
-        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
+        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext(), () -> binding.location.setTextColor(Color.parseColor((MainActivity.scoutLocation < 3 ? "#FF0000" : "#0000FF")))));
 
         DisplayMetrics dm = new DisplayMetrics();
         ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
         float width = dm.widthPixels;
         float height = dm.heightPixels;
 
-        /*binding.title.setTranslationY(height * 0.072f);
+        /*binding.title.setTranslationY(height * 0.072f);\
         binding.title.setTranslationX(width * 0.146f);
         binding.back.setTranslationY(height * 0.288f);
         binding.back.setTranslationX(width * 0.024f);

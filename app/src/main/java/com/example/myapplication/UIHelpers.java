@@ -96,4 +96,8 @@ public class UIHelpers {
         lightDark(v, darkMode);
         playHowlSound(context);
     }
+    public static void darkModeToggle(ViewGroup v, ObjectAnimator animation, Context context, Runnable r) {
+        darkModeToggle(v, animation, context);
+        r.run();
+    }
 }

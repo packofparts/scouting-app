@@ -2,8 +2,10 @@ package com.example.myapplication;
 
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,7 +92,13 @@ public class ThirdFragment extends Fragment {
             UserModel.getMatchData().setAmpAuto(UserModel.getMatchData().getAmpAuto() - (UserModel.getMatchData().getAmpAuto() <= 0 ? 0 : 1));
             binding.numNotesInAmp.setText(String.valueOf(UserModel.getMatchData().getAmpAuto()));
         });
+        DisplayMetrics dm = new DisplayMetrics();
+        ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
+        float width = dm.widthPixels;
+        float height = dm.heightPixels;
+        UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
         UIHelpers.lightDark(v, UIHelpers.darkMode);
+
     }
     @Override
     public void onDestroyView() {

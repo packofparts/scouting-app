@@ -65,7 +65,7 @@ public class ThirdFragment extends Fragment {
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
         //VARIABLES
 
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", 0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f);
+        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", UIHelpers.wolfFrames);
         animation.setDuration(1000);
         binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
         binding.switch2.setOnCheckedChangeListener((buttonView, isChecked) -> {

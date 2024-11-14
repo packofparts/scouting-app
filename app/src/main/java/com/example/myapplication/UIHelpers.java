@@ -24,7 +24,7 @@ public class UIHelpers {
     public static int teamColor = Color.parseColor("#73C2F0");
     public static ColorStateList purpleAsList = ColorStateList.valueOf(purple);
     public static ColorStateList teamColorAsList = ColorStateList.valueOf(teamColor);
-
+    public static final float[] wolfFrames = {0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f};
     public static MediaPlayer mp;
     public static boolean darkMode = false;
     public static void lightDark (ViewGroup v, boolean mode){

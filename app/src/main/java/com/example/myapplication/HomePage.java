@@ -72,7 +72,7 @@ public class HomePage extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.prevInfoBack.setOnClickListener(v -> UserModel.getMatchData().setBroke(true));
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.WolfLogoInfo, "rotation", 0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f);
+        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.WolfLogoInfo, "rotation",UIHelpers.wolfFrames);
         animation.setDuration(1000);
         binding.WolfLogoInfo.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
         binding.prevInfoBack.setOnClickListener(view12 -> NavHostFragment.findNavController(HomePage.this)

@@ -79,6 +79,11 @@ public class SecondFragment2 extends Fragment {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
+                int num = Integer.parseInt(UserModel.getMatchData().getMatchNumber());
+                num ++;
+                num = num < 1 ? 1 : num;
+                num = num > MainActivity.teams.size() ? MainActivity.teams.size() : num;
+                UserModel.getMatchData().setMatchNumber(String.valueOf(num));
                 NavHostFragment.findNavController(SecondFragment2.this).navigate(R.id.action_SecondFragment2_to_FirstFragment);
             } else {
                 binding.next.setText("Confirm");
@@ -105,7 +110,7 @@ public class SecondFragment2 extends Fragment {
         binding.relativeLayoutFirst.setLayoutParams(layoutParams);
         binding.relativeLayoutFirst.setTranslationY(50);
         binding.team.setTranslationX(binding.title.getX());
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", 0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f);
+        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", UIHelpers.wolfFrames);
         animation.setDuration(1000);
         binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
 

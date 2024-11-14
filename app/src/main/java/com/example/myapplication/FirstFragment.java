@@ -2,10 +2,13 @@ package com.example.myapplication;
 
 import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,18 +30,22 @@ public class FirstFragment extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
+        binding = FragmentFirstBinding.inflate(inflater, container, false);
+        v = container;
+
+        String currentMatchNumber = UserModel.getMatchData().getMatchNumber();
+        binding.matchInput.setText(currentMatchNumber);
+        try {
+            String currentTeamNumber = MainActivity.teams.get(Integer.parseInt(currentMatchNumber) - 1);
+            binding.input.setText(currentTeamNumber);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
         ViewModelProvider viewModelProvider = new ViewModelProvider(requireActivity());
         UserModel userModel = viewModelProvider.get(UserModel.class);
         MatchData matchData = new MatchData();
         userModel.setMatchData(matchData);
-        binding = FragmentFirstBinding.inflate(inflater, container, false);
-        v = container;
-
-        String currentTeamNumber = UserModel.getMatchData().getTeamNumber();
-        binding.input.setText(currentTeamNumber);
-
-        String currentMatchNumber = UserModel.getMatchData().getMatchNumber();
-        binding.matchInput.setText(currentMatchNumber);
 
         return binding.getRoot();
     }
@@ -52,6 +59,8 @@ public class FirstFragment extends Fragment {
             boolean teamNumberCheck = (!teamNumber.isEmpty() && teamNumber.length() < 5 && !teamNumber.equals("0"));
             boolean matchNumCheck = (!matchNumber.isEmpty() && !matchNumber.equals("0"));
             if (teamNumberCheck && matchNumCheck) {
+                UserModel.getMatchData().setTeamNumber(teamNumber);
+                UserModel.getMatchData().setMatchNumber(matchNumber);
                 NavHostFragment.findNavController(FirstFragment.this)
                         .navigate(R.id.action_FirstFragment_to_ThirdFragment);
             } else {
@@ -67,23 +76,15 @@ public class FirstFragment extends Fragment {
         binding.back.setOnClickListener(v -> NavHostFragment.findNavController(FirstFragment.this)
                 .navigate(R.id.action_FirstFragment_to_HomePage));
 
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", 0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f);
+        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", UIHelpers.wolfFrames);
         animation.setDuration(1000);
-        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
+        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext(), () -> binding.location.setTextColor(Color.parseColor((MainActivity.scoutLocation < 3 ? "#FF0000" : "#0000FF")))));
 
         DisplayMetrics dm = new DisplayMetrics();
         ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
         float width = dm.widthPixels;
         float height = dm.heightPixels;
 
-        /*binding.title.setTranslationY(height * 0.072f);
-        binding.title.setTranslationX(width * 0.146f);
-        binding.back.setTranslationY(height * 0.288f);
-        binding.back.setTranslationX(width * 0.024f);
-        binding.cont.setTranslationY(height * 0.288f);
-        binding.cont.setTranslationX(width * 0.707f);
-        binding.input.setTranslationY(height * 0.158f);
-        binding.matchInput.setTranslationY(height * 0.158f);*/
 
         binding.input.addTextChangedListener(new TextWatcher() {
             @Override
@@ -115,16 +116,33 @@ public class FirstFragment extends Fragment {
                 if (input != null) {
                     String matchNumber = String.valueOf(input);
                     UserModel.getMatchData().setMatchNumber(matchNumber);
+                    try {
+                        int num = Integer.parseInt(matchNumber) - 1;
+                        if (num >= 0 && num < MainActivity.teams.size()) {
+                            binding.input.setText(MainActivity.teams.get(num));
+                        } else {
+                            Snackbar.make(view, "Match number is too high/low.", 600).show();
+                            if (matchNumber.equals("0")) {
+                                binding.matchInput.setText("1");
+                                UserModel.getMatchData().setMatchNumber("1");
+                                binding.input.setText(MainActivity.teams.get(0));
+                            } else {
+                                binding.matchInput.setText(String.valueOf(MainActivity.teams.size()));
+                                UserModel.getMatchData().setMatchNumber(String.valueOf(MainActivity.teams.size()));
+                                binding.input.setText(MainActivity.teams.get(MainActivity.teams.size() - 1));
+                            }
+                        }
+                    } catch (Exception e){
+                        Snackbar.make(view, "Please Enter a Value", 600).show();
+                    }
                 }
             }
         });
+        binding.location.setText((MainActivity.scoutLocation < 3 ? "Red " : "Blue ") + (MainActivity.scoutLocation % 3 + 1));
 
-        /*binding.cont.setTranslationY(height * 0.270f);
-        binding.cont.setTranslationX(width * 0.707f);
-        binding.pop.setTranslationY(height * 0.719f);
-        binding.pop.setTranslationX(width * 0.073f);*/
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
         UIHelpers.lightDark(v, UIHelpers.darkMode);
+        binding.location.setTextColor(Color.parseColor((MainActivity.scoutLocation < 3 ? "#FF0000" : "#0000FF")));
     }
 
     @Override

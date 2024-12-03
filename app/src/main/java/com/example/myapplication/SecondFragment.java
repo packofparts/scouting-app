@@ -36,13 +36,6 @@ public class SecondFragment extends Fragment {
         binding = FragmentSecondBinding.inflate(inflater, container, false);
         v = container;
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
-        binding.ampCounter.setText(String.valueOf(UserModel.getMatchData().getAmpTeleop()));
-        binding.speakerNotesCounter.setText(String.valueOf(UserModel.getMatchData().getSpeakerTeleop()));
-        binding.missedNotesCounter.setText(String.valueOf(UserModel.getMatchData().getMissedNotes()));
-        binding.broke.setChecked(UserModel.getMatchData().getIsBroke());
-        checkedOperation(binding.broke);
-        binding.defense.setChecked(UserModel.getMatchData().getIsDefense());
-        checkedOperation(binding.defense);
         return binding.getRoot();
     }
 
@@ -68,75 +61,9 @@ public class SecondFragment extends Fragment {
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", UIHelpers.wolfFrames);
         animation.setDuration(1000);
         binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
-        binding.broke.setOnCheckedChangeListener((buttonView, isChecked) -> {
-
-            checkedOperation(binding.broke);
-            UserModel.getMatchData().setBroke(binding.broke.isChecked());
-        });
-        binding.defense.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            checkedOperation(binding.defense);
-            UserModel.getMatchData().setDefense(binding.defense.isChecked());
-        });
         ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Intake", "Ground Intake", "Source Intake", "Both"});
-        binding.intakeMethod.setAdapter(chainAdapter);
-        binding.intakeMethod.setSelection(getPickUpIndex());
-        binding.intakeMethod.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                MatchData.NoteAcquisition intakeMethod;
-                switch (position){
-                    case 0:
-                        intakeMethod = MatchData.NoteAcquisition.NONE;
-                        break;
-                    case 1:
-                        intakeMethod = MatchData.NoteAcquisition.FLOOR;
-                        break;
-                    case 2:
-                        intakeMethod = MatchData.NoteAcquisition.SOURCE;
-                        break;
-                    default:
-                        intakeMethod = MatchData.NoteAcquisition.BOTH;
-                        break;
-                }
-                UserModel.getMatchData().setNoteAcquired(intakeMethod);
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
 
-            }
-        });
-
-        binding.minusAmp.setOnClickListener(view14 -> {
-            if (UserModel.getMatchData().getAmpTeleop() > 0){
-                UserModel.getMatchData().setAmpTeleop(UserModel.getMatchData().getAmpTeleop() - 1);
-                binding.ampCounter.setText(String.valueOf(UserModel.getMatchData().getAmpTeleop()));
-            }
-        });
-        binding.plusAmp.setOnClickListener(view15 -> {
-            UserModel.getMatchData().setAmpTeleop(UserModel.getMatchData().getAmpTeleop() + 1);
-            binding.ampCounter.setText(String.valueOf(UserModel.getMatchData().getAmpTeleop()));
-        });
-        binding.minusSpeaker.setOnClickListener(view16 -> {
-            if (UserModel.getMatchData().getSpeakerTeleop() > 0){
-                UserModel.getMatchData().setSpeakerNotes(UserModel.getMatchData().getSpeakerTeleop() - 1);
-                binding.speakerNotesCounter.setText("" + UserModel.getMatchData().getSpeakerTeleop());
-            }
-        });
-        binding.plusSpeaker.setOnClickListener(view17 -> {
-            UserModel.getMatchData().setSpeakerNotes(UserModel.getMatchData().getSpeakerTeleop() + 1);
-            binding.speakerNotesCounter.setText(String.valueOf(UserModel.getMatchData().getSpeakerTeleop()));
-        });
-        binding.minusMissedNotes.setOnClickListener(view18 -> {
-            if (UserModel.getMatchData().getMissedNotes() > 0){
-                UserModel.getMatchData().setMissedNotes(UserModel.getMatchData().getMissedNotes() - 1);
-                binding.missedNotesCounter.setText(String.valueOf(UserModel.getMatchData().getMissedNotes()));
-            }
-        });
-        binding.plusMissedNotes.setOnClickListener(view19 -> {
-            UserModel.getMatchData().setMissedNotes(UserModel.getMatchData().getMissedNotes() + 1);
-            binding.missedNotesCounter.setText(String.valueOf(UserModel.getMatchData().getMissedNotes()));
-        });
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
         UIHelpers.lightDark(v, UIHelpers.darkMode);
     }

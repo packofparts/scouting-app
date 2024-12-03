@@ -37,10 +37,6 @@ public class ThirdFragment extends Fragment {
         binding = FragmentThirdBinding.inflate(inflater, container, false);
         v = container;
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
-        binding.numNotes.setText(String.valueOf(UserModel.getMatchData().getSpeakerAuto()));
-        binding.numNotesInAmp.setText(String.valueOf(UserModel.getMatchData().getAmpAuto()));
-        binding.switch2.setChecked(UserModel.getMatchData().getMoveOutOfZone());
-        checkedOperation(binding.switch2);
         return binding.getRoot();
     }
 
@@ -68,30 +64,11 @@ public class ThirdFragment extends Fragment {
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", UIHelpers.wolfFrames);
         animation.setDuration(1000);
         binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
-        binding.switch2.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            checkedOperation(binding.switch2);
-            UserModel.getMatchData().setMoveOutOfZone(isChecked);
-        });
+
         binding.toSecondFragment.setOnClickListener(view12 -> NavHostFragment.findNavController(ThirdFragment.this)
                 .navigate(R.id.action_ThirdFragment_to_SecondFragment));
         binding.toHomePage.setOnClickListener(view12 -> NavHostFragment.findNavController(ThirdFragment.this)
                 .navigate(R.id.action_ThirdFragment_to_FirstFragment));
-        binding.plusSpeaker.setOnClickListener(v -> {
-            UserModel.getMatchData().setSpeakerAuto(UserModel.getMatchData().getSpeakerAuto() + 1);
-            binding.numNotes.setText(String.valueOf(UserModel.getMatchData().getSpeakerAuto()));
-        });
-        binding.minusSpeaker.setOnClickListener(v -> {
-            UserModel.getMatchData().setSpeakerAuto(UserModel.getMatchData().getSpeakerAuto() - (UserModel.getMatchData().getSpeakerAuto() <= 0 ? 0 : 1));
-            binding.numNotes.setText(String.valueOf(UserModel.getMatchData().getSpeakerAuto()));
-        });
-        binding.plusAmp.setOnClickListener(v -> {
-            UserModel.getMatchData().setAmpAuto(UserModel.getMatchData().getAmpAuto() + 1);
-            binding.numNotesInAmp.setText(String.valueOf(UserModel.getMatchData().getAmpAuto()));
-        });
-        binding.minusAmp.setOnClickListener(v -> {
-            UserModel.getMatchData().setAmpAuto(UserModel.getMatchData().getAmpAuto() - (UserModel.getMatchData().getAmpAuto() <= 0 ? 0 : 1));
-            binding.numNotesInAmp.setText(String.valueOf(UserModel.getMatchData().getAmpAuto()));
-        });
         DisplayMetrics dm = new DisplayMetrics();
         ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
         float width = dm.widthPixels;

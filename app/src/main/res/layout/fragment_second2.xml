@@ -16,52 +16,6 @@
         android:padding="0dp">
 
 
-        <Button
-            android:id="@+id/chainAttemptBackground"
-            android:layout_width="205dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="36dp"
-            android:backgroundTint="#73C2F0"
-            android:clickable="false"
-            android:textSize="26dp"
-            android:translationX="150dp"
-            android:translationY="108dp"
-            app:cornerRadius="100dp" />
-
-        <Button
-            android:id="@+id/harmonyAttemptBackground"
-            android:layout_width="205dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="36dp"
-            android:backgroundTint="#73C2F0"
-            android:clickable="false"
-            android:textSize="26dp"
-            android:translationX="150dp"
-            android:translationY="183dp"
-            app:cornerRadius="100dp" />
-
-        <Spinner
-            android:id="@+id/chainAttempt"
-            android:layout_width="205dp"
-            android:layout_height="58dp"
-            android:backgroundTint="#00FFFFFF"
-            android:backgroundTintMode="src_over"
-            android:spinnerMode="dropdown"
-            android:translationX="150dp"
-            android:translationY="158dp"
-            android:visibility="visible" />
-
-        <Spinner
-            android:id="@+id/harmonyAttempt"
-            android:layout_width="205dp"
-            android:layout_height="58dp"
-            android:backgroundTint="#00FFFFFF"
-            android:backgroundTintMode="src_over"
-            android:spinnerMode="dropdown"
-            android:translationX="150dp"
-            android:translationY="240dp"
-            android:visibility="visible" />
-
         <TextView
             android:id="@+id/characterLimit"
             android:layout_width="330dp"
@@ -99,15 +53,6 @@
             android:translationY="88dp" />
 
         <TextView
-            android:id="@+id/notesStuck"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:text="Notes in Trap (Missed)"
-            android:textSize="26dp"
-            android:translationX="30dp"
-            android:translationY="290dp" />
-
-        <TextView
             android:id="@+id/notesThrown"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
@@ -116,36 +61,6 @@
             android:translationX="30dp"
             android:translationY="960dp"
             android:visibility="gone"/>
-
-        <TextView
-            android:id="@+id/chain"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:background="#00FFFFFF"
-            android:text="Chain Status"
-            android:textSize="26dp"
-            android:translationX="30dp"
-            android:translationY="140dp" />
-
-        <TextView
-            android:id="@+id/harmony"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:background="#00FFFFFF"
-            android:backgroundTint="#00FFFFFF"
-            android:text="Harmony Status"
-            android:textSize="26dp"
-            android:translationX="30dp"
-            android:translationY="210dp" />
-
-        <TextView
-            android:id="@+id/notesStuckCounter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textSize="26dp"
-            android:translationX="245dp"
-            android:translationY="315dp" />
 
         <TextView
             android:id="@+id/notesThrownCounter"
@@ -158,15 +73,6 @@
             android:visibility="gone"/>
 
         <TextView
-            android:id="@+id/notesSuccessCounter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textSize="26dp"
-            android:translationX="245dp"
-            android:translationY="405dp" />
-
-        <TextView
             android:id="@+id/notesHitCounter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -176,14 +82,6 @@
             android:translationY="1035dp"
             android:visibility="gone"/>
 
-        <TextView
-            android:id="@+id/notesSuccess"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="Notes in Trap (Scored)"
-            android:textSize="26dp"
-            android:translationX="30dp"
-            android:translationY="400dp" />
         <TextView
             android:id="@+id/notesHit"
             android:layout_width="150dp"
@@ -227,18 +125,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/minusNotesStuck"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="36dp"
-            android:backgroundTint="#73C2F0"
-            android:text="-"
-            android:textSize="26dp"
-            android:translationX="150dp"
-            android:translationY="275dp"
-            app:cornerRadius="100dp" />
-
-        <Button
             android:id="@+id/minusNotesThrown"
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -250,18 +136,6 @@
             android:translationY="960dp"
             app:cornerRadius="100dp"
             android:visibility="gone"/>
-
-        <Button
-            android:id="@+id/plusNotesStuck"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="36dp"
-            android:backgroundTint="#73C2F0"
-            android:text="+"
-            android:textSize="26dp"
-            android:translationX="300dp"
-            android:translationY="275dp"
-            app:cornerRadius="100dp" />
 
         <Button
             android:id="@+id/plusNotesThrown"
@@ -277,18 +151,6 @@
             android:visibility="gone"/>
 
         <Button
-            android:id="@+id/minusNotesSuccess"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="36dp"
-            android:backgroundTint="#73C2F0"
-            android:text="-"
-            android:textSize="26dp"
-            android:translationX="150dp"
-            android:translationY="365dp"
-            app:cornerRadius="100dp" />
-
-        <Button
             android:id="@+id/minusNotesHit"
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -300,18 +162,6 @@
             android:translationY="365dp"
             app:cornerRadius="1035dp"
             android:visibility="gone"/>
-
-        <Button
-            android:id="@+id/plusNotesSuccess"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="36dp"
-            android:backgroundTint="#73C2F0"
-            android:text="+"
-            android:textSize="26dp"
-            android:translationX="300dp"
-            android:translationY="365dp"
-            app:cornerRadius="100dp" />
 
         <Button
             android:id="@+id/plusNotesHit"

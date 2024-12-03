@@ -44,8 +44,6 @@ public class SecondFragment2 extends Fragment {
         binding = FragmentSecond2Binding.inflate(inflater, container, false);
         v = container;
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
-        binding.notesStuckCounter.setText(String.valueOf(UserModel.getMatchData().getTrapFail()));
-        binding.notesSuccessCounter.setText(String.valueOf(UserModel.getMatchData().getTrapSucess()));
         binding.textInput.setText(UserModel.getMatchData().getNotes());
         binding.characterLimit.setText("Character Limit: " + Objects.requireNonNull(binding.textInput.getText()).length() + "/150");
         binding.analyzerScore.setText("Analyzer Score: " + UserModel.getMatchData().getAnalyzerScore());
@@ -121,87 +119,9 @@ public class SecondFragment2 extends Fragment {
             }
         });
         ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Attempt", "Failed Attempt", "Successful Attempt"});
-        binding.chainAttempt.setAdapter(chainAdapter);
-        binding.chainAttempt.setSelection(getChainIndex());
-        binding.chainAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                MatchData.Chain chainStatus;
-                switch (position){
-                    case 0:
-                        chainStatus = MatchData.Chain.NOPE;
-                        break;
-                    case 1:
-                        chainStatus = MatchData.Chain.ATTEMPTED;
-                        break;
-                    default:
-                        chainStatus = MatchData.Chain.SUCCEDED;
-                        break;
-                }
-                UserModel.getMatchData().setChaining(chainStatus);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         ArrayAdapter<String> harmonyAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Attempt", "Failed Attempt", "2 On Chain", "3 On Chain"});
-        binding.harmonyAttempt.setAdapter(harmonyAdapter);
-        binding.harmonyAttempt.setSelection(getHarmonyIndex());
-        binding.harmonyAttempt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
 
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                MatchData.Harmony harmonyStatus;
-                switch (position){
-                    case 0:
-                        harmonyStatus = MatchData.Harmony.NOPE;
-                        break;
-                    case 1:
-                        harmonyStatus = MatchData.Harmony.ATTEMPTED;
-                        break;
-                    case 2:
-                        harmonyStatus = MatchData.Harmony.TWO;
-                        break;
-                    default:
-                        harmonyStatus = MatchData.Harmony.THREE;
-                        break;
-
-                }
-                UserModel.getMatchData().setHarmo(harmonyStatus);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        binding.minusNotesStuck.setOnClickListener(view14 -> {
-            if (UserModel.getMatchData().getTrapFail() > 0){
-                UserModel.getMatchData().setTrapFail(UserModel.getMatchData().getTrapFail() - 1);
-                binding.notesStuckCounter.setText(String.valueOf(UserModel.getMatchData().getTrapFail()));
-            }
-        });
-        binding.plusNotesStuck.setOnClickListener(view15 -> {
-            if (UserModel.getMatchData().getTrapFail() < 3) {
-                UserModel.getMatchData().setTrapFail(UserModel.getMatchData().getTrapFail() + 1);
-                binding.notesStuckCounter.setText(String.valueOf(UserModel.getMatchData().getTrapFail()));
-            }
-        });
-        binding.minusNotesSuccess.setOnClickListener(view16 -> {
-            if (UserModel.getMatchData().getTrapSucess() > 0){
-                UserModel.getMatchData().setTrapSucess(UserModel.getMatchData().getTrapSucess() - 1);
-                binding.notesSuccessCounter.setText(String.valueOf(UserModel.getMatchData().getTrapSucess()));
-            }
-        });
-        binding.plusNotesSuccess.setOnClickListener(view17 -> {
-            if (UserModel.getMatchData().getTrapSucess() < 3) {
-                UserModel.getMatchData().setTrapSucess(UserModel.getMatchData().getTrapSucess() + 1);
-                binding.notesSuccessCounter.setText(String.valueOf(UserModel.getMatchData().getTrapSucess()));
-            }
-        });
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
         UIHelpers.lightDark(v, UIHelpers.darkMode);
 
@@ -213,28 +133,6 @@ public class SecondFragment2 extends Fragment {
         binding = null;
     }
 
-    private static int getChainIndex(){
-        MatchData.Chain chain = UserModel.getMatchData().getChaining();
-        if(chain == MatchData.Chain.NOPE) {
-            return 0;
-        } else if (chain == MatchData.Chain.ATTEMPTED) {
-            return 1;
-        } else {
-            return 2;
-        }
-    }
-
-    private static int getHarmonyIndex(){
-        MatchData.Harmony harmony = UserModel.getMatchData().getHarmo();
-        if(harmony == MatchData.Harmony.NOPE) {
-            return 0;
-        } else if (harmony == MatchData.Harmony.ATTEMPTED) {
-            return 1;
-        } else if (harmony == MatchData.Harmony.TWO) {
-            return 2;
-        } else {
-            return 3;
-        }
-    }
+    
 
 }

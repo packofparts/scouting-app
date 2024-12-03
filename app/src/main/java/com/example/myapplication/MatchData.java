@@ -63,13 +63,6 @@ public class MatchData {
         mapper.writeValue(dataFile, this);
         File newDataFlag = new File("/sdcard/Documents/ScoutingData/newDataFlag.txt");
         newDataFlag.createNewFile();
-
-//        String sanitizedNotes = notes.replace("\"", "\\\"");
-//        return "{\"teamNumber\":\"" + teamNumber + "\"," + "\"matchNumber\":\"" + matchNumber + "\"," + "\"workingAuto\":\"" + workingAuto + "\"," + "\"moveOutOfZone\":\""
-//                + moveOutOfZone + "\"," + "\"ampAuto\":\"" + ampAuto + "\"," + "\"speakerAuto\":\"" + speakerAuto + "\","
-//                + "\"isBroke\":\"" + broke + "\"," + "\"isDefense\":\"" + defense + "\"," + "\"ampTeleop\":\"" + ampTeleop + "\"," + "\"missedNotes\":\"" + missedNotes + "\","
-//                + "\"speakerTeleop\":\"" + speakerTeleop + "\"," + "\"noteAcquired\":\"" + noteAcquired + "\"," + "\"chaining\":\"" + chaining + "\","
-//                + "\"trapSucess\":\"" + trapSucess + "\"," + "\"trapFail\":\"" + trapFail + "\"," + "\"harmo\":\"" + harmo + "\"," + "\"notes\":\"" + sanitizedNotes + "\"," + "\"analyzerScore\":\"" + analyzerScore + "\"}";
     }
 
     //Getters and Setters

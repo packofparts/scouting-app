@@ -121,7 +121,7 @@ public class SecondFragment2 extends Fragment {
         ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Attempt", "Failed Attempt", "Successful Attempt"});
 
         ArrayAdapter<String> harmonyAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Attempt", "Failed Attempt", "2 On Chain", "3 On Chain"});
-  
+
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
         UIHelpers.lightDark(v, UIHelpers.darkMode);
 
@@ -133,28 +133,6 @@ public class SecondFragment2 extends Fragment {
         binding = null;
     }
 
-    private static int getChainIndex(){
-        MatchData.Chain chain = UserModel.getMatchData().getChaining();
-        if(chain == MatchData.Chain.NOPE) {
-            return 0;
-        } else if (chain == MatchData.Chain.ATTEMPTED) {
-            return 1;
-        } else {
-            return 2;
-        }
-    }
-
-    private static int getHarmonyIndex(){
-        MatchData.Harmony harmony = UserModel.getMatchData().getHarmo();
-        if(harmony == MatchData.Harmony.NOPE) {
-            return 0;
-        } else if (harmony == MatchData.Harmony.ATTEMPTED) {
-            return 1;
-        } else if (harmony == MatchData.Harmony.TWO) {
-            return 2;
-        } else {
-            return 3;
-        }
-    }
+    
 
 }

@@ -88,18 +88,5 @@ public class SecondFragment extends Fragment {
                     s.setTrackTintList(UIHelpers.teamColorAsList);
                 }
         }
-    }
+    }}
 
-    private static int getPickUpIndex(){
-        MatchData.NoteAcquisition noteAcquired = UserModel.getMatchData().getNoteAcquired();
-        if(noteAcquired == MatchData.NoteAcquisition.NONE) {
-            return 0;
-        } else if (noteAcquired == MatchData.NoteAcquisition.FLOOR) {
-            return 1;
-        } else if (noteAcquired == MatchData.NoteAcquisition.SOURCE) {
-            return 2;
-        } else {
-            return 3;
-        }
-    }
-}

@@ -1,5 +1,10 @@
 package com.example.myapplication;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.File;
+import java.io.IOException;
+
 public class MatchData {
 
     //Pre-Game
@@ -48,21 +53,30 @@ public class MatchData {
     String notes = "";
 
 
-    public String returnAllData() {
 
-        String sanitizedNotes = notes.replace("\"", "\\\"");
-        return "{\"teamNumber\":\"" + teamNumber + "\"," + "\"matchNumber\":\"" + matchNumber + "\"," + "\"workingAuto\":\"" + workingAuto + "\"," + "\"moveOutOfZone\":\""
-                + moveOutOfZone + "\"," + "\"ampAuto\":\"" + ampAuto + "\"," + "\"speakerAuto\":\"" + speakerAuto + "\","
-                + "\"isBroke\":\"" + broke + "\"," + "\"isDefense\":\"" + defense + "\"," + "\"ampTeleop\":\"" + ampTeleop + "\"," + "\"missedNotes\":\"" + missedNotes + "\","
-                + "\"speakerTeleop\":\"" + speakerTeleop + "\"," + "\"noteAcquired\":\"" + noteAcquired + "\"," + "\"chaining\":\"" + chaining + "\","
-                + "\"trapSucess\":\"" + trapSucess + "\"," + "\"trapFail\":\"" + trapFail + "\"," + "\"harmo\":\"" + harmo + "\"," + "\"notes\":\"" + sanitizedNotes + "\"," + "\"analyzerScore\":\"" + analyzerScore + "\"}";
+    public void toJson() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        new File("/sdcard/Documents/ScoutingData/").mkdirs();
+        // convert Java object to JSON file
+        File dataFile = new File("/sdcard/Documents/ScoutingData/match" + UserModel.getMatchData().getMatchNumber() + "_team" + UserModel.getMatchData().getTeamNumber() +".json");
+        dataFile.createNewFile();
+        mapper.writeValue(dataFile, this);
+        File newDataFlag = new File("/sdcard/Documents/ScoutingData/newDataFlag.txt");
+        newDataFlag.createNewFile();
+
+//        String sanitizedNotes = notes.replace("\"", "\\\"");
+//        return "{\"teamNumber\":\"" + teamNumber + "\"," + "\"matchNumber\":\"" + matchNumber + "\"," + "\"workingAuto\":\"" + workingAuto + "\"," + "\"moveOutOfZone\":\""
+//                + moveOutOfZone + "\"," + "\"ampAuto\":\"" + ampAuto + "\"," + "\"speakerAuto\":\"" + speakerAuto + "\","
+//                + "\"isBroke\":\"" + broke + "\"," + "\"isDefense\":\"" + defense + "\"," + "\"ampTeleop\":\"" + ampTeleop + "\"," + "\"missedNotes\":\"" + missedNotes + "\","
+//                + "\"speakerTeleop\":\"" + speakerTeleop + "\"," + "\"noteAcquired\":\"" + noteAcquired + "\"," + "\"chaining\":\"" + chaining + "\","
+//                + "\"trapSucess\":\"" + trapSucess + "\"," + "\"trapFail\":\"" + trapFail + "\"," + "\"harmo\":\"" + harmo + "\"," + "\"notes\":\"" + sanitizedNotes + "\"," + "\"analyzerScore\":\"" + analyzerScore + "\"}";
     }
 
     //Getters and Setters
 
     //Pre Match
-    public String getTeamNumber() {    return teamNumber;    }
-    public void setTeamNumber(String teamNumber) { this.teamNumber = teamNumber;    }
+    public String getTeamNumber() {    return teamNumber;  }
+    public void setTeamNumber(String teamNumber) { this.teamNumber = teamNumber;  }
     public String getMatchNumber() {    return matchNumber;    }
     public void setMatchNumber(String matchNumber) { this.matchNumber = matchNumber;    }
 
@@ -88,14 +102,14 @@ public class MatchData {
     }
 
     //Teleop
-    public boolean isBroke() {
+    public boolean getIsBroke() {
         return broke;
     }
     public void setBroke(boolean broke) {
         this.broke = broke;
     }
 
-    public boolean isDefense() {
+    public boolean getIsDefense() {
         return defense;
     }
     public void setDefense(boolean defense) {
@@ -114,7 +128,7 @@ public class MatchData {
     }
     public void setMissedNotes(int missedNotes) {   this.missedNotes = missedNotes;   }
 
-    public int getSpeakerNotes() {
+    public int getSpeakerTeleop() {
         return speakerTeleop;
     }
     public void setSpeakerNotes(int speakerTeleop) {

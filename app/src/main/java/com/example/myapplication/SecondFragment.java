@@ -37,11 +37,11 @@ public class SecondFragment extends Fragment {
         v = container;
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
         binding.ampCounter.setText(String.valueOf(UserModel.getMatchData().getAmpTeleop()));
-        binding.speakerNotesCounter.setText(String.valueOf(UserModel.getMatchData().getSpeakerNotes()));
+        binding.speakerNotesCounter.setText(String.valueOf(UserModel.getMatchData().getSpeakerTeleop()));
         binding.missedNotesCounter.setText(String.valueOf(UserModel.getMatchData().getMissedNotes()));
-        binding.broke.setChecked(UserModel.getMatchData().isBroke());
+        binding.broke.setChecked(UserModel.getMatchData().getIsBroke());
         checkedOperation(binding.broke);
-        binding.defense.setChecked(UserModel.getMatchData().isDefense());
+        binding.defense.setChecked(UserModel.getMatchData().getIsDefense());
         checkedOperation(binding.defense);
         return binding.getRoot();
     }
@@ -118,14 +118,14 @@ public class SecondFragment extends Fragment {
             binding.ampCounter.setText(String.valueOf(UserModel.getMatchData().getAmpTeleop()));
         });
         binding.minusSpeaker.setOnClickListener(view16 -> {
-            if (UserModel.getMatchData().getSpeakerNotes() > 0){
-                UserModel.getMatchData().setSpeakerNotes(UserModel.getMatchData().getSpeakerNotes() - 1);
-                binding.speakerNotesCounter.setText("" + UserModel.getMatchData().getSpeakerNotes());
+            if (UserModel.getMatchData().getSpeakerTeleop() > 0){
+                UserModel.getMatchData().setSpeakerNotes(UserModel.getMatchData().getSpeakerTeleop() - 1);
+                binding.speakerNotesCounter.setText("" + UserModel.getMatchData().getSpeakerTeleop());
             }
         });
         binding.plusSpeaker.setOnClickListener(view17 -> {
-            UserModel.getMatchData().setSpeakerNotes(UserModel.getMatchData().getSpeakerNotes() + 1);
-            binding.speakerNotesCounter.setText(String.valueOf(UserModel.getMatchData().getSpeakerNotes()));
+            UserModel.getMatchData().setSpeakerNotes(UserModel.getMatchData().getSpeakerTeleop() + 1);
+            binding.speakerNotesCounter.setText(String.valueOf(UserModel.getMatchData().getSpeakerTeleop()));
         });
         binding.minusMissedNotes.setOnClickListener(view18 -> {
             if (UserModel.getMatchData().getMissedNotes() > 0){

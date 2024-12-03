@@ -55,18 +55,18 @@ public class SecondFragment2 extends Fragment {
     /*Suppressed due to server having no way to get the dynamic path
         TODO: Add matchNumber to file name once added
     */
-    @SuppressLint("SdCardPath")
-    public void writeFile() throws IOException {
-        new File("/sdcard/Documents/ScoutingData/").mkdirs();
-
-        File dataFile = new File("/sdcard/Documents/ScoutingData/match" + UserModel.getMatchData().getMatchNumber() + "_team" + UserModel.getMatchData().getTeamNumber() +".json");
-        dataFile.createNewFile();
-        PrintWriter pw = new PrintWriter(dataFile);
-        pw.print(UserModel.getMatchData().returnAllData());
-        pw.close();
-        File newDataFlag = new File("/sdcard/Documents/ScoutingData/newDataFlag.txt");
-        newDataFlag.createNewFile();
-    }
+//    @SuppressLint("SdCardPath")
+//    public void writeFile() throws IOException {
+//        new File("/sdcard/Documents/ScoutingData/").mkdirs();
+//
+//        File dataFile = new File("/sdcard/Documents/ScoutingData/match" + UserModel.getMatchData().getMatchNumber() + "_team" + UserModel.getMatchData().getTeamNumber() +".json");
+//        dataFile.createNewFile();
+//        PrintWriter pw = new PrintWriter(dataFile);
+//        pw.print(UserModel.getMatchData().returnAllData());
+//        pw.close();
+//        File newDataFlag = new File("/sdcard/Documents/ScoutingData/newDataFlag.txt");
+//        newDataFlag.createNewFile();
+//    }
 
     @SuppressLint({"ClickableViewAccessibility", "SetTextI18n"})
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -75,7 +75,7 @@ public class SecondFragment2 extends Fragment {
         binding.next.setOnClickListener(view1 -> {
             if (confirm) {
                 try {
-                    writeFile();
+                    UserModel.getMatchData().toJson();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

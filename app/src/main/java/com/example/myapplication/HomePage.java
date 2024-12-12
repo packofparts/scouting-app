@@ -73,9 +73,9 @@ public class HomePage extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.WolfLogoInfo, "rotation",UIHelpers.wolfFrames);
         animation.setDuration(1000);
-        binding.WolfLogoInfo.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
+        binding.WolfLogoInfo.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext(), "fragment_homepage"));
         binding.prevInfoBack.setOnClickListener(view12 -> NavHostFragment.findNavController(HomePage.this)
                 .navigate(R.id.action_HomePage_to_FirstFragment));
-        UIHelpers.lightDark(v, UIHelpers.darkMode);
+        UIHelpers.lightDark(v, UIHelpers.darkMode, "fragment_homepage");
     }
 }

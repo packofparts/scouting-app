@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="Light_Aqua">#6FC7FF</color>
     <color name="Dark_Aqua">#00107E</color>
+
+    <!-- fragment_first -->
 </resources>

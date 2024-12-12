@@ -63,7 +63,7 @@ public class ThirdFragment extends Fragment {
 
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", UIHelpers.wolfFrames);
         animation.setDuration(1000);
-        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
+        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext(), "fragment_third"));
 
         binding.toSecondFragment.setOnClickListener(view12 -> NavHostFragment.findNavController(ThirdFragment.this)
                 .navigate(R.id.action_ThirdFragment_to_SecondFragment));
@@ -74,7 +74,7 @@ public class ThirdFragment extends Fragment {
         float width = dm.widthPixels;
         float height = dm.heightPixels;
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
-        UIHelpers.lightDark(v, UIHelpers.darkMode);
+        UIHelpers.lightDark(v, UIHelpers.darkMode, "fragment_third");
 
     }
     @Override

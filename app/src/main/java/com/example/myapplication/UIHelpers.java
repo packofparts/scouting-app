@@ -16,6 +16,8 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import androidx.core.content.res.ResourcesCompat;
+
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -27,32 +29,50 @@ public class UIHelpers {
     public static final float[] wolfFrames = {0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f};
     public static MediaPlayer mp;
     public static boolean darkMode = false;
-    public static void lightDark (ViewGroup v, boolean mode){
+    public static void lightDark (ViewGroup v, boolean mode, String name){
         //background color and color of the actual ui elements
-        String bgColor = !mode ? "#FFFFFF" : "#000000";
-        String viewColor = !mode ? "#000000" : "#FFFFFF";
-        for (int i = 0; i < v.getChildCount(); i ++){
-            View child = v.getChildAt(i);
 
+
+        for (int i = 0; i < v.getChildCount(); i ++){
+            String viewColor = !mode ? "#000000" : "#FFFFFF";
+            View child = v.getChildAt(i);
+            boolean found = false;
+            String str = (MainActivity.scoutLocation < 3 ? "red" : "blue") + "_" + (mode ? "dark" : "light");
+            try {
+
+                viewColor = child.getResources().getString(R.color.class.getField(name + "_" + getId(child) + "_" + str).getInt(null));
+                found = true;
+            } catch (Exception e) {
+
+                //Associated color is not found. Default light/dark values will be used.
+            }
+
+            if (child.getTag() != null && child.getTag().equals(v.getResources().getString(R.string.no_change))){
+                continue;
+            }
             if (!(child instanceof Spinner) && !(child instanceof TextInputLayout)) {
-                if (!(child instanceof Button)) {
-                    child.setBackgroundColor(Color.parseColor(bgColor));
-                    if (child instanceof TextView) {
+                if (found && child instanceof Button){
+                    child.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(viewColor)));
+                }
+                if (!(child instanceof  Button)) {
+                    if (child instanceof RelativeLayout) {
+                        RelativeLayout r = (RelativeLayout) child;
+                        r.setBackground(v.getResources().getDrawable(MainActivity.scoutLocation < 3 ? (mode ? R.drawable.red_dark : R.drawable.red_light) : (mode ? R.drawable.blue_dark : R.drawable.blue_light), null));
+                    } else if (child instanceof TextView) {
                         TextView tx = (TextView) child;
                         tx.setTextColor(Color.parseColor(viewColor));
-                    }
-                    if (child instanceof TextInputEditText) {
+                    } else if (child instanceof TextInputEditText) {
                         TextView tx = (TextInputEditText) child;
                         tx.setTextColor(Color.parseColor(viewColor));
                         tx.setHintTextColor(Color.parseColor(viewColor));
                     }
-                }
-                if (child instanceof Switch) {
-                    @SuppressLint("UseSwitchCompatOrMaterialCode") Switch tx = (Switch) child;
-                    tx.setTextColor(Color.parseColor(viewColor));
+                    if (child instanceof Switch) {
+                        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch tx = (Switch) child;
+                        tx.setTextColor(Color.parseColor(viewColor));
+                    }
                 }
                 if (child instanceof ViewGroup) {
-                    lightDark((ViewGroup) child, mode);
+                    lightDark((ViewGroup) child, mode, name);
                 }
             }
         }
@@ -90,14 +110,14 @@ public class UIHelpers {
         }
         mp.start();
     }
-    public static void darkModeToggle(ViewGroup v, ObjectAnimator animation, Context context) {
+    public static void darkModeToggle(ViewGroup v, ObjectAnimator animation, Context context, String name) {
         animation.start();
         darkMode = !darkMode;
-        lightDark(v, darkMode);
+        lightDark(v, darkMode, name);
         playHowlSound(context);
     }
-    public static void darkModeToggle(ViewGroup v, ObjectAnimator animation, Context context, Runnable r) {
-        darkModeToggle(v, animation, context);
-        r.run();
+    public static String getId(View view) {
+        if (view.getId() == View.NO_ID) return "no-id";
+        else return view.getResources().getResourceName(view.getId()).replace("com.example.myapplication:id/", "");
     }
 }

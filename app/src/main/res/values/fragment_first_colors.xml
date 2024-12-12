@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="fragment_first_location_red_dark">#E02E3C</color>
+    <color name="fragment_first_location_red_light">#E02E3C</color>
+    <color name="fragment_first_location_blue_dark">#3455CC</color>
+    <color name="fragment_first_location_blue_light">#3455CC</color>
+
+    <color name="fragment_first_back_red_dark">#E02E3C</color>
+    <color name="fragment_first_back_red_light">#E02E3C</color>
+    <color name="fragment_first_back_blue_dark">#3455CC</color>
+    <color name="fragment_first_back_blue_light">#3455CC</color>
+
+    <color name="fragment_first_cont_red_dark">#E02E3C</color>
+    <color name="fragment_first_cont_red_light">#E02E3C</color>
+    <color name="fragment_first_cont_blue_dark">#3455CC</color>
+    <color name="fragment_first_cont_blue_light">#3455CC</color>
+
+    <color name="fragment_first_bg2_red_dark">#2A1A1B</color>
+    <color name="fragment_first_bg2_red_light">#EEB5B9</color>
+    <color name="fragment_first_bg2_blue_dark">#1C2133</color>
+    <color name="fragment_first_bg2_blue_light">#E0E5F7</color>
+
+    <color name="fragment_first_bg1_red_dark">#41282A</color>
+    <color name="fragment_first_bg1_red_light">#E48B92</color>
+    <color name="fragment_first_bg1_blue_dark">#1F2744</color>
+    <color name="fragment_first_bg1_blue_light">#CED6F3</color>
+</resources>

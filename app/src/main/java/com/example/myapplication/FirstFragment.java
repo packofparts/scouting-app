@@ -78,7 +78,7 @@ public class FirstFragment extends Fragment {
 
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", UIHelpers.wolfFrames);
         animation.setDuration(1000);
-        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext(), () -> binding.location.setTextColor(Color.parseColor((MainActivity.scoutLocation < 3 ? "#FF0000" : "#0000FF")))));
+        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext(), "fragment_first"));
 
         DisplayMetrics dm = new DisplayMetrics();
         ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -141,10 +141,8 @@ public class FirstFragment extends Fragment {
         binding.location.setText((MainActivity.scoutLocation < 3 ? "Red " : "Blue ") + (MainActivity.scoutLocation % 3 + 1));
 
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
-        UIHelpers.lightDark(v, UIHelpers.darkMode);
-        binding.location.setTextColor(Color.parseColor((MainActivity.scoutLocation < 3 ? "#FF0000" : "#0000FF")));
+        UIHelpers.lightDark(v, UIHelpers.darkMode, "fragment_first");
     }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();

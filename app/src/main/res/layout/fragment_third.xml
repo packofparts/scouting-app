@@ -3,23 +3,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ThirdFragment">
 
     <RelativeLayout
 
     android:layout_width="match_parent"
     android:layout_height="730dp"
-    android:padding="0dp">
+    android:padding="0dp"
+        android:background="@drawable/red_light">
 
 
         <Button
-        android:id="@+id/toSecondFragment"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:translationX="230dp"
-        android:translationY="650dp"
-        android:backgroundTint="#73C2F0"
-        android:text="Next" />
+            android:id="@+id/bg1"
+            android:layout_width="430dp"
+            android:layout_height="80dp"
+            android:backgroundTint="#E48B92"
+            android:text=""
+            android:clickable="false"
+            android:translationX="0dp"
+            android:translationY="655dp"
+            app:cornerRadius="15dp"/>
+
+        <Button
+            android:id="@+id/bg2"
+            android:layout_width="378dp"
+            android:layout_height="50dp"
+            android:backgroundTint="#5cffffff"
+            android:text=""
+            android:clickable="false"
+            android:translationX="17dp"
+            android:translationY="670dp"
+            app:cornerRadius="20dp"
+            android:tag=""/>
+
+        <TextView
+            android:id="@+id/bottomTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Red 1"
+            android:textSize="36dp"
+            android:textColor="#ff0000"
+            android:translationX="159dp"
+            android:translationY="669dp"
+            android:textStyle="bold"
+            />
+
+        <Button
+        android:id="@+id/cont"
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:text="Next"
+            android:translationY="669.5dp"
+            android:translationX="285dp"
+            app:cornerRadius="20dp"
+            android:backgroundTint="#E02E3C"
+            android:textColor="@color/white"
+            android:shadowRadius="10"
+            android:shadowDy="5"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
 
         <TextView
@@ -29,41 +73,58 @@
         android:translationX="140dp"
         android:translationY="38dp"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:text="Autonomous"
-        android:textSize="40sp" />
+            android:textStyle="bold"
+            android:shadowDy="5"
+            android:shadowColor="@color/black"
+            android:shadowRadius="10"
+        android:textSize="40sp"
+            android:tag="@string/no_change"/>
 
 
         <ImageView
-        android:id="@+id/pop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:translationX="5dp"
-        android:translationY="5dp"
-        android:src="@drawable/pop" />
+            android:id="@+id/pop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pop"
+            android:translationX="5dp"
+            android:translationY="5dp" />
 
-    <androidx.constraintlayout.widget.Guideline
+        <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical" />
 
-    <TextView
-        android:id="@+id/team"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:translationX="200dp"
-        android:translationY="85dp"
-        android:text="team "
-        android:textSize="26dp" />
 
-    <Button
-        android:id="@+id/toHomePage"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:translationX="15dp"
-        android:translationY="650dp"
-        android:backgroundTint="#73C2F0"
-        android:text="Previous" />
+        <TextView
+            android:id="@+id/team"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Team "
+            android:textColor="@color/white"
+            android:textSize="26dp"
+            android:textStyle="bold"
+            android:translationX="200dp"
+            android:translationY="85dp"
+            android:tag="@string/no_change"/>
+
+        <Button
+        android:id="@+id/back"
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:text="Back"
+            android:translationX="17dp"
+            android:translationY="669.5dp"
+            android:textColor="@color/white"
+            app:cornerRadius="20dp"
+            android:backgroundTint="#E02E3C"
+            android:shadowRadius="10"
+            android:shadowDy="5"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
 
     </RelativeLayout>
     </androidx.core.widget.NestedScrollView>

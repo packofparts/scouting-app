@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="fragment_first_location_red_dark">#E02E3C</color>
-    <color name="fragment_first_location_red_light">#E02E3C</color>
-    <color name="fragment_first_location_blue_dark">#3455CC</color>
-    <color name="fragment_first_location_blue_light">#3455CC</color>
+    <color name="fragment_first_bottomTag_red_dark">#E02E3C</color>
+    <color name="fragment_first_bottomTag_red_light">#E02E3C</color>
+    <color name="fragment_first_bottomTag_blue_dark">#3455CC</color>
+    <color name="fragment_first_bottomTag_blue_light">#3455CC</color>
+
+    <color name="fragment_first_teamNumberTag_red_dark">#E02E3C</color>
+    <color name="fragment_first_teamNumberTag_red_light">#E02E3C</color>
+    <color name="fragment_first_teamNumberTag_blue_dark">#3455CC</color>
+    <color name="fragment_first_teamNumberTag_blue_light">#3455CC</color>
+
+    <color name="fragment_first_matchNumberTag_red_dark">#E02E3C</color>
+    <color name="fragment_first_matchNumberTag_red_light">#E02E3C</color>
+    <color name="fragment_first_matchNumberTag_blue_dark">#3455CC</color>
+    <color name="fragment_first_matchNumberTag_blue_light">#3455CC</color>
 
     <color name="fragment_first_back_red_dark">#E02E3C</color>
     <color name="fragment_first_back_red_light">#E02E3C</color>

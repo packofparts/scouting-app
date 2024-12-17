@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<String> teams = new ArrayList<>();
 
-    public static int scoutLocation = 0;
+    public static int scoutLocation = 3;
     //0 - Red 1
     //1 - Red 2
     //2 - Red 3

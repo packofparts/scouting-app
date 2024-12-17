@@ -1,8 +1,5 @@
 # scouting-app
 Scouting app
 
-
-This is just testing GIT stuff
-
-awesome
+Pack of Parts Scouting app 2025 is used to analyze other team's robots.
 

@@ -65,9 +65,9 @@ public class ThirdFragment extends Fragment {
         animation.setDuration(1000);
         binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext(), "fragment_third"));
 
-        binding.toSecondFragment.setOnClickListener(view12 -> NavHostFragment.findNavController(ThirdFragment.this)
+        binding.cont.setOnClickListener(view12 -> NavHostFragment.findNavController(ThirdFragment.this)
                 .navigate(R.id.action_ThirdFragment_to_SecondFragment));
-        binding.toHomePage.setOnClickListener(view12 -> NavHostFragment.findNavController(ThirdFragment.this)
+        binding.back.setOnClickListener(view12 -> NavHostFragment.findNavController(ThirdFragment.this)
                 .navigate(R.id.action_ThirdFragment_to_FirstFragment));
         DisplayMetrics dm = new DisplayMetrics();
         ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -75,6 +75,8 @@ public class ThirdFragment extends Fragment {
         float height = dm.heightPixels;
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
         UIHelpers.lightDark(v, UIHelpers.darkMode, "fragment_third");
+        binding.bottomTag.setText((MainActivity.scoutLocation < 3 ? "Red " : "Blue ") + (MainActivity.scoutLocation % 3 + 1));
+
 
     }
     @Override

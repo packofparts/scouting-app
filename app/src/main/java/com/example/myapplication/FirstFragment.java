@@ -2,13 +2,10 @@ package com.example.myapplication;
 
 import android.animation.ObjectAnimator;
 import android.app.Activity;
-import android.content.res.Configuration;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +43,7 @@ public class FirstFragment extends Fragment {
         UserModel userModel = viewModelProvider.get(UserModel.class);
         MatchData matchData = new MatchData();
         userModel.setMatchData(matchData);
+        userModel.setPitData(new PitData());
 
         return binding.getRoot();
     }
@@ -73,12 +71,21 @@ public class FirstFragment extends Fragment {
             }
         });
 
-        binding.back.setOnClickListener(v -> NavHostFragment.findNavController(FirstFragment.this)
-                .navigate(R.id.action_FirstFragment_to_HomePage));
+        binding.back.setOnClickListener(v -> {
+            String teamNumber = String.valueOf(binding.input.getText());
+            boolean teamNumberCheck = (!teamNumber.isEmpty() && teamNumber.length() < 5 && !teamNumber.equals("0"));
+            if (teamNumberCheck) {
+                UserModel.getPitData().setTeamNumber(teamNumber);
+                NavHostFragment.findNavController(FirstFragment.this)
+                        .navigate(R.id.action_FirstFragment_to_HomePage);
+            } else {
+                Snackbar.make(view, "Invalid team number", 600).show();
+            }
+        });
 
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", UIHelpers.wolfFrames);
         animation.setDuration(1000);
-        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext(), "fragment_first"));
+        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
 
         DisplayMetrics dm = new DisplayMetrics();
         ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -141,7 +148,7 @@ public class FirstFragment extends Fragment {
         binding.bottomTag.setText((MainActivity.scoutLocation < 3 ? "Red " : "Blue ") + (MainActivity.scoutLocation % 3 + 1));
 
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
-        UIHelpers.lightDark(v, UIHelpers.darkMode, "fragment_first");
+        UIHelpers.lightDark(v, UIHelpers.darkMode);
     }
     @Override
     public void onDestroyView() {

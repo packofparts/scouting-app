@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="team">team</string>
+    <color name="team_red_dark">#E02E3C</color>
+    <color name="team_red_light">#E02E3C</color>
+    <color name="team_blue_dark">#3455CC</color>
+    <color name="team_blue_light">#3455CC</color>
+
+    <string name="bg2">bg2</string>
+    <color name="bg2_red_dark">#2A1A1B</color>
+    <color name="bg2_red_light">#EEB5B9</color>
+    <color name="bg2_blue_dark">#1C2133</color>
+    <color name="bg2_blue_light">#E0E5F7</color>
+
+    <string name="bg1">bg1</string>
+    <color name="bg1_red_dark">#41282A</color>
+    <color name="bg1_red_light">#E48B92</color>
+    <color name="bg1_blue_dark">#1F2744</color>
+    <color name="bg1_blue_light">#CED6F3</color>
+</resources>

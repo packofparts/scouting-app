@@ -136,4 +136,5 @@ public class HomePage extends Fragment {
         UIHelpers.lightDark(v, UIHelpers.darkMode);
         binding.bottomTag.setText((MainActivity.scoutLocation < 3 ? "Red " : "Blue ") + (MainActivity.scoutLocation % 3 + 1));
     }
+
 }

@@ -84,6 +84,12 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+    @Override
+    public void onBackPressed() { //This is to ensure that nothing happens when you press the back arrow.
+        if (false){ //Don't question this.
+            super.onBackPressed(); //Android Studio whines if I don't put this line somewhere.
+        }
+    }
 
 }
 

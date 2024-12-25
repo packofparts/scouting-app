@@ -67,8 +67,8 @@ public class ThirdFragment extends Fragment {
 
         binding.cont.setOnClickListener(view12 -> NavHostFragment.findNavController(ThirdFragment.this)
                 .navigate(R.id.action_ThirdFragment_to_SecondFragment));
-        binding.back.setOnClickListener(view12 -> NavHostFragment.findNavController(ThirdFragment.this)
-                .navigate(R.id.action_ThirdFragment_to_FirstFragment));
+        binding.back.setOnClickListener(view1 -> UIHelpers.makeConfirmationAlert("Cancel Match Data", "Do you want to cancel your match data?", () -> NavHostFragment.findNavController(ThirdFragment.this)
+                .navigate(R.id.action_ThirdFragment_to_FirstFragment), () -> {}, getContext()));
         DisplayMetrics dm = new DisplayMetrics();
         ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
         float width = dm.widthPixels;

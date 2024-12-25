@@ -3,6 +3,7 @@ package com.example.myapplication;
 
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -15,8 +16,12 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import androidx.navigation.fragment.NavHostFragment;
+
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.io.IOException;
 
 public class UIHelpers {
     public static int purple = Color.parseColor("#6750A3");
@@ -113,5 +118,33 @@ public class UIHelpers {
         lightDark(v, darkMode);
         playHowlSound(context);
     }
-
+    public static void makeConfirmationAlert(String title, String message, Runnable yes, Runnable no, Context c){
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton("Yes", (dialog, which) -> {
+            yes.run();
+            dialog.cancel();
+        });
+        builder.setNegativeButton("No", (dialog, which) -> {
+            no.run();
+            dialog.cancel();
+        });
+        builder.create().show();
+    }
+    public static void makeHelpAlert(String title, String message, Context c){
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton("I got it!", (dialog, which) -> dialog.cancel());
+        builder.setNegativeButton("I need help!", (dialog, which) -> {
+            dialog.cancel();
+            AlertDialog.Builder b = new AlertDialog.Builder(c);
+            b.setTitle("Please help me for " + title + "!");
+            b.setMessage("Please raise your hand high up in the air, so a scout member can help you with " + title + "!");
+            b.setPositiveButton("Okay", (d, w) -> d.cancel());
+            b.create().show();
+        });
+        builder.create().show();
+    }
 }

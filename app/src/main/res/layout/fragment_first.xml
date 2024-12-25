@@ -136,6 +136,17 @@
             android:shadowColor="@color/black"
             android:shadowRadius="1" />
         <TextView
+            android:id="@+id/matchNumberHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="ⓘ"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="290dp"
+            android:translationY="370dp"
+            android:textStyle="bold"/>
+        <TextView
             android:id="@+id/teamNumberTag2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -148,6 +159,17 @@
             android:textStyle="bold"
             android:shadowColor="@color/black"
             android:shadowRadius="1" />
+        <TextView
+            android:id="@+id/teamNumberHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="ⓘ"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="290dp"
+            android:translationY="270dp"
+            android:textStyle="bold"/>
 
         <ImageView
             android:id="@+id/pop"

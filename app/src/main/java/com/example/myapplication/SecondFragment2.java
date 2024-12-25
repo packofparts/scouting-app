@@ -6,6 +6,9 @@ package com.example.myapplication;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -28,7 +31,6 @@ import java.util.Objects;
 public class SecondFragment2 extends Fragment {
 
     private FragmentSecond2Binding binding;
-    public boolean confirm = false;
 
     ViewGroup v = null;
     @SuppressLint("SetTextI18n")
@@ -53,27 +55,19 @@ public class SecondFragment2 extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         binding.next.setOnClickListener(view1 -> {
-            if (confirm) {
-                try {
-                    UserModel.getMatchData().toJson();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                int num = Integer.parseInt(UserModel.getMatchData().getMatchNumber());
-                num ++;
-                num = num < 1 ? 1 : num;
-                num = num > MainActivity.teams.size() ? MainActivity.teams.size() : num;
-                UserModel.getMatchData().setMatchNumber(String.valueOf(num));
-                NavHostFragment.findNavController(SecondFragment2.this).navigate(R.id.action_SecondFragment2_to_FirstFragment);
-            } else {
-                binding.next.setText("Ok");
-                Snackbar.make(view, "Plug into computer and click again to confirm data transfer. Click somewhere else to cancel.", 600).show();
-                confirm = true;
-            }
-        });
-        binding.relativeLayoutFirst.setOnClickListener(v -> {
-            binding.next.setText("Next");
-            confirm = false;
+           UIHelpers.makeConfirmationAlert("Transfer Match Data", "Do you want to transfer your match data?", () -> {
+               try {
+                   UserModel.getMatchData().toJson();
+               } catch (IOException e) {
+                   throw new RuntimeException(e);
+               }
+               int num = Integer.parseInt(UserModel.getMatchData().getMatchNumber());
+               num++;
+               num = num < 1 ? 1 : num;
+               num = num > MainActivity.teams.size() ? MainActivity.teams.size() : num;
+               UserModel.getMatchData().setMatchNumber(String.valueOf(num));
+               NavHostFragment.findNavController(SecondFragment2.this).navigate(R.id.action_SecondFragment2_to_FirstFragment);
+           }, () -> {}, getContext());
         });
 
 

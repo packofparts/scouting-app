@@ -110,6 +110,9 @@ public class FirstFragment extends Fragment {
             }
         });
 
+        binding.teamNumberHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Team Number", "This is the number of the team that you will be scouting!", getContext()));
+        binding.matchNumberHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Match Number", "This is the match number that we are currently on!", getContext()));
+
         binding.matchInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}

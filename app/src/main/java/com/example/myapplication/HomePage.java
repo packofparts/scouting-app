@@ -1,6 +1,7 @@
 package com.example.myapplication;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
@@ -38,7 +39,6 @@ public class HomePage extends Fragment {
     private String mParam2;
     private ViewGroup v;
     private FragmentHomepageBinding binding;
-    public boolean confirm = false;
     public HomePage() {
         // Required empty public constructor
     }
@@ -85,26 +85,18 @@ public class HomePage extends Fragment {
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation",UIHelpers.wolfFrames);
         animation.setDuration(1000);
         binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
-        binding.cont.setOnClickListener(view1 -> {
-            if (confirm) {
-                try {
-                    UserModel.getPitData().toJson();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                NavHostFragment.findNavController(HomePage.this).navigate(R.id.action_HomePage_to_FirstFragment);
-            } else {
-                binding.cont.setText("Ok");
-                Snackbar.make(view, "Plug into computer and click again to confirm data transfer. Click somewhere else to cancel.", 600).show();
-                confirm = true;
+        binding.cont.setOnClickListener(view1 -> UIHelpers.makeConfirmationAlert("Transfer Pit Data", "Do you want to transfer your pit data?", () -> {
+            try {
+                UserModel.getPitData().toJson();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-        });
-        binding.relativeLayoutFirst.setOnClickListener(v -> {
-            binding.cont.setText("Next");
-            confirm = false;
-        });
-        binding.back.setOnClickListener(view12 -> NavHostFragment.findNavController(HomePage.this)
-                .navigate(R.id.action_HomePage_to_FirstFragment));
+            NavHostFragment.findNavController(HomePage.this).navigate(R.id.action_HomePage_to_FirstFragment);
+        }, () -> {}, getContext()));
+
+
+        binding.back.setOnClickListener(view1 -> UIHelpers.makeConfirmationAlert("Cancel Pit Data", "Do you want to cancel your pit data?", () -> NavHostFragment.findNavController(HomePage.this)
+                .navigate(R.id.action_HomePage_to_FirstFragment), () -> {}, getContext()));
 
         binding.input.addTextChangedListener(new TextWatcher() {
             @Override

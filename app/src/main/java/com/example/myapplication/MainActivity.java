@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<String> teams = new ArrayList<>();
 
-    public static int scoutLocation = 0;
+    public static int scoutLocation = 5;
     //0 - Red 1
     //1 - Red 2
     //2 - Red 3
@@ -83,6 +83,12 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+    @Override
+    public void onBackPressed() { //This is to ensure that nothing happens when you press the back arrow.
+        if (false){ //Don't question this.
+            super.onBackPressed(); //Android Studio whines if I don't put this line somewhere.
+        }
     }
 
 }

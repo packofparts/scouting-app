@@ -3,10 +3,10 @@ package com.example.myapplication;
 
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.util.Log;
 import android.media.MediaPlayer;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +16,12 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import androidx.core.content.res.ResourcesCompat;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.io.IOException;
 
 public class UIHelpers {
     public static int purple = Color.parseColor("#6750A3");
@@ -29,7 +31,7 @@ public class UIHelpers {
     public static final float[] wolfFrames = {0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f};
     public static MediaPlayer mp;
     public static boolean darkMode = false;
-    public static void lightDark (ViewGroup v, boolean mode, String name){
+    public static void lightDark (ViewGroup v, boolean mode){
         //background color and color of the actual ui elements
 
 
@@ -40,7 +42,7 @@ public class UIHelpers {
             String str = (MainActivity.scoutLocation < 3 ? "red" : "blue") + "_" + (mode ? "dark" : "light");
             try {
 
-                viewColor = child.getResources().getString(R.color.class.getField(name + "_" + getId(child) + "_" + str).getInt(null));
+                viewColor = child.getResources().getString(R.color.class.getField(child.getTag() + "_" + str).getInt(null));
                 found = true;
             } catch (Exception e) {
 
@@ -72,7 +74,7 @@ public class UIHelpers {
                     }
                 }
                 if (child instanceof ViewGroup) {
-                    lightDark((ViewGroup) child, mode, name);
+                    lightDark((ViewGroup) child, mode);
                 }
             }
         }
@@ -110,14 +112,39 @@ public class UIHelpers {
         }
         mp.start();
     }
-    public static void darkModeToggle(ViewGroup v, ObjectAnimator animation, Context context, String name) {
+    public static void darkModeToggle(ViewGroup v, ObjectAnimator animation, Context context) {
         animation.start();
         darkMode = !darkMode;
-        lightDark(v, darkMode, name);
+        lightDark(v, darkMode);
         playHowlSound(context);
     }
-    public static String getId(View view) {
-        if (view.getId() == View.NO_ID) return "no-id";
-        else return view.getResources().getResourceName(view.getId()).replace("com.example.myapplication:id/", "");
+    public static void makeConfirmationAlert(String title, String message, Runnable yes, Runnable no, Context c){
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton("Yes", (dialog, which) -> {
+            yes.run();
+            dialog.cancel();
+        });
+        builder.setNegativeButton("No", (dialog, which) -> {
+            no.run();
+            dialog.cancel();
+        });
+        builder.create().show();
+    }
+    public static void makeHelpAlert(String title, String message, Context c){
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton("I got it!", (dialog, which) -> dialog.cancel());
+        builder.setNegativeButton("I need help!", (dialog, which) -> {
+            dialog.cancel();
+            AlertDialog.Builder b = new AlertDialog.Builder(c);
+            b.setTitle("Please help me for " + title + "!");
+            b.setMessage("Please raise your hand high up in the air, so a scout member can help you with " + title + "!");
+            b.setPositiveButton("Okay", (d, w) -> d.cancel());
+            b.create().show();
+        });
+        builder.create().show();
     }
 }

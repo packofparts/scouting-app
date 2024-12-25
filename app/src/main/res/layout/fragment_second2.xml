@@ -13,168 +13,158 @@
         android:id="@+id/relativeLayout_first"
         android:layout_width="match_parent"
         android:layout_height="730dp"
-        android:padding="0dp">
+        android:padding="0dp"
+        android:background="@drawable/red_light">
 
 
         <TextView
             android:id="@+id/characterLimit"
-            android:layout_width="330dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00FFFFFF"
             android:text="Character Limit: 0/150"
             android:textSize="15dp"
             android:translationX="30dp"
-            android:translationY="580dp" />
+            android:translationY="635dp" />
         <TextView
             android:id="@+id/analyzerScore"
-            android:layout_width="330dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00FFFFFF"
             android:text="Analyzer Score: 0.0"
             android:textSize="15dp"
-            android:translationX="30dp"
-            android:translationY="600dp" />
+            android:translationX="200dp"
+            android:translationY="635dp" />
+
+        <Button
+            android:id="@+id/textbacking1"
+            android:layout_width="378dp"
+            android:layout_height="49dp"
+            android:backgroundTint="#D9D9D9"
+            android:clickable="false"
+            android:tag=""
+            android:text=""
+            android:translationX="17dp"
+            android:translationY="589dp"
+            app:cornerRadius="20dp" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input"
+            android:layout_width="322dp"
+            android:layout_height="50dp"
+            android:hint="Enter Here"
+            android:textColor="#000000"
+            android:textColorHint="#71797E"
+            android:maxLength="150"
+            android:inputType="text"
+            android:translationX="45dp"
+            android:translationY="588dp"
+            android:tag="@string/no_change"/>
+
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="260dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="End Game"
             android:textSize="38dp"
             android:translationX="150dp"
-            android:translationY="50dp" />
+            android:translationY="35dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:shadowDy="5"
+            android:shadowColor="@color/black"
+            android:shadowRadius="10"
+            android:tag="@string/no_change"/>
         <TextView
             android:id="@+id/team"
-            android:layout_width="260dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Team 0"
+            android:text="Team "
+            android:textColor="@color/white"
             android:textSize="26dp"
+            android:textStyle="bold"
             android:translationX="150dp"
-            android:translationY="88dp" />
-
+            android:translationY="85dp"
+            android:tag="@string/no_change"/>
         <TextView
-            android:id="@+id/notesThrown"
-            android:layout_width="110dp"
+            android:id="@+id/notesTitle"
+            android:layout_width="71dp"
             android:layout_height="wrap_content"
-            android:text="Notes Thrown by Player"
-            android:textSize="26dp"
-            android:translationX="30dp"
-            android:translationY="960dp"
-            android:visibility="gone"/>
+            android:text="Notes"
+            android:textSize="24dp"
+            android:translationX="45dp"
+            android:translationY="560dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:shadowColor="@color/black" />
 
-        <TextView
-            android:id="@+id/notesThrownCounter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textSize="26dp"
-            android:translationX="245dp"
-            android:translationY="960dp"
-            android:visibility="gone"/>
-
-        <TextView
-            android:id="@+id/notesHitCounter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textSize="26dp"
-            android:translationX="245dp"
-            android:translationY="1035dp"
-            android:visibility="gone"/>
-
-        <TextView
-            android:id="@+id/notesHit"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="Notes Spotlighted by Player"
-            android:textSize="26dp"
-            android:translationX="30dp"
-            android:translationY="1035dp"
-            android:visibility="gone"/>
 
         <Button
-
+            android:id="@+id/bg1"
+            android:layout_width="430dp"
+            android:layout_height="80dp"
+            android:backgroundTint="#E48B92"
+            android:text=""
+            android:clickable="false"
+            android:translationX="0dp"
+            android:translationY="655dp"
+            app:cornerRadius="15dp"
+            android:tag="@string/bg1"/>
+        <Button
+            android:id="@+id/bg2"
+            android:layout_width="378dp"
+            android:layout_height="50dp"
+            android:backgroundTint="#5cffffff"
+            android:text=""
+            android:clickable="false"
+            android:translationX="17dp"
+            android:translationY="670dp"
+            app:cornerRadius="20dp"
+            android:tag="@string/bg2"/>
+        <Button
             android:id="@+id/next"
-            android:layout_width="300px"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:backgroundTint="#73C2F0"
-            android:text="@string/next"
-            android:translationX="230dp"
-            android:translationY="600dp"
-            app:cornerRadius="100dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.547"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:text="Next"
+            android:translationY="669.5dp"
+            android:translationX="285dp"
+            app:cornerRadius="20dp"
+            android:backgroundTint="#E02E3C"
+            android:textColor="@color/white"
+            android:shadowRadius="10"
+            android:shadowDy="5"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:tag="@string/team"/>
 
         <Button
-
             android:id="@+id/prev"
-            android:layout_width="300px"
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:text="Back"
+            android:translationX="17dp"
+            android:translationY="669.5dp"
+            android:textColor="@color/white"
+            app:cornerRadius="20dp"
+            android:backgroundTint="#E02E3C"
+            android:shadowRadius="10"
+            android:shadowDy="5"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:tag="@string/team"/>
+
+        <TextView
+            android:id="@+id/bottomTag"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:backgroundTint="#73C2F0"
-            android:text="Previous"
-            android:translationX="30dp"
-            android:translationY="600dp"
-            app:cornerRadius="100dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.547"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/minusNotesThrown"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="36dp"
-            android:backgroundTint="#73C2F0"
-            android:text="-"
-            android:textSize="26dp"
-            android:translationX="150dp"
-            android:translationY="960dp"
-            app:cornerRadius="100dp"
-            android:visibility="gone"/>
-
-        <Button
-            android:id="@+id/plusNotesThrown"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="36dp"
-            android:backgroundTint="#73C2F0"
-            android:text="+"
-            android:textSize="26dp"
-            android:translationX="300dp"
-            android:translationY="960dp"
-            app:cornerRadius="100dp"
-            android:visibility="gone"/>
-
-        <Button
-            android:id="@+id/minusNotesHit"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="36dp"
-            android:backgroundTint="#73C2F0"
-            android:text="-"
-            android:textSize="26dp"
-            android:translationX="150dp"
-            android:translationY="365dp"
-            app:cornerRadius="1035dp"
-            android:visibility="gone"/>
-
-        <Button
-            android:id="@+id/plusNotesHit"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="36dp"
-            android:backgroundTint="#73C2F0"
-            android:text="+"
-            android:textSize="26dp"
-            android:translationX="300dp"
-            android:translationY="365dp"
-            app:cornerRadius="1035dp"
-            android:visibility="gone"/>
+            android:textAlignment="center"
+            android:text="Red 1"
+            android:textSize="36dp"
+            android:textColor="#ff0000"
+            android:translationX="159dp"
+            android:translationY="669dp"
+            android:textStyle="bold"
+            android:tag="@string/team"/>
 
         <ImageView
             android:id="@+id/pop"
@@ -187,28 +177,7 @@
             android:translationY="0dp" />
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input"
-            android:layout_width="330dp"
-            android:layout_height="wrap_content"
-            android:background="#0095EC"
-            android:backgroundTint="#73C2F0"
-            android:translationX="30dp"
-            android:translationY="555dp"
-            app:boxCollapsedPaddingTop="0dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInput"
-                android:maxLength="150"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#73C2F0"
-                android:backgroundTint="#73C2F0"
-                android:backgroundTintMode="src_in"
-                android:ellipsize="none"
-                android:hint="Notes"
-                android:singleLine="true"/>
-        </com.google.android.material.textfield.TextInputLayout>
 
 
     </RelativeLayout>

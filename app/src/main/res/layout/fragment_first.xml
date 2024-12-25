@@ -23,7 +23,8 @@
             android:clickable="false"
             android:translationX="0dp"
             android:translationY="655dp"
-            app:cornerRadius="15dp"/>
+            app:cornerRadius="15dp"
+            android:tag="@string/bg1"/>
         <Button
             android:id="@+id/bg2"
             android:layout_width="378dp"
@@ -34,12 +35,12 @@
             android:translationX="17dp"
             android:translationY="670dp"
             app:cornerRadius="20dp"
-            android:tag=""/>
+            android:tag="@string/bg2"/>
         <Button
             android:id="@+id/cont"
             android:layout_width="110dp"
             android:layout_height="50dp"
-            android:text="Next"
+            android:text="Match"
             android:translationY="669.5dp"
             android:translationX="285dp"
             app:cornerRadius="20dp"
@@ -48,13 +49,14 @@
             android:shadowRadius="10"
             android:shadowDy="5"
             android:textSize="20dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:tag="@string/team"/>
 
         <Button
             android:id="@+id/back"
             android:layout_width="110dp"
             android:layout_height="50dp"
-            android:text="Info"
+            android:text="Pit"
             android:translationX="17dp"
             android:translationY="669.5dp"
             android:textColor="@color/white"
@@ -63,7 +65,8 @@
             android:shadowRadius="10"
             android:shadowDy="5"
             android:textSize="20dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:tag="@string/team"/>
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
@@ -90,7 +93,7 @@
             android:translationX="159dp"
             android:translationY="669dp"
             android:textStyle="bold"
-             />
+            android:tag="@string/team"/>
         <TextView
             android:id="@+id/teamNumberTag"
             android:layout_width="wrap_content"
@@ -103,7 +106,8 @@
             android:translationY="270dp"
             android:textStyle="bold"
             android:shadowColor="@color/black"
-            android:shadowRadius="1" />
+            android:shadowRadius="1"
+            android:tag="@string/team"/>
         <TextView
             android:id="@+id/matchNumberTag"
             android:layout_width="wrap_content"
@@ -116,7 +120,8 @@
             android:translationY="370dp"
             android:textStyle="bold"
             android:shadowColor="@color/black"
-            android:shadowRadius="1" />
+            android:shadowRadius="1"
+            android:tag="@string/team"/>
         <TextView
             android:id="@+id/matchNumberTag2"
             android:layout_width="wrap_content"
@@ -131,6 +136,17 @@
             android:shadowColor="@color/black"
             android:shadowRadius="1" />
         <TextView
+            android:id="@+id/matchNumberHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="ⓘ"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="290dp"
+            android:translationY="370dp"
+            android:textStyle="bold"/>
+        <TextView
             android:id="@+id/teamNumberTag2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -143,6 +159,17 @@
             android:textStyle="bold"
             android:shadowColor="@color/black"
             android:shadowRadius="1" />
+        <TextView
+            android:id="@+id/teamNumberHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="ⓘ"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="290dp"
+            android:translationY="270dp"
+            android:textStyle="bold"/>
 
         <ImageView
             android:id="@+id/pop"

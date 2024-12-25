@@ -23,7 +23,8 @@
             android:clickable="false"
             android:translationX="0dp"
             android:translationY="655dp"
-            app:cornerRadius="15dp"/>
+            app:cornerRadius="15dp"
+            android:tag="@string/bg1"/>
 
         <Button
             android:id="@+id/bg2"
@@ -35,7 +36,7 @@
             android:translationX="17dp"
             android:translationY="670dp"
             app:cornerRadius="20dp"
-            android:tag=""/>
+            android:tag="@string/bg2"/>
 
         <TextView
             android:id="@+id/bottomTag"
@@ -48,7 +49,7 @@
             android:translationX="159dp"
             android:translationY="669dp"
             android:textStyle="bold"
-            />
+            android:tag="@string/team"/>
 
         <Button
         android:id="@+id/cont"
@@ -63,15 +64,16 @@
             android:shadowRadius="10"
             android:shadowDy="5"
             android:textSize="20dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:tag="@string/team"/>
 
 
         <TextView
         android:id="@+id/textView4"
-        android:layout_width="252dp"
+        android:layout_width="wrap_content"
         android:layout_height="47dp"
-        android:translationX="140dp"
-        android:translationY="38dp"
+        android:translationX="150dp"
+        android:translationY="35dp"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:text="Autonomous"
@@ -87,9 +89,10 @@
             android:id="@+id/pop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:rotationX="360"
             android:src="@drawable/pop"
-            android:translationX="5dp"
-            android:translationY="5dp" />
+            android:translationX="0dp"
+            android:translationY="0dp"/>
 
         <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -106,7 +109,7 @@
             android:textColor="@color/white"
             android:textSize="26dp"
             android:textStyle="bold"
-            android:translationX="200dp"
+            android:translationX="150dp"
             android:translationY="85dp"
             android:tag="@string/no_change"/>
 
@@ -122,8 +125,9 @@
             android:backgroundTint="#E02E3C"
             android:shadowRadius="10"
             android:shadowDy="5"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            android:textSize="19.9dp"
+            android:textStyle="bold"
+            android:tag="@string/team"/>
 
 
     </RelativeLayout>

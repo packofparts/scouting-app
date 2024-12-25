@@ -1,4 +1,7 @@
 package com.example.myapplication;
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
@@ -7,11 +10,18 @@ import android.animation.ObjectAnimator;
 import androidx.annotation.NonNull;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.myapplication.databinding.FragmentHomepageBinding;
+import com.google.android.material.snackbar.Snackbar;
+
+import java.io.IOException;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -71,11 +81,52 @@ public class HomePage extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.WolfLogoInfo, "rotation",UIHelpers.wolfFrames);
+        binding.team.setText("Team " + UserModel.getPitData().getTeamNumber());
+        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation",UIHelpers.wolfFrames);
         animation.setDuration(1000);
-        binding.WolfLogoInfo.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext(), "fragment_homepage"));
-        binding.prevInfoBack.setOnClickListener(view12 -> NavHostFragment.findNavController(HomePage.this)
-                .navigate(R.id.action_HomePage_to_FirstFragment));
-        UIHelpers.lightDark(v, UIHelpers.darkMode, "fragment_homepage");
+        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
+        binding.cont.setOnClickListener(view1 -> UIHelpers.makeConfirmationAlert("Transfer Pit Data", "Do you want to transfer your pit data?", () -> {
+            try {
+                UserModel.getPitData().toJson();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            NavHostFragment.findNavController(HomePage.this).navigate(R.id.action_HomePage_to_FirstFragment);
+        }, () -> {}, getContext()));
+
+
+        binding.back.setOnClickListener(view1 -> UIHelpers.makeConfirmationAlert("Cancel Pit Data", "Do you want to cancel your pit data?", () -> NavHostFragment.findNavController(HomePage.this)
+                .navigate(R.id.action_HomePage_to_FirstFragment), () -> {}, getContext()));
+
+        binding.input.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void afterTextChanged(Editable s) {
+                binding.characterLimit.setText("Character Limit: " + Objects.requireNonNull(binding.input.getText()).length() + "/150");
+                Analyzer2.populate(getResources().openRawResource(R.raw.cleansentiment));
+                double score = Analyzer2.analyze(binding.input.getText().toString());
+                binding.analyzerScore.setText("Analyzer Score: " + score);
+                UserModel.getPitData().setNotes(binding.input.getText().toString());
+                UserModel.getPitData().setAnalyzerScore(score);
+            }
+        });
+
+        DisplayMetrics dm = new DisplayMetrics();
+        ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
+        float width = dm.widthPixels;
+        float height = dm.heightPixels;
+        UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
+        UIHelpers.lightDark(v, UIHelpers.darkMode);
+        binding.bottomTag.setText((MainActivity.scoutLocation < 3 ? "Red " : "Blue ") + (MainActivity.scoutLocation % 3 + 1));
     }
+
 }

@@ -60,7 +60,7 @@ public class SecondFragment extends Fragment {
 
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
         UIHelpers.lightDark(v, UIHelpers.darkMode);
-        binding.bottomTag.setText((MainActivity.scoutLocation < 3 ? "Red " : "Blue ") + (MainActivity.scoutLocation % 3 + 1));
+        binding.bottomTag.setText(MainActivity.getLocationText());
     }
    
     @Override

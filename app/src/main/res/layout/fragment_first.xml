@@ -146,6 +146,7 @@
             android:translationX="290dp"
             android:translationY="370dp"
             android:textStyle="bold"/>
+
         <TextView
             android:id="@+id/teamNumberTag2"
             android:layout_width="wrap_content"
@@ -226,7 +227,44 @@
             android:inputType="number"
             android:translationX="133dp"
             android:translationY="400dp"
+            android:tag="@string/no_change" />
+
+        <TextView
+            android:id="@+id/matchNumberHelpText"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="↖\nClick me for help!"
+            android:textAlignment="textStart"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:translationX="310dp"
+            android:translationY="390dp" />
+
+        <TextView
+            android:id="@+id/popHelpText"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Try clicking me!\n↙"
+            android:textAlignment="textStart"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:translationX="260dp"
+            android:translationY="5dp"
             android:tag="@string/no_change"/>
+
+        <TextView
+            android:id="@+id/contHelpText"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="Let's start scouting!\n↘"
+            android:textAlignment="textEnd"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:translationX="160dp"
+            android:translationY="610dp"/>
 
 
 

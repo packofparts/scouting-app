@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         }
         scanner.close();
     }
+
     public static void writeInt(String fileName, int num){
         File file = new File("/sdcard/Documents/" + fileName + ".txt");
         file.delete();
@@ -128,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return 0;
     }
+
 }
 
 

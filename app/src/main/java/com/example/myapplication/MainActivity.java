@@ -16,6 +16,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -26,13 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<String> teams = new ArrayList<>();
 
-    public static int scoutLocation = 5;
-    //0 - Red 1
-    //1 - Red 2
-    //2 - Red 3
-    //3 - Blue 1
-    //4 - Blue 2
-    //5 - Blue 3
+    public static int scoutLocation = readInt("ScoutLocation");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         if (teams.isEmpty()) {
             updateTeams(getResources());
         }
+        writeInt("ScoutLocation", scoutLocation);
     }
 
     @Override
@@ -101,6 +103,33 @@ public class MainActivity extends AppCompatActivity {
         }
         scanner.close();
     }
+
+    public static void writeInt(String fileName, int num){
+        File file = new File("/sdcard/Documents/" + fileName + ".txt");
+        file.delete();
+        try {
+            file.createNewFile();
+            OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file));
+            writer.write(num);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public static int readInt(String fileName) {
+        File file = new File("/sdcard/Documents/" + fileName + ".txt");
+        try {
+            InputStreamReader reader = new InputStreamReader(new FileInputStream(file));
+            int res = reader.read();
+            reader.close();
+            return res;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
 }
 
 

@@ -167,7 +167,7 @@ public class FirstFragment extends Fragment {
             });
             builder.setItems(new CharSequence[]{"Red 1", "Red 2", "Red 3", "Blue 1", "Blue 2", "Blue 3"}, (d, w) -> {
                 MainActivity.scoutLocation = w;
-
+                MainActivity.writeInt("ScoutLocation", w);
             });
             builder.create().show();
             return false;

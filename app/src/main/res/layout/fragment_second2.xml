@@ -33,7 +33,7 @@
             android:background="#00FFFFFF"
             android:text="Analyzer Score: 0.0"
             android:textSize="15dp"
-            android:translationX="200dp"
+            android:translationX="230dp"
             android:translationY="635dp" />
 
         <Button
@@ -97,6 +97,39 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:shadowColor="@color/black" />
+        <TextView
+            android:id="@+id/notesHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="ⓘ"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="115dp"
+            android:translationY="560dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/limitHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="ⓘ"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="190dp"
+            android:translationY="630dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/analyzerHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="ⓘ"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="370dp"
+            android:translationY="630dp"
+            android:textStyle="bold"/>
 
 
         <Button

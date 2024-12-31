@@ -120,13 +120,17 @@ public class HomePage extends Fragment {
             }
         });
 
+        binding.notesHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Notes", "Here, you can jot down anything extra that you've observed in-game!", getContext()));
+        binding.limitHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Character Limit", "You have a 150-character limit for your notes.", getContext()));
+        binding.analyzerHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Sentiment Analyzer", "This is the overall sentiment (positivity/negativity) of your notes!", getContext()));
+
         DisplayMetrics dm = new DisplayMetrics();
         ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
         float width = dm.widthPixels;
         float height = dm.heightPixels;
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
         UIHelpers.lightDark(v, UIHelpers.darkMode);
-        binding.bottomTag.setText((MainActivity.scoutLocation < 3 ? "Red " : "Blue ") + (MainActivity.scoutLocation % 3 + 1));
+        binding.bottomTag.setText(MainActivity.getLocationText());
     }
 
 }

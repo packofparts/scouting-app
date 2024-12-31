@@ -4,10 +4,12 @@ package com.example.myapplication;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.UiModeManager;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -16,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -135,16 +138,8 @@ public class UIHelpers {
     public static void makeHelpAlert(String title, String message, Context c){
         AlertDialog.Builder builder = new AlertDialog.Builder(c);
         builder.setTitle(title);
-        builder.setMessage(message);
+        builder.setMessage(message + "\n\nIf needed, please raise your hand, so a scouting member can help you!");
         builder.setPositiveButton("I got it!", (dialog, which) -> dialog.cancel());
-        builder.setNegativeButton("I need help!", (dialog, which) -> {
-            dialog.cancel();
-            AlertDialog.Builder b = new AlertDialog.Builder(c);
-            b.setTitle("Please help me for " + title + "!");
-            b.setMessage("Please raise your hand high up in the air, so a scout member can help you with " + title + "!");
-            b.setPositiveButton("Okay", (d, w) -> d.cancel());
-            b.create().show();
-        });
         builder.create().show();
     }
 }

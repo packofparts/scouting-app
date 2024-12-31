@@ -1,8 +1,10 @@
 package com.example.myapplication;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -34,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -45,14 +46,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
         getSupportActionBar().hide();
-        if (teams.size() == 0) {
-            Scanner scanner = new Scanner(getResources().openRawResource(R.raw.schedule));
-
-            while (scanner.hasNext()) {
-                scanner.nextLine();
-                teams.add(scanner.nextLine().split("\t")[scoutLocation]);
-
-            }
+        if (teams.isEmpty()) {
+            updateTeams(getResources());
         }
     }
 
@@ -91,6 +86,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public static String getLocationText(){
+        return (MainActivity.scoutLocation < 3 ? "Red " : "Blue ") + (MainActivity.scoutLocation % 3 + 1);
+    }
+    public static void updateTeams(Resources r){
+        teams.clear();
+        
+        Scanner scanner = new Scanner(r.openRawResource(R.raw.schedule));
+
+        while (scanner.hasNext()) {
+            scanner.nextLine();
+            teams.add(scanner.nextLine().split("\t")[scoutLocation]);
+
+        }
+        scanner.close();
+    }
 }
 
 

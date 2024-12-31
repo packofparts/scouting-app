@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,6 +18,9 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentFirstBinding;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 
 public class FirstFragment extends Fragment {
     private FragmentFirstBinding binding;
@@ -54,7 +58,7 @@ public class FirstFragment extends Fragment {
         binding.cont.setOnClickListener(v -> {
             String teamNumber = String.valueOf(binding.input.getText());
             String matchNumber = String.valueOf(binding.matchInput.getText());
-            boolean teamNumberCheck = (!teamNumber.isEmpty() && teamNumber.length() < 5 && !teamNumber.equals("0"));
+            boolean teamNumberCheck = (!teamNumber.isEmpty() && teamNumber.length() <= 6 && !teamNumber.equals("0"));
             boolean matchNumCheck = (!matchNumber.isEmpty() && !matchNumber.equals("0"));
             if (teamNumberCheck && matchNumCheck) {
                 UserModel.getMatchData().setTeamNumber(teamNumber);
@@ -148,8 +152,26 @@ public class FirstFragment extends Fragment {
                 }
             }
         });
-        binding.bottomTag.setText((MainActivity.scoutLocation < 3 ? "Red " : "Blue ") + (MainActivity.scoutLocation % 3 + 1));
+        binding.bottomTag.setText(MainActivity.getLocationText());
+        binding.bottomTag.setOnLongClickListener(lc -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setTitle("Set Scout Location");
+            builder.setOnDismissListener(d -> {
+                MainActivity.updateTeams(getResources());
+                UIHelpers.lightDark(v, UIHelpers.darkMode);
+                binding.bottomTag.setText(MainActivity.getLocationText());
 
+            });
+            builder.setNeutralButton("Cancel", (d, w) -> {
+                d.cancel();
+            });
+            builder.setItems(new CharSequence[]{"Red 1", "Red 2", "Red 3", "Blue 1", "Blue 2", "Blue 3"}, (d, w) -> {
+                MainActivity.scoutLocation = w;
+
+            });
+            builder.create().show();
+            return false;
+        });
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
         UIHelpers.lightDark(v, UIHelpers.darkMode);
     }

@@ -11,6 +11,8 @@ public class MatchData {
     String teamNumber = "";
     String matchNumber = "";
 
+    
+
     double analyzerScore = 0.0;
 
     String notes = "";

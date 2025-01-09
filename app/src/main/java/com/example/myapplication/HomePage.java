@@ -16,6 +16,10 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
+import android.widget.SpinnerAdapter;
 
 import com.example.myapplication.databinding.FragmentHomepageBinding;
 import com.google.android.material.snackbar.Snackbar;
@@ -85,6 +89,35 @@ public class HomePage extends Fragment {
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation",UIHelpers.wolfFrames);
         animation.setDuration(1000);
         binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
+
+        ArrayAdapter<String> drive = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"West Coast", "Mecanum", "Swerve", "Other"});
+
+        binding.driveTrain.setAdapter(drive);
+
+        binding.driveTrain.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                UserModel.getPitData().setDriveTrain(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        ArrayAdapter<String> climb = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"Cannot Climb", "Shallow CLimb", "Deep Climb", "Shallow and Deep Climb"});
+
+        binding.climb.setAdapter(climb);
+
+        binding.climb.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                UserModel.getPitData().setClimb(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
         binding.cont.setOnClickListener(view1 -> UIHelpers.makeConfirmationAlert("Transfer Pit Data", "Do you want to transfer your pit data?", () -> {
             try {
                 UserModel.getPitData().toJson();
@@ -119,6 +152,13 @@ public class HomePage extends Fragment {
                 UserModel.getPitData().setAnalyzerScore(score);
             }
         });
+
+        binding.L1.setOnCheckedChangeListener((v, b) -> UserModel.getPitData().setL1(b));
+        binding.L2.setOnCheckedChangeListener((v, b) -> UserModel.getPitData().setL2(b));
+        binding.L3.setOnCheckedChangeListener((v, b) -> UserModel.getPitData().setL3(b));
+        binding.L4.setOnCheckedChangeListener((v, b) -> UserModel.getPitData().setL4(b));
+
+
 
         binding.notesHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Notes", "Here, you can jot down anything extra that you've observed in-game!", getContext()));
         binding.limitHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Character Limit", "You have a 150-character limit for your notes.", getContext()));

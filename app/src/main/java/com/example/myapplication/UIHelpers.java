@@ -10,9 +10,11 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -76,6 +78,12 @@ public class UIHelpers {
                         tx.setTextColor(Color.parseColor(viewColor));
                     }
                 }
+                if (child instanceof CheckBox){
+                    int [][] states = {{android.R.attr.state_checked}, {}};
+                    int [] colors = {child.getResources().getColor(MainActivity.scoutLocation < 3 ? R.color.team_red_dark : R.color.team_blue_dark, null), Color.parseColor(viewColor)};
+                    ((CheckBox) child).setTextColor(Color.parseColor(viewColor));
+                    ((CheckBox) child).setButtonTintList(new ColorStateList(states, colors));
+                }
                 if (child instanceof ViewGroup) {
                     lightDark((ViewGroup) child, mode);
                 }
@@ -91,7 +99,8 @@ public class UIHelpers {
         width = w;
         height = h;
         if (v instanceof CustomScrollView || v instanceof RelativeLayout) {
-            v.setMinimumHeight((int) h);
+            v.setMinimumHeight((int)(h * (v.getLayoutParams().height/relY)));
+
         }
         //background color and color of the actual ui elements
         for (int i = 0; i < v.getChildCount(); i ++){
@@ -103,8 +112,15 @@ public class UIHelpers {
                     child.setScaleX(width / relX);
                     child.setScaleY(height / relY);
                 }
+            } else if (child instanceof Spinner) {
+                child.setTranslationX(width * (child.getTranslationX() / relX));
+                child.setTranslationY(height * ((child.getTranslationY() + child.getHeight()/2f) / relY));
+                if (width < relX && height < relY) {
+                    child.setScaleX(width / relX);
+                    child.setScaleY(height / relY);
+                }
             } else {
-                relate((ViewGroup) child, width, height, density);
+                    relate((ViewGroup) child, width, height, density);
             }
         }
     }

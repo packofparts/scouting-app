@@ -127,7 +127,7 @@ public class HomePage extends Fragment {
             }
         });
 
-        ArrayAdapter<String> climb = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"Cannot Climb", "Shallow CLimb", "Deep Climb", "Shallow and Deep Climb"});
+        ArrayAdapter<String> climb = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"Cannot Climb", "Shallow Climb", "Deep Climb", "Shallow and Deep Climb"});
 
         binding.climb.setAdapter(climb);
 

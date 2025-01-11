@@ -172,7 +172,8 @@
             android:textStyle="bold"
             android:shadowColor="@color/black"
             android:shadowRadius="1"
-            android:paddingLeft="-10dp"/>
+            android:paddingLeft="-10dp"
+            android:tag="@string/team"/>
         <CheckBox
             android:id="@+id/L2"
             android:layout_width="60dp"
@@ -186,7 +187,8 @@
             android:textStyle="bold"
             android:shadowColor="@color/black"
             android:shadowRadius="1"
-            android:paddingLeft="-10dp"/>
+            android:paddingLeft="-10dp"
+            android:tag="@string/team"/>
         <CheckBox
             android:id="@+id/L3"
             android:layout_width="60dp"
@@ -200,7 +202,8 @@
             android:textStyle="bold"
             android:shadowColor="@color/black"
             android:shadowRadius="1"
-            android:paddingLeft="-10dp"/>
+            android:paddingLeft="-10dp"
+            android:tag="@string/team"/>
         <CheckBox
             android:id="@+id/L4"
             android:layout_width="60dp"
@@ -214,7 +217,8 @@
             android:textStyle="bold"
             android:shadowColor="@color/black"
             android:shadowRadius="1"
-            android:paddingLeft="-10dp"/>
+            android:paddingLeft="-10dp"
+            android:tag="@string/team"/>
         <TextView
             android:id="@+id/coralIntakeTitle"
             android:layout_width="wrap_content"
@@ -249,6 +253,114 @@
             android:translationX="190dp"
             android:translationY="519dp"
             android:visibility="visible" />
+        <TextView
+            android:id="@+id/algaeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Algae 🟢"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="145dp"
+            android:translationY="604dp"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowRadius="1" />
+
+        <TextView
+            android:id="@+id/algaeScoringTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Scoring"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="40dp"
+            android:translationY="654dp"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowRadius="1" />
+        <CheckBox
+            android:id="@+id/net"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:textAlignment="center"
+            android:text="Net"
+            android:textSize="24dp"
+            android:textColor="@color/black"
+            android:translationX="153dp"
+            android:translationY="654dp"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowRadius="1"
+            android:tag="@string/team"/>
+        <CheckBox
+            android:id="@+id/processor"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:textAlignment="center"
+            android:text="Processor"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="242dp"
+            android:translationY="654dp"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowRadius="1"
+            android:tag="@string/team"/>
+        <TextView
+            android:id="@+id/algaeIntakeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Algae Intake"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="40dp"
+            android:translationY="713dp"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowRadius="1" />
+        <Button
+            android:id="@+id/algaeIntakeBacking"
+            android:layout_width="200dp"
+            android:layout_height="49dp"
+            android:backgroundTint="#D9D9D9"
+            android:clickable="false"
+            android:tag=""
+            android:text=""
+            android:translationX="190dp"
+            android:translationY="703dp"
+            app:cornerRadius="20dp" />
+        <Spinner
+            android:id="@+id/algaeIntake"
+            android:layout_width="200dp"
+            android:layout_height="49dp"
+            android:backgroundTint="#000000"
+            android:backgroundTintMode="src_in"
+            android:spinnerMode="dropdown"
+            android:translationX="190dp"
+            android:translationY="703dp"
+            android:visibility="visible" />
+        <Switch
+            android:id="@+id/dislodge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Dislodge Algae?"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="40dp"
+            android:translationY="772dp"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowRadius="1"
+            android:switchPadding="56dp"
+            android:switchMinWidth="100dp"
+            android:thumbTint="@color/team_red_dark"
+            android:trackTint="@color/team_red_dark"
+            android:trackTintMode="src_over"
+            android:tag="@string/team"/>
         <TextView
             android:id="@+id/notesHelp"
             android:layout_width="wrap_content"

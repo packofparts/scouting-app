@@ -104,6 +104,29 @@ public class HomePage extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {}
         });
 
+        binding.mass.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void afterTextChanged(Editable s) {
+                try {
+                    UserModel.getPitData().setMass(Double.parseDouble(Objects.requireNonNull(binding.mass.getText()).toString()));
+                } catch (NumberFormatException e){
+                    //The user has entered an empty string.
+                    Snackbar.make(view, "Please enter a number.", 600).show();
+                    UserModel.getPitData().setMass(0.0);
+                }
+            }
+        });
+
         ArrayAdapter<String> climb = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"Cannot Climb", "Shallow CLimb", "Deep Climb", "Shallow and Deep Climb"});
 
         binding.climb.setAdapter(climb);
@@ -117,6 +140,44 @@ public class HomePage extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
         });
+
+        binding.L1.setOnCheckedChangeListener((v, b) -> UserModel.getPitData().setL1(b));
+        binding.L2.setOnCheckedChangeListener((v, b) -> UserModel.getPitData().setL2(b));
+        binding.L3.setOnCheckedChangeListener((v, b) -> UserModel.getPitData().setL3(b));
+        binding.L4.setOnCheckedChangeListener((v, b) -> UserModel.getPitData().setL4(b));
+
+        ArrayAdapter<String> coralIntake = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Intake", "Source Intake", "Ground Intake", "Source and Ground Intake"});
+
+        binding.coralIntake.setAdapter(coralIntake);
+
+        binding.coralIntake.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                UserModel.getPitData().setCoralIntake(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        binding.net.setOnCheckedChangeListener((v, b) -> UserModel.getPitData().setNet(b));
+        binding.processor.setOnCheckedChangeListener((v, b) -> UserModel.getPitData().setProcessor(b));
+
+        ArrayAdapter<String> algaeIntake = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Intake", "Reef Intake", "Ground Intake", "Source and Reef Intake"});
+
+        binding.algaeIntake.setAdapter(algaeIntake);
+
+        binding.algaeIntake.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                UserModel.getPitData().setAlgaeIntake(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        binding.dislodge.setOnCheckedChangeListener((v, b) -> UserModel.getPitData().setDislodge(b));
 
         binding.cont.setOnClickListener(view1 -> UIHelpers.makeConfirmationAlert("Transfer Pit Data", "Do you want to transfer your pit data?", () -> {
             try {
@@ -153,13 +214,6 @@ public class HomePage extends Fragment {
             }
         });
 
-        binding.L1.setOnCheckedChangeListener((v, b) -> UserModel.getPitData().setL1(b));
-        binding.L2.setOnCheckedChangeListener((v, b) -> UserModel.getPitData().setL2(b));
-        binding.L3.setOnCheckedChangeListener((v, b) -> UserModel.getPitData().setL3(b));
-        binding.L4.setOnCheckedChangeListener((v, b) -> UserModel.getPitData().setL4(b));
-
-
-
         binding.notesHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Notes", "Here, you can jot down anything extra that you've observed in-game!", getContext()));
         binding.limitHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Character Limit", "You have a 150-character limit for your notes.", getContext()));
         binding.analyzerHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Sentiment Analyzer", "This is the overall sentiment (positivity/negativity) of your notes!", getContext()));
@@ -171,6 +225,7 @@ public class HomePage extends Fragment {
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
         UIHelpers.lightDark(v, UIHelpers.darkMode);
         binding.bottomTag.setText(MainActivity.getLocationText());
+
     }
 
 }

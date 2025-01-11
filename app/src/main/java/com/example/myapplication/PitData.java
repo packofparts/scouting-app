@@ -12,13 +12,14 @@ public class PitData {
 
     private int driveTrain = 0;
 
-    private int climb = 0;
+    private int climb, coralIntake, algaeIntake = 0;
 
-    private boolean L1, L2, L3, L4 = false;
+    private boolean L1, L2, L3, L4, net, processor, dislodge = false;
 
-    private double analyzerScore = 0.0;
+    private double analyzerScore, mass = 0.0;
 
     private String notes = "";
+
 
 
 
@@ -68,4 +69,51 @@ public class PitData {
     public void setAnalyzerScore(double analyzerScore) {this.analyzerScore = analyzerScore;}
 
 
+    public int getCoralIntake() {
+        return coralIntake;
+    }
+
+    public void setCoralIntake(int coralIntake) {
+        this.coralIntake = coralIntake;
+    }
+
+    public int getAlgaeIntake() {
+        return algaeIntake;
+    }
+
+    public void setAlgaeIntake(int algaeIntake) {
+        this.algaeIntake = algaeIntake;
+    }
+
+    public boolean getNet() {
+        return net;
+    }
+
+    public void setNet(boolean net) {
+        this.net = net;
+    }
+
+    public boolean getProcessor() {
+        return processor;
+    }
+
+    public void setProcessor(boolean processor) {
+        this.processor = processor;
+    }
+
+    public boolean getDislodge() {
+        return dislodge;
+    }
+
+    public void setDislodge(boolean dislodge) {
+        this.dislodge = dislodge;
+    }
+
+    public double getMass() {
+        return mass;
+    }
+
+    public void setMass(double mass) {
+        this.mass = mass;
+    }
 }

@@ -79,10 +79,19 @@ public class UIHelpers {
                     }
                 }
                 if (child instanceof CheckBox){
+                    int c = Color.parseColor(!mode ? "#000000" : "#FFFFFF");
                     int [][] states = {{android.R.attr.state_checked}, {}};
-                    int [] colors = {child.getResources().getColor(MainActivity.scoutLocation < 3 ? R.color.team_red_dark : R.color.team_blue_dark, null), Color.parseColor(viewColor)};
-                    ((CheckBox) child).setTextColor(Color.parseColor(viewColor));
+                    int [] colors = {Color.parseColor(viewColor), c};
+                    ((CheckBox) child).setTextColor(c);
                     ((CheckBox) child).setButtonTintList(new ColorStateList(states, colors));
+                }
+                if (child instanceof Switch){
+                    int c = Color.parseColor(!mode ? "#000000" : "#FFFFFF");
+                    int [][] states = {{android.R.attr.state_checked}, {}};
+                    int [] colors = {Color.parseColor(viewColor), Color.parseColor("#D9D9D9")};
+                    ((Switch) child).setTextColor(c);
+                    ((Switch) child).setThumbTintList(ColorStateList.valueOf(Color.parseColor(viewColor)));
+                    ((Switch) child).setTrackTintList(new ColorStateList(states, colors));
                 }
                 if (child instanceof ViewGroup) {
                     lightDark((ViewGroup) child, mode);

@@ -163,7 +163,7 @@ public class HomePage extends Fragment {
         binding.net.setOnCheckedChangeListener((v, b) -> UserModel.getPitData().setNet(b));
         binding.processor.setOnCheckedChangeListener((v, b) -> UserModel.getPitData().setProcessor(b));
 
-        ArrayAdapter<String> algaeIntake = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Intake", "Reef Intake", "Ground Intake", "Source and Reef Intake"});
+        ArrayAdapter<String> algaeIntake = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Intake", "Reef Intake", "Ground Intake", "Reef and Ground Intake"});
 
         binding.algaeIntake.setAdapter(algaeIntake);
 
@@ -171,6 +171,7 @@ public class HomePage extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 UserModel.getPitData().setAlgaeIntake(position);
+                binding.dislodge.setChecked(position % 2 != 0 || binding.dislodge.isChecked());
             }
 
             @Override
@@ -214,7 +215,15 @@ public class HomePage extends Fragment {
             }
         });
 
-        binding.notesHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Notes", "Here, you can jot down anything extra that you've observed in-game!", getContext()));
+        binding.driveTrainHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Drive Train", "This is the drive train of the robot!", getContext()));
+        binding.massHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Mass", "How massive (heavy) is the robot in pounds?", getContext()));
+        binding.climbHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Climb", "What cages can the robot climb? Tell us here!", getContext()));
+        binding.coralScoringHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Coral Scoring", "These are the branch levels of which the robot can score on!", getContext()));
+        binding.coralIntakeHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Coral Intake", "Can the robot grab coral from the ground, source, or both?", getContext()));
+        binding.algaeScoringHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Algae Scoring", "How does the robot score algae? Can the robot shoot, place in processor, or both?", getContext()));
+        binding.algaeIntakeHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Algae Intake", "These are the places where the robot can obtain algae from!", getContext()));
+        binding.dislodgeHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Algae Dislodging", "Can the robot simply remove algae from the reef? The robot doesn't have to grab it directly!", getContext()));
+        binding.notesHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Notes", "Here, you can jot down anything extra that you've observed in the pits!", getContext()));
         binding.limitHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Character Limit", "You have a 150-character limit for your notes.", getContext()));
         binding.analyzerHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Sentiment Analyzer", "This is the overall sentiment (positivity/negativity) of your notes!", getContext()));
 

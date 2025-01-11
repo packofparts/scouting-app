@@ -40,6 +40,17 @@
             android:textStyle="bold"
             android:shadowColor="@color/black"
             android:shadowRadius="1" />
+        <TextView
+            android:id="@+id/driveTrainHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="ⓘ"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="10dp"
+            android:translationY="208dp"
+            android:textStyle="bold"/>
         <Button
             android:id="@+id/driveTrainBacking"
             android:layout_width="200dp"
@@ -74,7 +85,17 @@
             android:textStyle="bold"
             android:shadowColor="@color/black"
             android:shadowRadius="1" />
-
+        <TextView
+            android:id="@+id/massHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="ⓘ"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="10dp"
+            android:translationY="277dp"
+            android:textStyle="bold"/>
         <Button
             android:id="@+id/massBacking"
             android:layout_width="200dp"
@@ -111,6 +132,17 @@
             android:textStyle="bold"
             android:shadowColor="@color/black"
             android:shadowRadius="1" />
+        <TextView
+            android:id="@+id/climbHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="ⓘ"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="10dp"
+            android:translationY="346dp"
+            android:textStyle="bold"/>
         <Button
             android:id="@+id/climbBacking"
             android:layout_width="200dp"
@@ -158,7 +190,17 @@
             android:textStyle="bold"
             android:shadowColor="@color/black"
             android:shadowRadius="1" />
-
+        <TextView
+            android:id="@+id/coralScoringHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="ⓘ"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="10dp"
+            android:translationY="470dp"
+            android:textStyle="bold"/>
         <CheckBox
             android:id="@+id/L1"
             android:layout_width="60dp"
@@ -232,6 +274,17 @@
             android:textStyle="bold"
             android:shadowColor="@color/black"
             android:shadowRadius="1" />
+        <TextView
+            android:id="@+id/coralIntakeHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="ⓘ"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="10dp"
+            android:translationY="529dp"
+            android:textStyle="bold"/>
         <Button
             android:id="@+id/coralIntakeBacking"
             android:layout_width="200dp"
@@ -266,7 +319,7 @@
             android:textStyle="bold"
             android:shadowColor="@color/black"
             android:shadowRadius="1" />
-
+    
         <TextView
             android:id="@+id/algaeScoringTitle"
             android:layout_width="wrap_content"
@@ -280,6 +333,17 @@
             android:textStyle="bold"
             android:shadowColor="@color/black"
             android:shadowRadius="1" />
+        <TextView
+            android:id="@+id/algaeScoringHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="ⓘ"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="10dp"
+            android:translationY="654dp"
+            android:textStyle="bold"/>
         <CheckBox
             android:id="@+id/net"
             android:layout_width="wrap_content"
@@ -321,6 +385,17 @@
             android:textStyle="bold"
             android:shadowColor="@color/black"
             android:shadowRadius="1" />
+        <TextView
+            android:id="@+id/algaeIntakeHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="ⓘ"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="10dp"
+            android:translationY="713dp"
+            android:textStyle="bold"/>
         <Button
             android:id="@+id/algaeIntakeBacking"
             android:layout_width="200dp"
@@ -361,6 +436,17 @@
             android:trackTint="@color/team_red_dark"
             android:trackTintMode="src_over"
             android:tag="@string/team"/>
+        <TextView
+            android:id="@+id/dislodgeHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="ⓘ"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="10dp"
+            android:translationY="772dp"
+            android:textStyle="bold"/>
         <TextView
             android:id="@+id/notesHelp"
             android:layout_width="wrap_content"

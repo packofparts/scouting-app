@@ -131,7 +131,6 @@ public class SecondFragment2 extends Fragment {
             scaleAnimation.setRepeatCount(1);
             scaleAnimation.setRepeatMode(ObjectAnimator.REVERSE);
 
-            animation.start();
             scaleAnimation.start();
 
             UIHelpers.darkModeToggle(v, animation, this.getContext());

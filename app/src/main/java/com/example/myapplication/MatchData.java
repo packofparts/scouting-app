@@ -220,8 +220,8 @@ public class MatchData {
         this.brokePercent = brokePercent;
     }
 
-    public float getStars() {
-        return (float) stars;
+    public double getStars() {
+        return stars;
     }
 
     public void setStars(double stars) {

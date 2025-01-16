@@ -88,7 +88,7 @@ public class SecondFragment2 extends Fragment {
         binding.inzone.setOnCheckedChangeListener((v, b) -> UserModel.getMatchData().setInZone(b));
 
         binding.ratingBar.setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> UserModel.getMatchData().setStars(rating));
-        binding.ratingBar.setRating(UserModel.getMatchData().getStars());
+        binding.ratingBar.setRating((float) UserModel.getMatchData().getStars());
 
         return binding.getRoot();
     }

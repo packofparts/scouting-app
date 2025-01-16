@@ -17,6 +17,28 @@
         android:background="@drawable/red_light">
 
 
+        <Button
+            android:id="@+id/textbacking1"
+            android:layout_width="378dp"
+            android:layout_height="49dp"
+            android:backgroundTint="#D9D9D9"
+            android:clickable="false"
+            android:tag=""
+            android:text=""
+            android:translationX="17dp"
+            android:translationY="588dp"
+            app:cornerRadius="20dp" />
+
+        <ImageView
+            android:id="@+id/pop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="0"
+            android:rotationY="0"
+            android:src="@drawable/pop"
+            android:translationX="0dp"
+            android:translationY="0dp" />
+
         <TextView
             android:id="@+id/characterLimit"
             android:layout_width="wrap_content"
@@ -26,6 +48,7 @@
             android:textSize="15dp"
             android:translationX="30dp"
             android:translationY="635dp" />
+
         <TextView
             android:id="@+id/analyzerScore"
             android:layout_width="wrap_content"
@@ -36,17 +59,72 @@
             android:translationX="230dp"
             android:translationY="635dp" />
 
+
+        <Switch
+            android:id="@+id/inzone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="248dp"
+            android:translationY="194dp"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowRadius="1"
+            android:switchPadding="56dp"
+            android:switchMinWidth="100dp"
+            android:thumbTint="@color/team_red_dark"
+            android:trackTint="@color/team_red_dark"
+            android:trackTintMode="src_over"
+            android:tag="@string/team"/>
+
         <Button
-            android:id="@+id/textbacking1"
-            android:layout_width="378dp"
+            android:id="@+id/depthCase"
+            android:layout_width="200dp"
             android:layout_height="49dp"
             android:backgroundTint="#D9D9D9"
             android:clickable="false"
             android:tag=""
             android:text=""
-            android:translationX="17dp"
-            android:translationY="589dp"
+            android:translationX="200dp"
+            android:translationY="258dp"
             app:cornerRadius="20dp" />
+
+        <Spinner
+            android:id="@+id/depthDrop"
+            android:layout_width="200dp"
+            android:layout_height="49dp"
+            android:backgroundTint="#000000"
+            android:backgroundTintMode="src_in"
+            android:spinnerMode="dropdown"
+            android:translationX="205dp"
+            android:translationY="258dp"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/climbCase"
+            android:layout_width="200dp"
+            android:layout_height="49dp"
+            android:backgroundTint="#D9D9D9"
+            android:clickable="false"
+            android:tag=""
+            android:text=""
+            android:translationX="200dp"
+            android:translationY="336dp"
+            app:cornerRadius="20dp" />
+
+        <Spinner
+            android:id="@+id/climbDrop"
+            android:layout_width="200dp"
+            android:layout_height="49dp"
+            android:backgroundTint="#000000"
+            android:backgroundTintMode="src_in"
+            android:spinnerMode="dropdown"
+            android:translationX="205dp"
+            android:translationY="336dp"
+            android:visibility="visible" />
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input"
             android:layout_width="322dp"
@@ -71,10 +149,94 @@
             android:translationY="35dp"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:shadowDy="5"
+            android:shadowDy="3"
             android:shadowColor="@color/black"
-            android:shadowRadius="10"
+            android:shadowRadius="5"
             android:tag="@string/no_change"/>
+
+        <TextView
+            android:id="@+id/Barge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shadowColor="@color/black"
+            android:shadowDy="1"
+            android:shadowRadius="2"
+            android:text="Barge ⛓️"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:translationX="160dp"
+            android:translationY="140dp" />
+
+        <TextView
+            android:id="@+id/inzoneText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shadowColor="@color/black"
+            android:shadowDy="1"
+            android:shadowRadius="2"
+            android:text="In Zone️"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:translationX="50dp"
+            android:translationY="194dp" />
+
+        <TextView
+            android:id="@+id/depthText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shadowColor="@color/black"
+            android:shadowDy="1"
+            android:shadowRadius="2"
+            android:text="Depth"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:translationX="50dp"
+            android:translationY="268dp" />
+
+        <TextView
+            android:id="@+id/climbText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shadowColor="@color/black"
+            android:shadowDy="1"
+            android:shadowRadius="2"
+            android:text="Climb"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:translationX="50dp"
+            android:translationY="346dp" />
+
+
+        <TextView
+            android:id="@+id/StarRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shadowColor="@color/black"
+            android:shadowDy="1"
+            android:shadowRadius="3"
+            android:text="Star Rating ⭐️"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:translationX="135dp"
+            android:translationY="405dp" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="0.5"
+            android:progressTint="#FFD700"
+            android:progressBackgroundTint="#D9D9D9"
+            android:tag="@string/no_change"
+            android:translationX="80dp"
+            android:translationY="450dp"/>
+
         <TextView
             android:id="@+id/team"
             android:layout_width="wrap_content"
@@ -143,6 +305,7 @@
             android:translationY="655dp"
             app:cornerRadius="15dp"
             android:tag="@string/bg1"/>
+
         <Button
             android:id="@+id/bg2"
             android:layout_width="378dp"
@@ -198,17 +361,6 @@
             android:translationY="669dp"
             android:textStyle="bold"
             android:tag="@string/team"/>
-
-        <ImageView
-            android:id="@+id/pop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:rotation="0"
-            android:rotationY="0"
-            android:src="@drawable/pop"
-            android:translationX="0dp"
-            android:translationY="0dp" />
-
 
 
 

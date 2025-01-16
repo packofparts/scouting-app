@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><com.example.myapplication.CustomScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,7 +8,7 @@
     <RelativeLayout
 
     android:layout_width="match_parent"
-    android:layout_height="730dp"
+    android:layout_height="870dp"
     android:padding="0dp"
         android:background="@drawable/red_light">
 
@@ -22,7 +21,7 @@
             android:text=""
             android:clickable="false"
             android:translationX="0dp"
-            android:translationY="655dp"
+            android:translationY="792dp"
             app:cornerRadius="15dp"
             android:tag="@string/bg1"/>
 
@@ -34,7 +33,7 @@
             android:text=""
             android:clickable="false"
             android:translationX="17dp"
-            android:translationY="670dp"
+            android:translationY="806dp"
             app:cornerRadius="20dp"
             android:tag="@string/bg2"/>
 
@@ -47,7 +46,7 @@
             android:textSize="36dp"
             android:textColor="#ff0000"
             android:translationX="159dp"
-            android:translationY="669dp"
+            android:translationY="806dp"
             android:textStyle="bold"
             android:tag="@string/team"/>
 
@@ -56,7 +55,7 @@
             android:layout_width="110dp"
             android:layout_height="50dp"
             android:text="Next"
-            android:translationY="669.5dp"
+            android:translationY="806dp"
             android:translationX="285dp"
             app:cornerRadius="20dp"
             android:backgroundTint="#E02E3C"
@@ -76,15 +75,171 @@
         android:translationY="35dp"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:text="Autonomous"
+        android:text="Autonomous" android:textStyle="bold" android:shadowDy="5" android:shadowColor="@color/black" android:shadowRadius="10"
+        android:textSize="40sp" android:tag="@string/no_change"/>
+        <Button
+            android:id="@+id/L4Minus"
+            android:text="-"
+            android:backgroundTint="#E02E3C"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:translationX="170dp"
+            android:translationY="290dp"
+            android:textSize="30dp"
             android:textStyle="bold"
-            android:shadowDy="5"
-            android:shadowColor="@color/black"
-            android:shadowRadius="10"
-        android:textSize="40sp"
-            android:tag="@string/no_change"/>
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:tag="@string/team"
+            />
+        <Button
+            android:id="@+id/L4Plus"
+            android:text="+"
+            android:backgroundTint="#E02E3C"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:translationX="235dp"
+            android:translationY="290dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:tag="@string/team"
+            />
+        <Button
+            android:id="@+id/L4Display"
+            android:text=""
+            android:backgroundTint="#E02E3C"
+            android:layout_width="90dp"
+            android:layout_height="60dp"
+            android:translationX="300dp"
+            android:translationY="290dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:tag="@string/team"
+            />
+        <Button
+            android:id="@+id/L3Minus"
+            android:text="-"
+            android:backgroundTint="#E02E3C"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:translationX="170dp"
+            android:translationY="360dp"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:tag="@string/team"
+            />
+        <Button
+            android:id="@+id/L3Plus"
+            android:text="+"
+            android:backgroundTint="#E02E3C"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:translationX="235dp"
+            android:translationY="360dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:tag="@string/team"
+            />
+        <Button
+            android:id="@+id/L3Display"
+            android:text=""
+            android:backgroundTint="#E02E3C"
+            android:layout_width="90dp"
+            android:layout_height="60dp"
+            android:translationX="300dp"
+            android:translationY="360dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:tag="@string/team"
+            />
+        <Button
+            android:id="@+id/L2Minus"
+            android:text="-"
+            android:backgroundTint="#E02E3C"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:translationX="170dp"
+            android:translationY="430dp"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:tag="@string/team"
+            />
+        <Button
+            android:id="@+id/L2Plus"
+            android:text="+"
+            android:backgroundTint="#E02E3C"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:translationX="235dp"
+            android:translationY="430dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:tag="@string/team"
+            />
+        <Button
+            android:id="@+id/L2Display"
+            android:text=""
+            android:backgroundTint="#E02E3C"
+            android:layout_width="90dp"
+            android:layout_height="60dp"
+            android:translationX="300dp"
+            android:translationY="430dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:tag="@string/team"
+            />
+        <Button
+            android:id="@+id/L1Minus"
+            android:text="-"
+            android:backgroundTint="#E02E3C"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:translationX="170dp"
+            android:translationY="500dp"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:tag="@string/team"
+            />
+        <Button
+            android:id="@+id/L1Plus"
+            android:text="+"
+            android:backgroundTint="#E02E3C"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:translationX="235dp"
+            android:translationY="500dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:tag="@string/team"
+            />
+        <Button
+            android:id="@+id/L1Display"
+            android:text=""
+            android:backgroundTint="#E02E3C"
+            android:layout_width="90dp"
+            android:layout_height="60dp"
+            android:translationX="300dp"
+            android:translationY="500dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:tag="@string/team"
+            />
 
 
+
+        <ImageView
+            android:id="@+id/coralImage"
+            android:layout_width="80dp"
+            android:layout_height="270dp"
+            android:rotationX="360"
+            android:src="@drawable/coral_branches"
+            android:translationX="50dp"
+            android:translationY="300dp"/>
         <ImageView
             android:id="@+id/pop"
             android:layout_width="wrap_content"
@@ -113,13 +268,98 @@
             android:translationY="85dp"
             android:tag="@string/no_change"/>
 
+        <Switch
+            android:id="@+id/dislodge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Moved out of zone"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="30dp"
+            android:translationY="170dp"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowRadius="1"
+            android:switchPadding="56dp"
+            android:switchMinWidth="100dp"
+            android:thumbTint="@color/team_red_dark"
+            android:trackTint="@color/team_red_dark"
+            android:trackTintMode="src_over"
+            android:tag="@string/team"/>
+        <TextView
+            android:id="@+id/coralTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shadowColor="@color/black"
+            android:shadowRadius="1"
+            android:text="Coral Scoring🧻"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:translationX="125dp"
+            android:translationY="250dp" />
+        <TextView
+            android:id="@+id/AlgaeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shadowColor="@color/black"
+            android:shadowRadius="1"
+            android:text="Algae Scoring 🟢"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:translationX="125dp"
+            android:translationY="570dp" />
+        <TextView
+            android:id="@+id/Net"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Net"
+            android:textSize="25dp"
+            android:textColor="#000000"
+            android:translationX="40dp"
+            android:translationY="630dp"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowRadius="1" />
+        <TextView
+            android:id="@+id/Processor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Processor"
+            android:textSize="25dp"
+            android:textColor="#000000"
+            android:translationX="40dp"
+            android:translationY="680dp"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowRadius="1" />
+        <TextView
+            android:id="@+id/Missed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Missed"
+            android:textSize="25dp"
+            android:textColor="#000000"
+            android:translationX="40dp"
+            android:translationY="730dp"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowRadius="1" />
+
         <Button
         android:id="@+id/back"
             android:layout_width="110dp"
             android:layout_height="50dp"
             android:text="Back"
             android:translationX="17dp"
-            android:translationY="669.5dp"
+            android:translationY="806dp"
             android:textColor="@color/white"
             app:cornerRadius="20dp"
             android:backgroundTint="#E02E3C"
@@ -128,7 +368,177 @@
             android:textSize="19.9dp"
             android:textStyle="bold"
             android:tag="@string/team"/>
+        <TextView
+            android:id="@+id/L4Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="L4"
+            android:textSize="30dp"
+            android:textColor="#000000"
+            android:translationX="110dp"
+            android:translationY="300dp"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowRadius="1" />
+        <TextView
+            android:id="@+id/L3Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="L3"
+            android:textSize="30dp"
+            android:textColor="#000000"
+            android:translationX="110dp"
+            android:translationY="370dp"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowRadius="1" />
+        <TextView
+            android:id="@+id/L2Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="L2"
+            android:textSize="30dp"
+            android:textColor="#000000"
+            android:translationX="110dp"
+            android:translationY="440dp"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowRadius="1" />
+        <TextView
+            android:id="@+id/L1Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="L1"
+            android:textSize="30dp"
+            android:textColor="#000000"
+            android:translationX="110dp"
+            android:translationY="500dp"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowRadius="1" />
+        <Button
+            android:id="@+id/NetMinus"
+            android:text="-"
+            android:backgroundTint="#E02E3C"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:translationX="170dp"
+            android:translationY="610dp"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:tag="@string/team"
+            />
+        <Button
+            android:id="@+id/NetPlus"
+            android:text="+"
+            android:backgroundTint="#E02E3C"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:translationX="235dp"
+            android:translationY="610dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:tag="@string/team"
+
+            />
+        <Button
+            android:id="@+id/NetDisplay"
+            android:text=""
+            android:backgroundTint="#E02E3C"
+            android:layout_width="90dp"
+            android:layout_height="60dp"
+            android:translationX="300dp"
+            android:translationY="610dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:tag="@string/team"
+            />
+        <Button
+            android:id="@+id/ProcessorMinus"
+            android:text="-"
+            android:backgroundTint="#E02E3C"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:translationX="170dp"
+            android:translationY="670dp"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:tag="@string/team"
+            />
+        <Button
+            android:id="@+id/ProcessorPlus"
+            android:text="+"
+            android:backgroundTint="#E02E3C"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:translationX="235dp"
+            android:translationY="670dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:tag="@string/team"
+
+            />
+        <Button
+            android:id="@+id/ProcessorDisplay"
+            android:text=""
+            android:backgroundTint="#E02E3C"
+            android:layout_width="90dp"
+            android:layout_height="60dp"
+            android:translationX="300dp"
+            android:translationY="670dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:tag="@string/team"
+            />
+        <Button
+            android:id="@+id/MissedMinus"
+            android:text="-"
+            android:backgroundTint="#E02E3C"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:translationX="170dp"
+            android:translationY="730dp"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:tag="@string/team"
+            />
+        <Button
+            android:id="@+id/MissedPlus"
+            android:text="+"
+            android:backgroundTint="#E02E3C"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:translationX="235dp"
+            android:translationY="730dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:tag="@string/team"
+
+            />
+        <Button
+            android:id="@+id/MissedDisplay"
+            android:text=""
+            android:backgroundTint="#E02E3C"
+            android:layout_width="90dp"
+            android:layout_height="60dp"
+            android:translationX="300dp"
+            android:translationY="730dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:tag="@string/team"
+            />
+
 
 
     </RelativeLayout>
-    </androidx.core.widget.NestedScrollView>
+</com.example.myapplication.CustomScrollView>

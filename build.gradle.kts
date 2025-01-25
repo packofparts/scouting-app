@@ -6,7 +6,7 @@ plugins {
 
 sonar {
   properties {
-    property("sonar.projectKey", "scouting-app")
+    property("sonar.projectKey", "FRC-1294_scouting-app")
     property("sonar.organization", "packofparts")
     property("sonar.host.url", "https://sonarcloud.io")
   }

@@ -3,6 +3,11 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("C:\\Users\\duozh\\ScoutApp\\app\\build.gradle.kts")
+        }
+    }
     namespace = "com.example.myapplication"
     compileSdk = 34
 

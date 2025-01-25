@@ -5,7 +5,7 @@ plugins {
 android {
     signingConfigs {
         getByName("debug") {
-            storeFile = file("C:\\Users\\duozh\\ScoutApp\\app\\build.gradle.kts")
+            //storeFile = file("C:\\Users\\duozh\\ScoutApp\\app\\src\\main\\java\\com\\example\\myapplication\\MainActivity.java")
         }
     }
     namespace = "com.example.myapplication"

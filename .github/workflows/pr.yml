@@ -1,0 +1,81 @@
+name: PR Validation
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  codeql:
+    name: CodeQL Analysis
+    runs-on: ubuntu-latest
+
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+
+    steps:
+    - name: Checking out Code
+      uses: actions/checkout@v4
+
+    - name: Fetching Git Tags
+      run: git fetch --tags
+
+    - name: Setting up Java
+      uses: actions/setup-java@v4
+      with:
+        java-version: '23'
+        distribution: 'temurin'
+        cache: 'gradle'
+
+    - name: Initializing CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: java
+  
+    - name: Building
+      run: ./gradlew build --info
+      env:
+        PACKAGE_FETCH_ACTOR: ${{ github.actor }}
+        PACKAGE_FETCH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Analyzing
+      uses: github/codeql-action/analyze@v3
+      with:
+        category: "/language:java"
+
+  sonar:
+    name: Sonar Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checking out Code
+      uses: actions/checkout@v4
+
+    - name: Fetching Git Tags
+      run: git fetch --tags
+
+    - name: Setting up Java
+      uses: actions/setup-java@v4
+      with:
+        java-version: '23'
+        distribution: 'temurin'
+        cache: 'gradle'
+
+    - name: Caching SonarQube packages
+      uses: actions/cache@v4
+      with:
+        path: ~/.sonar/cache
+        key: ${{ runner.os }}-sonar
+        restore-keys: ${{ runner.os }}-sonar
+
+    - name: Building and Analyzing
+      run: ./gradlew build sonar --info
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        PACKAGE_FETCH_ACTOR: ${{ github.actor }}
+        PACKAGE_FETCH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

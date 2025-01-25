@@ -5,7 +5,7 @@ plugins {
 android {
     signingConfigs {
         getByName("debug") {
-            //storeFile = file("C:\\Users\\duozh\\ScoutApp\\app\\src\\main\\java\\com\\example\\myapplication\\MainActivity.java")
+            storeFile = file("..\\..\\.android\\debug.keystore")
         }
     }
     namespace = "com.example.myapplication"

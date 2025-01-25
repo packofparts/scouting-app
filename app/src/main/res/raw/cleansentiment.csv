@@ -6,7 +6,7 @@ aaron,-0.32
 abandoned,-0.09
 abby,0.64
 ability,-0.03
-able,-0.04
+able,0.26
 abnormal,-0.34
 aboard,-0.15
 above,0.2
@@ -261,7 +261,7 @@ anything,-0.14
 anyway,0.46
 anywhere,-0.06
 ap,0.09
-apart,0.61
+apart,-0.61
 apartment,-0.3
 appalled,-0.49
 apparent,-0.54
@@ -394,8 +394,9 @@ authentic,0.56
 author,0.3
 authorities,-0.66
 authority,-0.23
-automated,-0.12
+automated,0.3
 automatic,0.97
+automatically,1.5
 available,0.04
 avenue,0.25
 average,0.4
@@ -530,11 +531,11 @@ beneficial,0.36
 benefit,0.14
 benefits,0.41
 benign,0.95
-bent,0.18
+bent,-0.3
 berkeley,0.07
 beside,-0.04
 besides,-0.38
-best,1.4
+best,3.38
 bet,-0.63
 better,0.06
 between,0.82
@@ -542,9 +543,9 @@ bewildered,-1.26
 beyond,0.08
 bible,-0.02
 biblical,0.05
-big,-0.1
+big,-0.15
 bigger,-0.29
-biggest,0.02
+biggest,-0.5
 bike,-0.05
 bill,0.21
 billion,0.42
@@ -691,8 +692,8 @@ broad,0.36
 broadband,0.15
 broader,0.16
 broadway,0.62
-broke,-0.13
-broken,-0.5
+broke,-1.13
+broken,-1.5
 brooding,-0.3
 brooklyn,0.16
 brother,0.93
@@ -771,6 +772,7 @@ campaign,0.36
 campbell,0.01
 camps,0.19
 campus,0.1
+can,1.0
 canada,-0.21
 canadian,0.08
 cancer,-0.62
@@ -779,6 +781,7 @@ candidates,0.37
 candy,0.54
 canine,-0.08
 canned,0.59
+cannot,-1.0
 canvas,0.22
 canyon,0.27
 cap,0.33
@@ -1266,6 +1269,7 @@ cramped,-0.02
 crane,0.09
 cranky,-1.64
 crash,-2.05
+crashed,-2.05
 crazy,-1.19
 creaking,-0.68
 cream,0.8
@@ -1420,10 +1424,10 @@ declined,-0.64
 declining,-0.13
 decorative,0.89
 dedicated,-0.02
-deep,-0.23
-deeper,-0.03
-deepest,-0.12
-deeply,-1.46
+deep,1.3
+deeper,1.8
+deepest,2.3
+deeply,2.1
 deer,-0.97
 defeat,-0.79
 defend,-0.02
@@ -1520,8 +1524,9 @@ diagnostic,-0.22
 dial,0
 diamond,0.95
 diane,0.75
+didnt,-3.0
 die,-0.34
-died,0.72
+died,-0.72
 diego,0.11
 diet,-0.01
 dietary,0.4
@@ -2052,7 +2057,7 @@ feelings,-0.24
 feels,-0.67
 fees,0.2
 feet,0.15
-fell,-0.1
+fell,-0.5
 fellow,0.63
 felt,-0.74
 female,0.7
@@ -2225,7 +2230,7 @@ fourteen,0.03
 fourth,1.04
 fox,-0.05
 fractured,-0.81
-fragile,1.04
+fragile,-1.04
 fragrant,1.86
 frail,0.13
 frame,1.29
@@ -2555,9 +2560,9 @@ heated,0.42
 heather,0.43
 heaven,-0.31
 heavenly,0.65
-heavier,0.37
+heavier,-0.89
 heavily,-0.63
-heavy,0.47
+heavy,-0.7
 heel,0.56
 heels,0.24
 hefty,0.51
@@ -2591,7 +2596,7 @@ hidden,0.31
 hide,-0.44
 hideous,-2.58
 hiding,0.06
-high,0.02
+high,0.2
 higher,0.24
 highest,0.4
 highly,-0.67
@@ -2646,6 +2651,7 @@ horizon,-0.17
 horizontal,-0.3
 horn,-0.26
 horrific,-2.83
+horrible,-2.83
 horror,-1.03
 horse,-0.47
 horses,-0.48
@@ -2670,7 +2676,7 @@ hudson,0.98
 huge,0.33
 hugh,0.37
 huh,0.85
-human,-0.85
+human,0.0
 humane,0.56
 humanitarian,-0.19
 humanity,-1.85
@@ -2916,9 +2922,9 @@ isabel,0.46
 island,0.04
 islands,-0.29
 isolated,-1.18
-issue,-0.81
+issue,-0.52
 issued,-0.01
-issues,-0.52
+issues,-0.81
 italian,0.98
 italy,-0.25
 item,0.41
@@ -3252,14 +3258,14 @@ look,0.02
 looked,0.05
 looking,0.31
 looks,0.04
-loose,0.27
+loose,-0.27
 lord,0.49
 los,0.38
 lose,0.42
 losing,-0.17
 loss,-1.33
 losses,-0.68
-lost,0.64
+lost,-0.64
 lot,-0.86
 lots,-0.91
 lou,0.21
@@ -3270,7 +3276,7 @@ louis,0.21
 lousy,-1.03
 loves,-1.01
 loving,2.08
-low,0.17
+low,-0.17
 lower,0.09
 lowered,0.12
 lowest,-0.2
@@ -3503,10 +3509,10 @@ mischievous,0.36
 miserable,-2.57
 misguided,-1.98
 misleading,-0.47
-miss,1.42
+miss,-1.42
 missed,-0.53
-missile,-0.63
-missing,0.3
+missile,0.63
+missing,-0.3
 mission,-0.1
 mississippi,-0.94
 mist,-0.47
@@ -3707,6 +3713,7 @@ northwest,-0.43
 northwestern,-0.12
 nose,0.19
 nostalgic,0.28
+not,-3.00
 notable,0.24
 note,0.42
 notebook,0.18
@@ -3758,8 +3765,8 @@ october,0.71
 odd,-0.42
 odds,0.23
 off,-0.17
-offense,0.07
-offensive,-0.08
+offense,0.17
+offensive,-0.03
 offer,0.51
 offered,0.14
 offering,0.52
@@ -3986,6 +3993,7 @@ peered,0.06
 peers,0.5
 pelvic,-1.04
 pen,0.16
+penalty,-1.5
 pending,-0.33
 penetrating,0.01
 pennsylvania,-0.34
@@ -4102,7 +4110,7 @@ platform,0.17
 plausible,-0.13
 play,0.45
 played,0.55
-player,0.37
+player,0.0
 players,0.37
 playful,1.42
 playing,0.63
@@ -4117,6 +4125,7 @@ plump,2.04
 plus,0.06
 plush,1.19
 pm,0.84
+pneumatic,-0.1
 pocket,0.17
 pockets,0.25
 poem,0.23
@@ -4124,7 +4133,7 @@ poet,0.64
 poetic,0.01
 poetry,0.28
 poignant,-0.12
-point,-0.04
+point,0.1
 pointed,0.17
 pointing,0.45
 pointless,-0.87
@@ -4143,6 +4152,7 @@ politics,0.07
 pollution,-0.35
 pond,0.17
 pool,0.22
+poor,-0.5
 poorest,-0.62
 pop,0.91
 pope,0.03
@@ -4544,8 +4554,8 @@ remind,-1.89
 reminded,-1.15
 reminiscent,0.93
 remote,-0.78
-remove,0.36
-removed,0.09
+remove,-0.88
+removed,-0.88
 renewable,0.34
 renewed,0.3
 renowned,0.34
@@ -4930,7 +4940,7 @@ shakes,0.11
 shaking,0.14
 shaky,-1.55
 shall,0.77
-shallow,0.05
+shallow,0.5
 shame,-2.17
 shape,0.53
 shaped,1.28
@@ -5100,9 +5110,9 @@ slowed,-0.25
 slower,-0.5
 slowly,-0.38
 sly,0.14
-small,-0.35
+small,0.35
 smaller,0.11
-smallest,0.23
+smallest,0.5
 smart,1.04
 smarter,0.4
 smartest,-0.08
@@ -5120,8 +5130,8 @@ smoky,1.08
 smooth,2.38
 smug,-0.19
 snake,-2.58
-snap,0
-snapped,0.03
+snap,-0.5
+snapped,-0.5
 snow,0.05
 snowy,0.1
 snug,0.95
@@ -5480,6 +5490,7 @@ survival,-0.8
 survive,-0.92
 survived,-1.46
 surviving,0.1
+sus,-0.9
 susan,0.74
 susceptible,-0.97
 suspect,-1.68
@@ -5496,6 +5507,7 @@ sweeping,0.35
 sweet,1.47
 swelling,-0.7
 swept,-0.26
+swerve,1.0
 swift,0.39
 swim,-0.15
 swimming,0.08
@@ -6018,6 +6030,7 @@ vigorous,0.68
 vile,-3.18
 village,0.26
 vincent,0.21
+violation,-2.84
 violence,-1.62
 violent,-1.17
 virginia,-0.39

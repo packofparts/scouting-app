@@ -44,9 +44,9 @@ public class SecondFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        binding.next.setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
+        binding.cont.setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
                 .navigate(R.id.action_SecondFragment_to_SecondFragment2));
-        binding.prev.setOnClickListener(view12 -> NavHostFragment.findNavController(SecondFragment.this)
+        binding.back.setOnClickListener(view12 -> NavHostFragment.findNavController(SecondFragment.this)
                 .navigate(R.id.action_SecondFragment_to_ThirdFragment));
 
         DisplayMetrics displayMetrics = new DisplayMetrics();

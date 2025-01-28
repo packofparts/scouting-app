@@ -1,6 +1,4 @@
-buildscript {
-    val agp_version by extra("8.7.3")
-}
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
     alias(libs.plugins.android.application) apply false

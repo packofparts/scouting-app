@@ -3,23 +3,30 @@ package com.example.myapplication;
 
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.UiModeManager;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.util.Log;
 import android.media.MediaPlayer;
+import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import androidx.core.content.res.ResourcesCompat;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.io.IOException;
 
 public class UIHelpers {
     public static int purple = Color.parseColor("#6750A3");
@@ -29,7 +36,7 @@ public class UIHelpers {
     public static final float[] wolfFrames = {0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f};
     public static MediaPlayer mp;
     public static boolean darkMode = false;
-    public static void lightDark (ViewGroup v, boolean mode, String name){
+    public static void lightDark (ViewGroup v, boolean mode){
         //background color and color of the actual ui elements
 
 
@@ -40,7 +47,7 @@ public class UIHelpers {
             String str = (MainActivity.scoutLocation < 3 ? "red" : "blue") + "_" + (mode ? "dark" : "light");
             try {
 
-                viewColor = child.getResources().getString(R.color.class.getField(name + "_" + getId(child) + "_" + str).getInt(null));
+                viewColor = child.getResources().getString(R.color.class.getField(child.getTag() + "_" + str).getInt(null));
                 found = true;
             } catch (Exception e) {
 
@@ -71,8 +78,23 @@ public class UIHelpers {
                         tx.setTextColor(Color.parseColor(viewColor));
                     }
                 }
+                if (child instanceof CheckBox){
+                    int c = Color.parseColor(!mode ? "#000000" : "#FFFFFF");
+                    int [][] states = {{android.R.attr.state_checked}, {}};
+                    int [] colors = {Color.parseColor(viewColor), c};
+                    ((CheckBox) child).setTextColor(c);
+                    ((CheckBox) child).setButtonTintList(new ColorStateList(states, colors));
+                }
+                if (child instanceof Switch){
+                    int c = Color.parseColor(!mode ? "#000000" : "#FFFFFF");
+                    int [][] states = {{android.R.attr.state_checked}, {}};
+                    int [] colors = {Color.parseColor(viewColor), Color.parseColor("#D9D9D9")};
+                    ((Switch) child).setTextColor(c);
+                    ((Switch) child).setThumbTintList(ColorStateList.valueOf(Color.parseColor(viewColor)));
+                    ((Switch) child).setTrackTintList(new ColorStateList(states, colors));
+                }
                 if (child instanceof ViewGroup) {
-                    lightDark((ViewGroup) child, mode, name);
+                    lightDark((ViewGroup) child, mode);
                 }
             }
         }
@@ -86,7 +108,8 @@ public class UIHelpers {
         width = w;
         height = h;
         if (v instanceof CustomScrollView || v instanceof RelativeLayout) {
-            v.setMinimumHeight((int) h);
+            v.setMinimumHeight((int)(h * (v.getLayoutParams().height/relY)));
+
         }
         //background color and color of the actual ui elements
         for (int i = 0; i < v.getChildCount(); i ++){
@@ -98,8 +121,15 @@ public class UIHelpers {
                     child.setScaleX(width / relX);
                     child.setScaleY(height / relY);
                 }
+            } else if (child instanceof Spinner) {
+                child.setTranslationX(width * (child.getTranslationX() / relX));
+                child.setTranslationY(height * ((child.getTranslationY() + child.getHeight()/2f) / relY));
+                if (width < relX && height < relY) {
+                    child.setScaleX(width / relX);
+                    child.setScaleY(height / relY);
+                }
             } else {
-                relate((ViewGroup) child, width, height, density);
+                    relate((ViewGroup) child, width, height, density);
             }
         }
     }
@@ -110,14 +140,31 @@ public class UIHelpers {
         }
         mp.start();
     }
-    public static void darkModeToggle(ViewGroup v, ObjectAnimator animation, Context context, String name) {
+    public static void darkModeToggle(ViewGroup v, ObjectAnimator animation, Context context) {
         animation.start();
         darkMode = !darkMode;
-        lightDark(v, darkMode, name);
+        lightDark(v, darkMode);
         playHowlSound(context);
     }
-    public static String getId(View view) {
-        if (view.getId() == View.NO_ID) return "no-id";
-        else return view.getResources().getResourceName(view.getId()).replace("com.example.myapplication:id/", "");
+    public static void makeConfirmationAlert(String title, String message, Runnable yes, Runnable no, Context c){
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton("Yes", (dialog, which) -> {
+            yes.run();
+            dialog.cancel();
+        });
+        builder.setNegativeButton("No", (dialog, which) -> {
+            no.run();
+            dialog.cancel();
+        });
+        builder.create().show();
+    }
+    public static void makeHelpAlert(String title, String message, Context c){
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setTitle(title);
+        builder.setMessage(message + "\n\nIf needed, please raise your hand, so a scouting member can help you!");
+        builder.setPositiveButton("I got it!", (dialog, which) -> dialog.cancel());
+        builder.create().show();
     }
 }

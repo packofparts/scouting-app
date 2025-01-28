@@ -6,16 +6,14 @@ import androidx.lifecycle.ViewModel;
 
 public class UserModel extends ViewModel {
     private static MatchData matchData = new MatchData();
-    public MutableLiveData<MatchData> userLiveData = new MutableLiveData<>(matchData);
+    private static PitData pitData = new PitData();
 
-    public LiveData<MatchData> getData() {
-
-        return userLiveData;
+    public static PitData getPitData() {
+        return pitData;
     }
 
-    public UserModel() {
-        // trigger user load.
-        userLiveData = new MutableLiveData<>();
+    public static void setPitData(PitData pitData) {
+        UserModel.pitData = pitData;
     }
 
     public void setMatchData(MatchData matchData){

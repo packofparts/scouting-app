@@ -2,13 +2,11 @@ package com.example.myapplication;
 
 import android.animation.ObjectAnimator;
 import android.app.Activity;
-import android.content.res.Configuration;
-import android.graphics.Color;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +18,9 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentFirstBinding;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 
 public class FirstFragment extends Fragment {
     private FragmentFirstBinding binding;
@@ -46,6 +47,7 @@ public class FirstFragment extends Fragment {
         UserModel userModel = viewModelProvider.get(UserModel.class);
         MatchData matchData = new MatchData();
         userModel.setMatchData(matchData);
+        userModel.setPitData(new PitData());
 
         return binding.getRoot();
     }
@@ -56,7 +58,7 @@ public class FirstFragment extends Fragment {
         binding.cont.setOnClickListener(v -> {
             String teamNumber = String.valueOf(binding.input.getText());
             String matchNumber = String.valueOf(binding.matchInput.getText());
-            boolean teamNumberCheck = (!teamNumber.isEmpty() && teamNumber.length() < 5 && !teamNumber.equals("0"));
+            boolean teamNumberCheck = (!teamNumber.isEmpty() && teamNumber.length() <= 6 && !teamNumber.equals("0"));
             boolean matchNumCheck = (!matchNumber.isEmpty() && !matchNumber.equals("0"));
             if (teamNumberCheck && matchNumCheck) {
                 UserModel.getMatchData().setTeamNumber(teamNumber);
@@ -73,12 +75,21 @@ public class FirstFragment extends Fragment {
             }
         });
 
-        binding.back.setOnClickListener(v -> NavHostFragment.findNavController(FirstFragment.this)
-                .navigate(R.id.action_FirstFragment_to_HomePage));
+        binding.back.setOnClickListener(v -> {
+            String teamNumber = String.valueOf(binding.input.getText());
+            boolean teamNumberCheck = (!teamNumber.isEmpty() && teamNumber.length() < 5 && !teamNumber.equals("0"));
+            if (teamNumberCheck) {
+                UserModel.getPitData().setTeamNumber(teamNumber);
+                NavHostFragment.findNavController(FirstFragment.this)
+                        .navigate(R.id.action_FirstFragment_to_HomePage);
+            } else {
+                Snackbar.make(view, "Invalid team number", 600).show();
+            }
+        });
 
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", UIHelpers.wolfFrames);
         animation.setDuration(1000);
-        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext(), "fragment_first"));
+        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
 
         DisplayMetrics dm = new DisplayMetrics();
         ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -102,6 +113,9 @@ public class FirstFragment extends Fragment {
                 }
             }
         });
+
+        binding.teamNumberHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Team Number", "This is the number of the team that you will be scouting!", getContext()));
+        binding.matchNumberHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Match Number", "This is the match number that we are currently on!", getContext()));
 
         binding.matchInput.addTextChangedListener(new TextWatcher() {
             @Override
@@ -138,10 +152,28 @@ public class FirstFragment extends Fragment {
                 }
             }
         });
-        binding.bottomTag.setText((MainActivity.scoutLocation < 3 ? "Red " : "Blue ") + (MainActivity.scoutLocation % 3 + 1));
+        binding.bottomTag.setText(MainActivity.getLocationText());
+        binding.bottomTag.setOnLongClickListener(lc -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setTitle("Set Scout Location");
+            builder.setOnDismissListener(d -> {
+                MainActivity.updateTeams(getResources());
+                UIHelpers.lightDark(v, UIHelpers.darkMode);
+                binding.bottomTag.setText(MainActivity.getLocationText());
 
+            });
+            builder.setNeutralButton("Cancel", (d, w) -> {
+                d.cancel();
+            });
+            builder.setItems(new CharSequence[]{"Red 1", "Red 2", "Red 3", "Blue 1", "Blue 2", "Blue 3"}, (d, w) -> {
+                MainActivity.scoutLocation = w;
+                MainActivity.writeInt("ScoutLocation", w);
+            });
+            builder.create().show();
+            return false;
+        });
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
-        UIHelpers.lightDark(v, UIHelpers.darkMode, "fragment_first");
+        UIHelpers.lightDark(v, UIHelpers.darkMode);
     }
     @Override
     public void onDestroyView() {

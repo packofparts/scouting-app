@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.application")
+   alias(libs.plugins.android.application)
 }
 
 android {
@@ -9,12 +9,18 @@ android {
         }
     }
     namespace = "com.example.myapplication"
-    compileSdk = 34
+    compileSdk = 35
 
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("..\\debug.keystore")
+        }
+    }
+   
     defaultConfig {
         applicationId = "com.example.myapplication"
-        minSdk = 24 //change to 22 for older SDK/Android versions
-        targetSdk = 34
+        minSdk = 24
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -31,8 +37,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     buildFeatures {
         viewBinding = true
@@ -40,14 +46,13 @@ android {
 }
 
 dependencies {
-
-    implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("com.google.android.material:material:1.12.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.2.0")
-    implementation("androidx.navigation:navigation-fragment:2.8.5")
-    implementation("androidx.navigation:navigation-ui:2.8.5")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.18.2")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.2.1")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+    implementation(libs.appcompat)
+    implementation(libs.material)
+    implementation(libs.constraintlayout)
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
+    implementation(libs.fasterxml.jackson.databind)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.ext.junit)
+    androidTestImplementation(libs.espresso.core)
 }

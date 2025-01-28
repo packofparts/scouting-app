@@ -180,7 +180,9 @@ public class HomePage extends Fragment {
 
         binding.dislodge.setOnCheckedChangeListener((v, b) -> UserModel.getPitData().setDislodge(b));
 
-        binding.cont.setOnClickListener(view1 -> UIHelpers.makeConfirmationAlert("Transfer Pit Data", "Do you want to transfer your pit data?", () -> {
+        binding.cont.setOnClickListener(view1 ->
+
+                UIHelpers.makeConfirmationAlert("Transfer Pit Data", "Do you want to transfer your pit data?", () -> {
             try {
                 UserModel.getPitData().toJson();
             } catch (IOException e) {

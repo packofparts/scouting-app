@@ -25,8 +25,7 @@
             android:translationX="145dp"
             android:translationY="149dp"
             android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1" />
+              />
         <TextView
             android:id="@+id/driveTrainTitle"
             android:layout_width="wrap_content"
@@ -37,9 +36,7 @@
             android:textColor="#000000"
             android:translationX="40dp"
             android:translationY="208dp"
-            android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1" />
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/driveTrainHelp"
             android:layout_width="wrap_content"
@@ -82,9 +79,7 @@
             android:textColor="#000000"
             android:translationX="40dp"
             android:translationY="277dp"
-            android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1" />
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/massHelp"
             android:layout_width="wrap_content"
@@ -129,9 +124,7 @@
             android:textColor="#000000"
             android:translationX="40dp"
             android:translationY="346dp"
-            android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1" />
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/climbHelp"
             android:layout_width="wrap_content"
@@ -175,8 +168,7 @@
             android:translationX="145dp"
             android:translationY="421dp"
             android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1" />
+              />
         <TextView
             android:id="@+id/coralScoringTitle"
             android:layout_width="wrap_content"
@@ -187,9 +179,7 @@
             android:textColor="#000000"
             android:translationX="40dp"
             android:translationY="470dp"
-            android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1" />
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/coralScoringHelp"
             android:layout_width="wrap_content"
@@ -212,8 +202,7 @@
             android:translationX="142dp"
             android:translationY="470dp"
             android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1"
+             
             android:paddingLeft="-10dp"
             android:tag="@string/team"/>
         <CheckBox
@@ -227,8 +216,7 @@
             android:translationX="204dp"
             android:translationY="470dp"
             android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1"
+             
             android:paddingLeft="-10dp"
             android:tag="@string/team"/>
         <CheckBox
@@ -242,8 +230,7 @@
             android:translationX="265dp"
             android:translationY="470dp"
             android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1"
+             
             android:paddingLeft="-10dp"
             android:tag="@string/team"/>
         <CheckBox
@@ -257,8 +244,7 @@
             android:translationX="326dp"
             android:translationY="470dp"
             android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1"
+             
             android:paddingLeft="-10dp"
             android:tag="@string/team"/>
         <TextView
@@ -271,9 +257,7 @@
             android:textColor="#000000"
             android:translationX="40dp"
             android:translationY="529dp"
-            android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1" />
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/coralIntakeHelp"
             android:layout_width="wrap_content"
@@ -316,9 +300,7 @@
             android:textColor="#000000"
             android:translationX="145dp"
             android:translationY="604dp"
-            android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1" />
+            android:textStyle="bold" />
     
         <TextView
             android:id="@+id/algaeScoringTitle"
@@ -331,8 +313,7 @@
             android:translationX="40dp"
             android:translationY="654dp"
             android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1" />
+              />
         <TextView
             android:id="@+id/algaeScoringHelp"
             android:layout_width="wrap_content"
@@ -355,8 +336,7 @@
             android:translationX="153dp"
             android:translationY="654dp"
             android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1"
+             
             android:tag="@string/team"/>
         <CheckBox
             android:id="@+id/processor"
@@ -369,8 +349,7 @@
             android:translationX="242dp"
             android:translationY="654dp"
             android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1"
+             
             android:tag="@string/team"/>
         <TextView
             android:id="@+id/algaeIntakeTitle"
@@ -383,8 +362,7 @@
             android:translationX="40dp"
             android:translationY="713dp"
             android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1" />
+              />
         <TextView
             android:id="@+id/algaeIntakeHelp"
             android:layout_width="wrap_content"
@@ -428,8 +406,7 @@
             android:translationX="40dp"
             android:translationY="772dp"
             android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1"
+             
             android:switchPadding="56dp"
             android:switchMinWidth="100dp"
             android:thumbTint="@color/team_red_dark"
@@ -598,9 +575,6 @@
             android:textColor="@color/white"
             android:text="Pit Scouting"
             android:textStyle="bold"
-            android:shadowDy="5"
-            android:shadowColor="@color/black"
-            android:shadowRadius="10"
             android:textSize="40sp"
             android:tag="@string/no_change"/>
 

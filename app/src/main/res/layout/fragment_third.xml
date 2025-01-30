@@ -75,7 +75,7 @@
         android:translationY="35dp"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:text="Autonomous" android:textStyle="bold" android:shadowDy="5" android:shadowColor="@color/black" android:shadowRadius="10"
+        android:text="Autonomous" android:textStyle="bold"
         android:textSize="40sp" android:tag="@string/no_change"/>
         <Button
             android:id="@+id/L4Minus"
@@ -279,8 +279,7 @@
             android:translationX="30dp"
             android:translationY="170dp"
             android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1"
+             
             android:switchPadding="56dp"
             android:switchMinWidth="100dp"
             android:thumbTint="@color/team_red_dark"
@@ -291,8 +290,7 @@
             android:id="@+id/coralTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1"
+             
             android:text="Coral Scored🧻"
             android:textAlignment="center"
             android:textColor="#000000"
@@ -304,8 +302,7 @@
             android:id="@+id/coralMissedTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1"
+             
             android:text="Total Coral Missed🧻"
             android:textAlignment="center"
             android:textColor="#000000"
@@ -362,14 +359,12 @@
             android:translationX="50dp"
             android:translationY="690dp"
             android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1" />
+              />
         <TextView
             android:id="@+id/AlgaeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1"
+             
             android:text="Algae Scoring 🟢"
             android:textAlignment="center"
             android:textColor="#000000"
@@ -388,8 +383,7 @@
             android:translationX="40dp"
             android:translationY="860dp"
             android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1" />
+              />
         <TextView
             android:id="@+id/Processor"
             android:layout_width="wrap_content"
@@ -401,8 +395,7 @@
             android:translationX="40dp"
             android:translationY="910dp"
             android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1" />
+              />
         <TextView
             android:id="@+id/Missed"
             android:layout_width="wrap_content"
@@ -414,8 +407,7 @@
             android:translationX="40dp"
             android:translationY="960dp"
             android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1" />
+              />
 
         <Button
         android:id="@+id/back"
@@ -443,8 +435,7 @@
             android:translationX="110dp"
             android:translationY="300dp"
             android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1" />
+              />
         <TextView
             android:id="@+id/L3Title"
             android:layout_width="wrap_content"
@@ -456,8 +447,7 @@
             android:translationX="110dp"
             android:translationY="370dp"
             android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1" />
+              />
         <TextView
             android:id="@+id/L2Title"
             android:layout_width="wrap_content"
@@ -469,8 +459,7 @@
             android:translationX="110dp"
             android:translationY="440dp"
             android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1" />
+              />
         <TextView
             android:id="@+id/L1Title"
             android:layout_width="wrap_content"
@@ -482,8 +471,7 @@
             android:translationX="110dp"
             android:translationY="500dp"
             android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1" />
+              />
         <Button
             android:id="@+id/NetMinus"
             android:text="-"

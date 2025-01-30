@@ -34,9 +34,6 @@
             android:translationY="35dp"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:shadowDy="5"
-            android:shadowColor="@color/black"
-            android:shadowRadius="10"
             android:tag="@string/no_change"/>
         <TextView
             android:id="@+id/team"

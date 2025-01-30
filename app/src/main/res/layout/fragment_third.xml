@@ -301,6 +301,17 @@
             android:translationX="125dp"
             android:translationY="250dp" />
         <TextView
+            android:id="@+id/coralScoringHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="ⓘ"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="95dp"
+            android:translationY="250dp"
+            android:textStyle="bold"/>
+        <TextView
             android:id="@+id/coralMissedTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -313,6 +324,17 @@
             android:textStyle="bold"
             android:translationX="100dp"
             android:translationY="620dp" />
+        <TextView
+            android:id="@+id/coralMissedHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="ⓘ"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="70dp"
+            android:translationY="620dp"
+            android:textStyle="bold"/>
         <Button
             android:id="@+id/MissedCoralMinus"
             android:text="-"
@@ -377,6 +399,17 @@
             android:textStyle="bold"
             android:translationX="125dp"
             android:translationY="800dp" />
+        <TextView
+            android:id="@+id/AlgaeScoringHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="ⓘ"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="95dp"
+            android:translationY="800dp"
+            android:textStyle="bold"/>
         <TextView
             android:id="@+id/Net"
             android:layout_width="wrap_content"

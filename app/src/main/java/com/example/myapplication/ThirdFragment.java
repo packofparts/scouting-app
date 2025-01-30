@@ -194,6 +194,10 @@ public class ThirdFragment extends Fragment {
             binding.MissedDisplay.setText(String.valueOf(UserModel.getMatchData().getAutoMissedAlgae()));
         });
             binding.moveOutOfZone.setOnCheckedChangeListener((v, b) -> UserModel.getMatchData().setMoveOutOfZone(b));
+        binding.coralScoringHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Coral Scoring", "These are the number of times the robot scored onto each level.", getContext()));
+        binding.coralMissedHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Coral Missed", "Add a point into this category if the robot tries to score coral and fails. I't doesn't matter which branch the robot attempted and to score on and failed, add a point here regardless!", getContext()));
+        binding.AlgaeScoringHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Algae Scoring", "How does the robot score algae? Does the robot shoot it through the net in the middle of the field? or does insert it in the processor at the ground of the field? or did the robot fail to do both? add your observations here!", getContext()));
+
 
     }
     @Override

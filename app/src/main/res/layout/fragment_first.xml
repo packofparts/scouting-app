@@ -77,9 +77,6 @@
             android:translationY="113dp"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:shadowDy="5"
-            android:shadowColor="@color/black"
-            android:shadowRadius="10"
             android:tag="@string/no_change"/>
 
         <TextView
@@ -105,8 +102,7 @@
             android:translationX="123dp"
             android:translationY="270dp"
             android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1"
+             
             android:tag="@string/team"/>
         <TextView
             android:id="@+id/matchNumberTag"
@@ -119,8 +115,7 @@
             android:translationX="116dp"
             android:translationY="370dp"
             android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1"
+             
             android:tag="@string/team"/>
         <TextView
             android:id="@+id/matchNumberTag2"
@@ -132,9 +127,7 @@
             android:textColor="#000000"
             android:translationX="193dp"
             android:translationY="370dp"
-            android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1" />
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/matchNumberHelp"
             android:layout_width="wrap_content"
@@ -157,9 +150,7 @@
             android:textColor="#000000"
             android:translationX="193dp"
             android:translationY="270dp"
-            android:textStyle="bold"
-            android:shadowColor="@color/black"
-            android:shadowRadius="1" />
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/teamNumberHelp"
             android:layout_width="wrap_content"

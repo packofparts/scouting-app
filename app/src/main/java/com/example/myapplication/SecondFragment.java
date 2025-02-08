@@ -6,10 +6,12 @@ import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.SeekBar;
 import android.widget.Switch;
 
 import androidx.annotation.NonNull;
@@ -35,6 +37,18 @@ public class SecondFragment extends Fragment {
         binding = FragmentSecondBinding.inflate(inflater, container, false);
         v = container;
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
+        binding.percentagebroke.setProgress((int) (UserModel.getMatchData().getBrokePercent() * 100));
+        binding.percentagedefense.setProgress((int) (UserModel.getMatchData().getDefPercent() * 100));
+        binding.effectivenessdefense.setProgress((int) (UserModel.getMatchData().getDefEffectiveness() * 100));
+
+        binding.L4Display.setText(String.valueOf(UserModel.getMatchData().getTeleOpL4()));
+        binding.L3Display.setText(String.valueOf(UserModel.getMatchData().getTeleOpL3()));
+        binding.L2Display.setText(String.valueOf(UserModel.getMatchData().getTeleOpL2()));
+        binding.L1Display.setText(String.valueOf(UserModel.getMatchData().getTeleOpL1()));
+        binding.MissedCoralDisplay.setText(String.valueOf(UserModel.getMatchData().getTeleOpMissedCoral()));
+        binding.MissedDisplay.setText(String.valueOf(UserModel.getMatchData().getTeleOpMissedAlgae()));
+        binding.NetDisplay.setText(String.valueOf(UserModel.getMatchData().getTeleOpNet()));
+        binding.ProcessorDisplay.setText(String.valueOf(UserModel.getMatchData().getTeleOpProcessor()));
         return binding.getRoot();
     }
 
@@ -55,9 +69,139 @@ public class SecondFragment extends Fragment {
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", UIHelpers.wolfFrames);
         animation.setDuration(1000);
         binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
-        ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Intake", "Ground Intake", "Source Intake", "Both"});
+        binding.percentagebroke.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                UserModel.getMatchData().setBrokePercent(i/100.0);
 
+            }
 
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        binding.percentagedefense.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                UserModel.getMatchData().setDefPercent(i/100.0);
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        binding.effectivenessdefense.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                UserModel.getMatchData().setDefEffectiveness(i/100.0);
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        binding.L4Minus.setOnClickListener(v -> {
+            if(UserModel.getMatchData().getTeleOpL4()>0){
+                UserModel.getMatchData().setTeleOpL4(UserModel.getMatchData().getTeleOpL4()-1);
+            }
+            binding.L4Display.setText(String.valueOf(UserModel.getMatchData().getTeleOpL4()));
+        });
+        binding.L4Plus.setOnClickListener(v -> {
+            UserModel.getMatchData().setTeleOpL4(UserModel.getMatchData().getTeleOpL4()+1);
+            binding.L4Display.setText(String.valueOf(UserModel.getMatchData().getTeleOpL4()));
+        });
+        binding.L3Minus.setOnClickListener(v -> {
+            if(UserModel.getMatchData().getTeleOpL3()>0){
+                UserModel.getMatchData().setTeleOpL3(UserModel.getMatchData().getTeleOpL3()-1);
+            }
+            binding.L3Display.setText(String.valueOf(UserModel.getMatchData().getTeleOpL3()));
+        });
+        binding.L3Plus.setOnClickListener(v -> {
+            UserModel.getMatchData().setTeleOpL3(UserModel.getMatchData().getTeleOpL3()+1);
+            binding.L3Display.setText(String.valueOf(UserModel.getMatchData().getTeleOpL3()));
+        });
+        binding.L2Minus.setOnClickListener(v -> {
+            if(UserModel.getMatchData().getTeleOpL2()>0){
+                UserModel.getMatchData().setTeleOpL2(UserModel.getMatchData().getTeleOpL2()-1);
+            }
+            binding.L2Display.setText(String.valueOf(UserModel.getMatchData().getTeleOpL2()));
+        });
+        binding.L2Plus.setOnClickListener(v -> {
+            UserModel.getMatchData().setTeleOpL2(UserModel.getMatchData().getTeleOpL2()+1);
+            binding.L2Display.setText(String.valueOf(UserModel.getMatchData().getTeleOpL2()));
+        });
+        binding.L1Minus.setOnClickListener(v -> {
+            if(UserModel.getMatchData().getTeleOpL1()>0){
+                UserModel.getMatchData().setTeleOpL1(UserModel.getMatchData().getTeleOpL1()-1);
+            }
+            binding.L1Display.setText(String.valueOf(UserModel.getMatchData().getTeleOpL1()));
+        });
+        binding.L1Plus.setOnClickListener(v -> {
+            UserModel.getMatchData().setTeleOpL1(UserModel.getMatchData().getTeleOpL1()+1);
+            binding.L1Display.setText(String.valueOf(UserModel.getMatchData().getTeleOpL1()));
+        });
+        binding.MissedCoralMinus.setOnClickListener(v -> {
+            if(UserModel.getMatchData().getTeleOpMissedCoral()>0){
+                UserModel.getMatchData().setTeleOpMissedCoral(UserModel.getMatchData().getTeleOpMissedCoral()-1);
+            }
+            binding.MissedCoralDisplay.setText(String.valueOf(UserModel.getMatchData().getTeleOpMissedCoral()));
+        });
+        binding.MissedCoralPlus.setOnClickListener(v -> {
+            UserModel.getMatchData().setTeleOpMissedCoral(UserModel.getMatchData().getTeleOpMissedCoral()+1);
+            binding.MissedCoralDisplay.setText(String.valueOf(UserModel.getMatchData().getTeleOpMissedCoral()));
+        });
+        binding.NetMinus.setOnClickListener(v -> {
+            if(UserModel.getMatchData().getTeleOpNet()>0){
+                UserModel.getMatchData().setTeleOpNet(UserModel.getMatchData().getTeleOpNet()-1);
+            }
+            binding.NetDisplay.setText(String.valueOf(UserModel.getMatchData().getTeleOpNet()));
+        });
+        binding.NetPlus.setOnClickListener(v -> {
+            UserModel.getMatchData().setTeleOpNet(UserModel.getMatchData().getTeleOpNet()+1);
+            binding.NetDisplay.setText(String.valueOf(UserModel.getMatchData().getTeleOpNet()));
+        });
+        binding.ProcessorMinus.setOnClickListener(v -> {
+            if(UserModel.getMatchData().getTeleOpProcessor()>0){
+                UserModel.getMatchData().setTeleOpProcessor(UserModel.getMatchData().getTeleOpProcessor()-1);
+            }
+            binding.ProcessorDisplay.setText(String.valueOf(UserModel.getMatchData().getTeleOpProcessor()));
+        });
+        binding.ProcessorPlus.setOnClickListener(v -> {
+            UserModel.getMatchData().setTeleOpProcessor(UserModel.getMatchData().getTeleOpProcessor()+1);
+            binding.ProcessorDisplay.setText(String.valueOf(UserModel.getMatchData().getTeleOpProcessor()));
+        });
+        binding.MissedMinus.setOnClickListener(v -> {
+            if(UserModel.getMatchData().getTeleOpMissedAlgae()>0){
+                UserModel.getMatchData().setTeleOpMissedAlgae(UserModel.getMatchData().getTeleOpMissedAlgae()-1);
+            }
+            binding.MissedDisplay.setText(String.valueOf(UserModel.getMatchData().getTeleOpMissedAlgae()));
+        });
+        binding.MissedPlus.setOnClickListener(v -> {
+            UserModel.getMatchData().setTeleOpMissedAlgae(UserModel.getMatchData().getTeleOpMissedAlgae()+1);
+            binding.MissedDisplay.setText(String.valueOf(UserModel.getMatchData().getTeleOpMissedAlgae()));
+        });
+        binding.coralScoringHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Coral Scoring", "These are the number of times the robot scored onto each level or missed from any level!", getContext()));
+        binding.AlgaeScoringHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Algae Scoring", "How does the robot score algae? Does the robot shoot it through the net in the middle of the field? or does insert it in the processor at the ground of the field? or did the robot fail to do both? add your observations here!", getContext()));
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
         UIHelpers.lightDark(v, UIHelpers.darkMode);
         binding.bottomTag.setText(MainActivity.getLocationText());

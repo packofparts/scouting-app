@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -65,16 +66,12 @@ public class UIHelpers {
                     if (child instanceof RelativeLayout) {
                         RelativeLayout r = (RelativeLayout) child;
                         r.setBackground(v.getResources().getDrawable(MainActivity.scoutLocation < 3 ? (mode ? R.drawable.red_dark : R.drawable.red_light) : (mode ? R.drawable.blue_dark : R.drawable.blue_light), null));
-                    } else if (child instanceof TextView) {
-                        TextView tx = (TextView) child;
-                        tx.setTextColor(Color.parseColor(viewColor));
                     } else if (child instanceof TextInputEditText) {
                         TextView tx = (TextInputEditText) child;
                         tx.setTextColor(Color.parseColor(viewColor));
                         tx.setHintTextColor(Color.parseColor(viewColor));
-                    }
-                    if (child instanceof Switch) {
-                        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch tx = (Switch) child;
+                    } else if (child instanceof TextView) {
+                        TextView tx = (TextView) child;
                         tx.setTextColor(Color.parseColor(viewColor));
                     }
                 }

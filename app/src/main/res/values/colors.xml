@@ -4,6 +4,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="Light_Aqua">#6FC7FF</color>
     <color name="Dark_Aqua">#00107E</color>
+    <color name="seek_bar_background">#ababab</color>
+    <color name="seek_bar_progress">#ffb600</color>
+    <color name="seek_bar_secondary_progress">#3399CC</color>
 
     <!-- fragment_first -->
 </resources>

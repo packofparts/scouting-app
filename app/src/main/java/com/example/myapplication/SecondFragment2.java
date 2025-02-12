@@ -3,28 +3,22 @@ package com.example.myapplication;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.RatingBar;
-import android.widget.Spinner;
+import android.widget.SeekBar;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentSecond2Binding;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -46,6 +40,9 @@ public class SecondFragment2 extends Fragment {
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
         binding.input.setText(UserModel.getMatchData().getNotes());
         binding.inzone.setChecked(UserModel.getMatchData().getInZone());
+        binding.percentagebroke.setProgress((int) (UserModel.getMatchData().getBrokePercent() * 100));
+        binding.percentagedefense.setProgress((int) (UserModel.getMatchData().getDefPercent() * 100));
+        binding.underdefense.setProgress((int) (UserModel.getMatchData().getUnderDefDuration() * 100));
 
 
 
@@ -89,6 +86,8 @@ public class SecondFragment2 extends Fragment {
 
         binding.ratingBar.setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> UserModel.getMatchData().setStars(rating));
         binding.ratingBar.setRating((float) UserModel.getMatchData().getStars());
+        binding.effectivenessdefense.setOnRatingBarChangeListener((effectivenessdefense, rating, fromUser) -> UserModel.getMatchData().setDefEffectiveness(rating));
+        binding.effectivenessdefense.setRating((float) UserModel.getMatchData().getDefEffectiveness());
 
         return binding.getRoot();
     }
@@ -114,6 +113,58 @@ public class SecondFragment2 extends Fragment {
                 NavHostFragment.findNavController(SecondFragment2.this).navigate(R.id.action_SecondFragment2_to_FirstFragment);
             }, () -> {}, getContext());
         });
+        binding.percentagebroke.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                UserModel.getMatchData().setBrokePercent(i/100.0);
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        binding.percentagedefense.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                UserModel.getMatchData().setDefPercent(i/100.0);
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        binding.underdefense.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                UserModel.getMatchData().setUnderDefDuration(i/100.0);
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
 
 
         binding.prev.setOnClickListener(view12 -> NavHostFragment.findNavController(SecondFragment2.this)

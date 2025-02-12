@@ -37,10 +37,6 @@ public class SecondFragment extends Fragment {
         binding = FragmentSecondBinding.inflate(inflater, container, false);
         v = container;
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
-        binding.percentagebroke.setProgress((int) (UserModel.getMatchData().getBrokePercent() * 100));
-        binding.percentagedefense.setProgress((int) (UserModel.getMatchData().getDefPercent() * 100));
-        binding.effectivenessdefense.setProgress((int) (UserModel.getMatchData().getDefEffectiveness() * 100));
-
         binding.L4Display.setText(String.valueOf(UserModel.getMatchData().getTeleOpL4()));
         binding.L3Display.setText(String.valueOf(UserModel.getMatchData().getTeleOpL3()));
         binding.L2Display.setText(String.valueOf(UserModel.getMatchData().getTeleOpL2()));
@@ -69,57 +65,7 @@ public class SecondFragment extends Fragment {
         ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", UIHelpers.wolfFrames);
         animation.setDuration(1000);
         binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
-        binding.percentagebroke.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                UserModel.getMatchData().setBrokePercent(i/100.0);
 
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-        binding.percentagedefense.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                UserModel.getMatchData().setDefPercent(i/100.0);
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-        binding.effectivenessdefense.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                UserModel.getMatchData().setDefEffectiveness(i/100.0);
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
         binding.L4Minus.setOnClickListener(v -> {
             if(UserModel.getMatchData().getTeleOpL4()>0){
                 UserModel.getMatchData().setTeleOpL4(UserModel.getMatchData().getTeleOpL4()-1);

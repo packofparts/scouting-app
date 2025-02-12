@@ -17,7 +17,7 @@ public class MatchData {
 
     private int autoNet, autoProcessor, autoMissedAlgae, teleOpNet, teleOpProcessor, teleOpMissedAlgae = 0;
 
-    private double defPercent, defEffectiveness, brokePercent, stars = 0.0;
+    private double defPercent, defEffectiveness, brokePercent, UnderDefDuration, stars = 0.0;
 
     private int depth, climb = 0;
 
@@ -192,9 +192,7 @@ public class MatchData {
         return teleOpMissedAlgae;
     }
 
-    public void setTeleOpMissedAlgae(int teleOpMissedAlgae) {
-        this.teleOpMissedAlgae = teleOpMissedAlgae;
-    }
+    public void setTeleOpMissedAlgae(int teleOpMissedAlgae) {this.teleOpMissedAlgae = teleOpMissedAlgae;}
 
     public double getDefPercent() {
         return defPercent;
@@ -204,12 +202,14 @@ public class MatchData {
         this.defPercent = defPercent;
     }
 
+    public double getUnderDefDuration(){return UnderDefDuration;}
+
+    public void setUnderDefDuration(double defDuration){this.UnderDefDuration = defDuration;}
     public double getDefEffectiveness() {
         return defEffectiveness;
     }
 
-    public void setDefEffectiveness(double defEffectiveness) {
-        this.defEffectiveness = defEffectiveness;
+    public void setDefEffectiveness(double defEffectiveness) {this.defEffectiveness = defEffectiveness;
     }
 
     public double getBrokePercent() {

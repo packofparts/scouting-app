@@ -12,10 +12,82 @@
     <RelativeLayout
         android:id="@+id/relativeLayout_first"
         android:layout_width="match_parent"
-        android:layout_height="730dp"
+        android:layout_height="1030dp"
         android:padding="0dp"
         android:background="@drawable/red_light">
 
+        <TextView
+            android:id="@+id/brokeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="% Broke Duration"
+            android:textColor="#000000"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:translationX="25dp"
+            android:translationY="164dp" />
+        <SeekBar
+            android:id="@+id/percentagebroke"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:max="100"
+            android:progressBackgroundTint="#D9D9D9"
+            android:progressTint="#FFD700"
+            android:stepSize="0.01"
+            android:tag="@string/team"
+            android:translationX="250dp"
+            android:translationY="164dp"
+            android:progressDrawable="@drawable/seek_bar"
+            android:splitTrack="false"
+            android:thumb="@drawable/seek_thumb"/>
+        <TextView
+            android:id="@+id/defPercentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="% Defense Duration"
+            android:textColor="#000000"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:translationX="25dp"
+            android:translationY="224dp" />
+        <SeekBar
+            android:id="@+id/percentagedefense"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:max="100"
+            android:progressBackgroundTint="#D9D9D9"
+            android:progressTint="#FFD700"
+            android:stepSize="0.01"
+            android:tag="@string/team"
+            android:translationX="250dp"
+            android:translationY="224dp"
+            android:progressDrawable="@drawable/seek_bar"
+            android:splitTrack="false"
+            android:thumb="@drawable/seek_thumb"/>
+        <TextView
+            android:id="@+id/underdefensetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="% Defended Duration"
+            android:textColor="#000000"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:translationX="25dp"
+            android:translationY="284dp" />
+        <SeekBar
+            android:id="@+id/underdefense"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:max="100"
+            android:progressBackgroundTint="#D9D9D9"
+            android:progressTint="#FFD700"
+            android:stepSize="0.01"
+            android:tag="@string/team"
+            android:translationX="250dp"
+            android:translationY="284dp"
+            android:progressDrawable="@drawable/seek_bar"
+            android:splitTrack="false"
+            android:thumb="@drawable/seek_thumb"/>
 
         <Button
             android:id="@+id/textbacking1"
@@ -26,7 +98,7 @@
             android:tag=""
             android:text=""
             android:translationX="17dp"
-            android:translationY="588dp"
+            android:translationY="888dp"
             app:cornerRadius="20dp" />
 
         <ImageView
@@ -47,7 +119,7 @@
             android:text="Character Limit: 0/150"
             android:textSize="15dp"
             android:translationX="30dp"
-            android:translationY="635dp" />
+            android:translationY="935dp" />
 
         <TextView
             android:id="@+id/analyzerScore"
@@ -57,7 +129,7 @@
             android:text="Analyzer Score: 0.0"
             android:textSize="15dp"
             android:translationX="230dp"
-            android:translationY="635dp" />
+            android:translationY="935dp" />
 
 
         <Switch
@@ -68,7 +140,7 @@
             android:textSize="24dp"
             android:textColor="#000000"
             android:translationX="248dp"
-            android:translationY="194dp"
+            android:translationY="394dp"
             android:textStyle="bold"
             android:shadowColor="@color/black"
             android:shadowRadius="1"
@@ -88,7 +160,7 @@
             android:tag=""
             android:text=""
             android:translationX="200dp"
-            android:translationY="258dp"
+            android:translationY="458dp"
             app:cornerRadius="20dp" />
 
         <Spinner
@@ -99,7 +171,7 @@
             android:backgroundTintMode="src_in"
             android:spinnerMode="dropdown"
             android:translationX="205dp"
-            android:translationY="258dp"
+            android:translationY="458dp"
             android:visibility="visible" />
 
         <Button
@@ -111,7 +183,7 @@
             android:tag=""
             android:text=""
             android:translationX="200dp"
-            android:translationY="336dp"
+            android:translationY="536dp"
             app:cornerRadius="20dp" />
 
 
@@ -123,7 +195,7 @@
             android:backgroundTintMode="src_in"
             android:spinnerMode="dropdown"
             android:translationX="205dp"
-            android:translationY="336dp"
+            android:translationY="536dp"
             android:visibility="visible" />
 
         <com.google.android.material.textfield.TextInputEditText
@@ -136,7 +208,7 @@
             android:maxLength="150"
             android:inputType="text"
             android:translationX="45dp"
-            android:translationY="588dp"
+            android:translationY="888dp"
             android:tag="@string/no_change"/>
 
 
@@ -161,7 +233,7 @@
             android:textSize="20dp"
             android:textStyle="bold"
             android:translationX="160dp"
-            android:translationY="140dp" />
+            android:translationY="340dp" />
         <TextView
             android:id="@+id/bargeHelp"
             android:layout_width="wrap_content"
@@ -171,7 +243,7 @@
             android:textSize="24dp"
             android:textColor="#000000"
             android:translationX="130dp"
-            android:translationY="140dp"
+            android:translationY="340dp"
             android:textStyle="bold"/>
 
         <TextView
@@ -183,7 +255,7 @@
             android:textSize="20dp"
             android:textStyle="bold"
             android:translationX="50dp"
-            android:translationY="194dp" />
+            android:translationY="394dp" />
 
         <TextView
             android:id="@+id/depthText"
@@ -194,7 +266,7 @@
             android:textSize="20dp"
             android:textStyle="bold"
             android:translationX="50dp"
-            android:translationY="268dp" />
+            android:translationY="468dp" />
 
         <TextView
             android:id="@+id/climbText"
@@ -205,19 +277,19 @@
             android:textSize="20dp"
             android:textStyle="bold"
             android:translationX="50dp"
-            android:translationY="346dp" />
+            android:translationY="546dp" />
 
 
         <TextView
             android:id="@+id/StarRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Star Rating ⭐️"
+            android:text="Driver Rating ⭐️"
             android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold"
             android:translationX="135dp"
-            android:translationY="405dp" />
+            android:translationY="755dp" />
 
         <RatingBar
             android:id="@+id/ratingBar"
@@ -229,7 +301,29 @@
             android:progressBackgroundTint="#D9D9D9"
             android:tag="@string/no_change"
             android:translationX="80dp"
-            android:translationY="450dp"/>
+            android:translationY="800dp"/>
+        <TextView
+            android:id="@+id/defenseRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Defense Rating ⭐️"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:translationX="125dp"
+            android:translationY="654dp" />
+        <RatingBar
+            android:id="@+id/effectivenessdefense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="0.5"
+            android:progressTint="#FFD700"
+            android:progressBackgroundTint="#D9D9D9"
+            android:tag="@string/no_change"
+            android:translationX="80dp"
+            android:translationY="699dp"
+        />
 
         <TextView
             android:id="@+id/team"
@@ -249,7 +343,7 @@
             android:text="Notes"
             android:textSize="24dp"
             android:translationX="45dp"
-            android:translationY="560dp"
+            android:translationY="860dp"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:shadowColor="@color/black" />
@@ -262,7 +356,7 @@
             android:textSize="24dp"
             android:textColor="#000000"
             android:translationX="115dp"
-            android:translationY="560dp"
+            android:translationY="860dp"
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/limitHelp"
@@ -273,7 +367,7 @@
             android:textSize="24dp"
             android:textColor="#000000"
             android:translationX="190dp"
-            android:translationY="630dp"
+            android:translationY="930dp"
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/analyzerHelp"
@@ -284,7 +378,7 @@
             android:textSize="24dp"
             android:textColor="#000000"
             android:translationX="370dp"
-            android:translationY="630dp"
+            android:translationY="930dp"
             android:textStyle="bold"/>
 
 
@@ -296,7 +390,7 @@
             android:text=""
             android:clickable="false"
             android:translationX="0dp"
-            android:translationY="655dp"
+            android:translationY="955dp"
             app:cornerRadius="15dp"
             android:tag="@string/bg1"/>
 
@@ -308,7 +402,7 @@
             android:text=""
             android:clickable="false"
             android:translationX="17dp"
-            android:translationY="670dp"
+            android:translationY="970dp"
             app:cornerRadius="20dp"
             android:tag="@string/bg2"/>
         <Button
@@ -316,7 +410,7 @@
             android:layout_width="110dp"
             android:layout_height="50dp"
             android:text="Next"
-            android:translationY="669.5dp"
+            android:translationY="969.5dp"
             android:translationX="285dp"
             app:cornerRadius="20dp"
             android:backgroundTint="#E02E3C"
@@ -333,7 +427,7 @@
             android:layout_height="50dp"
             android:text="Back"
             android:translationX="17dp"
-            android:translationY="669.5dp"
+            android:translationY="969.5dp"
             android:textColor="@color/white"
             app:cornerRadius="20dp"
             android:backgroundTint="#E02E3C"
@@ -352,7 +446,7 @@
             android:textSize="36dp"
             android:textColor="#ff0000"
             android:translationX="159dp"
-            android:translationY="669dp"
+            android:translationY="969dp"
             android:textStyle="bold"
             android:tag="@string/team"/>
 

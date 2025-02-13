@@ -16,14 +16,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.myapplication.databinding.FragmentFirstBinding;
+import com.example.myapplication.databinding.TeamSelectionBinding;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-
-public class FirstFragment extends Fragment {
-    private FragmentFirstBinding binding;
+public class TeamSelection extends Fragment {
+    private TeamSelectionBinding binding;
     ViewGroup v;
 
     @Override
@@ -31,7 +28,7 @@ public class FirstFragment extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        binding = FragmentFirstBinding.inflate(inflater, container, false);
+        binding = TeamSelectionBinding.inflate(inflater, container, false);
         v = container;
 
         String currentMatchNumber = UserModel.getMatchData().getMatchNumber();
@@ -63,7 +60,7 @@ public class FirstFragment extends Fragment {
             if (teamNumberCheck && matchNumCheck) {
                 UserModel.getMatchData().setTeamNumber(teamNumber);
                 UserModel.getMatchData().setMatchNumber(matchNumber);
-                NavHostFragment.findNavController(FirstFragment.this)
+                NavHostFragment.findNavController(TeamSelection.this)
                         .navigate(R.id.action_FirstFragment_to_ThirdFragment);
             } else {
                 if (!teamNumberCheck) {
@@ -80,7 +77,7 @@ public class FirstFragment extends Fragment {
             boolean teamNumberCheck = (!teamNumber.isEmpty() && teamNumber.length() < 5 && !teamNumber.equals("0"));
             if (teamNumberCheck) {
                 UserModel.getPitData().setTeamNumber(teamNumber);
-                NavHostFragment.findNavController(FirstFragment.this)
+                NavHostFragment.findNavController(TeamSelection.this)
                         .navigate(R.id.action_FirstFragment_to_HomePage);
             } else {
                 Snackbar.make(view, "Invalid team number", 600).show();

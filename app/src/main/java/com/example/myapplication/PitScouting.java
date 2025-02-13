@@ -1,7 +1,6 @@
 package com.example.myapplication;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
@@ -18,10 +17,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
-import android.widget.SpinnerAdapter;
 
-import com.example.myapplication.databinding.FragmentHomepageBinding;
+import com.example.myapplication.databinding.PitScoutingBinding;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
@@ -29,9 +26,9 @@ import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link HomePage#newInstance} factory method to * create an instance of this fragment.
+ * Use the {@link PitScouting#newInstance} factory method to * create an instance of this fragment.
  */
-public class HomePage extends Fragment {
+public class PitScouting extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -42,8 +39,8 @@ public class HomePage extends Fragment {
     private String mParam1;
     private String mParam2;
     private ViewGroup v;
-    private FragmentHomepageBinding binding;
-    public HomePage() {
+    private PitScoutingBinding binding;
+    public PitScouting() {
         // Required empty public constructor
     }
 
@@ -56,8 +53,8 @@ public class HomePage extends Fragment {
      * @return A new instance of fragment Teleop.
      */
     // TODO: Rename and change types and number of parameters
-    public static HomePage newInstance(String param1, String param2) {
-        HomePage fragment = new HomePage();
+    public static PitScouting newInstance(String param1, String param2) {
+        PitScouting fragment = new PitScouting();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -78,7 +75,7 @@ public class HomePage extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentHomepageBinding.inflate(inflater, container, false);
+        binding = PitScoutingBinding.inflate(inflater, container, false);
         v = container;
         return binding.getRoot();
     }
@@ -188,11 +185,11 @@ public class HomePage extends Fragment {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            NavHostFragment.findNavController(HomePage.this).navigate(R.id.action_HomePage_to_FirstFragment);
+            NavHostFragment.findNavController(PitScouting.this).navigate(R.id.action_HomePage_to_FirstFragment);
         }, () -> {}, getContext()));
 
 
-        binding.back.setOnClickListener(view1 -> UIHelpers.makeConfirmationAlert("Cancel Pit Data", "Do you want to cancel your pit data?", () -> NavHostFragment.findNavController(HomePage.this)
+        binding.back.setOnClickListener(view1 -> UIHelpers.makeConfirmationAlert("Cancel Pit Data", "Do you want to cancel your pit data?", () -> NavHostFragment.findNavController(PitScouting.this)
                 .navigate(R.id.action_HomePage_to_FirstFragment), () -> {}, getContext()));
 
         binding.input.addTextChangedListener(new TextWatcher() {

@@ -3,35 +3,28 @@ package com.example.myapplication;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.RatingBar;
-import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.myapplication.databinding.FragmentSecond2Binding;
-import com.google.android.material.snackbar.Snackbar;
+import com.example.myapplication.databinding.EndGameBinding;
 
 import java.io.IOException;
 import java.util.Objects;
 
-public class SecondFragment2 extends Fragment {
+public class EndGame extends Fragment {
 
-    private FragmentSecond2Binding binding;
+    private EndGameBinding binding;
 
     ViewGroup v = null;
     @SuppressLint("SetTextI18n")
@@ -41,7 +34,7 @@ public class SecondFragment2 extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentSecond2Binding.inflate(inflater, container, false);
+        binding = EndGameBinding.inflate(inflater, container, false);
         v = container;
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
         binding.input.setText(UserModel.getMatchData().getNotes());
@@ -111,12 +104,12 @@ public class SecondFragment2 extends Fragment {
                 num = num < 1 ? 1 : num;
                 num = num > MainActivity.teams.size() ? MainActivity.teams.size() : num;
                 UserModel.getMatchData().setMatchNumber(String.valueOf(num));
-                NavHostFragment.findNavController(SecondFragment2.this).navigate(R.id.action_SecondFragment2_to_FirstFragment);
+                NavHostFragment.findNavController(EndGame.this).navigate(R.id.action_SecondFragment2_to_FirstFragment);
             }, () -> {}, getContext());
         });
 
 
-        binding.prev.setOnClickListener(view12 -> NavHostFragment.findNavController(SecondFragment2.this)
+        binding.prev.setOnClickListener(view12 -> NavHostFragment.findNavController(EndGame.this)
                 .navigate(R.id.action_SecondFragment2_to_SecondFragment));
 
         DisplayMetrics displayMetrics = new DisplayMetrics();

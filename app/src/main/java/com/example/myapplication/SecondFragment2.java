@@ -161,6 +161,7 @@ public class SecondFragment2 extends Fragment {
         binding.notesHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Notes", "Here, you can jot down anything extra that you've observed in-game!", getContext()));
         binding.limitHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Character Limit", "You have a 150-character limit for your notes.", getContext()));
         binding.analyzerHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Sentiment Analyzer", "This is the overall sentiment (positivity/negativity) of your notes!", getContext()));
+        binding.bargeHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Barge", "Here you record the status of the robot after the competition has ended. Is the robot parked inside the zone eligible for scoring? Did the robot successfully hook onto a cage and of which depth? Did the robot attempt to climb the cage?", getContext()));
 
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
         UIHelpers.lightDark(v, UIHelpers.darkMode);

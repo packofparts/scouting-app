@@ -114,6 +114,7 @@
             android:translationY="336dp"
             app:cornerRadius="20dp" />
 
+
         <Spinner
             android:id="@+id/climbDrop"
             android:layout_width="200dp"
@@ -161,12 +162,23 @@
             android:textStyle="bold"
             android:translationX="160dp"
             android:translationY="140dp" />
+        <TextView
+            android:id="@+id/bargeHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="ⓘ"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="130dp"
+            android:translationY="140dp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/inzoneText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="In Zone️"
+            android:text="Robot in zone️?"
             android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold"
@@ -177,7 +189,7 @@
             android:id="@+id/depthText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Depth"
+            android:text="Cage Depth"
             android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold"
@@ -188,7 +200,7 @@
             android:id="@+id/climbText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Climb"
+            android:text="Climb Attempt"
             android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold"

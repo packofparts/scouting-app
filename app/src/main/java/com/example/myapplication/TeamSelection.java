@@ -37,7 +37,7 @@ public class TeamSelection extends Fragment {
             String currentTeamNumber = MainActivity.teams.get(Integer.parseInt(currentMatchNumber) - 1);
             binding.input.setText(currentTeamNumber);
         } catch (Exception e){
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         ViewModelProvider viewModelProvider = new ViewModelProvider(requireActivity());

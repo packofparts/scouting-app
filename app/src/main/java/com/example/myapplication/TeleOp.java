@@ -6,11 +6,9 @@ import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Switch;
 
@@ -18,13 +16,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.myapplication.databinding.FragmentSecondBinding;
+import com.example.myapplication.databinding.TeleOpBinding;
 
 
+public class TeleOp extends Fragment {
 
-public class SecondFragment extends Fragment {
-
-    private FragmentSecondBinding binding;
+    private TeleOpBinding binding;
     ViewGroup v = null;
 
     @SuppressLint("SetTextI18n")
@@ -34,7 +31,7 @@ public class SecondFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentSecondBinding.inflate(inflater, container, false);
+        binding = TeleOpBinding.inflate(inflater, container, false);
         v = container;
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
         binding.L4Display.setText(String.valueOf(UserModel.getMatchData().getTeleOpL4()));
@@ -53,9 +50,9 @@ public class SecondFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        binding.cont.setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
+        binding.cont.setOnClickListener(view1 -> NavHostFragment.findNavController(TeleOp.this)
                 .navigate(R.id.action_SecondFragment_to_SecondFragment2));
-        binding.back.setOnClickListener(view12 -> NavHostFragment.findNavController(SecondFragment.this)
+        binding.back.setOnClickListener(view12 -> NavHostFragment.findNavController(TeleOp.this)
                 .navigate(R.id.action_SecondFragment_to_ThirdFragment));
 
         DisplayMetrics displayMetrics = new DisplayMetrics();

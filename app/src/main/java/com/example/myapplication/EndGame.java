@@ -18,14 +18,15 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.myapplication.databinding.FragmentSecond2Binding;
+
+import com.example.myapplication.databinding.EndGameBinding;
 
 import java.io.IOException;
 import java.util.Objects;
 
-public class SecondFragment2 extends Fragment {
+public class EndGame extends Fragment {
 
-    private FragmentSecond2Binding binding;
+    private EndGameBinding binding;
 
     ViewGroup v = null;
     @SuppressLint("SetTextI18n")
@@ -35,7 +36,7 @@ public class SecondFragment2 extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentSecond2Binding.inflate(inflater, container, false);
+        binding = EndGameBinding.inflate(inflater, container, false);
         v = container;
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
         binding.input.setText(UserModel.getMatchData().getNotes());
@@ -110,7 +111,7 @@ public class SecondFragment2 extends Fragment {
                 num = num < 1 ? 1 : num;
                 num = num > MainActivity.teams.size() ? MainActivity.teams.size() : num;
                 UserModel.getMatchData().setMatchNumber(String.valueOf(num));
-                NavHostFragment.findNavController(SecondFragment2.this).navigate(R.id.action_SecondFragment2_to_FirstFragment);
+                NavHostFragment.findNavController(EndGame.this).navigate(R.id.action_SecondFragment2_to_FirstFragment);
             }, () -> {}, getContext());
         });
         binding.percentagebroke.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -167,7 +168,7 @@ public class SecondFragment2 extends Fragment {
 
 
 
-        binding.prev.setOnClickListener(view12 -> NavHostFragment.findNavController(SecondFragment2.this)
+        binding.prev.setOnClickListener(view12 -> NavHostFragment.findNavController(EndGame.this)
                 .navigate(R.id.action_SecondFragment2_to_SecondFragment));
 
         DisplayMetrics displayMetrics = new DisplayMetrics();

@@ -143,8 +143,8 @@ public class TeleOp extends Fragment {
             UserModel.getMatchData().setTeleOpMissedAlgae(UserModel.getMatchData().getTeleOpMissedAlgae()+1);
             binding.MissedDisplay.setText(String.valueOf(UserModel.getMatchData().getTeleOpMissedAlgae()));
         });
-        binding.coralScoringHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Coral Scoring", "These are the number of times the robot scored onto each level or missed from any level!", getContext()));
-        binding.AlgaeScoringHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Algae Scoring", "How does the robot score algae? Does the robot shoot it through the net in the middle of the field? or does insert it in the processor at the ground of the field? or did the robot fail to do both? add your observations here!", getContext()));
+        binding.coralScoringHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Coral Scoring", "These are the number of times the robot scored coral onto each level or missed from any level.", getContext()));
+        binding.AlgaeScoringHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Algae Scoring", "These are the number of times the robot scored algae into each location or missed from any location.", getContext()));
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
         UIHelpers.lightDark(v, UIHelpers.darkMode);
         binding.bottomTag.setText(MainActivity.getLocationText());

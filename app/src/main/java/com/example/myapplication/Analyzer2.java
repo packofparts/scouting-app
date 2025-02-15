@@ -30,7 +30,7 @@ public class Analyzer2 {
 			reader.close();
 		}
 		catch(Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			throw new RuntimeException();
 		}
 	}

@@ -213,7 +213,8 @@ public class EndGame extends Fragment {
         binding.notesHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Notes", "Here, you can jot down anything extra that you've observed in-game!", getContext()));
         binding.limitHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Character Limit", "You have a 150-character limit for your notes.", getContext()));
         binding.analyzerHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Sentiment Analyzer", "This is the overall sentiment (positivity/negativity) of your notes!", getContext()));
-        binding.bargeHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Barge", "Here you record the status of the robot after the competition has ended. Is the robot parked inside the zone eligible for scoring? Did the robot successfully hook onto a cage and of which depth? Did the robot attempt to climb the cage?", getContext()));
+        binding.bargeHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Barge", "Here you record the status of the robot at then end of the competition.\n\nIs the robot parked inside the zone eligible for scoring?\n\nWhich depth cage did the robot attempt/park next to?\n\nDid the robot successfully climb the cage?", getContext()));
+        binding.ratingsHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Ratings", "Rate your robot here!\n\nFor what % of the match was the robot broken?\n\nWhat % of the match was the robot defending?\n\nHow effective was the robot's defense, if any?\n\nWhat % of the match was the robot being defended?\n\nHow skilled was their driver in general?", getContext()));
 
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
         UIHelpers.lightDark(v, UIHelpers.darkMode);

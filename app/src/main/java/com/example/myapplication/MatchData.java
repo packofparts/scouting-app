@@ -140,11 +140,11 @@ public class MatchData {
         this.teleOpL4 = teleOpL4;
     }
 
-    public int getTeleopMissedCoral() {
+    public int getTeleOpMissedCoral() {
         return teleopMissedCoral;
     }
 
-    public void setTeleopMissedCoral(int teleopMissedCoral) {
+    public void setTeleOpMissedCoral(int teleopMissedCoral) {
         this.teleopMissedCoral = teleopMissedCoral;
     }
 

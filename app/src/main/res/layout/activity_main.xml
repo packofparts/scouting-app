@@ -27,9 +27,9 @@
 
     <!--<androidx.fragment.app.FragmentContainerView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/FirstFragment"
+        android:id="@+id/TeamSelection"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.example.myapplication.FirstFragment" />-->
+        android:name="com.example.myapplication.TeamSelection" />-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -8,7 +8,7 @@
     <RelativeLayout
 
         android:layout_width="match_parent"
-        android:layout_height="850dp"
+        android:layout_height="860dp"
         android:padding="0dp"
         android:background="@drawable/red_light">
 
@@ -21,7 +21,7 @@
             android:text=""
             android:clickable="false"
             android:translationX="0dp"
-            android:translationY="772dp"
+            android:translationY="782dp"
             app:cornerRadius="15dp"
             android:tag="@string/bg1"/>
 
@@ -33,7 +33,7 @@
             android:text=""
             android:clickable="false"
             android:translationX="17dp"
-            android:translationY="786dp"
+            android:translationY="796dp"
             app:cornerRadius="20dp"
             android:tag="@string/bg2"/>
 
@@ -46,7 +46,7 @@
             android:textSize="36dp"
             android:textColor="#ff0000"
             android:translationX="159dp"
-            android:translationY="786dp"
+            android:translationY="796dp"
             android:textStyle="bold"
             android:tag="@string/team"/>
 
@@ -55,7 +55,7 @@
             android:layout_width="110dp"
             android:layout_height="50dp"
             android:text="Next"
-            android:translationY="786dp"
+            android:translationY="796dp"
             android:translationX="285dp"
             app:cornerRadius="20dp"
             android:backgroundTint="#E02E3C"
@@ -273,7 +273,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="Coral Scored🧻"
+            android:text="Coral Scoring 🧻"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="24dp"
@@ -352,7 +352,7 @@
             android:textSize="24dp"
             android:textStyle="bold"
             android:translationX="125dp"
-            android:translationY="550dp" />
+            android:translationY="560dp" />
         <TextView
             android:id="@+id/AlgaeScoringHelp"
             android:layout_width="wrap_content"
@@ -362,7 +362,7 @@
             android:textSize="24dp"
             android:textColor="#000000"
             android:translationX="95dp"
-            android:translationY="550dp"
+            android:translationY="560dp"
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/Net"
@@ -385,7 +385,7 @@
             android:textSize="25dp"
             android:textColor="#000000"
             android:translationX="40dp"
-            android:translationY="660dp"
+            android:translationY="670dp"
             android:textStyle="bold"
             />
         <TextView
@@ -397,7 +397,7 @@
             android:textSize="25dp"
             android:textColor="#000000"
             android:translationX="40dp"
-            android:translationY="710dp"
+            android:translationY="730dp"
             android:textStyle="bold"
             />
 
@@ -405,17 +405,17 @@
             android:id="@+id/back"
             android:layout_width="110dp"
             android:layout_height="50dp"
-            android:text="Back"
-            android:translationX="17dp"
-            android:translationY="786dp"
-            android:textColor="@color/white"
-            app:cornerRadius="20dp"
             android:backgroundTint="#E02E3C"
-            android:shadowRadius="10"
             android:shadowDy="5"
+            android:shadowRadius="10"
+            android:tag="@string/team"
+            android:text="Back"
+            android:textColor="@color/white"
             android:textSize="19.9dp"
             android:textStyle="bold"
-            android:tag="@string/team"/>
+            android:translationX="17dp"
+            android:translationY="796dp"
+            app:cornerRadius="20dp" />
         <TextView
             android:id="@+id/L4Title"
             android:layout_width="wrap_content"
@@ -471,7 +471,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:translationX="170dp"
-            android:translationY="590dp"
+            android:translationY="600dp"
             android:textSize="30dp"
             android:textStyle="bold"
             android:textAlignment="center"
@@ -485,7 +485,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:translationX="235dp"
-            android:translationY="590dp"
+            android:translationY="600dp"
             android:textSize="20dp"
             android:textStyle="bold"
             android:tag="@string/team"
@@ -498,7 +498,7 @@
             android:layout_width="90dp"
             android:layout_height="60dp"
             android:translationX="300dp"
-            android:translationY="590dp"
+            android:translationY="600dp"
             android:textSize="20dp"
             android:textStyle="bold"
             android:tag="@string/team"
@@ -510,7 +510,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:translationX="170dp"
-            android:translationY="650dp"
+            android:translationY="660dp"
             android:textSize="30dp"
             android:textStyle="bold"
             android:textAlignment="center"
@@ -524,7 +524,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:translationX="235dp"
-            android:translationY="650dp"
+            android:translationY="660dp"
             android:textSize="20dp"
             android:textStyle="bold"
             android:tag="@string/team"
@@ -537,7 +537,7 @@
             android:layout_width="90dp"
             android:layout_height="60dp"
             android:translationX="300dp"
-            android:translationY="650dp"
+            android:translationY="660dp"
             android:textSize="20dp"
             android:textStyle="bold"
             android:tag="@string/team"
@@ -549,7 +549,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:translationX="170dp"
-            android:translationY="710dp"
+            android:translationY="720dp"
             android:textSize="30dp"
             android:textStyle="bold"
             android:textAlignment="center"
@@ -563,7 +563,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:translationX="235dp"
-            android:translationY="710dp"
+            android:translationY="720dp"
             android:textSize="20dp"
             android:textStyle="bold"
             android:tag="@string/team"
@@ -576,7 +576,7 @@
             android:layout_width="90dp"
             android:layout_height="60dp"
             android:translationX="300dp"
-            android:translationY="710dp"
+            android:translationY="720dp"
             android:textSize="20dp"
             android:textStyle="bold"
             android:tag="@string/team"

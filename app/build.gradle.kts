@@ -3,11 +3,6 @@ plugins {
 }
 
 android {
-    signingConfigs {
-        getByName("debug") {
-            storeFile = file("..\\debug.keystore")
-        }
-    }
     namespace = "com.example.myapplication"
     compileSdk = 35
 

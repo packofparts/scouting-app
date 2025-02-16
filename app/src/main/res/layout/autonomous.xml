@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><com.example.myapplication.CustomScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.example.myapplication.CustomScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -84,7 +86,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:translationX="170dp"
-            android:translationY="290dp"
+            android:translationY="310dp"
             android:textSize="30dp"
             android:textStyle="bold"
             android:textAlignment="center"
@@ -98,7 +100,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:translationX="235dp"
-            android:translationY="290dp"
+            android:translationY="310dp"
             android:textSize="20dp"
             android:textStyle="bold"
             android:tag="@string/team"
@@ -110,7 +112,7 @@
             android:layout_width="90dp"
             android:layout_height="60dp"
             android:translationX="300dp"
-            android:translationY="290dp"
+            android:translationY="310dp"
             android:textSize="20dp"
             android:textStyle="bold"
             android:tag="@string/team"
@@ -122,7 +124,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:translationX="170dp"
-            android:translationY="360dp"
+            android:translationY="370dp"
             android:textSize="30dp"
             android:textStyle="bold"
             android:textAlignment="center"
@@ -136,7 +138,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:translationX="235dp"
-            android:translationY="360dp"
+            android:translationY="370dp"
             android:textSize="20dp"
             android:textStyle="bold"
             android:tag="@string/team"
@@ -148,7 +150,7 @@
             android:layout_width="90dp"
             android:layout_height="60dp"
             android:translationX="300dp"
-            android:translationY="360dp"
+            android:translationY="370dp"
             android:textSize="20dp"
             android:textStyle="bold"
             android:tag="@string/team"
@@ -198,7 +200,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:translationX="170dp"
-            android:translationY="500dp"
+            android:translationY="490dp"
             android:textSize="30dp"
             android:textStyle="bold"
             android:textAlignment="center"
@@ -212,7 +214,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:translationX="235dp"
-            android:translationY="500dp"
+            android:translationY="490dp"
             android:textSize="20dp"
             android:textStyle="bold"
             android:tag="@string/team"
@@ -224,7 +226,7 @@
             android:layout_width="90dp"
             android:layout_height="60dp"
             android:translationX="300dp"
-            android:translationY="500dp"
+            android:translationY="490dp"
             android:textSize="20dp"
             android:textStyle="bold"
             android:tag="@string/team"
@@ -235,19 +237,19 @@
         <ImageView
             android:id="@+id/coralImage"
             android:layout_width="80dp"
-            android:layout_height="270dp"
+            android:layout_height="250dp"
             android:rotationX="360"
             android:src="@drawable/coral_branches"
             android:translationX="50dp"
-            android:translationY="300dp"/>
+            android:translationY="310dp"/>
         <ImageView
             android:id="@+id/pop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:rotationX="360"
             android:src="@drawable/pop"
-            android:translationX="0dp"
-            android:translationY="0dp"/>
+            android:translationX="26dp"
+            android:translationY="34dp"/>
 
         <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -273,7 +275,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:text="Moved out of zone"
+            android:text="Leave Starting Line"
             android:textSize="24dp"
             android:textColor="#000000"
             android:translationX="30dp"
@@ -291,12 +293,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
              
-            android:text="Coral Scoring 🧻"
+            android:text="Coral Autonomous 🧻"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="24dp"
             android:textStyle="bold"
-            android:translationX="125dp"
+            android:translationX="105dp"
             android:translationY="250dp" />
         <TextView
             android:id="@+id/coralScoringHelp"
@@ -306,7 +308,7 @@
             android:text="ⓘ"
             android:textSize="24dp"
             android:textColor="#000000"
-            android:translationX="95dp"
+            android:translationX="75dp"
             android:translationY="250dp"
             android:textStyle="bold"/>
         <Button
@@ -353,23 +355,24 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:text="Missed"
-            android:textSize="30dp"
+            android:textSize="24dp"
             android:textColor="#000000"
             android:translationX="50dp"
             android:translationY="580dp"
             android:textStyle="bold"
               />
+
         <TextView
             android:id="@+id/AlgaeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
              
-            android:text="Algae Scoring 🟢"
+            android:text="Algae Autonomous 🟢"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="24dp"
             android:textStyle="bold"
-            android:translationX="125dp"
+            android:translationX="105dp"
             android:translationY="660dp" />
         <TextView
             android:id="@+id/AlgaeScoringHelp"
@@ -379,7 +382,7 @@
             android:text="ⓘ"
             android:textSize="24dp"
             android:textColor="#000000"
-            android:translationX="95dp"
+            android:translationX="75dp"
             android:translationY="660dp"
             android:textStyle="bold"/>
         <TextView
@@ -388,7 +391,7 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:text="Net"
-            android:textSize="25dp"
+            android:textSize="24dp"
             android:textColor="#000000"
             android:translationX="40dp"
             android:translationY="710dp"
@@ -400,7 +403,7 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:text="Processor"
-            android:textSize="25dp"
+            android:textSize="24dp"
             android:textColor="#000000"
             android:translationX="40dp"
             android:translationY="770dp"
@@ -412,7 +415,7 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:text="Missed"
-            android:textSize="25dp"
+            android:textSize="24dp"
             android:textColor="#000000"
             android:translationX="40dp"
             android:translationY="830dp"
@@ -443,7 +446,7 @@
             android:textSize="30dp"
             android:textColor="#000000"
             android:translationX="110dp"
-            android:translationY="300dp"
+            android:translationY="320dp"
             android:textStyle="bold"
               />
         <TextView
@@ -455,7 +458,7 @@
             android:textSize="30dp"
             android:textColor="#000000"
             android:translationX="110dp"
-            android:translationY="370dp"
+            android:translationY="380dp"
             android:textStyle="bold"
               />
         <TextView
@@ -599,7 +602,6 @@
             android:textStyle="bold"
             android:tag="@string/team"
             />
-
 
 
     </RelativeLayout>

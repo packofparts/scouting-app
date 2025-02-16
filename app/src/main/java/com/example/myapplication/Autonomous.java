@@ -73,9 +73,7 @@ public class Autonomous extends Fragment {
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
         //VARIABLES
 
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", UIHelpers.wolfFrames);
-        animation.setDuration(1000);
-        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
+        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, binding.pop, this.getContext()));
 
         binding.cont.setOnClickListener(view12 -> NavHostFragment.findNavController(Autonomous.this)
                 .navigate(R.id.action_ThirdFragment_to_SecondFragment));

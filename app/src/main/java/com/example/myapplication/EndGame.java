@@ -41,9 +41,9 @@ public class EndGame extends Fragment {
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
         binding.input.setText(UserModel.getMatchData().getNotes());
         binding.inzone.setChecked(UserModel.getMatchData().getInZone());
-        binding.percentagebroke.setProgress((int) (UserModel.getMatchData().getBrokePercent() * 100));
-        binding.percentagedefense.setProgress((int) (UserModel.getMatchData().getDefPercent() * 100));
-        binding.underdefense.setProgress((int) (UserModel.getMatchData().getUnderDefDuration() * 100));
+        binding.percentagebroke.setProgress(UserModel.getMatchData().getBrokePercent());
+        binding.percentagedefense.setProgress(UserModel.getMatchData().getDefPercent());
+        binding.underdefense.setProgress(UserModel.getMatchData().getUnderDefDuration());
 
 
 
@@ -117,8 +117,7 @@ public class EndGame extends Fragment {
         binding.percentagebroke.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                UserModel.getMatchData().setBrokePercent(i/100.0);
-
+                UserModel.getMatchData().setBrokePercent(i);
             }
 
             @Override
@@ -134,8 +133,7 @@ public class EndGame extends Fragment {
         binding.percentagedefense.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                UserModel.getMatchData().setDefPercent(i/100.0);
-
+                UserModel.getMatchData().setDefPercent(i);
             }
 
             @Override
@@ -151,8 +149,7 @@ public class EndGame extends Fragment {
         binding.underdefense.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                UserModel.getMatchData().setUnderDefDuration(i/100.0);
-
+                UserModel.getMatchData().setUnderDefDuration(i);
             }
 
             @Override
@@ -175,17 +172,8 @@ public class EndGame extends Fragment {
         ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         float height = displayMetrics.heightPixels;
         float width = displayMetrics.widthPixels;
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", UIHelpers.wolfFrames);
-        animation.setDuration(1000);
         binding.pop.setOnClickListener(view1 -> {
-            ObjectAnimator scaleAnimation = ObjectAnimator.ofFloat(binding.pop, "scaleX", 1f, 1.2f, 1f);
-            scaleAnimation.setDuration(500);
-            scaleAnimation.setRepeatCount(1);
-            scaleAnimation.setRepeatMode(ObjectAnimator.REVERSE);
-
-            scaleAnimation.start();
-
-            UIHelpers.darkModeToggle(v, animation, this.getContext());
+            UIHelpers.darkModeToggle(v, binding.pop, this.getContext());
         });
 
         binding.input.addTextChangedListener(new TextWatcher() {
@@ -214,7 +202,7 @@ public class EndGame extends Fragment {
         binding.limitHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Character Limit", "You have a 150-character limit for your notes.", getContext()));
         binding.analyzerHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Sentiment Analyzer", "This is the overall sentiment (positivity/negativity) of your notes!", getContext()));
         binding.bargeHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Barge", "Here you record the status of the robot at then end of the competition.\n\nIs the robot parked inside the zone eligible for scoring?\n\nWhich depth cage did the robot attempt/park next to?\n\nDid the robot successfully climb the cage?", getContext()));
-        binding.ratingsHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Ratings", "Rate your robot here!\n\nFor what % of the match was the robot broken?\n\nWhat % of the match was the robot defending?\n\nHow effective was the robot's defense, if any?\n\nWhat % of the match was the robot being defended?\n\nHow skilled was their driver in general?", getContext()));
+        binding.ratingsHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Ratings", "Rate your robot here!\n\nFor how many seconds was the robot broken?\n\nHow long was the robot defending for?\n\nHow effective was the robot's defense, if any?\n\nHow long was the robot being defended?\n\nHow skilled was their driver in general?", getContext()));
 
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
         UIHelpers.lightDark(v, UIHelpers.darkMode);

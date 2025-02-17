@@ -22,10 +22,10 @@ public class CustomSeekBar extends androidx.appcompat.widget.AppCompatSeekBar {
     }
 
     @Override
-    protected void onDraw(Canvas c) {
+    protected synchronized void onDraw(Canvas c) {
         super.onDraw(c);
         int thumb_x = (int) (( (double)this.getProgress()/this.getMax() ) * (double)this.getWidth() * 0.8);
-        float middle = (float) (this.getHeight()/2 + 8);
+        float middle = (float) (this.getHeight()/2.0 + 8);
 
         Paint paint = new Paint();
         paint.setColor(Color.BLACK);

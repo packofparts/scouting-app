@@ -17,9 +17,9 @@ public class MatchData {
 
     private int autoNet, autoProcessor, autoMissedAlgae, teleOpNet, teleOpProcessor, teleOpMissedAlgae = 0;
 
-    private double defPercent, defEffectiveness, brokePercent, stars = 0.0;
+    private double defEffectiveness, stars = 0.0;
 
-    private int depth, climb = 0;
+    private int depth, climb, defPercent, brokePercent, UnderDefDuration = 0;
 
     private double analyzerScore = 0.0;
 
@@ -31,7 +31,8 @@ public class MatchData {
         ObjectMapper mapper = new ObjectMapper();
         new File("/sdcard/Documents/ScoutingData/").mkdirs();
         // convert Java object to JSON file
-        File dataFile = new File("/sdcard/Documents/ScoutingData/match" + UserModel.getMatchData().getMatchNumber() + "_team" + UserModel.getMatchData().getTeamNumber() +".json");
+        String s = UserModel.getMatchData().getMatchNumber().length() > 1 ? "": "0";
+        File dataFile = new File("/sdcard/Documents/ScoutingData/match" + s + UserModel.getMatchData().getMatchNumber() + "_team" + UserModel.getMatchData().getTeamNumber() +".json");
         dataFile.createNewFile();
         mapper.writeValue(dataFile, this);
         File newDataFlag = new File("/sdcard/Documents/ScoutingData/newDataFlag.txt");
@@ -192,31 +193,31 @@ public class MatchData {
         return teleOpMissedAlgae;
     }
 
-    public void setTeleOpMissedAlgae(int teleOpMissedAlgae) {
-        this.teleOpMissedAlgae = teleOpMissedAlgae;
-    }
+    public void setTeleOpMissedAlgae(int teleOpMissedAlgae) {this.teleOpMissedAlgae = teleOpMissedAlgae;}
 
-    public double getDefPercent() {
+    public int getDefPercent() {
         return defPercent;
     }
 
-    public void setDefPercent(double defPercent) {
+    public void setDefPercent(int defPercent) {
         this.defPercent = defPercent;
     }
 
+    public int getUnderDefDuration(){return UnderDefDuration;}
+
+    public void setUnderDefDuration(int defDuration){this.UnderDefDuration = defDuration;}
     public double getDefEffectiveness() {
         return defEffectiveness;
     }
 
-    public void setDefEffectiveness(double defEffectiveness) {
-        this.defEffectiveness = defEffectiveness;
+    public void setDefEffectiveness(double defEffectiveness) {this.defEffectiveness = defEffectiveness;
     }
 
-    public double getBrokePercent() {
+    public int getBrokePercent() {
         return brokePercent;
     }
 
-    public void setBrokePercent(double brokePercent) {
+    public void setBrokePercent(int brokePercent) {
         this.brokePercent = brokePercent;
     }
 

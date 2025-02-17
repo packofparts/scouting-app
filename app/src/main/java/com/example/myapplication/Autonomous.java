@@ -73,9 +73,7 @@ public class Autonomous extends Fragment {
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
         //VARIABLES
 
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", UIHelpers.wolfFrames);
-        animation.setDuration(1000);
-        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
+        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, binding.pop, this.getContext()));
 
         binding.cont.setOnClickListener(view12 -> NavHostFragment.findNavController(Autonomous.this)
                 .navigate(R.id.action_ThirdFragment_to_SecondFragment));
@@ -169,9 +167,8 @@ public class Autonomous extends Fragment {
             binding.MissedDisplay.setText(String.valueOf(UserModel.getMatchData().getAutoMissedAlgae()));
         });
             binding.moveOutOfZone.setOnCheckedChangeListener((v, b) -> UserModel.getMatchData().setMoveOutOfZone(b));
-        binding.coralScoringHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Coral Scoring", "These are the number of times the robot scored onto each level.", getContext()));
-        binding.coralMissedHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Coral Missed", "Add a point into this category if the robot tries to score coral and fails. I't doesn't matter which branch the robot attempted and to score on and failed, add a point here regardless!", getContext()));
-        binding.AlgaeScoringHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Algae Scoring", "How does the robot score algae? Does the robot shoot it through the net in the middle of the field? or does insert it in the processor at the ground of the field? or did the robot fail to do both? add your observations here!", getContext()));
+        binding.coralScoringHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Coral Scoring", "These are the number of times the robot scored coral onto each level or missed from any level.", getContext()));
+        binding.AlgaeScoringHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Algae Scoring", "These are the number of times the robot scored algae into each location or missed from any location.", getContext()));
 
 
     }

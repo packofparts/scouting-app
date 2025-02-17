@@ -12,10 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.SeekBar;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+
 
 import com.example.myapplication.databinding.EndGameBinding;
 
@@ -39,6 +41,9 @@ public class EndGame extends Fragment {
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
         binding.input.setText(UserModel.getMatchData().getNotes());
         binding.inzone.setChecked(UserModel.getMatchData().getInZone());
+        binding.percentagebroke.setProgress(UserModel.getMatchData().getBrokePercent());
+        binding.percentagedefense.setProgress(UserModel.getMatchData().getDefPercent());
+        binding.underdefense.setProgress(UserModel.getMatchData().getUnderDefDuration());
 
 
 
@@ -82,6 +87,8 @@ public class EndGame extends Fragment {
 
         binding.ratingBar.setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> UserModel.getMatchData().setStars(rating));
         binding.ratingBar.setRating((float) UserModel.getMatchData().getStars());
+        binding.effectivenessdefense.setOnRatingBarChangeListener((effectivenessdefense, rating, fromUser) -> UserModel.getMatchData().setDefEffectiveness(rating));
+        binding.effectivenessdefense.setRating((float) UserModel.getMatchData().getDefEffectiveness());
 
         return binding.getRoot();
     }
@@ -107,6 +114,55 @@ public class EndGame extends Fragment {
                 NavHostFragment.findNavController(EndGame.this).navigate(R.id.action_SecondFragment2_to_FirstFragment);
             }, () -> {}, getContext());
         });
+        binding.percentagebroke.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                UserModel.getMatchData().setBrokePercent(i);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        binding.percentagedefense.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                UserModel.getMatchData().setDefPercent(i);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        binding.underdefense.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                UserModel.getMatchData().setUnderDefDuration(i);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
 
 
         binding.prev.setOnClickListener(view12 -> NavHostFragment.findNavController(EndGame.this)
@@ -116,17 +172,8 @@ public class EndGame extends Fragment {
         ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         float height = displayMetrics.heightPixels;
         float width = displayMetrics.widthPixels;
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", UIHelpers.wolfFrames);
-        animation.setDuration(1000);
         binding.pop.setOnClickListener(view1 -> {
-            ObjectAnimator scaleAnimation = ObjectAnimator.ofFloat(binding.pop, "scaleX", 1f, 1.2f, 1f);
-            scaleAnimation.setDuration(500);
-            scaleAnimation.setRepeatCount(1);
-            scaleAnimation.setRepeatMode(ObjectAnimator.REVERSE);
-
-            scaleAnimation.start();
-
-            UIHelpers.darkModeToggle(v, animation, this.getContext());
+            UIHelpers.darkModeToggle(v, binding.pop, this.getContext());
         });
 
         binding.input.addTextChangedListener(new TextWatcher() {
@@ -154,7 +201,8 @@ public class EndGame extends Fragment {
         binding.notesHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Notes", "Here, you can jot down anything extra that you've observed in-game!", getContext()));
         binding.limitHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Character Limit", "You have a 150-character limit for your notes.", getContext()));
         binding.analyzerHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Sentiment Analyzer", "This is the overall sentiment (positivity/negativity) of your notes!", getContext()));
-        binding.bargeHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Barge", "Here you record the status of the robot after the competition has ended. Is the robot parked inside the zone eligible for scoring? Did the robot successfully hook onto a cage and of which depth? Did the robot attempt to climb the cage?", getContext()));
+        binding.bargeHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Barge", "Here you record the status of the robot at then end of the competition.\n\nIs the robot parked inside the zone eligible for scoring?\n\nWhich depth cage did the robot attempt/park next to?\n\nDid the robot successfully climb the cage?", getContext()));
+        binding.ratingsHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Ratings", "Rate your robot here!\n\nFor how many seconds was the robot broken?\n\nHow long was the robot defending for?\n\nHow effective was the robot's defense, if any?\n\nHow long was the robot being defended?\n\nHow skilled was their driver in general?", getContext()));
 
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
         UIHelpers.lightDark(v, UIHelpers.darkMode);

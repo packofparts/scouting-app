@@ -581,13 +581,12 @@
 
         <ImageView
             android:id="@+id/pop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:rotationX="360"
             android:src="@drawable/pop"
-            android:translationX="0dp"
-            android:translationY="0dp"/>
-
+            android:translationX="26dp"
+            android:translationY="34dp"/>
 
 
         <TextView

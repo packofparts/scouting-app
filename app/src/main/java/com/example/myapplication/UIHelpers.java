@@ -2,32 +2,23 @@ package com.example.myapplication;
 
 
 import android.animation.ObjectAnimator;
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.app.UiModeManager;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.media.MediaPlayer;
-import android.os.Build;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.navigation.fragment.NavHostFragment;
-
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-
-import java.io.IOException;
 
 public class UIHelpers {
     public static int purple = Color.parseColor("#6750A3");
@@ -35,6 +26,7 @@ public class UIHelpers {
     public static ColorStateList purpleAsList = ColorStateList.valueOf(purple);
     public static ColorStateList teamColorAsList = ColorStateList.valueOf(teamColor);
     public static final float[] wolfFrames = {0f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f, 90f, 180f, 270f, 360f};
+    public static final float[] wolfScales = {1f, 1.2f, 1f};
     public static MediaPlayer mp;
     public static boolean darkMode = false;
     public static void lightDark (ViewGroup v, boolean mode){
@@ -137,8 +129,17 @@ public class UIHelpers {
         }
         mp.start();
     }
-    public static void darkModeToggle(ViewGroup v, ObjectAnimator animation, Context context) {
+    public static void darkModeToggle(ViewGroup v, ImageView popLogo, Context context) {
+        ObjectAnimator animation = ObjectAnimator.ofFloat(popLogo, "rotation", UIHelpers.wolfFrames);
+        animation.setDuration(1000);
         animation.start();
+        ObjectAnimator scaleAnimation = ObjectAnimator.ofFloat(popLogo, "scaleX", UIHelpers.wolfScales);
+        scaleAnimation.setDuration(500);
+        scaleAnimation.setRepeatCount(1);
+        scaleAnimation.setRepeatMode(ObjectAnimator.REVERSE);
+
+        scaleAnimation.start();
+
         darkMode = !darkMode;
         lightDark(v, darkMode);
         playHowlSound(context);

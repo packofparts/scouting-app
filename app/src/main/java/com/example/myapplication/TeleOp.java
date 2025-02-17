@@ -9,7 +9,6 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SeekBar;
 import android.widget.Switch;
 
 import androidx.annotation.NonNull;
@@ -34,10 +33,6 @@ public class TeleOp extends Fragment {
         binding = TeleOpBinding.inflate(inflater, container, false);
         v = container;
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
-        binding.percentagebroke.setProgress((int) (UserModel.getMatchData().getBrokePercent() * 100));
-        binding.percentagedefense.setProgress((int) (UserModel.getMatchData().getDefPercent() * 100));
-        binding.effectivenessdefense.setProgress((int) (UserModel.getMatchData().getDefEffectiveness() * 100));
-
         binding.L4Display.setText(String.valueOf(UserModel.getMatchData().getTeleOpL4()));
         binding.L3Display.setText(String.valueOf(UserModel.getMatchData().getTeleOpL3()));
         binding.L2Display.setText(String.valueOf(UserModel.getMatchData().getTeleOpL2()));
@@ -63,60 +58,8 @@ public class TeleOp extends Fragment {
         ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         float height = displayMetrics.heightPixels;
         float width = displayMetrics.widthPixels;
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", UIHelpers.wolfFrames);
-        animation.setDuration(1000);
-        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
-        binding.percentagebroke.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                UserModel.getMatchData().setBrokePercent(i/100.0);
+        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, binding.pop, this.getContext()));
 
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-        binding.percentagedefense.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                UserModel.getMatchData().setDefPercent(i/100.0);
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-        binding.effectivenessdefense.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                UserModel.getMatchData().setDefEffectiveness(i/100.0);
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
         binding.L4Minus.setOnClickListener(v -> {
             if(UserModel.getMatchData().getTeleOpL4()>0){
                 UserModel.getMatchData().setTeleOpL4(UserModel.getMatchData().getTeleOpL4()-1);
@@ -197,8 +140,8 @@ public class TeleOp extends Fragment {
             UserModel.getMatchData().setTeleOpMissedAlgae(UserModel.getMatchData().getTeleOpMissedAlgae()+1);
             binding.MissedDisplay.setText(String.valueOf(UserModel.getMatchData().getTeleOpMissedAlgae()));
         });
-        binding.coralScoringHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Coral Scoring", "These are the number of times the robot scored onto each level or missed from any level!", getContext()));
-        binding.AlgaeScoringHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Algae Scoring", "How does the robot score algae? Does the robot shoot it through the net in the middle of the field? or does insert it in the processor at the ground of the field? or did the robot fail to do both? add your observations here!", getContext()));
+        binding.coralScoringHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Coral Scoring", "These are the number of times the robot scored coral onto each level or missed from any level.", getContext()));
+        binding.AlgaeScoringHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Algae Scoring", "These are the number of times the robot scored algae into each location or missed from any location.", getContext()));
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
         UIHelpers.lightDark(v, UIHelpers.darkMode);
         binding.bottomTag.setText(MainActivity.getLocationText());

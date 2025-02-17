@@ -31,7 +31,8 @@ public class MatchData {
         ObjectMapper mapper = new ObjectMapper();
         new File("/sdcard/Documents/ScoutingData/").mkdirs();
         // convert Java object to JSON file
-        File dataFile = new File("/sdcard/Documents/ScoutingData/match" + UserModel.getMatchData().getMatchNumber() + "_team" + UserModel.getMatchData().getTeamNumber() +".json");
+        String s = UserModel.getMatchData().getMatchNumber().length() > 1 ? "": "0";
+        File dataFile = new File("/sdcard/Documents/ScoutingData/match" + s + UserModel.getMatchData().getMatchNumber() + "_team" + UserModel.getMatchData().getTeamNumber() +".json");
         dataFile.createNewFile();
         mapper.writeValue(dataFile, this);
         File newDataFlag = new File("/sdcard/Documents/ScoutingData/newDataFlag.txt");

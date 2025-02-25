@@ -10,7 +10,7 @@ How to use our app:
 4. Do scouting or pit scouting.
 5. Reconnect the mobile device to the computer.
 6. Run one of the scripts inside tool with PowerShell depending on the type of data you wish to transfer (pit or match).
-7. The data be located in a folder called ScoutingData or PitData in your Documents folder.
+7. The data will be located in a folder called ScoutingData or PitData in your Documents folder.
 
 app/src/main/res/raw/cleansentiment.csv is sourced and modified from © 2025 College Board.
 app/src/main/res/raw/howl.mp3 is sourced from a free sound library.

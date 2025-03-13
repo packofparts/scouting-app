@@ -74,7 +74,7 @@ public class TeamSelection extends Fragment {
 
         binding.back.setOnClickListener(v -> {
             String teamNumber = String.valueOf(binding.input.getText());
-            boolean teamNumberCheck = (!teamNumber.isEmpty() && teamNumber.length() < 5 && !teamNumber.equals("0"));
+            boolean teamNumberCheck = (!teamNumber.isEmpty() && teamNumber.length() <= 6 && !teamNumber.equals("0"));
             if (teamNumberCheck) {
                 UserModel.getPitData().setTeamNumber(teamNumber);
                 NavHostFragment.findNavController(TeamSelection.this)
@@ -136,9 +136,7 @@ public class TeamSelection extends Fragment {
                                 UserModel.getMatchData().setMatchNumber("1");
                                 binding.input.setText(MainActivity.teams.get(0));
                             } else {
-                                binding.matchInput.setText(String.valueOf(MainActivity.teams.size()));
-                                UserModel.getMatchData().setMatchNumber(String.valueOf(MainActivity.teams.size()));
-                                binding.input.setText(MainActivity.teams.get(MainActivity.teams.size() - 1));
+                                binding.input.setText("");
                             }
                         }
                     } catch (Exception e){
@@ -160,7 +158,7 @@ public class TeamSelection extends Fragment {
             builder.setNeutralButton("Cancel", (d, w) -> {
                 d.cancel();
             });
-            builder.setItems(new CharSequence[]{"Red 1", "Red 2", "Red 3", "Blue 1", "Blue 2", "Blue 3"}, (d, w) -> {
+            builder.setItems(new CharSequence[]{"Red 1", "Red 2", "Redefrvrfb 3", "Blue 1", "Blue 2", "Blue 3"}, (d, w) -> {
                 MainActivity.scoutLocation = w;
                 MainActivity.writeInt("ScoutLocation", w);
             });

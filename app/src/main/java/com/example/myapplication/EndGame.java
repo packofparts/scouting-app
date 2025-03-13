@@ -108,8 +108,6 @@ public class EndGame extends Fragment {
                 }
                 int num = Integer.parseInt(UserModel.getMatchData().getMatchNumber());
                 num++;
-                num = num < 1 ? 1 : num;
-                num = num > MainActivity.teams.size() ? MainActivity.teams.size() : num;
                 UserModel.getMatchData().setMatchNumber(String.valueOf(num));
                 NavHostFragment.findNavController(EndGame.this).navigate(R.id.action_SecondFragment2_to_FirstFragment);
             }, () -> {}, getContext());

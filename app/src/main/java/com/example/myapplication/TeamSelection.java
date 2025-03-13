@@ -55,7 +55,7 @@ public class TeamSelection extends Fragment {
         binding.cont.setOnClickListener(v -> {
             String teamNumber = String.valueOf(binding.input.getText());
             String matchNumber = String.valueOf(binding.matchInput.getText());
-            boolean teamNumberCheck = (!teamNumber.isEmpty() && teamNumber.length() <= 6 && !teamNumber.equals("0"));
+            boolean teamNumberCheck = (!teamNumber.isEmpty() && teamNumber.length() <= 5 && !teamNumber.equals("0"));
             boolean matchNumCheck = (!matchNumber.isEmpty() && !matchNumber.equals("0"));
             if (teamNumberCheck && matchNumCheck) {
                 UserModel.getMatchData().setTeamNumber(teamNumber);
@@ -74,7 +74,7 @@ public class TeamSelection extends Fragment {
 
         binding.back.setOnClickListener(v -> {
             String teamNumber = String.valueOf(binding.input.getText());
-            boolean teamNumberCheck = (!teamNumber.isEmpty() && teamNumber.length() <= 6 && !teamNumber.equals("0"));
+            boolean teamNumberCheck = (!teamNumber.isEmpty() && teamNumber.length() <= 5 && !teamNumber.equals("0"));
             if (teamNumberCheck) {
                 UserModel.getPitData().setTeamNumber(teamNumber);
                 NavHostFragment.findNavController(TeamSelection.this)

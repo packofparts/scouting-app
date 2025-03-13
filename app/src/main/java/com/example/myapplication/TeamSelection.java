@@ -158,7 +158,7 @@ public class TeamSelection extends Fragment {
             builder.setNeutralButton("Cancel", (d, w) -> {
                 d.cancel();
             });
-            builder.setItems(new CharSequence[]{"Red 1", "Red 2", "Redefrvrfb 3", "Blue 1", "Blue 2", "Blue 3"}, (d, w) -> {
+            builder.setItems(new CharSequence[]{"Red 1", "Red 2", "Red 3", "Blue 1", "Blue 2", "Blue 3"}, (d, w) -> {
                 MainActivity.scoutLocation = w;
                 MainActivity.writeInt("ScoutLocation", w);
             });

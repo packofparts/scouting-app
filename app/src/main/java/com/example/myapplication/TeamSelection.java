@@ -16,14 +16,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.myapplication.databinding.FragmentFirstBinding;
+import com.example.myapplication.databinding.TeamSelectionBinding;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-
-public class FirstFragment extends Fragment {
-    private FragmentFirstBinding binding;
+public class TeamSelection extends Fragment {
+    private TeamSelectionBinding binding;
     ViewGroup v;
 
     @Override
@@ -31,7 +28,7 @@ public class FirstFragment extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        binding = FragmentFirstBinding.inflate(inflater, container, false);
+        binding = TeamSelectionBinding.inflate(inflater, container, false);
         v = container;
 
         String currentMatchNumber = UserModel.getMatchData().getMatchNumber();
@@ -40,7 +37,7 @@ public class FirstFragment extends Fragment {
             String currentTeamNumber = MainActivity.teams.get(Integer.parseInt(currentMatchNumber) - 1);
             binding.input.setText(currentTeamNumber);
         } catch (Exception e){
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         ViewModelProvider viewModelProvider = new ViewModelProvider(requireActivity());
@@ -58,12 +55,12 @@ public class FirstFragment extends Fragment {
         binding.cont.setOnClickListener(v -> {
             String teamNumber = String.valueOf(binding.input.getText());
             String matchNumber = String.valueOf(binding.matchInput.getText());
-            boolean teamNumberCheck = (!teamNumber.isEmpty() && teamNumber.length() <= 6 && !teamNumber.equals("0"));
+            boolean teamNumberCheck = (!teamNumber.isEmpty() && teamNumber.length() <= 5 && !teamNumber.equals("0"));
             boolean matchNumCheck = (!matchNumber.isEmpty() && !matchNumber.equals("0"));
             if (teamNumberCheck && matchNumCheck) {
                 UserModel.getMatchData().setTeamNumber(teamNumber);
                 UserModel.getMatchData().setMatchNumber(matchNumber);
-                NavHostFragment.findNavController(FirstFragment.this)
+                NavHostFragment.findNavController(TeamSelection.this)
                         .navigate(R.id.action_FirstFragment_to_ThirdFragment);
             } else {
                 if (!teamNumberCheck) {
@@ -77,19 +74,17 @@ public class FirstFragment extends Fragment {
 
         binding.back.setOnClickListener(v -> {
             String teamNumber = String.valueOf(binding.input.getText());
-            boolean teamNumberCheck = (!teamNumber.isEmpty() && teamNumber.length() < 5 && !teamNumber.equals("0"));
+            boolean teamNumberCheck = (!teamNumber.isEmpty() && teamNumber.length() <= 5 && !teamNumber.equals("0"));
             if (teamNumberCheck) {
                 UserModel.getPitData().setTeamNumber(teamNumber);
-                NavHostFragment.findNavController(FirstFragment.this)
+                NavHostFragment.findNavController(TeamSelection.this)
                         .navigate(R.id.action_FirstFragment_to_HomePage);
             } else {
                 Snackbar.make(view, "Invalid team number", 600).show();
             }
         });
 
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", UIHelpers.wolfFrames);
-        animation.setDuration(1000);
-        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
+        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, binding.pop, this.getContext()));
 
         DisplayMetrics dm = new DisplayMetrics();
         ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -141,9 +136,7 @@ public class FirstFragment extends Fragment {
                                 UserModel.getMatchData().setMatchNumber("1");
                                 binding.input.setText(MainActivity.teams.get(0));
                             } else {
-                                binding.matchInput.setText(String.valueOf(MainActivity.teams.size()));
-                                UserModel.getMatchData().setMatchNumber(String.valueOf(MainActivity.teams.size()));
-                                binding.input.setText(MainActivity.teams.get(MainActivity.teams.size() - 1));
+                                binding.input.setText("");
                             }
                         }
                     } catch (Exception e){

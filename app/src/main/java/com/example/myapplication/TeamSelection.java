@@ -1,5 +1,5 @@
 package com.example.myapplication;
-import java.util.Random
+import java.util.Random;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;

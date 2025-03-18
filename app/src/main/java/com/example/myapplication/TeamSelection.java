@@ -97,7 +97,7 @@ public class TeamSelection extends Fragment {
 
         binding.random.setOnClickListener(v -> {
 
-            int randomIndex = (new Random()).nextInt(0, MainActivity.names.size());
+            int randomIndex = (new Random()).nextInt(MainActivity.names.size());
             binding.scoutername.setText(MainActivity.names.get(randomIndex));
             ObjectAnimator animation = ObjectAnimator.ofFloat(binding.random, "rotationY", UIHelpers.wolfFrames);
             animation.setDuration(1000);

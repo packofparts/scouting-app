@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.myapplication.CustomScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -117,6 +117,33 @@
             android:textStyle="bold"
              
             android:tag="@string/team"/>
+
+        <TextView
+            android:id="@+id/nameselectionTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Scouter"
+            android:textSize="24dp"
+            android:textColor="#ff0000"
+            android:translationX="126dp"
+            android:translationY="470dp"
+            android:textStyle="bold"
+
+            android:tag="@string/team"/>
+
+        <TextView
+            android:id="@+id/nameselectionTag2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Name"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="216dp"
+            android:translationY="470dp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/matchNumberTag2"
             android:layout_width="wrap_content"
@@ -128,6 +155,7 @@
             android:translationX="193dp"
             android:translationY="370dp"
             android:textStyle="bold" />
+
         <TextView
             android:id="@+id/matchNumberHelp"
             android:layout_width="wrap_content"
@@ -138,6 +166,18 @@
             android:textColor="#000000"
             android:translationX="290dp"
             android:translationY="370dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/ScouterHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="ⓘ"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:translationX="290dp"
+            android:translationY="470dp"
             android:textStyle="bold"/>
 
         <TextView
@@ -194,29 +234,68 @@
             android:translationX="100dp"
             android:translationY="400dp"
             app:cornerRadius="20dp" />
+
+
+
+        <Button
+            android:id="@+id/scouternamebacking"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:backgroundTint="#D9D9D9"
+            android:clickable="false"
+            android:tag=""
+            android:text=""
+            android:translationX="100dp"
+            android:translationY="500dp"
+            app:cornerRadius="20dp" />
+
+        <TextView
+            android:id="@+id/random"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
+            android:tag=""
+            android:text="🎲"
+            android:textSize="26dp"
+            android:translationX="90dp"
+            android:translationY="470dp"
+            android:textAlignment="center"
+            app:cornerRadius="20dp" />
+
+        <AutoCompleteTextView
+            android:id="@+id/scoutername"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:hint="Your Name Here"
+            android:textColor="#000000"
+            android:textColorHint="#71797E"
+            android:translationX="110dp"
+            android:translationY="500dp"
+            android:tag="@string/no_change"
+            android:singleLine="true"/>
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input"
-            android:layout_width="140dp"
+            android:layout_width="180dp"
             android:layout_height="50dp"
             android:hint="Team Number"
             android:textColor="#000000"
             android:textColorHint="#71797E"
             android:maxLength="5"
             android:inputType="number"
-            android:translationX="133dp"
+            android:translationX="110dp"
             android:translationY="300dp"
             android:tag="@string/no_change"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/matchInput"
-            android:layout_width="140dp"
+            android:layout_width="180dp"
             android:layout_height="50dp"
             android:hint="Match Number"
             android:textColor="#000000"
             android:textColorHint="#71797E"
             android:maxLength="3"
             android:inputType="number"
-            android:translationX="133dp"
+            android:translationX="110dp"
             android:translationY="400dp"
             android:tag="@string/no_change" />
 
@@ -231,6 +310,19 @@
             android:textStyle="bold"
             android:translationX="310dp"
             android:translationY="390dp" />
+
+        <TextView
+            android:id="@+id/ScouterNamehelp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="↖\nOnly Use Autofill when entering."
+            android:textAlignment="textStart"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:translationX="310dp"
+            android:translationY="520dp" />
+
 
         <TextView
             android:id="@+id/popHelpText"
@@ -261,4 +353,4 @@
 
 
     </RelativeLayout>
-</androidx.core.widget.NestedScrollView>
+</com.example.myapplication.CustomScrollView>

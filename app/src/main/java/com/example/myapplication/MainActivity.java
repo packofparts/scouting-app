@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<String> teams = new ArrayList<>();
 
+    public static ArrayList<String> names = new ArrayList<>();
+
     public static int scoutLocation = readInt("ScoutLocation");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         if (teams.isEmpty()) {
             updateTeams(getResources());
+        }
+        if (names.isEmpty()) {
+            updateNames(getResources());
         }
         writeInt("ScoutLocation", scoutLocation);
     }
@@ -102,6 +107,19 @@ public class MainActivity extends AppCompatActivity {
 
         }
         scanner.close();
+    }
+    public static void updateNames(Resources r){
+        names.clear();
+
+        Scanner scanner = new Scanner(r.openRawResource(R.raw.names));
+        int line = 0;
+        while (scanner.hasNext()) {
+            String name = scanner.nextLine();
+            if (line % 5 == 1 && !name.contains("@")){
+                names.add(name);
+            }
+            line += 1;
+        }
     }
 
     public static void writeInt(String fileName, int num){

@@ -26,7 +26,7 @@ public class MatchData {
     private String notes = "";
 
 
-
+    private String scouterName = "";
     public void toJson() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         new File("/sdcard/Documents/ScoutingData/").mkdirs();
@@ -46,6 +46,9 @@ public class MatchData {
     public void setTeamNumber(String teamNumber) { this.teamNumber = teamNumber;  }
     public String getMatchNumber() {    return matchNumber;    }
     public void setMatchNumber(String matchNumber) { this.matchNumber = matchNumber;    }
+    public String getScouterName(){ return scouterName;}
+
+    public void setScouterName(String scouterName){this.scouterName = scouterName;}
 
     //Auto
 
@@ -253,3 +256,4 @@ public class MatchData {
         this.inZone = inZone;
     }
 }
+

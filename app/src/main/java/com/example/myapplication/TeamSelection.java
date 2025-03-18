@@ -1,5 +1,5 @@
 package com.example.myapplication;
-
+import java.util.Random
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -97,7 +97,7 @@ public class TeamSelection extends Fragment {
 
         binding.random.setOnClickListener(v -> {
 
-            int randomIndex = (int) (Math.random() * MainActivity.names.size());
+            int randomIndex = (new Random()).nextInt(0, MainActivity.names.size());
             binding.scoutername.setText(MainActivity.names.get(randomIndex));
             ObjectAnimator animation = ObjectAnimator.ofFloat(binding.random, "rotationY", UIHelpers.wolfFrames);
             animation.setDuration(1000);

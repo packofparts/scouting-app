@@ -11,32 +11,35 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Switch;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import androidx.annotation.NonNull;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.myapplication.databinding.FragmentThirdBinding;
+
+import com.example.myapplication.databinding.AutonomousBinding;
 
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ThirdFragment#newInstance} factory method to
+ * Use the {@link Autonomous#newInstance} factory method to
  * create an instance of this fragment.
  */
 
-public class ThirdFragment extends Fragment {
+public class Autonomous extends Fragment {
 
 
-    private FragmentThirdBinding binding;
+    private AutonomousBinding binding;
     ViewGroup v = null;
     @SuppressLint({"ObsoleteSdkInt", "SetTextI18n"})
     @Override
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState
     ){
-        binding = FragmentThirdBinding.inflate(inflater, container, false);
+        binding = AutonomousBinding.inflate(inflater, container, false);
         v = container;
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
+
         return binding.getRoot();
     }
 
@@ -61,13 +64,11 @@ public class ThirdFragment extends Fragment {
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
         //VARIABLES
 
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", UIHelpers.wolfFrames);
-        animation.setDuration(1000);
-        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
+        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, binding.pop, this.getContext()));
 
-        binding.cont.setOnClickListener(view12 -> NavHostFragment.findNavController(ThirdFragment.this)
+        binding.cont.setOnClickListener(view12 -> NavHostFragment.findNavController(Autonomous.this)
                 .navigate(R.id.action_ThirdFragment_to_SecondFragment));
-        binding.back.setOnClickListener(view1 -> UIHelpers.makeConfirmationAlert("Cancel Match Data", "Do you want to cancel your match data?", () -> NavHostFragment.findNavController(ThirdFragment.this)
+        binding.back.setOnClickListener(view1 -> UIHelpers.makeConfirmationAlert("Cancel Match Data", "Do you want to cancel your match data?", () -> NavHostFragment.findNavController(Autonomous.this)
                 .navigate(R.id.action_ThirdFragment_to_FirstFragment), () -> {}, getContext()));
         DisplayMetrics dm = new DisplayMetrics();
         ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -76,7 +77,6 @@ public class ThirdFragment extends Fragment {
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
         UIHelpers.lightDark(v, UIHelpers.darkMode);
         binding.bottomTag.setText(MainActivity.getLocationText());
-
 
     }
     @Override
@@ -89,12 +89,12 @@ public class ThirdFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
 
-    public ThirdFragment() {
+    public Autonomous() {
         // Required empty public constructor
     }
 
-    public static ThirdFragment newInstance(String param1, String param2) {
-        ThirdFragment fragment = new ThirdFragment();
+    public static Autonomous newInstance(String param1, String param2) {
+        Autonomous fragment = new Autonomous();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

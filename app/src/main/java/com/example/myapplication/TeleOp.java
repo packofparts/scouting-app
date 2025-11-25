@@ -9,20 +9,18 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.myapplication.databinding.FragmentSecondBinding;
+import com.example.myapplication.databinding.TeleOpBinding;
 
 
+public class TeleOp extends Fragment {
 
-public class SecondFragment extends Fragment {
-
-    private FragmentSecondBinding binding;
+    private TeleOpBinding binding;
     ViewGroup v = null;
 
     @SuppressLint("SetTextI18n")
@@ -32,9 +30,10 @@ public class SecondFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentSecondBinding.inflate(inflater, container, false);
+        binding = TeleOpBinding.inflate(inflater, container, false);
         v = container;
         binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
+
         return binding.getRoot();
     }
 
@@ -43,19 +42,16 @@ public class SecondFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        binding.next.setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
+        binding.cont.setOnClickListener(view1 -> NavHostFragment.findNavController(TeleOp.this)
                 .navigate(R.id.action_SecondFragment_to_SecondFragment2));
-        binding.prev.setOnClickListener(view12 -> NavHostFragment.findNavController(SecondFragment.this)
+        binding.back.setOnClickListener(view12 -> NavHostFragment.findNavController(TeleOp.this)
                 .navigate(R.id.action_SecondFragment_to_ThirdFragment));
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         float height = displayMetrics.heightPixels;
         float width = displayMetrics.widthPixels;
-        ObjectAnimator animation = ObjectAnimator.ofFloat(binding.pop, "rotation", UIHelpers.wolfFrames);
-        animation.setDuration(1000);
-        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, animation, this.getContext()));
-        ArrayAdapter<String> chainAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Intake", "Ground Intake", "Source Intake", "Both"});
+        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, binding.pop, this.getContext()));
 
 
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);

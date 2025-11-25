@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ThirdFragment">
+    tools:context=".PitScouting">
 
     <RelativeLayout
 
         android:layout_width="match_parent"
-        android:layout_height="730dp"
+        android:layout_height="1037dp"
         android:padding="0dp"
         android:background="@drawable/red_light"
         android:id="@+id/relativeLayoutFirst">
@@ -23,8 +23,9 @@
             android:textSize="24dp"
             android:textColor="#000000"
             android:translationX="115dp"
-            android:translationY="560dp"
+            android:translationY="837dp"
             android:textStyle="bold"/>
+
         <TextView
             android:id="@+id/limitHelp"
             android:layout_width="wrap_content"
@@ -34,7 +35,7 @@
             android:textSize="24dp"
             android:textColor="#000000"
             android:translationX="190dp"
-            android:translationY="630dp"
+            android:translationY="925dp"
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/analyzerHelp"
@@ -45,7 +46,7 @@
             android:textSize="24dp"
             android:textColor="#000000"
             android:translationX="370dp"
-            android:translationY="630dp"
+            android:translationY="925dp"
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/characterLimit"
@@ -55,7 +56,7 @@
             android:text="Character Limit: 0/150"
             android:textSize="15dp"
             android:translationX="30dp"
-            android:translationY="635dp" />
+            android:translationY="930dp" />
         <TextView
             android:id="@+id/analyzerScore"
             android:layout_width="330dp"
@@ -64,7 +65,7 @@
             android:text="Analyzer Score: 0.0"
             android:textSize="15dp"
             android:translationX="230dp"
-            android:translationY="635dp" />
+            android:translationY="930dp" />
         <TextView
             android:id="@+id/notesTitle"
             android:layout_width="71dp"
@@ -72,7 +73,7 @@
             android:text="Notes"
             android:textSize="24dp"
             android:translationX="45dp"
-            android:translationY="560dp"
+            android:translationY="837dp"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:shadowColor="@color/black" />
@@ -86,7 +87,7 @@
             android:tag=""
             android:text=""
             android:translationX="17dp"
-            android:translationY="589dp"
+            android:translationY="874dp"
             app:cornerRadius="20dp" />
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input"
@@ -98,7 +99,7 @@
             android:maxLength="150"
             android:inputType="text"
             android:translationX="45dp"
-            android:translationY="588dp"
+            android:translationY="874dp"
             android:tag="@string/no_change"/>
         <Button
             android:id="@+id/bg1"
@@ -108,7 +109,7 @@
             android:text=""
             android:clickable="false"
             android:translationX="0dp"
-            android:translationY="655dp"
+            android:translationY="959dp"
             app:cornerRadius="15dp"
             android:tag="@string/bg1"/>
 
@@ -120,7 +121,7 @@
             android:text=""
             android:clickable="false"
             android:translationX="17dp"
-            android:translationY="670dp"
+            android:translationY="973dp"
             app:cornerRadius="20dp"
             android:tag="@string/bg2"/>
 
@@ -133,7 +134,7 @@
             android:textSize="36dp"
             android:textColor="#ff0000"
             android:translationX="159dp"
-            android:translationY="669dp"
+            android:translationY="973dp"
             android:textStyle="bold"
             android:tag="@string/team"/>
 
@@ -142,7 +143,7 @@
             android:layout_width="110dp"
             android:layout_height="50dp"
             android:text="Next"
-            android:translationY="669.5dp"
+            android:translationY="973dp"
             android:translationX="285dp"
             app:cornerRadius="20dp"
             android:backgroundTint="#E02E3C"
@@ -164,27 +165,18 @@
             android:textColor="@color/white"
             android:text="Pit Scouting"
             android:textStyle="bold"
-            android:shadowDy="5"
-            android:shadowColor="@color/black"
-            android:shadowRadius="10"
             android:textSize="40sp"
             android:tag="@string/no_change"/>
 
 
         <ImageView
             android:id="@+id/pop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:rotationX="360"
             android:src="@drawable/pop"
-            android:translationX="0dp"
-            android:translationY="0dp"/>
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:translationX="26dp"
+            android:translationY="34dp"/>
 
 
         <TextView
@@ -205,7 +197,7 @@
             android:layout_height="50dp"
             android:text="Back"
             android:translationX="17dp"
-            android:translationY="669.5dp"
+            android:translationY="973dp"
             android:textColor="@color/white"
             app:cornerRadius="20dp"
             android:backgroundTint="#E02E3C"

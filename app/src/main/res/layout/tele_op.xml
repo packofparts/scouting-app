@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?><com.example.myapplication.CustomScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".TeleOp">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="860dp"
+        android:padding="0dp"
+        android:background="@drawable/red_light">
+
+
+        <Button
+            android:id="@+id/bg1"
+            android:layout_width="430dp"
+            android:layout_height="80dp"
+            android:backgroundTint="#E48B92"
+            android:text=""
+            android:clickable="false"
+            android:translationX="0dp"
+            android:translationY="782dp"
+            app:cornerRadius="15dp"
+            android:tag="@string/bg1"/>
+
+        <Button
+            android:id="@+id/bg2"
+            android:layout_width="378dp"
+            android:layout_height="50dp"
+            android:backgroundTint="#5cffffff"
+            android:text=""
+            android:clickable="false"
+            android:translationX="17dp"
+            android:translationY="796dp"
+            app:cornerRadius="20dp"
+            android:tag="@string/bg2"/>
+
+        <TextView
+            android:id="@+id/bottomTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Red 1"
+            android:textSize="36dp"
+            android:textColor="#ff0000"
+            android:translationX="159dp"
+            android:translationY="796dp"
+            android:textStyle="bold"
+            android:tag="@string/team"/>
+
+        <Button
+            android:id="@+id/cont"
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:text="Next"
+            android:translationY="796dp"
+            android:translationX="285dp"
+            app:cornerRadius="20dp"
+            android:backgroundTint="#E02E3C"
+            android:textColor="@color/white"
+            android:shadowRadius="10"
+            android:shadowDy="5"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:tag="@string/team"/>
+
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="47dp"
+            android:translationX="150dp"
+            android:translationY="35dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:text="Tele-Op" android:textStyle="bold"
+            android:textSize="40sp" android:tag="@string/no_change"/>
+
+
+        <ImageView
+            android:id="@+id/pop"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:rotationX="360"
+            android:src="@drawable/pop"
+            android:translationX="26dp"
+            android:translationY="34dp"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+
+        <TextView
+            android:id="@+id/team"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Team "
+            android:textColor="@color/white"
+            android:textSize="26dp"
+            android:textStyle="bold"
+            android:translationX="150dp"
+            android:translationY="85dp"
+            android:tag="@string/no_change"/>
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:backgroundTint="#E02E3C"
+            android:shadowDy="5"
+            android:shadowRadius="10"
+            android:tag="@string/team"
+            android:text="Back"
+            android:textColor="@color/white"
+            android:textSize="19.9dp"
+            android:textStyle="bold"
+            android:translationX="17dp"
+            android:translationY="796dp"
+            app:cornerRadius="20dp" />
+
+
+    </RelativeLayout>
+</com.example.myapplication.CustomScrollView>

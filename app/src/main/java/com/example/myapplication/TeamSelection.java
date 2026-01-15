@@ -178,7 +178,6 @@ public class TeamSelection extends Fragment {
             builder.setTitle("Set Scout Location");
             builder.setOnDismissListener(d -> {
                 MainActivity.updateTeams(getResources());
-                UIHelpers.lightDark(v, UIHelpers.darkMode);
                 binding.bottomTag.setText(MainActivity.getLocationText());
 
             });
@@ -193,7 +192,6 @@ public class TeamSelection extends Fragment {
             return false;
         });
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
-        UIHelpers.lightDark(v, UIHelpers.darkMode);
     }
     @Override
     public void onDestroyView() {

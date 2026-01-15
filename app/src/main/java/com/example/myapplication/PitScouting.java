@@ -63,8 +63,6 @@ public class PitScouting extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.team.setText("Team " + UserModel.getPitData().getTeamNumber());
-        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, binding.pop, this.getContext()));
 
 
 

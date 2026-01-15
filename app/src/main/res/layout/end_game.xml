@@ -1,217 +1,843 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<com.example.myapplication.CustomScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:barrierMargin="1dp"
-    tools:context=".EndGame">
+    android:background="#FFFFFF">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout_first"
-        android:layout_width="match_parent"
-        android:layout_height="970dp"
-        android:padding="0dp"
-        android:background="@drawable/red_light">
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <Button
-            android:id="@+id/textbacking1"
-            android:layout_width="378dp"
-            android:layout_height="49dp"
-            android:backgroundTint="#D9D9D9"
-            android:clickable="false"
-            android:tag=""
-            android:text=""
-            android:translationX="17dp"
-            android:translationY="828dp"
-            app:cornerRadius="20dp" />
-
-        <ImageView
-            android:id="@+id/pop"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:rotationX="360"
-            android:src="@drawable/pop"
-            android:translationX="26dp"
-            android:translationY="34dp"/>
-
-        <TextView
-            android:id="@+id/characterLimit"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#00FFFFFF"
-            android:text="Character Limit: 0/150"
-            android:textSize="15dp"
-            android:translationX="30dp"
-            android:translationY="875dp" />
+            android:background="#101622"
+            android:paddingBottom="16dp">
 
-        <TextView
-            android:id="@+id/analyzerScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#00FFFFFF"
-            android:text="Analyzer Score: 0.0"
-            android:textSize="15dp"
-            android:translationX="230dp"
-            android:translationY="875dp" />
+            <!-- Header -->
+            <ImageView
+                android:id="@+id/ivLogo"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/timeicon"
+                android:scaleType="fitXY"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Endgame"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ivLogo"
+                app:layout_constraintBottom_toBottomOf="@id/ivLogo" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input"
-            android:layout_width="322dp"
-            android:layout_height="50dp"
-            android:hint="Enter Here"
-            android:textColor="#000000"
-            android:textColorHint="#71797E"
-            android:maxLength="150"
-            android:inputType="text"
-            android:translationX="45dp"
-            android:translationY="828dp"
-            android:tag="@string/no_change"/>
+            <TextView
+                android:id="@+id/tvReset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Reset"
+                android:textColor="#0D59F2"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ivLogo"
+                app:layout_constraintBottom_toBottomOf="@id/ivLogo" />
 
+            <!-- Climb Level Section Label -->
+            <TextView
+                android:id="@+id/tvClimbLevelLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="48dp"
+                android:text="Climb level"
+                android:textColor="#94A3B8"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivLogo" />
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="End Game"
-            android:textSize="38dp"
-            android:translationX="150dp"
-            android:translationY="35dp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:tag="@string/no_change"/>
+            <TextView
+                android:id="@+id/tvFinal30s"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/cr9999b0d59f21a"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="2dp"
+                android:text="Final 30s"
+                android:textColor="#0D59F2"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvClimbLevelLabel"
+                app:layout_constraintBottom_toBottomOf="@id/tvClimbLevelLabel" />
 
+            <!-- Climb Level Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardClimbLevel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="13dp"
+                app:cardBackgroundColor="#151C2B"
+                app:strokeColor="#314368"
+                app:strokeWidth="1dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvClimbLevelLabel">
 
-        <TextView
-            android:id="@+id/team"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Team "
-            android:textColor="@color/white"
-            android:textSize="26dp"
-            android:textStyle="bold"
-            android:translationX="150dp"
-            android:translationY="85dp"
-            android:tag="@string/no_change"/>
-        <TextView
-            android:id="@+id/notesTitle"
-            android:layout_width="71dp"
-            android:layout_height="wrap_content"
-            android:text="Notes"
-            android:textSize="24dp"
-            android:translationX="45dp"
-            android:translationY="800dp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:shadowColor="@color/black" />
-        <TextView
-            android:id="@+id/notesHelp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="ⓘ"
-            android:textSize="24dp"
-            android:textColor="#000000"
-            android:translationX="115dp"
-            android:translationY="800dp"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/limitHelp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="ⓘ"
-            android:textSize="24dp"
-            android:textColor="#000000"
-            android:translationX="190dp"
-            android:translationY="870dp"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/analyzerHelp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="ⓘ"
-            android:textSize="24dp"
-            android:textColor="#000000"
-            android:translationX="370dp"
-            android:translationY="870dp"
-            android:textStyle="bold"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="17dp">
 
+                    <ImageView
+                        android:id="@+id/ivClimbIcon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/overlay"
+                        android:scaleType="fitXY"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/bg1"
-            android:layout_width="430dp"
-            android:layout_height="80dp"
-            android:backgroundTint="#E48B92"
-            android:text=""
-            android:clickable="false"
-            android:translationX="0dp"
-            android:translationY="895dp"
-            app:cornerRadius="15dp"
-            android:tag="@string/bg1"/>
+                    <TextView
+                        android:id="@+id/tvClimbLevelTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="Climb Level"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/ivClimbIcon"
+                        app:layout_constraintTop_toTopOf="@id/ivClimbIcon" />
 
-        <Button
-            android:id="@+id/bg2"
-            android:layout_width="378dp"
-            android:layout_height="50dp"
-            android:backgroundTint="#5cffffff"
-            android:text=""
-            android:clickable="false"
-            android:translationX="17dp"
-            android:translationY="910dp"
-            app:cornerRadius="20dp"
-            android:tag="@string/bg2"/>
-        <Button
-            android:id="@+id/next"
-            android:layout_width="110dp"
-            android:layout_height="50dp"
-            android:text="Next"
-            android:translationY="909.5dp"
-            android:translationX="285dp"
-            app:cornerRadius="20dp"
-            android:backgroundTint="#E02E3C"
-            android:textColor="@color/white"
-            android:shadowRadius="10"
-            android:shadowDy="5"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:tag="@string/team"/>
+                    <TextView
+                        android:id="@+id/tvClimbLevelDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="How high it climbed."
+                        android:textColor="#94A3B8"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toEndOf="@id/ivClimbIcon"
+                        app:layout_constraintTop_toBottomOf="@id/tvClimbLevelTitle" />
 
-        <Button
-            android:id="@+id/prev"
-            android:layout_width="110dp"
-            android:layout_height="50dp"
-            android:text="Back"
-            android:translationX="17dp"
-            android:translationY="909.5dp"
-            android:textColor="@color/white"
-            app:cornerRadius="20dp"
-            android:backgroundTint="#E02E3C"
-            android:shadowRadius="10"
-            android:shadowDy="5"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:tag="@string/team"/>
+                    <!-- Custom Toggle Buttons -->
+                    <LinearLayout
+                        android:id="@+id/toggleGroupClimbLevel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/cr8b101623"
+                        android:padding="4dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ivClimbIcon">
 
-        <TextView
-            android:id="@+id/bottomTag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="Red 1"
-            android:textSize="36dp"
-            android:textColor="#ff0000"
-            android:translationX="159dp"
-            android:translationY="909dp"
-            android:textStyle="bold"
-            android:tag="@string/team"/>
+                        <TextView
+                            android:id="@+id/btnNone"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="4dp"
+                            android:gravity="center"
+                            android:paddingVertical="8dp"
+                            android:text="None"
+                            android:textColor="#94A3B8"
+                            android:textSize="14sp"
+                            android:clickable="true"
+                            android:focusable="true" />
 
+                        <TextView
+                            android:id="@+id/btnFail"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="4dp"
+                            android:gravity="center"
+                            android:paddingVertical="8dp"
+                            android:text="Fail"
+                            android:textColor="#94A3B8"
+                            android:textSize="14sp"
+                            android:clickable="true"
+                            android:focusable="true" />
 
+                        <TextView
+                            android:id="@+id/btnL1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="4dp"
+                            android:gravity="center"
+                            android:paddingVertical="8dp"
+                            android:text="L1"
+                            android:textColor="#94A3B8"
+                            android:textSize="14sp"
+                            android:clickable="true"
+                            android:focusable="true" />
 
+                        <TextView
+                            android:id="@+id/btnL2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="4dp"
+                            android:gravity="center"
+                            android:paddingVertical="8dp"
+                            android:text="L2"
+                            android:textColor="#94A3B8"
+                            android:textSize="14sp"
+                            android:clickable="true"
+                            android:focusable="true" />
 
-    </RelativeLayout>
-</com.example.myapplication.CustomScrollView>
+                        <TextView
+                            android:id="@+id/btnL3"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:background="@drawable/cr6b0d59f2"
+                            android:paddingVertical="8dp"
+                            android:text="L3"
+                            android:textColor="#FFFFFF"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:elevation="4dp" />
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Defense Duration Section -->
+            <TextView
+                android:id="@+id/tvDefenseDurationLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="DEFENSE DURATION"
+                android:textColor="#94A3B8"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardClimbLevel" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDefenseDuration"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="#151C2B"
+                app:strokeColor="#314368"
+                app:strokeWidth="1dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDefenseDurationLabel">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="21dp">
+
+                    <ImageView
+                        android:id="@+id/ivDefenseIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="28dp"
+                        android:src="@drawable/timeicon"
+                        android:scaleType="fitXY"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvDefenseTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Defense\nDuration"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/ivDefenseIcon"
+                        app:layout_constraintTop_toTopOf="@id/ivDefenseIcon" />
+
+                    <TextView
+                        android:id="@+id/tvDefenseDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Duration in seconds"
+                        android:textColor="#94A3B8"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toEndOf="@id/tvDefenseTitle"
+                        app:layout_constraintBottom_toBottomOf="@id/tvDefenseTitle" />
+
+                    <!-- Slider Container -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardDefenseSlider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="12dp"
+                        app:cardBackgroundColor="#0D1117"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="0dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvDefenseTitle"
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp">
+
+                            <TextView
+                                android:id="@+id/tvDefenseValue"
+                                android:layout_width="60dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/cr6b0d59f2"
+                                android:gravity="center"
+                                android:paddingVertical="8dp"
+                                android:text="30"
+                                android:textColor="#FFFFFF"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.slider.Slider
+                                android:id="@+id/sliderDefense"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:valueFrom="0"
+                                android:valueTo="120"
+                                android:stepSize="1"
+                                android:value="30"
+                                app:thumbColor="#0D59F2"
+                                app:trackColorActive="#0D59F2"
+                                app:trackColorInactive="#2A3F54"
+                                app:layout_constraintStart_toEndOf="@id/tvDefenseValue"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/tvDefenseValue"
+                                app:layout_constraintBottom_toBottomOf="@id/tvDefenseValue" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Qualitative Ratings Section -->
+            <TextView
+                android:id="@+id/tvQualitativeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="25dp"
+                android:text="QUALITATIVE RATINGS"
+                android:textColor="#94A3B8"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardDefenseDuration" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardQualitative"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="#151C2B"
+                app:strokeColor="#314368"
+                app:strokeWidth="1dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvQualitativeLabel">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/ivQualityIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="28dp"
+                        android:src="@drawable/gameicon"
+                        android:scaleType="fitXY"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvDefenseQuality"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Defense Quality"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/ivQualityIcon"
+                        app:layout_constraintTop_toTopOf="@id/ivQualityIcon"
+                        app:layout_constraintBottom_toBottomOf="@id/ivQualityIcon" />
+
+                    <TextView
+                        android:id="@+id/tvQualityBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/s0d59f233sw1cr4b0d59f21a"
+                        android:paddingHorizontal="9dp"
+                        android:paddingVertical="5dp"
+                        android:text="HIGH"
+                        android:textColor="#0D59F2"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/ivQualityIcon"
+                        app:layout_constraintBottom_toBottomOf="@id/ivQualityIcon" />
+
+                    <!-- Star Rating -->
+                    <LinearLayout
+                        android:id="@+id/starRatingLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ivQualityIcon">
+
+                        <ImageView
+                            android:id="@+id/star1"
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_weight="1"
+                            android:src="@android:drawable/btn_star_big_on"
+                            android:scaleType="centerInside"
+                            android:tint="#0D59F2"
+                            android:clickable="true"
+                            android:focusable="true" />
+
+                        <ImageView
+                            android:id="@+id/star2"
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_weight="1"
+                            android:src="@android:drawable/btn_star_big_on"
+                            android:scaleType="centerInside"
+                            android:tint="#0D59F2"
+                            android:clickable="true"
+                            android:focusable="true" />
+
+                        <ImageView
+                            android:id="@+id/star3"
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_weight="1"
+                            android:src="@android:drawable/btn_star_big_on"
+                            android:scaleType="centerInside"
+                            android:tint="#0D59F2"
+                            android:clickable="true"
+                            android:focusable="true" />
+
+                        <ImageView
+                            android:id="@+id/star4"
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_weight="1"
+                            android:src="@android:drawable/btn_star_big_on"
+                            android:scaleType="centerInside"
+                            android:tint="#0D59F2"
+                            android:clickable="true"
+                            android:focusable="true" />
+
+                        <ImageView
+                            android:id="@+id/star5"
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_weight="1"
+                            android:src="@android:drawable/btn_star_big_off"
+                            android:scaleType="centerInside"
+                            android:tint="#4A5568"
+                            android:clickable="true"
+                            android:focusable="true" />
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Under Defense Duration -->
+            <TextView
+                android:id="@+id/tvUnderDefenseLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="UNDER DEFENSE DURATION"
+                android:textColor="#94A3B8"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardQualitative" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardUnderDefense"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="#151C2B"
+                app:strokeColor="#314368"
+                app:strokeWidth="1dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvUnderDefenseLabel">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="21dp">
+
+                    <ImageView
+                        android:id="@+id/ivUnderDefenseIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="28dp"
+                        android:src="@drawable/timeicon"
+                        android:scaleType="fitXY"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvUnderDefenseTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Under\nDefense"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/ivUnderDefenseIcon"
+                        app:layout_constraintTop_toTopOf="@id/ivUnderDefenseIcon" />
+
+                    <TextView
+                        android:id="@+id/tvUnderDefenseDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Duration in seconds"
+                        android:textColor="#94A3B8"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toEndOf="@id/tvUnderDefenseTitle"
+                        app:layout_constraintBottom_toBottomOf="@id/tvUnderDefenseTitle" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardUnderDefenseSlider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="12dp"
+                        app:cardBackgroundColor="#0D1117"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="0dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvUnderDefenseTitle"
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp">
+
+                            <TextView
+                                android:id="@+id/tvUnderDefenseValue"
+                                android:layout_width="60dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/cr6b0d59f2"
+                                android:gravity="center"
+                                android:paddingVertical="8dp"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.slider.Slider
+                                android:id="@+id/sliderUnderDefense"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:valueFrom="0"
+                                android:valueTo="120"
+                                android:stepSize="1"
+                                android:value="0"
+                                app:thumbColor="#0D59F2"
+                                app:trackColorActive="#0D59F2"
+                                app:trackColorInactive="#2A3F54"
+                                app:layout_constraintStart_toEndOf="@id/tvUnderDefenseValue"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/tvUnderDefenseValue"
+                                app:layout_constraintBottom_toBottomOf="@id/tvUnderDefenseValue" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Broke Duration -->
+            <TextView
+                android:id="@+id/tvBrokeDurationLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="BROKE DURATION"
+                android:textColor="#94A3B8"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardUnderDefense" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardBrokeDuration"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="#151C2B"
+                app:strokeColor="#314368"
+                app:strokeWidth="1dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvBrokeDurationLabel">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="21dp">
+
+                    <ImageView
+                        android:id="@+id/ivBrokeIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="28dp"
+                        android:src="@drawable/timeicon"
+                        android:scaleType="fitXY"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvBrokeTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Broke\nDuration"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/ivBrokeIcon"
+                        app:layout_constraintTop_toTopOf="@id/ivBrokeIcon" />
+
+                    <TextView
+                        android:id="@+id/tvBrokeDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Duration in seconds"
+                        android:textColor="#94A3B8"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toEndOf="@id/tvBrokeTitle"
+                        app:layout_constraintBottom_toBottomOf="@id/tvBrokeTitle" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardBrokeSlider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="12dp"
+                        app:cardBackgroundColor="#0D1117"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="0dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvBrokeTitle"
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp">
+
+                            <TextView
+                                android:id="@+id/tvBrokeValue"
+                                android:layout_width="60dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/cr6b0d59f2"
+                                android:gravity="center"
+                                android:paddingVertical="8dp"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.slider.Slider
+                                android:id="@+id/sliderBroke"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:valueFrom="0"
+                                android:valueTo="120"
+                                android:stepSize="1"
+                                android:value="0"
+                                app:thumbColor="#0D59F2"
+                                app:trackColorActive="#0D59F2"
+                                app:trackColorInactive="#2A3F54"
+                                app:layout_constraintStart_toEndOf="@id/tvBrokeValue"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/tvBrokeValue"
+                                app:layout_constraintBottom_toBottomOf="@id/tvBrokeValue" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Match Notes Section -->
+            <TextView
+                android:id="@+id/tvMatchNotesLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="MATCH NOTES"
+                android:textColor="#94A3B8"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardBrokeDuration" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardMatchNotes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="#151C2B"
+                app:strokeColor="#314368"
+                app:strokeWidth="1dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvMatchNotesLabel">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="14dp">
+
+                    <EditText
+                        android:id="@+id/etMatchNotes"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:hint="Enter key observations (e.g. heavy defense, broken intake, speed)..."
+                        android:textColorHint="#94A3B8"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:minHeight="80dp"
+                        android:gravity="start"
+                        android:paddingStart="3dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/ivNoteIcon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/ivNoteIcon"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:src="@drawable/microphone"
+                        android:scaleType="fitXY"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Submit Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSubmit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="21dp"
+                android:backgroundTint="#0D59F2"
+                android:text="Submit Match"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingVertical="14dp"
+                app:cornerRadius="12dp"
+                app:elevation="6dp"
+                app:icon="@drawable/send"
+                app:iconGravity="end"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardMatchNotes" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

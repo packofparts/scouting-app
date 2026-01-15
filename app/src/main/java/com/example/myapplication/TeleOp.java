@@ -55,7 +55,6 @@ public class TeleOp extends Fragment {
 
 
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
-        UIHelpers.lightDark(v, UIHelpers.darkMode);
         binding.bottomTag.setText(MainActivity.getLocationText());
     }
    

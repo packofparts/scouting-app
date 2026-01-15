@@ -29,65 +29,7 @@ public class UIHelpers {
     public static final float[] wolfScales = {1f, 1.2f, 1f};
     public static MediaPlayer mp;
     public static boolean darkMode = false;
-    public static void lightDark (ViewGroup v, boolean mode){
-        //background color and color of the actual ui elements
 
-
-        for (int i = 0; i < v.getChildCount(); i ++){
-            String viewColor = !mode ? "#000000" : "#FFFFFF";
-            View child = v.getChildAt(i);
-            boolean found = false;
-            String str = (MainActivity.scoutLocation < 3 ? "red" : "blue") + "_" + (mode ? "dark" : "light");
-            try {
-
-                viewColor = child.getResources().getString(R.color.class.getField(child.getTag() + "_" + str).getInt(null));
-                found = true;
-            } catch (Exception e) {
-
-                //Associated color is not found. Default light/dark values will be used.
-            }
-
-            if (child.getTag() != null && child.getTag().equals(v.getResources().getString(R.string.no_change))){
-                continue;
-            }
-            if (!(child instanceof Spinner) && !(child instanceof TextInputLayout)) {
-                if (found && child instanceof Button){
-                    child.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(viewColor)));
-                }
-                if (!(child instanceof  Button)) {
-                    if (child instanceof RelativeLayout) {
-                        RelativeLayout r = (RelativeLayout) child;
-                        r.setBackground(v.getResources().getDrawable(MainActivity.scoutLocation < 3 ? (mode ? R.drawable.red_dark : R.drawable.red_light) : (mode ? R.drawable.blue_dark : R.drawable.blue_light), null));
-                    } else if (child instanceof TextInputEditText) {
-                        TextView tx = (TextInputEditText) child;
-                        tx.setTextColor(Color.parseColor(viewColor));
-                        tx.setHintTextColor(Color.parseColor(viewColor));
-                    } else if (child instanceof TextView) {
-                        TextView tx = (TextView) child;
-                        tx.setTextColor(Color.parseColor(viewColor));
-                    }
-                }
-                if (child instanceof CheckBox){
-                    int c = Color.parseColor(!mode ? "#000000" : "#FFFFFF");
-                    int [][] states = {{android.R.attr.state_checked}, {}};
-                    int [] colors = {Color.parseColor(viewColor), c};
-                    ((CheckBox) child).setTextColor(c);
-                    ((CheckBox) child).setButtonTintList(new ColorStateList(states, colors));
-                }
-                if (child instanceof Switch){
-                    int c = Color.parseColor(!mode ? "#000000" : "#FFFFFF");
-                    int [][] states = {{android.R.attr.state_checked}, {}};
-                    int [] colors = {Color.parseColor(viewColor), Color.parseColor("#D9D9D9")};
-                    ((Switch) child).setTextColor(c);
-                    ((Switch) child).setThumbTintList(ColorStateList.valueOf(Color.parseColor(viewColor)));
-                    ((Switch) child).setTrackTintList(new ColorStateList(states, colors));
-                }
-                if (child instanceof ViewGroup) {
-                    lightDark((ViewGroup) child, mode);
-                }
-            }
-        }
-    }
     public static void relate (ViewGroup v, float width, float height, float density){
         float relX = 410.0f * density;
         float relY = 730.0f * density;
@@ -141,7 +83,6 @@ public class UIHelpers {
         scaleAnimation.start();
 
         darkMode = !darkMode;
-        lightDark(v, darkMode);
         playHowlSound(context);
     }
     public static void makeConfirmationAlert(String title, String message, Runnable yes, Runnable no, Context c){

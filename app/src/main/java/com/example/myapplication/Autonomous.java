@@ -75,7 +75,6 @@ public class Autonomous extends Fragment {
         float width = dm.widthPixels;
         float height = dm.heightPixels;
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
-        UIHelpers.lightDark(v, UIHelpers.darkMode);
         binding.bottomTag.setText(MainActivity.getLocationText());
 
     }

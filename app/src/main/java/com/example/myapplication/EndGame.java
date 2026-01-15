@@ -111,6 +111,7 @@ public class EndGame extends Fragment {
         float width = displayMetrics.widthPixels;
 
         UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
+        binding.bottomTag.setText(MainActivity.getLocationText());
         UIHelpers.lightDark(v, UIHelpers.darkMode);
     }
 

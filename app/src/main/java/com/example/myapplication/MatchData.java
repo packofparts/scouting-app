@@ -11,17 +11,15 @@ public class MatchData {
     private String teamNumber = "";
     private String matchNumber = "";
 
-    private boolean moveOutOfZone, inZone = false;
+    //For climb, 0 = none, 1 = fail, 2 = L1, 3 = L2, and 4 = L3
 
-    private int autoL1, autoL2, autoL3, autoL4, autoMissedCoral, teleOpL1, teleOpL2, teleOpL3, teleOpL4, teleopMissedCoral = 0;
+    private int autoHub, autoHubMissed, autoClimb = 0;
 
-    private int autoNet, autoProcessor, autoMissedAlgae, teleOpNet, teleOpProcessor, teleOpMissedAlgae = 0;
+    private int teleOpHub, teleOpHubMissed, teleOpPassed, teleOpClimb = 0;
 
-    private double defEffectiveness, stars = 0.0;
+    private double defEffectiveness = 0.0;
 
-    private int depth, climb, defPercent, brokePercent, UnderDefDuration = 0;
-
-    private double analyzerScore = 0.0;
+    private int defDuration, brokeDuration, underDefDuration = 0;
 
     private String notes = "";
 
@@ -41,7 +39,6 @@ public class MatchData {
 
     //Getters and Setters
 
-    //Pre Match
     public String getTeamNumber() {    return teamNumber;  }
     public void setTeamNumber(String teamNumber) { this.teamNumber = teamNumber;  }
     public String getMatchNumber() {    return matchNumber;    }
@@ -50,8 +47,6 @@ public class MatchData {
 
     public void setScouterName(String scouterName){this.scouterName = scouterName;}
 
-    //Auto
-
     public String getNotes() {
         return notes;
     }
@@ -59,201 +54,84 @@ public class MatchData {
         this.notes = notes;
     }
 
-    public double getAnalyzerScore() {
-        return analyzerScore;
-    }
-    public void setAnalyzerScore(double analyzerScore) {this.analyzerScore = analyzerScore;}
+    public int getDefDuration() { return defDuration; }
 
-    public boolean getMoveOutOfZone() {
-        return moveOutOfZone;
+    public void setDefDuration(int defDuration) {
+        this.defDuration = defDuration;
     }
 
-    public void setMoveOutOfZone(boolean moveOutOfZone) {
-        this.moveOutOfZone = moveOutOfZone;
-    }
+    public int getunderDefDuration(){return underDefDuration;}
 
-    public int getAutoL1() {
-        return autoL1;
-    }
+    public void setunderDefDuration(int underDefDuration){this.underDefDuration = underDefDuration;}
 
-    public void setAutoL1(int autoL1) {
-        this.autoL1 = autoL1;
-    }
-
-    public int getAutoL2() {
-        return autoL2;
-    }
-
-    public void setAutoL2(int autoL2) {
-        this.autoL2 = autoL2;
-    }
-
-    public int getAutoL3() {
-        return autoL3;
-    }
-
-    public void setAutoL3(int autoL3) {
-        this.autoL3 = autoL3;
-    }
-
-    public int getAutoL4() {
-        return autoL4;
-    }
-
-    public void setAutoL4(int autoL4) {
-        this.autoL4 = autoL4;
-    }
-
-    public int getAutoMissedCoral() {
-        return autoMissedCoral;
-    }
-
-    public void setAutoMissedCoral(int autoMissedCoral) {
-        this.autoMissedCoral = autoMissedCoral;
-    }
-
-    public int getTeleOpL1() {
-        return teleOpL1;
-    }
-
-    public void setTeleOpL1(int teleOpL1) {
-        this.teleOpL1 = teleOpL1;
-    }
-
-    public int getTeleOpL2() {
-        return teleOpL2;
-    }
-
-    public void setTeleOpL2(int teleOpL2) {
-        this.teleOpL2 = teleOpL2;
-    }
-
-    public int getTeleOpL3() {
-        return teleOpL3;
-    }
-
-    public void setTeleOpL3(int teleOpL3) {
-        this.teleOpL3 = teleOpL3;
-    }
-
-    public int getTeleOpL4() {
-        return teleOpL4;
-    }
-
-    public void setTeleOpL4(int teleOpL4) {
-        this.teleOpL4 = teleOpL4;
-    }
-
-    public int getTeleOpMissedCoral() {
-        return teleopMissedCoral;
-    }
-
-    public void setTeleOpMissedCoral(int teleopMissedCoral) {
-        this.teleopMissedCoral = teleopMissedCoral;
-    }
-
-    public int getAutoNet() {
-        return autoNet;
-    }
-
-    public void setAutoNet(int autoNet) {
-        this.autoNet = autoNet;
-    }
-
-    public int getAutoProcessor() {
-        return autoProcessor;
-    }
-
-    public void setAutoProcessor(int autoProcessor) {
-        this.autoProcessor = autoProcessor;
-    }
-
-    public int getAutoMissedAlgae() {
-        return autoMissedAlgae;
-    }
-
-    public void setAutoMissedAlgae(int autoMissedAlgae) {
-        this.autoMissedAlgae = autoMissedAlgae;
-    }
-
-    public int getTeleOpNet() {
-        return teleOpNet;
-    }
-
-    public void setTeleOpNet(int teleOpNet) {
-        this.teleOpNet = teleOpNet;
-    }
-
-    public int getTeleOpProcessor() {
-        return teleOpProcessor;
-    }
-
-    public void setTeleOpProcessor(int teleOpProcessor) {
-        this.teleOpProcessor = teleOpProcessor;
-    }
-
-    public int getTeleOpMissedAlgae() {
-        return teleOpMissedAlgae;
-    }
-
-    public void setTeleOpMissedAlgae(int teleOpMissedAlgae) {this.teleOpMissedAlgae = teleOpMissedAlgae;}
-
-    public int getDefPercent() {
-        return defPercent;
-    }
-
-    public void setDefPercent(int defPercent) {
-        this.defPercent = defPercent;
-    }
-
-    public int getUnderDefDuration(){return UnderDefDuration;}
-
-    public void setUnderDefDuration(int defDuration){this.UnderDefDuration = defDuration;}
     public double getDefEffectiveness() {
         return defEffectiveness;
     }
 
-    public void setDefEffectiveness(double defEffectiveness) {this.defEffectiveness = defEffectiveness;
+    public void setDefEffectiveness(double defEffectiveness) {this.defEffectiveness = defEffectiveness; }
+
+    public int getBrokeDuration() {
+        return brokeDuration;
     }
 
-    public int getBrokePercent() {
-        return brokePercent;
+    public void setBrokeDuration(int brokeDuration) {
+        this.brokeDuration = brokeDuration;
     }
 
-    public void setBrokePercent(int brokePercent) {
-        this.brokePercent = brokePercent;
+    public int getAutoHub() {
+        return autoHub;
     }
 
-    public double getStars() {
-        return stars;
+    public void setAutoHub(int autoHub) {
+        this.autoHub = autoHub;
     }
 
-    public void setStars(double stars) {
-        this.stars = stars;
+    public int getAutoHubMissed() {
+        return autoHubMissed;
     }
 
-    public int getDepth() {
-        return depth;
+    public void setAutoHubMissed(int autoHubMissed) {
+        this.autoHubMissed = autoHubMissed;
     }
 
-    public void setDepth(int depth) {
-        this.depth = depth;
+    public int getAutoClimb() {
+        return autoClimb;
     }
 
-    public int getClimb() {
-        return climb;
+    public void setAutoClimb(int autoClimb) {
+        this.autoClimb = autoClimb;
     }
 
-    public void setClimb(int climb) {
-        this.climb = climb;
+    public int getTeleOpHub() {
+        return teleOpHub;
     }
 
-    public boolean getInZone() {
-        return inZone;
+    public void setTeleOpHub(int teleOpHub) {
+        this.teleOpHub = teleOpHub;
     }
 
-    public void setInZone(boolean inZone) {
-        this.inZone = inZone;
+    public int getTeleOpHubMissed() {
+        return teleOpHubMissed;
+    }
+
+    public void setTeleOpHubMissed(int teleOpHubMissed) {
+        this.teleOpHubMissed = teleOpHubMissed;
+    }
+
+    public int getTeleOpPassed() {
+        return teleOpPassed;
+    }
+
+    public void setTeleOpPassed(int teleOpPassed) {
+        this.teleOpPassed = teleOpPassed;
+    }
+
+    public int getTeleOpClimb() {
+        return teleOpClimb;
+    }
+
+    public void setTeleOpClimb(int teleOpClimb) {
+        this.teleOpClimb = teleOpClimb;
     }
 }
 

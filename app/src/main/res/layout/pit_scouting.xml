@@ -37,6 +37,24 @@
         android:textColor="@color/white"
         android:backgroundTint="#00000000"/>
 
+    <TextView
+        android:id="@+id/reset"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        android:textStyle="bold"
+        app:autoSizeMaxTextSize="14sp"
+        app:autoSizeMinTextSize="1sp"
+        android:textColor="#0D59F2"
+        app:layout_constraintDimensionRatio="1"
+        android:gravity="center"
+        android:src="@drawable/backarrow"
+        android:backgroundTint="#00000000"/>
+
     <com.example.myapplication.CustomScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -52,7 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#101622"
-            android:padding="0dp">
+            android:paddingBottom="24dp">
 
             <TextView
                 android:id="@+id/driveTrainTitle"
@@ -71,12 +89,13 @@
                 android:layout_marginStart="16dp"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/driveTrainLayout"
                 android:layout_width="0dp"
                 android:layout_height="74dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="16dp"
-                app:layout_constraintTop_toTopOf="@id/driveTrainTitle"
-                android:layout_marginTop="24dp"
+                app:layout_constraintTop_toBottomOf="@id/driveTrainTitle"
+                android:layout_marginTop="4dp"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp"
                 android:background="@drawable/border_rounded">
@@ -90,16 +109,16 @@
                     android:src="@drawable/car"
                     android:id="@+id/car"/>
                 <TextView
-                    android:id="@+id/driveTrain"
+                    android:id="@+id/driveTrainHeader"
 
                     app:layout_constraintStart_toEndOf="@id/car"
                     android:layout_marginStart="12dp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/driveTrainBackground"
                     app:layout_constraintTop_toTopOf="@id/car"
                     app:layout_constraintBottom_toTopOf="@id/driveTrainExplanation"
                     android:layout_height="24dp"
                     android:layout_width="0dp"
-                    android:gravity="left"
+                    android:gravity="start"
                     android:textColor="@color/white"
                     android:text="Drive Train"
                     android:textStyle="bold"
@@ -111,154 +130,292 @@
 
                     app:layout_constraintStart_toEndOf="@id/car"
                     android:layout_marginStart="12dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/driveTrain"
+                    app:layout_constraintEnd_toStartOf="@id/driveTrainBackground"
+                    app:layout_constraintTop_toBottomOf="@id/driveTrainHeader"
                     app:layout_constraintBottom_toBottomOf="@id/car"
                     android:layout_height="24dp"
                     android:layout_width="0dp"
-                    android:gravity="left"
+                    android:gravity="start"
                     android:textColor="#94A3B8"
                     android:text="How the robot drives"
                     app:autoSizeMaxTextSize="12sp"
                     app:autoSizeMinTextSize="1sp"
                     app:autoSizeTextType="uniform" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/driveTrainBackground"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/border_rounded"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/driveTrainHeader"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp">
+
+                    <Spinner
+                        android:id="@+id/driveTrain"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:backgroundTint="#D9D9D9"
+                        android:spinnerMode="dropdown"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!--<TextView
-                android:id="@+id/notesHelp"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/intakeTitle"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="ⓘ"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="24dp"
+                android:text="GAME PIECE INTERACTION"
+                android:textColor="#94A3B8"
                 android:textStyle="bold"
-                android:translationX="115dp"
-                android:translationY="837dp" />
+                app:autoSizeMaxTextSize="12sp"
+                app:autoSizeMinTextSize="1sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/driveTrainLayout"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/intakeLayout"
+                android:layout_width="0dp"
+                android:layout_height="74dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintTop_toBottomOf="@id/intakeTitle"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/border_rounded">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/shovel"
+                    android:id="@+id/shovel"/>
+                <TextView
+                    android:id="@+id/intakeHeader"
+
+                    app:layout_constraintStart_toEndOf="@id/shovel"
+                    android:layout_marginStart="12dp"
+                    app:layout_constraintEnd_toStartOf="@id/intakeBackground"
+                    app:layout_constraintTop_toTopOf="@id/shovel"
+                    app:layout_constraintBottom_toTopOf="@id/intakeExplanation"
+                    android:layout_height="24dp"
+                    android:layout_width="0dp"
+                    android:gravity="start"
+                    android:textColor="@color/white"
+                    android:text="Intake"
+                    android:textStyle="bold"
+                    app:autoSizeMaxTextSize="20sp"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform" />
+                <TextView
+                    android:id="@+id/intakeExplanation"
+
+                    app:layout_constraintStart_toEndOf="@id/shovel"
+                    android:layout_marginStart="12dp"
+                    app:layout_constraintEnd_toStartOf="@id/intakeBackground"
+                    app:layout_constraintTop_toBottomOf="@id/intakeHeader"
+                    app:layout_constraintBottom_toBottomOf="@id/shovel"
+                    android:layout_height="24dp"
+                    android:layout_width="0dp"
+                    android:gravity="start"
+                    android:textColor="#94A3B8"
+                    android:text="Where the robot gets fuel"
+                    app:autoSizeMaxTextSize="12sp"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/intakeBackground"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/border_rounded"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/intakeHeader"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp">
+
+                    <Spinner
+                        android:id="@+id/intake"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:backgroundTint="#D9D9D9"
+                        android:spinnerMode="dropdown"
+                        android:visibility="visible"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/limitHelp"
-                android:layout_width="wrap_content"
+                android:id="@+id/terrainTitle"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="ⓘ"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="24dp"
+                android:text="TERRAIN CAPABILITIES"
+                android:textColor="#94A3B8"
                 android:textStyle="bold"
-                android:translationX="190dp"
-                android:translationY="925dp" />
+                app:autoSizeMaxTextSize="12sp"
+                app:autoSizeMinTextSize="1sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/intakeLayout"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"/>
 
-            <TextView
-                android:id="@+id/analyzerHelp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ⓘ"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="24dp"
-                android:textStyle="bold"
-                android:translationX="370dp"
-                android:translationY="925dp" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/terrainLayout"
+                android:layout_width="0dp"
+                android:layout_height="74dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintTop_toBottomOf="@id/terrainTitle"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/border_rounded">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/mountain"
+                    android:id="@+id/mountain"/>
+                <TextView
+                    android:id="@+id/terrainHeader"
 
-            <TextView
-                android:id="@+id/characterLimit"
-                android:layout_width="330dp"
-                android:layout_height="wrap_content"
-                android:background="#00FFFFFF"
-                android:text="Character Limit: 0/150"
-                android:textSize="15dp"
-                android:translationX="30dp"
-                android:translationY="930dp" />
+                    app:layout_constraintStart_toEndOf="@id/mountain"
+                    android:layout_marginStart="12dp"
+                    app:layout_constraintEnd_toStartOf="@id/terrainBackground"
+                    app:layout_constraintTop_toTopOf="@id/mountain"
+                    app:layout_constraintBottom_toTopOf="@id/terrainExplanation"
+                    android:layout_height="24dp"
+                    android:layout_width="0dp"
+                    android:gravity="start"
+                    android:textColor="@color/white"
+                    android:text="Terrain"
+                    android:textStyle="bold"
+                    app:autoSizeMaxTextSize="20sp"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform" />
+                <TextView
+                    android:id="@+id/terrainExplanation"
 
-            <TextView
-                android:id="@+id/analyzerScore"
-                android:layout_width="330dp"
-                android:layout_height="wrap_content"
-                android:background="#00FFFFFF"
-                android:text="Analyzer Score: 0.0"
-                android:textSize="15dp"
-                android:translationX="230dp"
-                android:translationY="930dp" />
+                    app:layout_constraintStart_toEndOf="@id/mountain"
+                    android:layout_marginStart="12dp"
+                    app:layout_constraintEnd_toStartOf="@id/terrainBackground"
+                    app:layout_constraintTop_toBottomOf="@id/terrainHeader"
+                    app:layout_constraintBottom_toBottomOf="@id/mountain"
+                    android:layout_height="24dp"
+                    android:layout_width="0dp"
+                    android:gravity="start"
+                    android:textColor="#94A3B8"
+                    android:text="How the robot traverses"
+                    app:autoSizeMaxTextSize="12sp"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform" />
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/terrainBackground"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/border_rounded"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/terrainHeader"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp">
+
+                    <Spinner
+                        android:id="@+id/terrain"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:backgroundTint="#D9D9D9"
+                        android:spinnerMode="dropdown"
+                        android:visibility="visible"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
             <TextView
                 android:id="@+id/notesTitle"
-                android:layout_width="71dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:shadowColor="@color/black"
-                android:text="Notes"
-                android:textColor="@color/black"
-                android:textSize="24dp"
+                android:text="PIT SCOUTING NOTES"
+                android:textColor="#94A3B8"
                 android:textStyle="bold"
-                android:translationX="45dp"
-                android:translationY="837dp" />
-
-            <Button
-                android:id="@+id/textbacking1"
-                android:layout_width="378dp"
-                android:layout_height="49dp"
-                android:backgroundTint="#D9D9D9"
-                android:clickable="false"
-                android:tag=""
-                android:text=""
-                android:translationX="17dp"
-                android:translationY="874dp"
-                app:cornerRadius="20dp" />
+                app:autoSizeMaxTextSize="12sp"
+                app:autoSizeMinTextSize="1sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/terrainLayout"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input"
-                android:layout_width="322dp"
-                android:layout_height="50dp"
-                android:hint="Enter Here"
-                android:inputType="text"
+                android:layout_width="0dp"
+                android:layout_height="140dp"
+                android:background="@drawable/border_rounded"
+                android:hint="Enter key observations (e.g. reliability , speed, robot status)..."
+                android:inputType="textMultiLine"
+                android:minLines="6"
                 android:maxLength="150"
                 android:tag="@string/no_change"
-                android:textColor="#000000"
-                android:textColorHint="#71797E"
-                android:translationX="45dp"
-                android:translationY="874dp" />
-
-            <Button
-                android:id="@+id/bg1"
-                android:layout_width="430dp"
-                android:layout_height="80dp"
-                android:backgroundTint="#E48B92"
-                android:clickable="false"
-                android:tag="@string/bg1"
-                android:text=""
-                android:translationX="0dp"
-                android:translationY="959dp"
-                app:cornerRadius="15dp" />
-
-            <Button
-                android:id="@+id/bg2"
-                android:layout_width="378dp"
-                android:layout_height="50dp"
-                android:backgroundTint="#5cffffff"
-                android:clickable="false"
-                android:tag="@string/bg2"
-                android:text=""
-                android:translationX="17dp"
-                android:translationY="973dp"
-                app:cornerRadius="20dp" />
+                android:textColor="#94A3B8"
+                android:textColorHint="#94A3B8"
+                app:autoSizeMaxTextSize="16sp"
+                app:autoSizeMinTextSize="1sp"
+                android:gravity="top|start"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintTop_toBottomOf="@id/notesTitle"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp" />
 
             <TextView
-                android:id="@+id/bottomTag"
-                android:layout_width="wrap_content"
+                android:id="@+id/characterLimit"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:tag="@string/team"
-                android:text="Red 1"
-                android:textAlignment="center"
-                android:textColor="#ff0000"
-                android:textSize="36dp"
+                android:text="CHARACTER LIMIT: 0/150"
+                android:textColor="#94A3B8"
                 android:textStyle="bold"
-                android:translationX="159dp"
-                android:translationY="973dp" />-->
-
-
-
-
+                app:autoSizeMaxTextSize="12sp"
+                app:autoSizeMinTextSize="1sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/input"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.example.myapplication.CustomScrollView>
     <androidx.constraintlayout.widget.ConstraintLayout

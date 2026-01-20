@@ -1,130 +1,570 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.example.myapplication.CustomScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Autonomous">
+    tools:context=".PitScouting">
+    <TextView
+        android:id="@+id/title"
 
-    <RelativeLayout
-
-    android:layout_width="match_parent"
-    android:layout_height="960dp"
-    android:padding="0dp"
-        android:background="@drawable/red_light">
-
-
-        <Button
-            android:id="@+id/bg1"
-            android:layout_width="430dp"
-            android:layout_height="80dp"
-            android:backgroundTint="#E48B92"
-            android:text=""
-            android:clickable="false"
-            android:translationX="0dp"
-            android:translationY="882dp"
-            app:cornerRadius="15dp"
-            android:tag="@string/bg1"/>
-
-        <Button
-            android:id="@+id/bg2"
-            android:layout_width="378dp"
-            android:layout_height="50dp"
-            android:backgroundTint="#5cffffff"
-            android:text=""
-            android:clickable="false"
-            android:translationX="17dp"
-            android:translationY="896dp"
-            app:cornerRadius="20dp"
-            android:tag="@string/bg2"/>
-
-        <TextView
-            android:id="@+id/bottomTag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="Red 1"
-            android:textSize="36dp"
-            android:textColor="#ff0000"
-            android:translationX="159dp"
-            android:translationY="896dp"
-            android:textStyle="bold"
-            android:tag="@string/team"/>
-
-        <Button
-        android:id="@+id/cont"
-            android:layout_width="110dp"
-            android:layout_height="50dp"
-            android:text="Next"
-            android:translationY="896dp"
-            android:translationX="285dp"
-            app:cornerRadius="20dp"
-            android:backgroundTint="#E02E3C"
-            android:textColor="@color/white"
-            android:shadowRadius="10"
-            android:shadowDy="5"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:tag="@string/team"/>
-
-
-        <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="47dp"
-        android:translationX="150dp"
-        android:translationY="35dp"
-        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/border"
+        android:layout_height="55dp"
+        android:layout_width="0dp"
+        android:gravity="center"
         android:textColor="@color/white"
-        android:text="Autonomous" android:textStyle="bold"
-        android:textSize="40sp" android:tag="@string/no_change"/>
+        android:text="Autonomous"
+        android:textStyle="bold"
+        app:autoSizeMaxTextSize="18sp"
+        app:autoSizeMinTextSize="1sp"
+        app:autoSizeTextType="uniform"
+        />
+    <ImageButton
+        android:id="@+id/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/title"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1"
+        android:gravity="center"
+        android:src="@drawable/backarrow"
+        android:textColor="@color/white"
+        android:backgroundTint="#00000000"/>
 
-
-        <ImageView
-            android:id="@+id/pop"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:rotationX="360"
-            android:src="@drawable/pop"
-            android:translationX="26dp"
-            android:translationY="34dp"/>
-
-        <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
+    <TextView
+        android:id="@+id/reset"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical" />
+        android:text="Reset"
+        android:textStyle="bold"
+        app:autoSizeMaxTextSize="14sp"
+        app:autoSizeMinTextSize="1sp"
+        android:textColor="#0D59F2"
+        app:layout_constraintDimensionRatio="1"
+        android:gravity="center"
+        android:src="@drawable/backarrow"
+        android:backgroundTint="#00000000"/>
 
+    <com.example.myapplication.CustomScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#101622"
+        app:layout_constraintBottom_toTopOf="@id/submit_area"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title">
 
-        <TextView
-            android:id="@+id/team"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:id="@+id/relativeLayoutFirst"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Team "
-            android:textColor="@color/white"
-            android:textSize="26dp"
-            android:textStyle="bold"
-            android:translationX="150dp"
-            android:translationY="85dp"
-            android:tag="@string/no_change"/>
+            android:background="#101622"
+            android:paddingBottom="24dp">
+
+            <TextView
+                android:id="@+id/fuelTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="FUEL"
+                android:textColor="#94A3B8"
+                android:textStyle="bold"
+                app:autoSizeMaxTextSize="12sp"
+                app:autoSizeMinTextSize="1sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fuelScoredLayout"
+                android:layout_width="0dp"
+                android:layout_height="166dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintTop_toBottomOf="@id/fuelTitle"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:padding="16dp"
+                android:background="@drawable/border_rounded">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/g1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.5" />
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/g2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.333333333333333333333333333333" />
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/g3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.666666666666666666666666666667" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    android:text="🟡"
+                    android:gravity="right"
+                    app:autoSizeMinTextSize="1sp"
+                    android:maxLines="1"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toBottomOf="@id/fuelScoredExplanation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/fuelScoredHeader"
+                    app:layout_constraintHorizontal_bias="1"
+                    app:layout_constraintTop_toTopOf="@id/fuelScoredHeader"
+                    android:id="@+id/ball1"/>
+
+                <TextView
+                    android:id="@+id/fuelScoredHeader"
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/g3"
+
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/fuelScoredExplanation"
+                    android:layout_height="24dp"
+                    android:layout_width="0dp"
+                    android:gravity="start"
+                    android:textColor="@color/white"
+                    android:text="Fuel SCORED"
+                    android:textStyle="bold"
+                    app:autoSizeMaxTextSize="20sp"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform" />
+
+
+
+                <TextView
+                    android:id="@+id/fuelScoredExplanation"
+
+                    android:layout_width="0dp"
+                    android:layout_height="24dp"
+                    android:gravity="start"
+
+                    android:text="Total game pieces scored in auto"
+                    android:textColor="#94A3B8"
+                    app:autoSizeMaxTextSize="12sp"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintEnd_toStartOf="@id/g3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fuelScoredHeader" />
+
+
+                <Button
+                    android:id="@+id/fuelScoredMinus"
+                    android:text="–"
+                    android:backgroundTint="#334155"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintTop_toBottomOf="@id/g1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/g2"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="#CBD5E1"
+
+                    />
+                <Button
+                    android:id="@+id/fuelScoredPlus"
+                    android:text="+"
+                    android:backgroundTint="#0D59F2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/g3"
+                    app:layout_constraintHorizontal_bias="1"
+                    app:layout_constraintTop_toBottomOf="@id/g1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/fuelScored"
+
+                    app:layout_constraintStart_toEndOf="@id/fuelScoredMinus"
+                    app:layout_constraintEnd_toStartOf="@id/fuelScoredPlus"
+                    app:layout_constraintTop_toTopOf="@id/fuelScoredMinus"
+                    app:layout_constraintBottom_toBottomOf="@id/fuelScoredPlus"
+                    android:layout_height="0dp"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:text="0"
+                    android:textStyle="bold"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fuelMissedLayout"
+                android:layout_width="0dp"
+                android:layout_height="166dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintTop_toBottomOf="@id/fuelScoredLayout"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:padding="16dp"
+                android:background="@drawable/border_rounded">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/g4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.5" />
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/g5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.333333333333333333333333333333" />
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/g6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.666666666666666666666666666667" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    android:text="🟡"
+                    android:gravity="right"
+                    app:autoSizeMinTextSize="1sp"
+                    android:maxLines="1"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toBottomOf="@id/fuelMissedExplanation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/fuelMissedHeader"
+                    app:layout_constraintHorizontal_bias="1"
+                    app:layout_constraintTop_toTopOf="@id/fuelMissedHeader"
+                    android:id="@+id/ball2"/>
+
+                <TextView
+                    android:id="@+id/fuelMissedHeader"
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/g6"
+
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/fuelMissedExplanation"
+                    android:layout_height="24dp"
+                    android:layout_width="0dp"
+                    android:gravity="start"
+                    android:textColor="@color/white"
+                    android:text="Fuel MISSED"
+                    android:textStyle="bold"
+                    app:autoSizeMaxTextSize="20sp"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform" />
+
+
+
+                <TextView
+                    android:id="@+id/fuelMissedExplanation"
+
+                    android:layout_width="0dp"
+                    android:layout_height="24dp"
+                    android:gravity="start"
+
+                    android:text="Total game pieces missed in auto"
+                    android:textColor="#94A3B8"
+                    app:autoSizeMaxTextSize="12sp"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintEnd_toStartOf="@id/g6"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fuelMissedHeader" />
+
+
+                <Button
+                    android:id="@+id/fuelMissedMinus"
+                    android:text="–"
+                    android:backgroundTint="#334155"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintTop_toBottomOf="@id/g4"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/g5"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="#CBD5E1"
+
+                    />
+                <Button
+                    android:id="@+id/fuelMissedPlus"
+                    android:text="+"
+                    android:backgroundTint="#0D59F2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/g6"
+                    app:layout_constraintHorizontal_bias="1"
+                    app:layout_constraintTop_toBottomOf="@id/g4"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/fuelMissed"
+
+                    app:layout_constraintStart_toEndOf="@id/fuelMissedMinus"
+                    app:layout_constraintEnd_toStartOf="@id/fuelMissedPlus"
+                    app:layout_constraintTop_toTopOf="@id/fuelMissedMinus"
+                    app:layout_constraintBottom_toBottomOf="@id/fuelMissedPlus"
+                    android:layout_height="0dp"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:text="0"
+                    android:textStyle="bold"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/climbTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="CLIMB"
+                android:textColor="#94A3B8"
+                android:textStyle="bold"
+                app:autoSizeMaxTextSize="12sp"
+                app:autoSizeMinTextSize="1sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fuelMissedLayout"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintTop_toBottomOf="@id/climbTitle"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/border_rounded"
+
+
+                android:padding="16dp">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/g7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.333333333333333333333333333333" />
+
+                <ImageView
+                    android:id="@+id/ivClimbIcon"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toStartOf="@id/g7"
+                    app:layout_constraintHorizontal_bias="0"
+                    android:src="@drawable/overlay"
+                    android:scaleType="fitXY"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@id/tvClimbLevelDesc"/>
+
+                <TextView
+                    android:id="@+id/tvClimbLevelTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="5dp"
+                    android:text="Climb Level"
+                    android:textColor="#FFFFFF"
+                    app:autoSizeMaxTextSize="20sp"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/ivClimbIcon"
+                    app:layout_constraintTop_toTopOf="@id/ivClimbIcon"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/tvClimbLevelDesc"
+                    android:layout_width="0dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="5dp"
+                    android:text="How high it climbed"
+                    android:textColor="#94A3B8"
+                    app:autoSizeMaxTextSize="12sp"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintStart_toEndOf="@id/ivClimbIcon"
+                    app:layout_constraintTop_toBottomOf="@id/tvClimbLevelTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@id/ivClimbIcon"/>
+
+                <RadioGroup
+                    android:id="@+id/toggleGroupClimbLevel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/border_rounded"
+                    android:padding="4dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ivClimbIcon"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <RadioButton
+                        android:id="@+id/btnNone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        android:gravity="center"
+                        android:background="@drawable/radio_button_bg"
+                        app:cornerRadius="12dp"
+                        android:paddingVertical="8dp"
+                        android:text="None"
+                        android:textColor="#FFFFFF"
+                        app:autoSizeMaxTextSize="20sp"
+                        app:autoSizeMinTextSize="1sp"
+                        app:autoSizeTextType="uniform"
+                        android:textStyle="bold" />
+
+                    <RadioButton
+                        android:id="@+id/btnFail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        android:gravity="center"
+                        android:background="@drawable/radio_button_bg"
+                        app:cornerRadius="12dp"
+                        android:paddingVertical="8dp"
+                        android:text="Fail"
+                        android:textColor="#FFFFFF"
+                        app:autoSizeMaxTextSize="20sp"
+                        app:autoSizeMinTextSize="1sp"
+                        app:autoSizeTextType="uniform"
+                        android:textStyle="bold"/>
+
+                    <RadioButton
+                        android:id="@+id/btnL1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        android:gravity="center"
+                        android:background="@drawable/radio_button_bg"
+                        app:cornerRadius="12dp"
+                        android:paddingVertical="8dp"
+                        android:text="L1"
+                        android:textColor="#FFFFFF"
+                        app:autoSizeMaxTextSize="20sp"
+                        app:autoSizeMinTextSize="1sp"
+                        app:autoSizeTextType="uniform"
+                        android:textStyle="bold"/>
+                </RadioGroup>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </com.example.myapplication.CustomScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/submit_area"
+        android:layout_width="0dp"
+        android:layout_height="89dp"
+        android:background="@drawable/border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
-        android:id="@+id/back"
-            android:layout_width="110dp"
-            android:layout_height="50dp"
-            android:text="Back"
-            android:translationX="17dp"
-            android:translationY="896dp"
+            android:id="@+id/cont"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            android:backgroundTint="#0D59F2"
+            android:text="Continue to Teleop  "
             android:textColor="@color/white"
-            app:cornerRadius="20dp"
-            android:backgroundTint="#E02E3C"
-            android:shadowRadius="10"
-            android:shadowDy="5"
-            android:textSize="19.9dp"
             android:textStyle="bold"
-            android:tag="@string/team"/>
+            app:autoSizeMaxTextSize="20sp"
+            app:autoSizeMinTextSize="1sp"
+            app:autoSizeTextType="uniform"
+            app:cornerRadius="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/arrow"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="#00000000"
+            android:gravity="center"
+            android:rotation="180"
+            android:src="@drawable/backarrow"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/cont"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="@id/cont"
+            app:layout_constraintTop_toTopOf="@id/cont"
+            android:clickable="false"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </RelativeLayout>
-</com.example.myapplication.CustomScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

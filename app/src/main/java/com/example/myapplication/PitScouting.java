@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import com.example.myapplication.databinding.PitScoutingBinding;
 import java.util.Objects;
@@ -42,8 +43,10 @@ public class PitScouting extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        
+        PitData data = UserModel.getPitData();
 
-        binding.title.setText("Pit Scouting Team " + UserModel.getPitData().getTeamNumber());
+        binding.title.setText("Pit Scouting Team " + data.getTeamNumber());
 
         ArrayAdapter<String> driveTrain = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"West Coast", "Mechanum", "Swerve", "Other"});
 
@@ -53,12 +56,12 @@ public class PitScouting extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);//Only known method to set text color to white
-                UserModel.getPitData().setDriveTrain(position);
+                data.setDriveTrain(position);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
         });
-        binding.driveTrain.setSelection(UserModel.getPitData().getDriveTrain());//Triggers setting color to white
+        binding.driveTrain.setSelection(data.getDriveTrain());//Triggers setting color to white
 
         ArrayAdapter<String> intake = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Intake", "Outpost (Source)", "Ground", "Outpost and Ground"});
 
@@ -68,12 +71,12 @@ public class PitScouting extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);//Only known method to set text color to white
-                UserModel.getPitData().setIntake(position);
+                data.setIntake(position);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
         });
-        binding.intake.setSelection(UserModel.getPitData().getIntake());//Triggers setting color to white
+        binding.intake.setSelection(data.getIntake());//Triggers setting color to white
 
         ArrayAdapter<String> terrain = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Traversal", "Bump", "Trench", "Bump and Trench"});
 
@@ -83,17 +86,17 @@ public class PitScouting extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);//Only known method to set text color to white
-                UserModel.getPitData().setTerrain(position);
+                data.setTerrain(position);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
         });
-        binding.terrain.setSelection(UserModel.getPitData().getTerrain());//Triggers setting color to white
+        binding.terrain.setSelection(data.getTerrain());//Triggers setting color to white
 
         binding.cont.setOnClickListener(v ->
             UIHelpers.makeConfirmationAlert("Transfer Pit Data", "Do you want to transfer your pit data?", () -> {
                 try {
-                    UserModel.getPitData().toJson();
+                    data.toJson();
                 } catch (Exception e) {
                     UIHelpers.makeHelpAlert("Unknown Data Transfer Error!", e.getMessage(), getContext());
                 }
@@ -104,10 +107,12 @@ public class PitScouting extends Fragment {
                 .navigate(R.id.action_HomePage_to_FirstFragment), () -> {}, getContext()));
 
         binding.reset.setOnClickListener(v -> {
-            binding.driveTrain.setSelection(0);
-            binding.intake.setSelection(0);
-            binding.terrain.setSelection(0);
-            binding.input.setText("");
+            UIHelpers.makeConfirmationAlert("Reset Data", "Do you want to reset all Autonomous fields?", () -> {
+                binding.driveTrain.setSelection(0);
+                binding.intake.setSelection(0);
+                binding.terrain.setSelection(0);
+                binding.input.setText("");
+            }, () ->{}, getContext());
         });
 
         binding.input.addTextChangedListener(new TextWatcher() {
@@ -120,7 +125,7 @@ public class PitScouting extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 binding.characterLimit.setText("CHARACTER LIMIT: " + Objects.requireNonNull(binding.input.getText()).length() + "/150");
-                UserModel.getPitData().setNotes(binding.input.getText().toString());
+                data.setNotes(binding.input.getText().toString());
             }
         });
 

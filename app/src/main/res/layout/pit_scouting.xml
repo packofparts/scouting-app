@@ -98,13 +98,23 @@
                 android:layout_marginTop="4dp"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
                 android:background="@drawable/border_rounded">
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/g1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.25" />
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="16dp"
+                    app:layout_constraintEnd_toStartOf="@id/g1"
+                    app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintTop_toTopOf="parent"
                     android:src="@drawable/car"
                     android:id="@+id/car"/>
@@ -112,7 +122,7 @@
                     android:id="@+id/driveTrainHeader"
 
                     app:layout_constraintStart_toEndOf="@id/car"
-                    android:layout_marginStart="12dp"
+                    android:layout_marginStart="8dp"
                     app:layout_constraintEnd_toStartOf="@id/driveTrainBackground"
                     app:layout_constraintTop_toTopOf="@id/car"
                     app:layout_constraintBottom_toTopOf="@id/driveTrainExplanation"
@@ -129,7 +139,7 @@
                     android:id="@+id/driveTrainExplanation"
 
                     app:layout_constraintStart_toEndOf="@id/car"
-                    android:layout_marginStart="12dp"
+                    android:layout_marginStart="8dp"
                     app:layout_constraintEnd_toStartOf="@id/driveTrainBackground"
                     app:layout_constraintTop_toBottomOf="@id/driveTrainHeader"
                     app:layout_constraintBottom_toBottomOf="@id/car"
@@ -149,8 +159,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/driveTrainHeader"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="16dp">
+                    app:layout_constraintEnd_toEndOf="parent">
 
                     <Spinner
                         android:id="@+id/driveTrain"
@@ -195,13 +204,23 @@
                 android:layout_marginTop="4dp"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
                 android:background="@drawable/border_rounded">
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/g2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.25" />
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="16dp"
+                    app:layout_constraintEnd_toStartOf="@id/g2"
+                    app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintTop_toTopOf="parent"
                     android:src="@drawable/shovel"
                     android:id="@+id/shovel"/>
@@ -209,7 +228,7 @@
                     android:id="@+id/intakeHeader"
 
                     app:layout_constraintStart_toEndOf="@id/shovel"
-                    android:layout_marginStart="12dp"
+                    android:layout_marginStart="5dp"
                     app:layout_constraintEnd_toStartOf="@id/intakeBackground"
                     app:layout_constraintTop_toTopOf="@id/shovel"
                     app:layout_constraintBottom_toTopOf="@id/intakeExplanation"
@@ -226,7 +245,7 @@
                     android:id="@+id/intakeExplanation"
 
                     app:layout_constraintStart_toEndOf="@id/shovel"
-                    android:layout_marginStart="12dp"
+                    android:layout_marginStart="5dp"
                     app:layout_constraintEnd_toStartOf="@id/intakeBackground"
                     app:layout_constraintTop_toBottomOf="@id/intakeHeader"
                     app:layout_constraintBottom_toBottomOf="@id/shovel"
@@ -247,8 +266,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/intakeHeader"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="16dp">
+                    app:layout_constraintEnd_toEndOf="parent">
 
                     <Spinner
                         android:id="@+id/intake"
@@ -292,13 +310,23 @@
                 android:layout_marginTop="4dp"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
                 android:background="@drawable/border_rounded">
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/g3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.25" />
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="16dp"
+                    app:layout_constraintEnd_toStartOf="@id/g3"
+                    app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintTop_toTopOf="parent"
                     android:src="@drawable/mountain"
                     android:id="@+id/mountain"/>
@@ -306,7 +334,7 @@
                     android:id="@+id/terrainHeader"
 
                     app:layout_constraintStart_toEndOf="@id/mountain"
-                    android:layout_marginStart="12dp"
+                    android:layout_marginStart="5dp"
                     app:layout_constraintEnd_toStartOf="@id/terrainBackground"
                     app:layout_constraintTop_toTopOf="@id/mountain"
                     app:layout_constraintBottom_toTopOf="@id/terrainExplanation"
@@ -323,7 +351,7 @@
                     android:id="@+id/terrainExplanation"
 
                     app:layout_constraintStart_toEndOf="@id/mountain"
-                    android:layout_marginStart="12dp"
+                    android:layout_marginStart="5dp"
                     app:layout_constraintEnd_toStartOf="@id/terrainBackground"
                     app:layout_constraintTop_toBottomOf="@id/terrainHeader"
                     app:layout_constraintBottom_toBottomOf="@id/mountain"
@@ -344,8 +372,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/terrainHeader"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="16dp">
+                    app:layout_constraintEnd_toEndOf="parent">
 
                     <Spinner
                         android:id="@+id/terrain"

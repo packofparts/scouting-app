@@ -9,6 +9,8 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Switch;
 
 import androidx.fragment.app.Fragment;
@@ -19,12 +21,6 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.AutonomousBinding;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Autonomous#newInstance} factory method to
- * create an instance of this fragment.
- */
 
 public class Autonomous extends Fragment {
 
@@ -38,45 +34,58 @@ public class Autonomous extends Fragment {
     ){
         binding = AutonomousBinding.inflate(inflater, container, false);
         v = container;
-        binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
-
+        binding.btnNone.setButtonDrawable(null);
+        binding.btnFail.setButtonDrawable(null);
+        binding.btnL1.setButtonDrawable(null);
         return binding.getRoot();
-    }
-
-    @SuppressLint("ObsoleteSdkInt")
-    public void checkedOperation (View v){
-        if (v instanceof Switch){
-            @SuppressLint("UseSwitchCompatOrMaterialCode") Switch s = (Switch) v;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                if (s.isChecked()){
-                    s.setThumbTintList(UIHelpers.purpleAsList);
-                    s.setTrackTintList(UIHelpers.purpleAsList);
-                } else {
-                    s.setThumbTintList(UIHelpers.teamColorAsList);
-                    s.setTrackTintList(UIHelpers.teamColorAsList);
-                }
-        }
     }
 
     @SuppressLint("SetTextI18n")
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
-        //VARIABLES
 
-        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, binding.pop, this.getContext()));
+        MatchData data = UserModel.getMatchData();
+        //initialization
+        binding.fuelScored.setText(data.getAutoHub() + "");
+        binding.fuelMissed.setText(data.getAutoHubMissed() + "");
+        ((RadioButton) binding.toggleGroupClimbLevel.getChildAt(data.getAutoClimb())).setChecked(true);
+        binding.title.setText("Autonomous Team " + data.getTeamNumber());
+
+        binding.fuelScoredPlus.setOnClickListener(v -> {
+            data.setAutoHub(data.getAutoHub() + 1);
+            binding.fuelScored.setText(Integer.toString(data.getAutoHub()));
+        });
+        binding.fuelScoredMinus.setOnClickListener(v -> {
+            data.setAutoHub(data.getAutoHub() <= 0 ? 0 : data.getAutoHub() - 1);
+            binding.fuelScored.setText(Integer.toString(data.getAutoHub()));
+        });
+
+        binding.fuelMissedPlus.setOnClickListener(v -> {
+            data.setAutoHubMissed(data.getAutoHubMissed() + 1);
+            binding.fuelMissed.setText(Integer.toString(data.getAutoHubMissed()));
+        });
+        binding.fuelMissedMinus.setOnClickListener(v -> {
+            data.setAutoHubMissed(data.getAutoHubMissed() <= 0 ? 0 : data.getAutoHubMissed() - 1);
+            binding.fuelMissed.setText(Integer.toString(data.getAutoHubMissed()));
+        });
+
+        binding.toggleGroupClimbLevel.setOnCheckedChangeListener((r, i) -> data.setAutoClimb(binding.toggleGroupClimbLevel.indexOfChild(binding.toggleGroupClimbLevel.findViewById(i))));
 
         binding.cont.setOnClickListener(view12 -> NavHostFragment.findNavController(Autonomous.this)
                 .navigate(R.id.action_ThirdFragment_to_SecondFragment));
+
         binding.back.setOnClickListener(view1 -> UIHelpers.makeConfirmationAlert("Cancel Match Data", "Do you want to cancel your match data?", () -> NavHostFragment.findNavController(Autonomous.this)
                 .navigate(R.id.action_ThirdFragment_to_FirstFragment), () -> {}, getContext()));
-        DisplayMetrics dm = new DisplayMetrics();
-        ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
-        float width = dm.widthPixels;
-        float height = dm.heightPixels;
-        UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
-        binding.bottomTag.setText(MainActivity.getLocationText());
 
+        binding.reset.setOnClickListener(v -> {
+            UIHelpers.makeConfirmationAlert("Reset Data", "Do you want to reset all Autonomous fields?", () -> {
+                data.setAutoHub(0);
+                data.setAutoHubMissed(0);
+                binding.fuelScored.setText(data.getAutoHub() + "");
+                binding.fuelMissed.setText(data.getAutoHubMissed() + "");
+                ((RadioButton) binding.toggleGroupClimbLevel.getChildAt(0)).setChecked(true);
+            }, () ->{}, getContext());
+        });
     }
     @Override
     public void onDestroyView() {
@@ -84,20 +93,4 @@ public class Autonomous extends Fragment {
         binding = null;
     }
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-
-    public Autonomous() {
-        // Required empty public constructor
-    }
-
-    public static Autonomous newInstance(String param1, String param2) {
-        Autonomous fragment = new Autonomous();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 }

@@ -1,16 +1,14 @@
 package com.example.myapplication;
-import java.util.Random;
-import android.animation.ObjectAnimator;
+
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -22,7 +20,6 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class TeamSelection extends Fragment {
     private TeamSelectionBinding binding;
-    ViewGroup v;
 
     @Override
     public View onCreateView(
@@ -30,17 +27,17 @@ public class TeamSelection extends Fragment {
             Bundle savedInstanceState
     ) {
         binding = TeamSelectionBinding.inflate(inflater, container, false);
-        v = container;
 
         String currentMatchNumber = UserModel.getMatchData().getMatchNumber();
-        binding.matchInput.setText(currentMatchNumber);
+        binding.matchNumberInput.setText(currentMatchNumber);
         String scouterName = UserModel.getMatchData().getScouterName();
-        binding.scoutername.setText(scouterName);
+        binding.scouterNameInput.setText(scouterName);
         try {
             String currentTeamNumber = MainActivity.teams.get(Integer.parseInt(currentMatchNumber) - 1);
-            binding.input.setText(currentTeamNumber);
+            binding.teamNumberInput.setText(currentTeamNumber);
         } catch (Exception e){
             //e.printStackTrace();
+            //commented out for nwo. cauz no need to print stack trace
         }
 
         ViewModelProvider viewModelProvider = new ViewModelProvider(requireActivity());
@@ -55,10 +52,10 @@ public class TeamSelection extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.cont.setOnClickListener(v -> {
-            String teamNumber = String.valueOf(binding.input.getText());
-            String matchNumber = String.valueOf(binding.matchInput.getText());
-            String scouterName = String.valueOf(binding.scoutername.getText());
+        binding.startScoutingButton.setOnClickListener(v -> {
+            String teamNumber = String.valueOf(binding.teamNumberInput.getText());
+            String matchNumber = String.valueOf(binding.matchNumberInput.getText());
+            String scouterName = String.valueOf(binding.scouterNameInput.getText());
             boolean teamNumberCheck = (!teamNumber.isEmpty() && teamNumber.length() <= 5 && !teamNumber.equals("0"));
             boolean matchNumCheck = (!matchNumber.isEmpty() && !matchNumber.equals("0"));
             boolean scouterNameCheck = (!scouterName.isEmpty());
@@ -81,8 +78,8 @@ public class TeamSelection extends Fragment {
             }
         });
 
-        binding.back.setOnClickListener(v -> {
-            String teamNumber = String.valueOf(binding.input.getText());
+        binding.pitScoutingButton.setOnClickListener(v -> {
+            String teamNumber = String.valueOf(binding.teamNumberInput.getText());
             boolean teamNumberCheck = (!teamNumber.isEmpty() && teamNumber.length() <= 5 && !teamNumber.equals("0"));
             if (teamNumberCheck) {
                 UserModel.getPitData().setTeamNumber(teamNumber);
@@ -93,30 +90,7 @@ public class TeamSelection extends Fragment {
             }
         });
 
-        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, binding.pop, this.getContext()));
-
-        binding.random.setOnClickListener(v -> {
-
-            int randomIndex = (new Random()).nextInt(MainActivity.names.size());
-            binding.scoutername.setText(MainActivity.names.get(randomIndex));
-            ObjectAnimator animation = ObjectAnimator.ofFloat(binding.random, "rotationY", UIHelpers.wolfFrames);
-            animation.setDuration(1000);
-            animation.start();
-            ObjectAnimator scaleAnimation = ObjectAnimator.ofFloat(binding.random, "scaleX", UIHelpers.wolfScales);
-            scaleAnimation.setDuration(1000);
-            scaleAnimation.setRepeatCount(1);
-            scaleAnimation.setRepeatMode(ObjectAnimator.REVERSE);
-
-        });
-
-
-        DisplayMetrics dm = new DisplayMetrics();
-        ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
-        float width = dm.widthPixels;
-        float height = dm.heightPixels;
-
-
-        binding.input.addTextChangedListener(new TextWatcher() {
+        binding.teamNumberInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
@@ -125,7 +99,7 @@ public class TeamSelection extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                Editable input = binding.input.getText();
+                Editable input = binding.teamNumberInput.getText();
                 if (input != null) {
                     String teamNumber = String.valueOf(input);
                     UserModel.getMatchData().setTeamNumber(teamNumber);
@@ -133,11 +107,7 @@ public class TeamSelection extends Fragment {
             }
         });
 
-        binding.teamNumberHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Team Number", "This is the number of the team that you will be scouting!", getContext()));
-        binding.matchNumberHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Match Number", "This is the match number that we are currently on!", getContext()));
-        binding.ScouterHelp.setOnClickListener(v -> UIHelpers.makeHelpAlert("Scouter Name", "This is your name! The person who scouts the most will get an award!", getContext()));
-
-        binding.matchInput.addTextChangedListener(new TextWatcher() {
+        binding.matchNumberInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
@@ -146,22 +116,22 @@ public class TeamSelection extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                Editable input = binding.matchInput.getText();
+                Editable input = binding.matchNumberInput.getText();
                 if (input != null) {
                     String matchNumber = String.valueOf(input);
                     UserModel.getMatchData().setMatchNumber(matchNumber);
                     try {
                         int num = Integer.parseInt(matchNumber) - 1;
                         if (num >= 0 && num < MainActivity.teams.size()) {
-                            binding.input.setText(MainActivity.teams.get(num));
+                            binding.teamNumberInput.setText(MainActivity.teams.get(num));
                         } else {
                             Snackbar.make(view, "Match number is too high/low.", 600).show();
                             if (matchNumber.equals("0")) {
-                                binding.matchInput.setText("1");
+                                binding.matchNumberInput.setText("1");
                                 UserModel.getMatchData().setMatchNumber("1");
-                                binding.input.setText(MainActivity.teams.get(0));
+                                binding.teamNumberInput.setText(MainActivity.teams.get(0));
                             } else {
-                                binding.input.setText("");
+                                binding.teamNumberInput.setText("");
                             }
                         }
                     } catch (Exception e){
@@ -171,27 +141,7 @@ public class TeamSelection extends Fragment {
             }
         });
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line, MainActivity.names);
-        binding.scoutername.setAdapter(adapter);
-        binding.bottomTag.setText(MainActivity.getLocationText());
-        binding.bottomTag.setOnLongClickListener(lc -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            builder.setTitle("Set Scout Location");
-            builder.setOnDismissListener(d -> {
-                MainActivity.updateTeams(getResources());
-                binding.bottomTag.setText(MainActivity.getLocationText());
-
-            });
-            builder.setNeutralButton("Cancel", (d, w) -> {
-                d.cancel();
-            });
-            builder.setItems(new CharSequence[]{"Red 1", "Red 2", "Red 3", "Blue 1", "Blue 2", "Blue 3"}, (d, w) -> {
-                MainActivity.scoutLocation = w;
-                MainActivity.writeInt("ScoutLocation", w);
-            });
-            builder.create().show();
-            return false;
-        });
-        UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
+        binding.scouterNameInput.setAdapter(adapter);
     }
     @Override
     public void onDestroyView() {

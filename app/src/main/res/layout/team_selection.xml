@@ -1,356 +1,434 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.myapplication.CustomScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#0B0F1A"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".TeamSelection">
+    android:layout_height="match_parent">
 
-    <RelativeLayout
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="730dp"
-        android:padding="0dp"
-        android:background="@drawable/red_light">
+        android:layout_height="match_parent"
+        android:background="#0B0F1A"
+        android:paddingTop="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-
-
-        <Button
-            android:id="@+id/bg1"
-            android:layout_width="430dp"
-            android:layout_height="80dp"
-            android:backgroundTint="#E48B92"
-            android:text=""
-            android:clickable="false"
-            android:translationX="0dp"
-            android:translationY="655dp"
-            app:cornerRadius="15dp"
-            android:tag="@string/bg1"/>
-        <Button
-            android:id="@+id/bg2"
-            android:layout_width="378dp"
-            android:layout_height="50dp"
-            android:backgroundTint="#5cffffff"
-            android:text=""
-            android:clickable="false"
-            android:translationX="17dp"
-            android:translationY="670dp"
-            app:cornerRadius="20dp"
-            android:tag="@string/bg2"/>
-        <Button
-            android:id="@+id/cont"
-            android:layout_width="110dp"
-            android:layout_height="50dp"
-            android:text="Match"
-            android:translationY="669.5dp"
-            android:translationX="285dp"
-            app:cornerRadius="20dp"
-            android:backgroundTint="#E02E3C"
-            android:textColor="@color/white"
-            android:shadowRadius="10"
-            android:shadowDy="5"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:tag="@string/team"/>
-
-        <Button
-            android:id="@+id/back"
-            android:layout_width="110dp"
-            android:layout_height="50dp"
-            android:text="Pit"
-            android:translationX="17dp"
-            android:translationY="669.5dp"
-            android:textColor="@color/white"
-            app:cornerRadius="20dp"
-            android:backgroundTint="#E02E3C"
-            android:shadowRadius="10"
-            android:shadowDy="5"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:tag="@string/team"/>
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Team Selection"
-            android:textSize="42dp"
-            android:translationX="60dp"
-            android:translationY="113dp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:tag="@string/no_change"/>
+            android:paddingBottom="32dp">
 
-        <TextView
-            android:id="@+id/bottomTag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="Red 1"
-            android:textSize="36dp"
-            android:textColor="#ff0000"
-            android:translationX="159dp"
-            android:translationY="669dp"
-            android:textStyle="bold"
-            android:tag="@string/team"/>
-        <TextView
-            android:id="@+id/teamNumberTag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="Team"
-            android:textSize="24dp"
-            android:textColor="#ff0000"
-            android:translationX="123dp"
-            android:translationY="270dp"
-            android:textStyle="bold"
-             
-            android:tag="@string/team"/>
-        <TextView
-            android:id="@+id/matchNumberTag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="Match"
-            android:textSize="24dp"
-            android:textColor="#ff0000"
-            android:translationX="116dp"
-            android:translationY="370dp"
-            android:textStyle="bold"
-             
-            android:tag="@string/team"/>
+            <ImageView
+                android:id="@+id/logoImage"
+                android:layout_width="113dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="0dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/logo2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-        <TextView
-            android:id="@+id/nameselectionTag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="Scouter"
-            android:textSize="24dp"
-            android:textColor="#ff0000"
-            android:translationX="126dp"
-            android:translationY="470dp"
-            android:textStyle="bold"
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:text="Team Selection"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                android:fontFamily="@font/interextrabold"
+                app:layout_constraintTop_toBottomOf="@+id/logoImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-            android:tag="@string/team"/>
+            <TextView
+                android:id="@+id/subtitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="Match Configuration"
+                android:textColor="#94A3B8"
+                android:textSize="14sp"
+                android:fontFamily="@font/interbold"
+                app:layout_constraintTop_toBottomOf="@+id/titleText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-        <TextView
-            android:id="@+id/nameselectionTag2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="Name"
-            android:textSize="24dp"
-            android:textColor="#000000"
-            android:translationX="216dp"
-            android:translationY="470dp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/scouterLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="30dp"
+                android:text="Scouter Identity"
+                android:textColor="#64748B"
+                android:textSize="10sp"
+                android:fontFamily="@font/interbold"
+                app:layout_constraintTop_toBottomOf="@+id/subtitleText"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/matchNumberTag2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="Number"
-            android:textSize="24dp"
-            android:textColor="#000000"
-            android:translationX="193dp"
-            android:translationY="370dp"
-            android:textStyle="bold" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/scouterInputContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bgname"
+                android:paddingVertical="19dp"
+                android:paddingStart="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/scouterLabel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:id="@+id/matchNumberHelp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="ⓘ"
-            android:textSize="24dp"
-            android:textColor="#000000"
-            android:translationX="290dp"
-            android:translationY="370dp"
-            android:textStyle="bold"/>
+                <AutoCompleteTextView
+                    android:id="@+id/scouterNameInput"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="Enter scouter name"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#64748B"
+                    android:textSize="16sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/ScouterHelp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="ⓘ"
-            android:textSize="24dp"
-            android:textColor="#000000"
-            android:translationX="290dp"
-            android:translationY="470dp"
-            android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/matchLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="27dp"
+                android:text="Match No."
+                android:textColor="#64748B"
+                android:textSize="10sp"
+                android:fontFamily="@font/interextrabold"
+                app:layout_constraintTop_toBottomOf="@+id/scouterInputContainer"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/teamNumberTag2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="Number"
-            android:textSize="24dp"
-            android:textColor="#000000"
-            android:translationX="193dp"
-            android:translationY="270dp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/teamNumberHelp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="ⓘ"
-            android:textSize="24dp"
-            android:textColor="#000000"
-            android:translationX="290dp"
-            android:translationY="270dp"
-            android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/teamLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="152dp"
+                android:text="Team No."
+                android:textColor="#64748B"
+                android:textSize="10sp"
+                android:fontFamily="@font/interextrabold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scouterInputContainer" />
 
-        <ImageView
-            android:id="@+id/pop"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/pop"
-            android:translationX="155dp"
-            android:translationY="13dp"
-            android:tag=""
-        />
-        <Button
-            android:id="@+id/textbacking1"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:backgroundTint="#D9D9D9"
-            android:clickable="false"
-            android:tag=""
-            android:text=""
-            android:translationX="100dp"
-            android:translationY="300dp"
-            app:cornerRadius="20dp" />
-        <Button
-            android:id="@+id/textbacking2"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:backgroundTint="#D9D9D9"
-            android:clickable="false"
-            android:tag=""
-            android:text=""
-            android:translationX="100dp"
-            android:translationY="400dp"
-            app:cornerRadius="20dp" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/matchInputContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bgmatch"
+                android:paddingVertical="19dp"
+                android:paddingStart="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/matchLabel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/teamInputContainer">
 
+                <EditText
+                    android:id="@+id/matchNumberInput"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="Match #"
+                    android:inputType="number"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#64748B"
+                    android:textSize="16sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/teamInputContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bgteamnum"
+                android:paddingVertical="19dp"
+                android:paddingStart="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/teamLabel"
+                app:layout_constraintStart_toEndOf="@+id/matchInputContainer"
+                app:layout_constraintEnd_toEndOf="parent">
 
-        <Button
-            android:id="@+id/scouternamebacking"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:backgroundTint="#D9D9D9"
-            android:clickable="false"
-            android:tag=""
-            android:text=""
-            android:translationX="100dp"
-            android:translationY="500dp"
-            app:cornerRadius="20dp" />
+                <EditText
+                    android:id="@+id/teamNumberInput"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="Team #"
+                    android:inputType="number"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#64748B"
+                    android:textSize="16sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/random"
-            android:layout_width="30dp"
-            android:layout_height="35dp"
-            android:tag=""
-            android:text="🎲"
-            android:textSize="26dp"
-            android:translationX="90dp"
-            android:translationY="470dp"
-            android:textAlignment="center"
-            app:cornerRadius="20dp" />
+            <TextView
+                android:id="@+id/scheduleLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="32dp"
+                android:text="Upcoming Schedule"
+                android:textColor="#64748B"
+                android:textSize="12sp"
+                android:letterSpacing="0.05"
+                android:fontFamily="@font/interextrabold"
+                app:layout_constraintTop_toBottomOf="@+id/matchInputContainer"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <AutoCompleteTextView
-            android:id="@+id/scoutername"
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:hint="Your Name Here"
-            android:textColor="#000000"
-            android:textColorHint="#71797E"
-            android:translationX="110dp"
-            android:translationY="500dp"
-            android:tag="@string/no_change"
-            android:singleLine="true"/>
+            <TextView
+                android:id="@+id/seeAllText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="32dp"
+                android:text="See all"
+                android:textColor="#3B82F6"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/matchInputContainer"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input"
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:hint="Team Number"
-            android:textColor="#000000"
-            android:textColorHint="#71797E"
-            android:maxLength="5"
-            android:inputType="number"
-            android:translationX="110dp"
-            android:translationY="300dp"
-            android:tag="@string/no_change"/>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/scheduleCard1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="12dp"
+                android:background="#1E293B"
+                app:cardBackgroundColor="#1E293B"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:layout_constraintTop_toBottomOf="@+id/scheduleLabel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/matchInput"
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:hint="Match Number"
-            android:textColor="#000000"
-            android:textColorHint="#71797E"
-            android:maxLength="3"
-            android:inputType="number"
-            android:translationX="110dp"
-            android:translationY="400dp"
-            android:tag="@string/no_change" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/boxschedule"
+                    android:padding="16dp">
 
-        <TextView
-            android:id="@+id/matchNumberHelpText"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text="↖\nClick me for help!"
-            android:textAlignment="textStart"
-            android:textColor="#000000"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:translationX="310dp"
-            android:translationY="390dp" />
+                    <TextView
+                        android:id="@+id/match1Num"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="#1"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/match1Blue" />
 
-        <TextView
-            android:id="@+id/ScouterNamehelp"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="↖\nOnly Use Autofill when entering."
-            android:textAlignment="textStart"
-            android:textColor="#000000"
-            android:textSize="15dp"
-            android:textStyle="bold"
-            android:translationX="310dp"
-            android:translationY="520dp" />
+                    <TextView
+                        android:id="@+id/match1Blue"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="254, 1678, 1323"
+                        android:fontFamily="@font/interbold"
+                        android:textColor="#2563EB"
+                        android:textSize="14sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/match1Num"
+                        app:layout_constraintEnd_toStartOf="@+id/match1Red" />
 
+                    <TextView
+                        android:id="@+id/match1Red"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="118, 148, 624"
+                        android:textColor="#EF4444"
+                        android:fontFamily="@font/interbold"
+                        android:textSize="14sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/match1Blue"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/popHelpText"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="Try clicking me!\n↙"
-            android:textAlignment="textStart"
-            android:textColor="#ffffff"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:translationX="260dp"
-            android:translationY="5dp"
-            android:tag="@string/no_change"/>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/scheduleCard2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="12dp"
+                android:background="#1E293B"
+                app:cardBackgroundColor="#1E293B"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:layout_constraintTop_toBottomOf="@+id/scheduleCard1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:id="@+id/contHelpText"
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
-            android:text="Let's start scouting!\n↘"
-            android:textAlignment="textEnd"
-            android:textColor="#000000"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:translationX="160dp"
-            android:translationY="610dp"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/boxschedule"
+                    android:padding="16dp">
 
+                    <TextView
+                        android:id="@+id/match2Num"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="#2"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/match2Blue" />
 
+                    <TextView
+                        android:id="@+id/match2Blue"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="971, 207, 5012"
+                        android:textColor="#2563EB"
+                        android:fontFamily="@font/interbold"
+                        android:textSize="14sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/match2Num"
+                        app:layout_constraintEnd_toStartOf="@+id/match2Red" />
 
+                    <TextView
+                        android:id="@+id/match2Red"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="2471, 2910, 448"
+                        android:textColor="#EF4444"
+                        android:fontFamily="@font/interbold"
+                        android:textSize="14sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/match2Blue"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
-    </RelativeLayout>
-</com.example.myapplication.CustomScrollView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/scheduleCard3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="12dp"
+                android:background="#1E293B"
+                app:cardBackgroundColor="#1E293B"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:layout_constraintTop_toBottomOf="@+id/scheduleCard2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/boxschedule"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/match3Num"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="#3"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/match3Blue" />
+
+                    <TextView
+                        android:id="@+id/match3Blue"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="3538, 846, 696"
+                        android:textColor="#2563EB"
+                        android:fontFamily="@font/interbold"
+                        android:textSize="14sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/match3Num"
+                        app:layout_constraintEnd_toStartOf="@+id/match3Red" />
+
+                    <TextView
+                        android:id="@+id/match3Red"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="195, 1114, 2046"
+                        android:textColor="#EF4444"
+                        android:fontFamily="@font/interbold"
+                        android:textSize="14sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/match3Blue"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/startScoutingButton"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="24dp"
+                android:backgroundTint="#3B82F6"
+                android:text="Start Match Scouting"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:cornerRadius="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scheduleCard3" />
+
+            <Button
+                android:id="@+id/pitScoutingButton"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
+                android:backgroundTint="#131927"
+                android:text="Go to Pit Scouting"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:cornerRadius="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/startScoutingButton" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,11 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="#0B0F1A"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
+    <com.example.myapplication.CustomScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -37,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
-                android:text="Team Selection"
+                android:text="TEAM SELECTION"
                 android:textColor="#FFFFFF"
                 android:textSize="30sp"
                 android:fontFamily="@font/interextrabold"
@@ -50,7 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:text="Match Configuration"
+                android:text="Blue 1"
                 android:textColor="#94A3B8"
                 android:textSize="14sp"
                 android:fontFamily="@font/interbold"
@@ -67,37 +68,45 @@
                 android:text="Scouter Identity"
                 android:textColor="#64748B"
                 android:textSize="10sp"
-                android:fontFamily="@font/interbold"
+                android:fontFamily="@font/interextrabold"
                 app:layout_constraintTop_toBottomOf="@+id/subtitleText"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/scouterInputContainer"
+            <AutoCompleteTextView
+                android:id="@+id/scouterNameInput"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="62dp"
                 android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/bgname"
-                android:paddingVertical="19dp"
-                android:paddingStart="20dp"
+                android:background="@drawable/border_rounded"
+                android:hint="Enter scouter name"
+                android:textColor="#FFFFFF"
+                android:paddingStart="16dp"
+                android:textColorHint="#64748B"
+                android:fontFamily="@font/interbold"
+                android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@+id/scouterLabel"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintEnd_toStartOf="@+id/random"
+                app:layout_constraintHorizontal_weight="4"/>
 
-                <AutoCompleteTextView
-                    android:id="@+id/scouterNameInput"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:hint="Enter scouter name"
-                    android:textColor="#FFFFFF"
-                    android:textColorHint="#64748B"
-                    android:textSize="16sp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/random"
+                android:layout_width="0dp"
+                android:layout_height="62dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/border_rounded"
+                android:text="🎲"
+                android:textSize="24sp"
+                app:layout_constraintTop_toBottomOf="@+id/scouterLabel"
+                app:layout_constraintStart_toEndOf="@+id/scouterNameInput"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="1"/>
+
+
+
 
             <TextView
                 android:id="@+id/matchLabel"
@@ -109,79 +118,60 @@
                 android:textColor="#64748B"
                 android:textSize="10sp"
                 android:fontFamily="@font/interextrabold"
-                app:layout_constraintTop_toBottomOf="@+id/scouterInputContainer"
+                app:layout_constraintTop_toBottomOf="@+id/scouterNameInput"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/teamLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:layout_marginEnd="152dp"
+                android:layout_marginTop="27dp"
                 android:text="Team No."
                 android:textColor="#64748B"
                 android:textSize="10sp"
                 android:fontFamily="@font/interextrabold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/scouterInputContainer" />
+                app:layout_constraintTop_toBottomOf="@+id/scouterNameInput"
+                app:layout_constraintStart_toStartOf="@+id/teamNumberInput"/>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <EditText
                 android:id="@+id/matchInputContainer"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="62dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/bgmatch"
-                android:paddingVertical="19dp"
-                android:paddingStart="20dp"
+                android:background="@drawable/border_rounded"
+                android:hint="Match #"
+                android:textColor="#FFFFFF"
+                android:paddingStart="16dp"
+                android:textColorHint="#64748B"
+                android:fontFamily="@font/interbold"
+                android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@+id/matchLabel"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/teamInputContainer">
+                app:layout_constraintEnd_toStartOf="@+id/teamNumberInput"/>
 
-                <EditText
-                    android:id="@+id/matchNumberInput"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:hint="Match #"
-                    android:inputType="number"
-                    android:textColor="#FFFFFF"
-                    android:textColorHint="#64748B"
-                    android:textSize="16sp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/teamInputContainer"
+
+            <EditText
+                android:id="@+id/teamNumberInput"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="62dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/bgteamnum"
-                android:paddingVertical="19dp"
-                android:paddingStart="20dp"
+                android:background="@drawable/border_rounded"
+                android:hint="Team #"
+                android:textColor="#FFFFFF"
+                android:paddingStart="16dp"
+                android:textColorHint="#64748B"
+                android:fontFamily="@font/interbold"
+                android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@+id/teamLabel"
                 app:layout_constraintStart_toEndOf="@+id/matchInputContainer"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintEnd_toEndOf="parent"/>
 
-                <EditText
-                    android:id="@+id/teamNumberInput"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:hint="Team #"
-                    android:inputType="number"
-                    android:textColor="#FFFFFF"
-                    android:textColorHint="#64748B"
-                    android:textSize="16sp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <TextView
                 android:id="@+id/scheduleLabel"
@@ -197,18 +187,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/matchInputContainer"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/seeAllText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:layout_marginTop="32dp"
-                android:text="See all"
-                android:textColor="#3B82F6"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/matchInputContainer"
-                app:layout_constraintEnd_toEndOf="parent" />
+
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/scheduleCard1"
@@ -229,45 +208,124 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/boxschedule"
-                    android:padding="16dp">
+                    android:padding="12dp">
 
                     <TextView
-                        android:id="@+id/match1Num"
-                        android:layout_width="0dp"
+                        android:id="@+id/matchBox1Num"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="#1"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
+                        android:background="@drawable/match_num_bg"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="4dp"
+                        android:text="#42"
+                        android:textColor="#64748B"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/match1Blue" />
+                        app:layout_constraintBottom_toBottomOf="parent" />
 
-                    <TextView
-                        android:id="@+id/match1Blue"
+                    <HorizontalScrollView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="254, 1678, 1323"
-                        android:fontFamily="@font/interbold"
-                        android:textColor="#2563EB"
-                        android:textSize="14sp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/match1Num"
-                        app:layout_constraintEnd_toStartOf="@+id/match1Red" />
+                        android:layout_marginStart="6dp"
+                        android:scrollbars="none"
+                        app:layout_constraintTop_toTopOf="@+id/matchBox1Num"
+                        app:layout_constraintBottom_toBottomOf="@+id/matchBox1Num"
+                        app:layout_constraintStart_toEndOf="@+id/matchBox1Num"
+                        app:layout_constraintEnd_toEndOf="parent">
 
-                    <TextView
-                        android:id="@+id/match1Red"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="118, 148, 624"
-                        android:textColor="#EF4444"
-                        android:fontFamily="@font/interbold"
-                        android:textSize="14sp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/match1Blue"
-                        app:layout_constraintEnd_toEndOf="parent" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:id="@+id/Match1">
+
+                            <TextView
+                                android:id="@+id/matchBox1Blue1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/blue_team_bg"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"
+                                android:text="254"
+                                android:fontFamily="@font/interbold"
+                                android:textColor="#9E3338"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/matchBox1Blue2"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:background="@drawable/blue_team_bg"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"
+                                android:text="1678"
+                                android:fontFamily="@font/interbold"
+                                android:textColor="#9E3338"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/matchBox1Blue3"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="4dp"
+                                android:background="@drawable/blue_team_bg"
+                                android:fontFamily="@font/interbold"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"
+                                android:text="1323"
+                                android:textColor="#9E3338"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/matchBox1Red1"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="4dp"
+                                android:background="@drawable/red_team_bg"
+                                android:fontFamily="@font/interbold"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"
+                                android:text="4414"
+                                android:textColor="#2563EB"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/matchBox1Red2"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="4dp"
+                                android:background="@drawable/red_team_bg"
+                                android:fontFamily="@font/interbold"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"
+                                android:text="2056"
+                                android:textColor="#2563EB"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/matchBox1Red3"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:background="@drawable/red_team_bg"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"
+                                android:text="118"
+                                android:fontFamily="@font/interbold"
+                                android:textColor="#2563EB"
+                                android:textSize="11sp" />
+
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -289,46 +347,127 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+
                     android:background="@drawable/boxschedule"
-                    android:padding="16dp">
+                    android:padding="12dp">
 
                     <TextView
-                        android:id="@+id/match2Num"
-                        android:layout_width="0dp"
+                        android:id="@+id/matchBox2Num"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="#2"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
+                        android:background="@drawable/match_num_bg"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="4dp"
+                        android:text="#42"
+                        android:textColor="#64748B"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/match2Blue" />
+                        app:layout_constraintBottom_toBottomOf="parent" />
 
-                    <TextView
-                        android:id="@+id/match2Blue"
+                    <HorizontalScrollView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="971, 207, 5012"
-                        android:textColor="#2563EB"
-                        android:fontFamily="@font/interbold"
-                        android:textSize="14sp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/match2Num"
-                        app:layout_constraintEnd_toStartOf="@+id/match2Red" />
+                        android:layout_marginStart="6dp"
+                        android:scrollbars="none"
+                        app:layout_constraintTop_toTopOf="@+id/matchBox2Num"
+                        app:layout_constraintBottom_toBottomOf="@+id/matchBox2Num"
+                        app:layout_constraintStart_toEndOf="@+id/matchBox2Num"
+                        app:layout_constraintEnd_toEndOf="parent">
 
-                    <TextView
-                        android:id="@+id/match2Red"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="2471, 2910, 448"
-                        android:textColor="#EF4444"
-                        android:fontFamily="@font/interbold"
-                        android:textSize="14sp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/match2Blue"
-                        app:layout_constraintEnd_toEndOf="parent" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:id="@+id/Match2">
+
+                            <TextView
+                                android:id="@+id/matchBox2Blue1"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/gray_team_bg"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"
+                                android:text="254"
+                                android:fontFamily="@font/interbold"
+                                android:textColor="#6B7789"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/matchBox2Blue2"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:background="@drawable/gray_team_bg"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"
+                                android:text="1678"
+                                android:fontFamily="@font/interbold"
+                                android:textColor="#6B7789"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/matchBox2Blue3"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:background="@drawable/gray_team_bg"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"
+                                android:text="1323"
+                                android:fontFamily="@font/interbold"
+                                android:textColor="#6B7789"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/matchBox2Red1"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="4dp"
+                                android:background="@drawable/gray_team_bg"
+                                android:fontFamily="@font/interbold"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"
+                                android:text="4414"
+                                android:textColor="#6B7789"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/matchBox2Red2"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="4dp"
+                                android:background="@drawable/gray_team_bg"
+                                android:fontFamily="@font/interbold"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"
+                                android:text="2056"
+                                android:textColor="#6B7789"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/matchBox2Red3"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="4dp"
+                                android:background="@drawable/gray_team_bg"
+                                android:fontFamily="@font/interbold"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"
+                                android:text="118"
+                                android:textColor="#6B7789"
+                                android:textSize="11sp" />
+
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -351,45 +490,125 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/boxschedule"
-                    android:padding="16dp">
+                    android:padding="12dp">
 
                     <TextView
-                        android:id="@+id/match3Num"
-                        android:layout_width="0dp"
+                        android:id="@+id/matchBox3Num"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="#3"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
+                        android:background="@drawable/match_num_bg"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="4dp"
+                        android:text="#42"
+                        android:textColor="#64748B"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/match3Blue" />
+                        app:layout_constraintBottom_toBottomOf="parent" />
 
-                    <TextView
-                        android:id="@+id/match3Blue"
+                    <HorizontalScrollView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="3538, 846, 696"
-                        android:textColor="#2563EB"
-                        android:fontFamily="@font/interbold"
-                        android:textSize="14sp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/match3Num"
-                        app:layout_constraintEnd_toStartOf="@+id/match3Red" />
+                        android:layout_marginStart="6dp"
+                        android:scrollbars="none"
+                        app:layout_constraintTop_toTopOf="@+id/matchBox3Num"
+                        app:layout_constraintBottom_toBottomOf="@+id/matchBox3Num"
+                        app:layout_constraintStart_toEndOf="@+id/matchBox3Num"
+                        app:layout_constraintEnd_toEndOf="parent">
 
-                    <TextView
-                        android:id="@+id/match3Red"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="195, 1114, 2046"
-                        android:textColor="#EF4444"
-                        android:fontFamily="@font/interbold"
-                        android:textSize="14sp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/match3Blue"
-                        app:layout_constraintEnd_toEndOf="parent" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:id="@+id/Match3">
+
+                            <TextView
+                                android:id="@+id/matchBox3Blue1"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/gray_team_bg"
+                                android:fontFamily="@font/interbold"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"
+                                android:text="254"
+                                android:textColor="#6B7789"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/matchBox3Blue2"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="4dp"
+                                android:background="@drawable/gray_team_bg"
+                                android:fontFamily="@font/interbold"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"
+                                android:text="1678"
+                                android:textColor="#6B7789"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/matchBox3Blue3"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:background="@drawable/gray_team_bg"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"
+                                android:text="1323"
+                                android:fontFamily="@font/interbold"
+                                android:textColor="#6B7789"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/matchBox3Red1"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:background="@drawable/gray_team_bg"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"
+                                android:text="4414"
+                                android:fontFamily="@font/interbold"
+                                android:textColor="#6B7789"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/matchBox3Red2"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:background="@drawable/gray_team_bg"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"
+                                android:text="2056"
+                                android:fontFamily="@font/interbold"
+                                android:textColor="#6B7789"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/matchBox3Red3"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:background="@drawable/gray_team_bg"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"
+                                android:text="118"
+                                android:fontFamily="@font/interbold"
+                                android:textColor="#6B7789"
+                                android:textSize="11sp" />
+
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -401,10 +620,12 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="24dp"
                 android:backgroundTint="#3B82F6"
-                android:text="Start Match Scouting"
+                android:text="▷ Start Match Scouting"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:elevation="12dp"
+                android:stateListAnimator="@null"
                 app:cornerRadius="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -430,5 +651,5 @@
                 app:layout_constraintTop_toBottomOf="@+id/startScoutingButton" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </com.example.myapplication.CustomScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

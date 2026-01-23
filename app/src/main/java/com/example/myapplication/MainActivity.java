@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
-    public static ArrayList<String> teams = new ArrayList<>();
+    public static ArrayList<String[]> teams = new ArrayList<>();
 
     public static ArrayList<String> names = new ArrayList<>();
 
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
         while (scanner.hasNext()) {
             scanner.nextLine();
-            teams.add(scanner.nextLine().split("\t")[scoutLocation]);
+            teams.add(scanner.nextLine().split("\t"));
 
         }
         scanner.close();

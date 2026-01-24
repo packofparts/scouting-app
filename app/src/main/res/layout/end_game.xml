@@ -29,7 +29,7 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
-                android:src="@drawable/timeicon"
+                android:src="@drawable/backarrow"
                 android:scaleType="fitXY"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -450,9 +450,9 @@
                             android:layout_weight="1"
                             android:src="@android:drawable/btn_star_big_on"
                             android:scaleType="centerInside"
-                            android:tint="#0D59F2"
                             android:clickable="true"
-                            android:focusable="true" />
+                            android:focusable="true"
+                            app:tint="#0D59F2" />
 
                         <ImageView
                             android:id="@+id/star2"
@@ -461,9 +461,9 @@
                             android:layout_weight="1"
                             android:src="@android:drawable/btn_star_big_on"
                             android:scaleType="centerInside"
-                            android:tint="#0D59F2"
                             android:clickable="true"
-                            android:focusable="true" />
+                            android:focusable="true"
+                            app:tint="#0D59F2" />
 
                         <ImageView
                             android:id="@+id/star3"
@@ -472,9 +472,9 @@
                             android:layout_weight="1"
                             android:src="@android:drawable/btn_star_big_on"
                             android:scaleType="centerInside"
-                            android:tint="#0D59F2"
                             android:clickable="true"
-                            android:focusable="true" />
+                            android:focusable="true"
+                            app:tint="#0D59F2" />
 
                         <ImageView
                             android:id="@+id/star4"
@@ -483,9 +483,9 @@
                             android:layout_weight="1"
                             android:src="@android:drawable/btn_star_big_on"
                             android:scaleType="centerInside"
-                            android:tint="#0D59F2"
                             android:clickable="true"
-                            android:focusable="true" />
+                            android:focusable="true"
+                            app:tint="#0D59F2" />
 
                         <ImageView
                             android:id="@+id/star5"
@@ -494,9 +494,9 @@
                             android:layout_weight="1"
                             android:src="@android:drawable/btn_star_big_off"
                             android:scaleType="centerInside"
-                            android:tint="#4A5568"
                             android:clickable="true"
-                            android:focusable="true" />
+                            android:focusable="true"
+                            app:tint="#4A5568" />
 
                     </LinearLayout>
 

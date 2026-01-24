@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
-import android.app.Activity;
+
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,19 +12,20 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
+
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
+
+
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.TeamSelectionBinding;
 import com.google.android.material.snackbar.Snackbar;
+
 
 import java.util.Random;
 
@@ -44,7 +46,7 @@ public class TeamSelection extends Fragment {
         try {
             String currentTeamNumber = MainActivity.teams.get(Integer.parseInt(currentMatchNumber) - 1)[MainActivity.scoutLocation];
             binding.teamNumberInput.setText(currentTeamNumber);
-        } catch (Exception e){
+        } catch (Exception ignored){
 
         }
 
@@ -52,7 +54,7 @@ public class TeamSelection extends Fragment {
         UserModel userModel = viewModelProvider.get(UserModel.class);
         MatchData matchData = new MatchData();
         userModel.setMatchData(matchData);
-        userModel.setPitData(new PitData());
+        UserModel.setPitData(new PitData());
 
         return binding.getRoot();
     }
@@ -132,6 +134,7 @@ public class TeamSelection extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
+            @SuppressLint("SetTextI18n")
             @Override
             public void afterTextChanged(Editable s) {
                 Editable input = binding.matchInputContainer.getText();
@@ -144,13 +147,7 @@ public class TeamSelection extends Fragment {
                             LinearLayout[] matchBoxes = {binding.Match1, binding.Match2, binding.Match3};
                             TextView[] matchBoxNums = {binding.matchBox1Num, binding.matchBox2Num, binding.matchBox3Num};
 
-                            if (num >= MainActivity.teams.size()) {
-                                for(int i = 0; i < 3; i++){
-                                    matchBoxes[i].setVisibility(View.GONE);
-                                    matchBoxNums[i].setVisibility(View.GONE);
-                                }
-                                return;
-                            }
+                            MainActivity.teams.size();
 
                             binding.teamNumberInput.setText(MainActivity.teams.get(num)[MainActivity.scoutLocation]);
 
@@ -191,13 +188,12 @@ public class TeamSelection extends Fragment {
                             }
                         }
                     } catch (Exception e){
-                        e.printStackTrace();
                         Snackbar.make(view, "Please Enter a Value", 600).show();
                     }
                 }
             }
         });
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line, MainActivity.names);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_dropdown_item_1line, MainActivity.names);
         binding.scouterNameInput.setAdapter(adapter);
 
         //the location of the scouting changing thing
@@ -209,9 +205,7 @@ public class TeamSelection extends Fragment {
                 binding.subtitleText.setText(MainActivity.getLocationText());
 
             });
-            builder.setNeutralButton("Cancel", (d, w) -> {
-                d.cancel();
-            });
+            builder.setNeutralButton("Cancel", (d, w) -> d.cancel());
             builder.setItems(new CharSequence[]{"Red 1", "Red 2", "Red 3", "Blue 1", "Blue 2", "Blue 3"}, (d, w) -> {
                 MainActivity.scoutLocation = w;
                 MainActivity.writeInt("ScoutLocation", w);

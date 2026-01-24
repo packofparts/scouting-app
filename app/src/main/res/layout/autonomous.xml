@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".PitScouting">
+    tools:context=".PitScouting"
+    tools:ignore="HardcodedText"
+    >
     <TextView
         android:id="@+id/title"
 
@@ -23,10 +25,10 @@
         android:textStyle="bold"
         app:autoSizeMaxTextSize="18sp"
         app:autoSizeMinTextSize="1sp"
-        app:autoSizeTextType="uniform"
-        />
+        app:autoSizeTextType="uniform" />
     <ImageButton
         android:id="@+id/back"
+        android:importantForAccessibility="no"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/title"
@@ -36,7 +38,8 @@
         android:gravity="center"
         android:src="@drawable/backarrow"
         android:textColor="@color/white"
-        android:backgroundTint="#00000000"/>
+        android:backgroundTint="#00000000"
+         />
 
     <TextView
         android:id="@+id/reset"
@@ -55,7 +58,7 @@
         app:layout_constraintDimensionRatio="1"
         android:gravity="center"
         android:src="@drawable/backarrow"
-        android:backgroundTint="#00000000"/>
+        android:backgroundTint="#00000000" />
 
     <com.example.myapplication.CustomScrollView
         android:layout_width="match_parent"
@@ -87,7 +90,8 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp"/>
+                android:layout_marginStart="16dp"
+                 />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/fuelScoredLayout"
@@ -125,7 +129,7 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
                     android:layout_height="0dp"
                     app:layout_constraintDimensionRatio="1:1"
                     android:text="🟡"
-                    android:gravity="right"
+                    android:gravity="end"
                     app:autoSizeMinTextSize="1sp"
                     android:maxLines="1"
                     app:autoSizeTextType="uniform"
@@ -134,7 +138,8 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
                     app:layout_constraintStart_toEndOf="@id/fuelScoredHeader"
                     app:layout_constraintHorizontal_bias="1"
                     app:layout_constraintTop_toTopOf="@id/fuelScoredHeader"
-                    android:id="@+id/ball1"/>
+                    android:id="@+id/ball1"
+                     />
 
                 <TextView
                     android:id="@+id/fuelScoredHeader"
@@ -151,7 +156,8 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
                     android:text="Fuel SCORED"
                     android:fontFamily="@font/interbold"                     app:autoSizeMaxTextSize="20sp"
                     app:autoSizeMinTextSize="1sp"
-                    app:autoSizeTextType="uniform" />
+                    app:autoSizeTextType="uniform"
+                     />
 
 
 
@@ -170,7 +176,8 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
                     android:fontFamily="@font/interbold"
                     app:layout_constraintEnd_toStartOf="@id/g3"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/fuelScoredHeader" />
+                    app:layout_constraintTop_toBottomOf="@id/fuelScoredHeader"
+                     />
 
 
                 <Button
@@ -192,26 +199,26 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
                     android:textAlignment="center"
                     android:textColor="#CBD5E1"
 
-                    />
+                     />
+
                 <Button
                     android:id="@+id/fuelScoredPlus"
-                    android:text="+"
-                    android:backgroundTint="#0D59F2"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:backgroundTint="#0D59F2"
                     android:fontFamily="@font/interbold"
-                    app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/g3"
-                    app:layout_constraintHorizontal_bias="1"
-                    app:layout_constraintTop_toBottomOf="@id/g1"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:autoSizeMinTextSize="1sp"
-                    app:autoSizeTextType="uniform"
-                    android:textStyle="bold"
+                    android:text="+"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    />
+                    android:textStyle="bold"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1"
+                    app:layout_constraintStart_toEndOf="@id/g3"
+                    app:layout_constraintTop_toBottomOf="@id/g1" />
 
                 <TextView
                     android:id="@+id/fuelScored"
@@ -228,7 +235,8 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
                     android:text="0"
                     android:textStyle="bold"
                     app:autoSizeMinTextSize="1sp"
-                    app:autoSizeTextType="uniform" />
+                    app:autoSizeTextType="uniform"
+                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -268,7 +276,7 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
                     android:layout_height="0dp"
                     app:layout_constraintDimensionRatio="1:1"
                     android:text="🟡"
-                    android:gravity="right"
+                    android:gravity="end"
                     app:autoSizeMinTextSize="1sp"
                     android:maxLines="1"
                     app:autoSizeTextType="uniform"
@@ -277,7 +285,8 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
                     app:layout_constraintStart_toEndOf="@id/fuelMissedHeader"
                     app:layout_constraintHorizontal_bias="1"
                     app:layout_constraintTop_toTopOf="@id/fuelMissedHeader"
-                    android:id="@+id/ball2"/>
+                    android:id="@+id/ball2"
+                     />
 
                 <TextView
                     android:id="@+id/fuelMissedHeader"
@@ -294,7 +303,8 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
                     android:text="Fuel MISSED"
                     android:fontFamily="@font/interbold"                     app:autoSizeMaxTextSize="20sp"
                     app:autoSizeMinTextSize="1sp"
-                    app:autoSizeTextType="uniform" />
+                    app:autoSizeTextType="uniform"
+                     />
 
 
 
@@ -313,7 +323,8 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
                     android:fontFamily="@font/interbold"
                     app:layout_constraintEnd_toStartOf="@id/g6"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/fuelMissedHeader" />
+                    app:layout_constraintTop_toBottomOf="@id/fuelMissedHeader"
+                     />
 
 
                 <Button
@@ -336,7 +347,7 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
                     android:textAlignment="center"
                     android:textColor="#CBD5E1"
 
-                    />
+                     />
                 <Button
                     android:id="@+id/fuelMissedPlus"
                     android:text="+"
@@ -355,7 +366,7 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
                     android:textStyle="bold"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    />
+                     />
 
                 <TextView
                     android:id="@+id/fuelMissed"
@@ -372,7 +383,8 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
                     android:text="0"
                     android:textStyle="bold"
                     app:autoSizeMinTextSize="1sp"
-                    app:autoSizeTextType="uniform" />
+                    app:autoSizeTextType="uniform"
+                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -390,7 +402,8 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
                 app:layout_constraintTop_toBottomOf="@id/fuelMissedLayout"
                 android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp"/>
+                android:layout_marginStart="16dp"
+                 />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
@@ -417,6 +430,7 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
                     android:id="@+id/ivClimbIcon"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:importantForAccessibility="no"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintEnd_toStartOf="@id/g7"
                     app:layout_constraintHorizontal_bias="0"
@@ -569,6 +583,7 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
             android:layout_height="0dp"
             android:backgroundTint="#00000000"
             android:gravity="center"
+            android:importantForAccessibility="no"
             android:rotation="180"
             android:src="@drawable/backarrow"
             android:textColor="@color/white"

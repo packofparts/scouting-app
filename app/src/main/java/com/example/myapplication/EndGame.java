@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Color;
@@ -17,13 +16,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.EndGameBinding;
-import com.google.android.material.slider.Slider;
-
-import java.io.IOException;
-import java.util.Objects;
 
 public class EndGame extends Fragment {
 
@@ -31,7 +25,6 @@ public class EndGame extends Fragment {
     ViewGroup v = null;
 
     // Climb level selection
-    private String selectedClimbLevel = "L3"; // Default selection
 
     // Star rating
     private int currentRating = 4; // Default 4 stars
@@ -92,23 +85,12 @@ public class EndGame extends Fragment {
         });
 
         // Submit button
-        binding.btnSubmit.setOnClickListener(view1 -> {
-            UIHelpers.makeConfirmationAlert("Submit Match Data",
-                    "Do you want to submit your match data?", () -> {
-                        try {
-                            saveMatchData();
-                            // UserModel.getMatchData().toJson();
-                        } catch (Exception e) {
-                            throw new RuntimeException(e);
-                        }
-                        // Navigate to next screen or clear data
-                    }, () -> {}, getContext());
-        });
+        binding.btnSubmit.setOnClickListener(view1 -> UIHelpers.makeConfirmationAlert("Submit Match Data",
+                "Do you want to submit your match data?", () -> {
+                }, () -> {}, getContext()));
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        float height = displayMetrics.heightPixels;
-        float width = displayMetrics.widthPixels;
 
     }
 
@@ -121,14 +103,10 @@ public class EndGame extends Fragment {
                 binding.btnL3
         };
 
-        String[] levels = {"None", "Fail", "L1", "L2", "L3"};
 
         for (int i = 0; i < buttons.length; i++) {
             final int index = i;
-            buttons[i].setOnClickListener(v -> {
-                selectedClimbLevel = levels[index];
-                updateClimbButtons(buttons, index);
-            });
+            buttons[i].setOnClickListener(v -> updateClimbButtons(buttons, index));
         }
 
         // Set initial selection (L3 is selected by default)
@@ -155,19 +133,13 @@ public class EndGame extends Fragment {
 
     private void setupSliders() {
         // Defense Duration Slider
-        binding.sliderDefense.addOnChangeListener((slider, value, fromUser) -> {
-            binding.tvDefenseValue.setText(String.valueOf((int) value));
-        });
+        binding.sliderDefense.addOnChangeListener((slider, value, fromUser) -> binding.tvDefenseValue.setText(String.valueOf((int) value)));
 
         // Under Defense Slider
-        binding.sliderUnderDefense.addOnChangeListener((slider, value, fromUser) -> {
-            binding.tvUnderDefenseValue.setText(String.valueOf((int) value));
-        });
+        binding.sliderUnderDefense.addOnChangeListener((slider, value, fromUser) -> binding.tvUnderDefenseValue.setText(String.valueOf((int) value)));
 
         // Broke Duration Slider
-        binding.sliderBroke.addOnChangeListener((slider, value, fromUser) -> {
-            binding.tvBrokeValue.setText(String.valueOf((int) value));
-        });
+        binding.sliderBroke.addOnChangeListener((slider, value, fromUser) -> binding.tvBrokeValue.setText(String.valueOf((int) value)));
     }
 
     private void setupStarRating() {
@@ -229,7 +201,6 @@ public class EndGame extends Fragment {
 
     private void resetAllFields() {
         // Reset climb level to default
-        selectedClimbLevel = "L3";
         TextView[] buttons = {
                 binding.btnNone,
                 binding.btnFail,
@@ -253,21 +224,7 @@ public class EndGame extends Fragment {
         binding.etMatchNotes.setText("");
     }
 
-    private void saveMatchData() {
-        // Save all data to your model
-        int defenseDuration = (int) binding.sliderDefense.getValue();
-        int underDefenseDuration = (int) binding.sliderUnderDefense.getValue();
-        int brokeDuration = (int) binding.sliderBroke.getValue();
-        String notes = binding.etMatchNotes.getText().toString();
 
-        // Example: Save to UserModel
-        // UserModel.getMatchData().setClimbLevel(selectedClimbLevel);
-        // UserModel.getMatchData().setDefenseDuration(defenseDuration);
-        // UserModel.getMatchData().setUnderDefenseDuration(underDefenseDuration);
-        // UserModel.getMatchData().setBrokeDuration(brokeDuration);
-        // UserModel.getMatchData().setDefenseQuality(currentRating);
-        // UserModel.getMatchData().setNotes(notes);
-    }
 
     @Override
     public void onDestroyView() {

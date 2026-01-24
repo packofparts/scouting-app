@@ -1,13 +1,13 @@
 package com.example.myapplication;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
+
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.DisplayMetrics;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,9 +88,6 @@ public class EndGame extends Fragment {
         binding.btnSubmit.setOnClickListener(view1 -> UIHelpers.makeConfirmationAlert("Submit Match Data",
                 "Do you want to submit your match data?", () -> {
                 }, () -> {}, getContext()));
-
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 
     }
 

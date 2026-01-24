@@ -9,16 +9,11 @@ import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CheckBox;
+
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
-import android.widget.Switch;
-import android.widget.TextView;
 
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 
 public class UIHelpers {
     public static int purple = Color.parseColor("#6750A3");
@@ -71,7 +66,7 @@ public class UIHelpers {
         }
         mp.start();
     }
-    public static void darkModeToggle(ViewGroup v, ImageView popLogo, Context context) {
+    public static void darkModeToggle(ViewGroup ignoredV, ImageView popLogo, Context context) {
         ObjectAnimator animation = ObjectAnimator.ofFloat(popLogo, "rotation", UIHelpers.wolfFrames);
         animation.setDuration(1000);
         animation.start();

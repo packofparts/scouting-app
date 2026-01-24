@@ -1,10 +1,14 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
+import android.util.Log;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
 
+@SuppressWarnings("unused") //ObjectWrapper will access these methods to generate json file. These methods will also be used in later updates.
 public class MatchData {
 
     //Pre-Game
@@ -25,16 +29,28 @@ public class MatchData {
 
 
     private String scouterName = "";
+    @SuppressLint("SdCardPath")
     public void toJson() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        new File("/sdcard/Documents/ScoutingData/").mkdirs();
+        if (!new File("/sdcard/Documents/ScoutingData/").mkdirs()) {
+            // Log the failure or take appropriate action
+            Log.w("ScoutingDataFolderCreation", "Failed to create folder");
+        }
         // convert Java object to JSON file
         String s = UserModel.getMatchData().getMatchNumber().length() > 1 ? "": "0";
         File dataFile = new File("/sdcard/Documents/ScoutingData/match" + s + UserModel.getMatchData().getMatchNumber() + "_team" + UserModel.getMatchData().getTeamNumber() +".json");
-        dataFile.createNewFile();
+
+        if (!dataFile.createNewFile()) {
+            // Log the failure or take appropriate action
+            Log.w("MatchDataCreation", "Failed to create match data file");
+        }
         mapper.writeValue(dataFile, this);
         File newDataFlag = new File("/sdcard/Documents/ScoutingData/newDataFlag.txt");
-        newDataFlag.createNewFile();
+
+        if (!newDataFlag.createNewFile()) {
+            // Log the failure or take appropriate action
+            Log.w("DataFlagCreation", "Failed to create data flag");
+        }
     }
 
     //Getters and Setters
@@ -46,10 +62,10 @@ public class MatchData {
     public String getScouterName(){ return scouterName;}
 
     public void setScouterName(String scouterName){this.scouterName = scouterName;}
-
     public String getNotes() {
         return notes;
     }
+
     public void setNotes(String notes) {
         this.notes = notes;
     }

@@ -1,11 +1,11 @@
 package com.example.myapplication;
 
-import android.animation.ObjectAnimator;
+
 import android.annotation.SuppressLint;
-import android.app.Activity;
+
 import android.os.Build;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,14 +47,6 @@ public class TeleOp extends Fragment {
         binding.back.setOnClickListener(view12 -> NavHostFragment.findNavController(TeleOp.this)
                 .navigate(R.id.action_SecondFragment_to_ThirdFragment));
 
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        ((Activity) requireContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        float height = displayMetrics.heightPixels;
-        float width = displayMetrics.widthPixels;
-        binding.pop.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, binding.pop, this.getContext()));
-
-
-        UIHelpers.relate(v, width, height, getResources().getDisplayMetrics().density);
         binding.bottomTag.setText(MainActivity.getLocationText());
     }
    

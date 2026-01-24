@@ -1,17 +1,12 @@
 package com.example.myapplication;
 
-import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Switch;
+
 
 import androidx.fragment.app.Fragment;
 
@@ -77,15 +72,13 @@ public class Autonomous extends Fragment {
         binding.back.setOnClickListener(view1 -> UIHelpers.makeConfirmationAlert("Cancel Match Data", "Do you want to cancel your match data?", () -> NavHostFragment.findNavController(Autonomous.this)
                 .navigate(R.id.action_ThirdFragment_to_FirstFragment), () -> {}, getContext()));
 
-        binding.reset.setOnClickListener(v -> {
-            UIHelpers.makeConfirmationAlert("Reset Data", "Do you want to reset all Autonomous fields?", () -> {
-                data.setAutoHub(0);
-                data.setAutoHubMissed(0);
-                binding.fuelScored.setText(data.getAutoHub() + "");
-                binding.fuelMissed.setText(data.getAutoHubMissed() + "");
-                ((RadioButton) binding.toggleGroupClimbLevel.getChildAt(0)).setChecked(true);
-            }, () ->{}, getContext());
-        });
+        binding.reset.setOnClickListener(v -> UIHelpers.makeConfirmationAlert("Reset Data", "Do you want to reset all Autonomous fields?", () -> {
+            data.setAutoHub(0);
+            data.setAutoHubMissed(0);
+            binding.fuelScored.setText(data.getAutoHub() + "");
+            binding.fuelMissed.setText(data.getAutoHubMissed() + "");
+            ((RadioButton) binding.toggleGroupClimbLevel.getChildAt(0)).setChecked(true);
+        }, () ->{}, getContext()));
     }
     @Override
     public void onDestroyView() {

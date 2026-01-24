@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -27,7 +28,7 @@ public class CustomSeekBar extends androidx.appcompat.widget.AppCompatSeekBar {
         int thumb_x = (int) (( (double)this.getProgress()/this.getMax() ) * (double)this.getWidth() * 0.8);
         float middle = (float) (this.getHeight()/2.0 + 8);
 
-        Paint paint = new Paint();
+        @SuppressLint("DrawAllocation") Paint paint = new Paint();
         paint.setColor(Color.BLACK);
         paint.setTextSize(24);
         paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));

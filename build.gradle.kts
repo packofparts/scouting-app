@@ -13,3 +13,16 @@ sonar {
     property("sonar.host.url", "https://sonarcloud.io")
   }
 }
+
+subprojects {
+
+    // Java (-Wall / -Werror equivalent)
+    tasks.withType<JavaCompile>().configureEach {
+        options.compilerArgs.addAll(
+            listOf(
+                "-Xlint:all", // ~ -Wall
+                "-Werror"     // ~ -Werror
+            )
+        )
+    }
+}

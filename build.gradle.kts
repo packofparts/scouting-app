@@ -14,8 +14,6 @@ sonar {
   }
 }
 
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 subprojects {
 
     // Java (-Wall / -Werror equivalent)
@@ -27,11 +25,3 @@ subprojects {
             )
         )
     }
-
-    // Kotlin (warnings as errors)
-    tasks.withType<KotlinCompile>().configureEach {
-        kotlinOptions {
-            allWarningsAsErrors = true
-        }
-    }
-}

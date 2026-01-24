@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".PitScouting">
+    tools:context=".PitScouting"
+    tools:ignore="HardcodedText"
+    >
     <TextView
         android:id="@+id/title"
 
@@ -19,13 +21,14 @@
         android:gravity="center"
         android:textColor="@color/white"
         android:text="Autonomous"
+        android:fontFamily="@font/interextrabold"
         android:textStyle="bold"
         app:autoSizeMaxTextSize="18sp"
         app:autoSizeMinTextSize="1sp"
-        app:autoSizeTextType="uniform"
-        />
+        app:autoSizeTextType="uniform" />
     <ImageButton
         android:id="@+id/back"
+        android:importantForAccessibility="no"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/title"
@@ -35,7 +38,8 @@
         android:gravity="center"
         android:src="@drawable/backarrow"
         android:textColor="@color/white"
-        android:backgroundTint="#00000000"/>
+        android:backgroundTint="#00000000"
+         />
 
     <TextView
         android:id="@+id/reset"
@@ -46,6 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Reset"
+        android:fontFamily="@font/interbold"
         android:textStyle="bold"
         app:autoSizeMaxTextSize="14sp"
         app:autoSizeMinTextSize="1sp"
@@ -53,8 +58,7 @@
         app:layout_constraintDimensionRatio="1"
         android:gravity="center"
         android:src="@drawable/backarrow"
-        android:backgroundTint="#00000000"
-        tools:ignore="HardcodedText" />
+        android:backgroundTint="#00000000" />
 
     <com.example.myapplication.CustomScrollView
         android:layout_width="match_parent"
@@ -79,15 +83,15 @@
                 android:layout_height="wrap_content"
                 android:text="FUEL"
                 android:textColor="#94A3B8"
-                android:textStyle="bold"
-                app:autoSizeMaxTextSize="12sp"
+android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12sp"
                 app:autoSizeMinTextSize="1sp"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp"/>
+                android:layout_marginStart="16dp"
+                 />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/fuelScoredLayout"
@@ -125,7 +129,7 @@
                     android:layout_height="0dp"
                     app:layout_constraintDimensionRatio="1:1"
                     android:text="🟡"
-                    android:gravity="right"
+                    android:gravity="end"
                     app:autoSizeMinTextSize="1sp"
                     android:maxLines="1"
                     app:autoSizeTextType="uniform"
@@ -134,7 +138,8 @@
                     app:layout_constraintStart_toEndOf="@id/fuelScoredHeader"
                     app:layout_constraintHorizontal_bias="1"
                     app:layout_constraintTop_toTopOf="@id/fuelScoredHeader"
-                    android:id="@+id/ball1"/>
+                    android:id="@+id/ball1"
+                     />
 
                 <TextView
                     android:id="@+id/fuelScoredHeader"
@@ -149,10 +154,10 @@
                     android:gravity="start"
                     android:textColor="@color/white"
                     android:text="Fuel SCORED"
-                    android:textStyle="bold"
-                    app:autoSizeMaxTextSize="20sp"
+                    android:fontFamily="@font/interbold"                     app:autoSizeMaxTextSize="20sp"
                     app:autoSizeMinTextSize="1sp"
-                    app:autoSizeTextType="uniform" />
+                    app:autoSizeTextType="uniform"
+                     />
 
 
 
@@ -168,15 +173,18 @@
                     app:autoSizeMaxTextSize="12sp"
                     app:autoSizeMinTextSize="1sp"
                     app:autoSizeTextType="uniform"
+                    android:fontFamily="@font/interbold"
                     app:layout_constraintEnd_toStartOf="@id/g3"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/fuelScoredHeader" />
+                    app:layout_constraintTop_toBottomOf="@id/fuelScoredHeader"
+                     />
 
 
                 <Button
                     android:id="@+id/fuelScoredMinus"
                     android:text="–"
                     android:backgroundTint="#334155"
+                    android:fontFamily="@font/interbold"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     app:layout_constraintDimensionRatio="1:1"
@@ -191,25 +199,26 @@
                     android:textAlignment="center"
                     android:textColor="#CBD5E1"
 
-                    />
+                     />
+
                 <Button
                     android:id="@+id/fuelScoredPlus"
-                    android:text="+"
-                    android:backgroundTint="#0D59F2"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/g3"
-                    app:layout_constraintHorizontal_bias="1"
-                    app:layout_constraintTop_toBottomOf="@id/g1"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:autoSizeMinTextSize="1sp"
-                    app:autoSizeTextType="uniform"
-                    android:textStyle="bold"
+                    android:backgroundTint="#0D59F2"
+                    android:fontFamily="@font/interbold"
+                    android:text="+"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    />
+                    android:textStyle="bold"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1"
+                    app:layout_constraintStart_toEndOf="@id/g3"
+                    app:layout_constraintTop_toBottomOf="@id/g1" />
 
                 <TextView
                     android:id="@+id/fuelScored"
@@ -222,10 +231,12 @@
                     android:layout_width="0dp"
                     android:gravity="center"
                     android:textColor="@color/white"
+                    android:fontFamily="@font/interbold"
                     android:text="0"
                     android:textStyle="bold"
                     app:autoSizeMinTextSize="1sp"
-                    app:autoSizeTextType="uniform" />
+                    app:autoSizeTextType="uniform"
+                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -265,7 +276,7 @@
                     android:layout_height="0dp"
                     app:layout_constraintDimensionRatio="1:1"
                     android:text="🟡"
-                    android:gravity="right"
+                    android:gravity="end"
                     app:autoSizeMinTextSize="1sp"
                     android:maxLines="1"
                     app:autoSizeTextType="uniform"
@@ -274,7 +285,8 @@
                     app:layout_constraintStart_toEndOf="@id/fuelMissedHeader"
                     app:layout_constraintHorizontal_bias="1"
                     app:layout_constraintTop_toTopOf="@id/fuelMissedHeader"
-                    android:id="@+id/ball2"/>
+                    android:id="@+id/ball2"
+                     />
 
                 <TextView
                     android:id="@+id/fuelMissedHeader"
@@ -289,10 +301,10 @@
                     android:gravity="start"
                     android:textColor="@color/white"
                     android:text="Fuel MISSED"
-                    android:textStyle="bold"
-                    app:autoSizeMaxTextSize="20sp"
+                    android:fontFamily="@font/interbold"                     app:autoSizeMaxTextSize="20sp"
                     app:autoSizeMinTextSize="1sp"
-                    app:autoSizeTextType="uniform" />
+                    app:autoSizeTextType="uniform"
+                     />
 
 
 
@@ -308,17 +320,21 @@
                     app:autoSizeMaxTextSize="12sp"
                     app:autoSizeMinTextSize="1sp"
                     app:autoSizeTextType="uniform"
+                    android:fontFamily="@font/interbold"
                     app:layout_constraintEnd_toStartOf="@id/g6"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/fuelMissedHeader" />
+                    app:layout_constraintTop_toBottomOf="@id/fuelMissedHeader"
+                     />
 
 
                 <Button
                     android:id="@+id/fuelMissedMinus"
                     android:text="–"
+                    android:fontFamily="@font/interbold"
                     android:backgroundTint="#334155"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintHorizontal_bias="0"
@@ -331,13 +347,14 @@
                     android:textAlignment="center"
                     android:textColor="#CBD5E1"
 
-                    />
+                     />
                 <Button
                     android:id="@+id/fuelMissedPlus"
                     android:text="+"
                     android:backgroundTint="#0D59F2"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:fontFamily="@font/interbold"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/g6"
@@ -349,7 +366,7 @@
                     android:textStyle="bold"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    />
+                     />
 
                 <TextView
                     android:id="@+id/fuelMissed"
@@ -361,11 +378,13 @@
                     android:layout_height="0dp"
                     android:layout_width="0dp"
                     android:gravity="center"
+                    android:fontFamily="@font/interbold"
                     android:textColor="@color/white"
                     android:text="0"
                     android:textStyle="bold"
                     app:autoSizeMinTextSize="1sp"
-                    app:autoSizeTextType="uniform" />
+                    app:autoSizeTextType="uniform"
+                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -383,7 +402,8 @@
                 app:layout_constraintTop_toBottomOf="@id/fuelMissedLayout"
                 android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp"/>
+                android:layout_marginStart="16dp"
+                 />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
@@ -410,6 +430,7 @@
                     android:id="@+id/ivClimbIcon"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:importantForAccessibility="no"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintEnd_toStartOf="@id/g7"
                     app:layout_constraintHorizontal_bias="0"
@@ -424,9 +445,10 @@
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_marginStart="5dp"
-                    android:text="Climb Level"
+                    android:text=" Climb Level"
                     android:textColor="#FFFFFF"
                     app:autoSizeMaxTextSize="20sp"
+                    android:fontFamily="@font/interbold"
                     app:autoSizeMinTextSize="1sp"
                     app:autoSizeTextType="uniform"
                     android:textStyle="bold"
@@ -439,8 +461,9 @@
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_marginStart="5dp"
-                    android:text="How high it climbed"
+                    android:text="  How high it climbed"
                     android:textColor="#94A3B8"
+                    android:fontFamily="@font/interbold"
                     app:autoSizeMaxTextSize="12sp"
                     app:autoSizeMinTextSize="1sp"
                     app:autoSizeTextType="uniform"
@@ -473,6 +496,7 @@
                         app:cornerRadius="12dp"
                         android:paddingVertical="8dp"
                         android:text="None"
+                        android:fontFamily="@font/interbold"
                         android:textColor="#FFFFFF"
                         app:autoSizeMaxTextSize="20sp"
                         app:autoSizeMinTextSize="1sp"
@@ -488,6 +512,7 @@
                         android:gravity="center"
                         android:background="@drawable/radio_button_bg"
                         app:cornerRadius="12dp"
+                        android:fontFamily="@font/interbold"
                         android:paddingVertical="8dp"
                         android:text="Fail"
                         android:textColor="#FFFFFF"
@@ -506,6 +531,7 @@
                         android:background="@drawable/radio_button_bg"
                         app:cornerRadius="12dp"
                         android:paddingVertical="8dp"
+                        android:fontFamily="@font/interbold"
                         android:text="L1"
                         android:textColor="#FFFFFF"
                         app:autoSizeMaxTextSize="20sp"
@@ -537,10 +563,11 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="16dp"
-            android:backgroundTint="#0D59F2"
+            android:backgroundTint="#3B82F6"
             android:text="Continue to Teleop  "
             android:textColor="@color/white"
             android:textStyle="bold"
+            android:fontFamily="@font/interbold"
             app:autoSizeMaxTextSize="20sp"
             app:autoSizeMinTextSize="1sp"
             app:autoSizeTextType="uniform"
@@ -556,6 +583,7 @@
             android:layout_height="0dp"
             android:backgroundTint="#00000000"
             android:gravity="center"
+            android:importantForAccessibility="no"
             android:rotation="180"
             android:src="@drawable/backarrow"
             android:textColor="@color/white"

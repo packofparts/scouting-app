@@ -1,10 +1,11 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.res.Resources;
 import android.os.Bundle;
-import com.google.android.material.snackbar.Snackbar;
+
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -14,24 +15,22 @@ import com.example.myapplication.databinding.ActivityMainBinding;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
     // In-app variables
     private AppBarConfiguration appBarConfiguration;
-    private ActivityMainBinding binding;
 
-    public static ArrayList<String> teams = new ArrayList<>();
+    public static ArrayList<String[]> teams = new ArrayList<>();
 
     public static ArrayList<String> names = new ArrayList<>();
 
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.toolbar);
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
         if (teams.isEmpty()) {
             updateTeams(getResources());
         }
@@ -56,6 +55,14 @@ public class MainActivity extends AppCompatActivity {
             updateNames(getResources());
         }
         writeInt("ScoutLocation", scoutLocation);
+
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                // Do nothing here to disable the back button
+            }
+        };
+        getOnBackPressedDispatcher().addCallback(this, callback);
     }
 
     @Override
@@ -86,12 +93,7 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-    @Override
-    public void onBackPressed() { //This is to ensure that nothing happens when you press the back arrow.
-        if (false){ //Don't question this.
-            super.onBackPressed(); //Android Studio whines if I don't put this line somewhere.
-        }
-    }
+
 
     public static String getLocationText(){
         return (MainActivity.scoutLocation < 3 ? "Red " : "Blue ") + (MainActivity.scoutLocation % 3 + 1);
@@ -103,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
         while (scanner.hasNext()) {
             scanner.nextLine();
-            teams.add(scanner.nextLine().split("\t")[scoutLocation]);
+            teams.add(scanner.nextLine().split("\t"));
 
         }
         scanner.close();
@@ -123,27 +125,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void writeInt(String fileName, int num){
-        File file = new File("/sdcard/Documents/" + fileName + ".txt");
-        file.delete();
+        @SuppressLint("SdCardPath") File file = new File("/sdcard/Documents/" + fileName + ".txt");
+        boolean deleted = file.delete();
+        if (!deleted) {
+            // Log the failure or take appropriate action
+            Log.w("FileDeletion", "Failed to delete file");
+        }
         try {
-            file.createNewFile();
+            boolean created = file.createNewFile();
+            if (!created) {
+                // Log the failure or take appropriate action
+                Log.w("FileCreation", "Failed to create file");
+            }
             OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file));
             writer.write(num);
             writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ignored) {
+
         }
 
     }
     public static int readInt(String fileName) {
-        File file = new File("/sdcard/Documents/" + fileName + ".txt");
+        @SuppressLint("SdCardPath") File file = new File("/sdcard/Documents/" + fileName + ".txt");
         try {
             InputStreamReader reader = new InputStreamReader(new FileInputStream(file));
             int res = reader.read();
             reader.close();
             return res;
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ignored) {
+
         }
         return 0;
     }

@@ -13,3 +13,25 @@ sonar {
     property("sonar.host.url", "https://sonarcloud.io")
   }
 }
+
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+subprojects {
+
+    // Java (-Wall / -Werror equivalent)
+    tasks.withType<JavaCompile>().configureEach {
+        options.compilerArgs.addAll(
+            listOf(
+                "-Xlint:all", // ~ -Wall
+                "-Werror"     // ~ -Werror
+            )
+        )
+    }
+
+    // Kotlin (warnings as errors)
+    tasks.withType<KotlinCompile>().configureEach {
+        kotlinOptions {
+            allWarningsAsErrors = true
+        }
+    }
+}

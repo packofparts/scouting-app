@@ -145,10 +145,10 @@
                         app:layout_constraintTop_toBottomOf="@id/tvClimbLevelTitle" />
 
                     <!-- Custom Toggle Buttons -->
-                    <LinearLayout
-                        android:id="@+id/toggleGroupClimbLevel"
+                    <RadioGroup
+                        android:id="@+id/radioGroupClimbLevel"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_marginTop="12dp"
                         android:background="@drawable/cr8b101623"
                         android:padding="4dp"
@@ -157,8 +157,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/ivClimbIcon">
 
-                        <TextView
-                            android:id="@+id/btnNone"
+                        <RadioButton
+                            android:id="@+id/rbNone"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -168,11 +168,11 @@
                             android:text="None"
                             android:textColor="#94A3B8"
                             android:textSize="14sp"
-                            android:clickable="true"
-                            android:focusable="true" />
+                            android:button="@null"
+                            android:background="@android:color/transparent" />
 
-                        <TextView
-                            android:id="@+id/btnFail"
+                        <RadioButton
+                            android:id="@+id/rbFail"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -182,11 +182,11 @@
                             android:text="Fail"
                             android:textColor="#94A3B8"
                             android:textSize="14sp"
-                            android:clickable="true"
-                            android:focusable="true" />
+                            android:button="@null"
+                            android:background="@android:color/transparent" />
 
-                        <TextView
-                            android:id="@+id/btnL1"
+                        <RadioButton
+                            android:id="@+id/rbL1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -196,11 +196,11 @@
                             android:text="L1"
                             android:textColor="#94A3B8"
                             android:textSize="14sp"
-                            android:clickable="true"
-                            android:focusable="true" />
+                            android:button="@null"
+                            android:background="@android:color/transparent" />
 
-                        <TextView
-                            android:id="@+id/btnL2"
+                        <RadioButton
+                            android:id="@+id/rbL2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -210,11 +210,11 @@
                             android:text="L2"
                             android:textColor="#94A3B8"
                             android:textSize="14sp"
-                            android:clickable="true"
-                            android:focusable="true" />
+                            android:button="@null"
+                            android:background="@android:color/transparent" />
 
-                        <TextView
-                            android:id="@+id/btnL3"
+                        <RadioButton
+                            android:id="@+id/rbL3"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -225,10 +225,10 @@
                             android:textColor="#FFFFFF"
                             android:textSize="14sp"
                             android:textStyle="bold"
-                            android:clickable="true"
-                            android:focusable="true"
+                            android:button="@null"
+                            android:checked="true"
                             android:elevation="4dp" />
-                    </LinearLayout>
+                    </RadioGroup>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>

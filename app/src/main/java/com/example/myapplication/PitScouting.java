@@ -105,7 +105,7 @@ public class PitScouting extends Fragment {
         binding.back.setOnClickListener(v -> UIHelpers.makeConfirmationAlert("Cancel Pit Data", "Do you want to cancel your pit data?", () -> NavHostFragment.findNavController(PitScouting.this)
                 .navigate(R.id.action_HomePage_to_FirstFragment), () -> {}, getContext()));
 
-        binding.reset.setOnClickListener(v -> UIHelpers.makeConfirmationAlert("Reset Data", "Do you want to reset all Autonomous fields?", () -> {
+        binding.reset.setOnClickListener(v -> UIHelpers.makeConfirmationAlert("Reset Data", "Do you want to reset all Pit Scouting fields?", () -> {
             binding.driveTrain.setSelection(0);
             binding.intake.setSelection(0);
             binding.terrain.setSelection(0);

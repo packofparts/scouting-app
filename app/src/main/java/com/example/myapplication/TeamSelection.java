@@ -32,6 +32,8 @@ import java.util.Random;
 public class TeamSelection extends Fragment {
     private TeamSelectionBinding binding;
 
+    private ViewGroup v;
+
     @Override
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
@@ -39,28 +41,17 @@ public class TeamSelection extends Fragment {
     ) {
         binding = TeamSelectionBinding.inflate(inflater, container, false);
 
-        String currentMatchNumber = UserModel.getMatchData().getMatchNumber();
-        binding.matchInputContainer.setText(currentMatchNumber);
-        String scouterName = UserModel.getMatchData().getScouterName();
-        binding.scouterNameInput.setText(scouterName);
-        try {
-            String currentTeamNumber = MainActivity.teams.get(Integer.parseInt(currentMatchNumber) - 1)[MainActivity.scoutLocation];
-            binding.teamNumberInput.setText(currentTeamNumber);
-        } catch (Exception ignored){
-
-        }
-
-        ViewModelProvider viewModelProvider = new ViewModelProvider(requireActivity());
-        UserModel userModel = viewModelProvider.get(UserModel.class);
-        MatchData matchData = new MatchData();
-        userModel.setMatchData(matchData);
-        UserModel.setPitData(new PitData());
+        v = container;
 
         return binding.getRoot();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        binding.subtitleText.setText(MainActivity.getLocationText());
+
+        binding.logoImage.setOnClickListener(view1 -> UIHelpers.darkModeToggle(v, binding.logoImage, this.getContext()));
 
         binding.startScoutingButton.setOnClickListener(v -> {
             String teamNumber = String.valueOf(binding.teamNumberInput.getText());
@@ -144,13 +135,10 @@ public class TeamSelection extends Fragment {
                     try {
                         int num = Integer.parseInt(matchNumber) - 1;
                         if (num >= 0 && num < MainActivity.teams.size()) {
-                            LinearLayout[] matchBoxes = {binding.Match1, binding.Match2, binding.Match3};
-                            TextView[] matchBoxNums = {binding.matchBox1Num, binding.matchBox2Num, binding.matchBox3Num};
-
-                            MainActivity.teams.size();
-
                             binding.teamNumberInput.setText(MainActivity.teams.get(num)[MainActivity.scoutLocation]);
 
+                            LinearLayout[] matchBoxes = {binding.Match1, binding.Match2, binding.Match3};
+                            TextView[] matchBoxNums = {binding.matchBox1Num, binding.matchBox2Num, binding.matchBox3Num};
                             for(int i = 0; i < 3; i++){
                                 int currentMatchIndex = num + i;
 
@@ -187,12 +175,30 @@ public class TeamSelection extends Fragment {
                                 binding.teamNumberInput.setText("");
                             }
                         }
-                    } catch (Exception e){
-                        Snackbar.make(view, "Please Enter a Value", 600).show();
+                    } catch (Exception ignored){
+
                     }
                 }
             }
         });
+
+        String currentMatchNumber = UserModel.getMatchData().getMatchNumber();
+        binding.matchInputContainer.setText(currentMatchNumber);
+        String scouterName = UserModel.getMatchData().getScouterName();
+        binding.scouterNameInput.setText(scouterName);
+        try {
+            String currentTeamNumber = MainActivity.teams.get(Integer.parseInt(currentMatchNumber) - 1)[MainActivity.scoutLocation];
+            binding.teamNumberInput.setText(currentTeamNumber);
+        } catch (Exception ignored){
+
+        }
+
+        ViewModelProvider viewModelProvider = new ViewModelProvider(requireActivity());
+        UserModel userModel = viewModelProvider.get(UserModel.class);
+        MatchData matchData = new MatchData();
+        userModel.setMatchData(matchData);
+        UserModel.setPitData(new PitData());
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_dropdown_item_1line, MainActivity.names);
         binding.scouterNameInput.setAdapter(adapter);
 

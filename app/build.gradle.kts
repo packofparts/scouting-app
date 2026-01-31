@@ -1,10 +1,12 @@
+import com.android.build.api.dsl.Packaging
+
 plugins {
    alias(libs.plugins.android.application)
 }
 
 android {
     namespace = "com.example.myapplication"
-    compileSdk = 35
+    compileSdk = 36
 
     signingConfigs {
         getByName("debug") {
@@ -51,3 +53,4 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }
+

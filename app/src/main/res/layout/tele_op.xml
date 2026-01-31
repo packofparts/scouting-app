@@ -95,6 +95,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/fuelScoredLayout"
+                android:elevation="2dp"
                 android:layout_width="0dp"
                 android:layout_height="166dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -243,6 +244,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/fuelMissedLayout"
+                android:elevation="2dp"
                 android:layout_width="0dp"
                 android:layout_height="166dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -392,6 +394,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/fuelPassedLayout"
+                android:elevation="2dp"
                 android:layout_width="0dp"
                 android:layout_height="166dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -560,40 +563,28 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/cont"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="16dp"
-            android:backgroundTint="#3B82F6"
-            android:text="Continue to Endgame  "
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:fontFamily="@font/interbold"
+            android:backgroundTint="#0D59F2"
+            android:text="Continue to Endgame"
+            android:textColor="#FFFFFF"
             app:autoSizeMaxTextSize="20sp"
             app:autoSizeMinTextSize="1sp"
             app:autoSizeTextType="uniform"
+            android:textStyle="bold"
+            android:fontFamily="@font/interbold"
             app:cornerRadius="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:elevation="6dp"
+            app:icon="@drawable/forwardarrow"
+            app:iconGravity="end"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <ImageButton
-            android:id="@+id/arrow"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:backgroundTint="#00000000"
-            android:gravity="center"
-            android:importantForAccessibility="no"
-            android:rotation="180"
-            android:src="@drawable/backarrow"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@id/cont"
-            app:layout_constraintDimensionRatio="1"
-            app:layout_constraintEnd_toEndOf="@id/cont"
-            app:layout_constraintTop_toTopOf="@id/cont"
-            android:clickable="false"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

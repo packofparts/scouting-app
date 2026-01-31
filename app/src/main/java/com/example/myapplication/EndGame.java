@@ -20,6 +20,8 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.EndGameBinding;
 
+import java.util.Objects;
+
 public class EndGame extends Fragment {
 
     private EndGameBinding binding;
@@ -45,12 +47,6 @@ public class EndGame extends Fragment {
                 binding.star4,
                 binding.star5
         };
-
-        binding.rbNone.setButtonDrawable(null);
-        binding.rbFail.setButtonDrawable(null);
-        binding.rbL1.setButtonDrawable(null);
-        binding.rbL2.setButtonDrawable(null);
-        binding.rbL3.setButtonDrawable(null);
 
         return binding.getRoot();
     }
@@ -97,6 +93,7 @@ public class EndGame extends Fragment {
             @SuppressLint("SetTextI18n")
             @Override
             public void afterTextChanged(Editable s) {
+                binding.characterLimit.setText("CHARACTER LIMIT: " + Objects.requireNonNull(binding.etMatchNotes.getText()).length() + "/150");
                 data.setNotes(s.toString());
             }
         });
@@ -117,12 +114,23 @@ public class EndGame extends Fragment {
     private void setupClimbLevelButtons() {
         MatchData data = UserModel.getMatchData();
 
-        ((RadioButton) binding.radioGroupClimbLevel.getChildAt(data.getTeleOpClimb())).setChecked(true);
-
         binding.radioGroupClimbLevel.setOnCheckedChangeListener((r, i) -> {
             int selectedIndex = binding.radioGroupClimbLevel.indexOfChild(binding.radioGroupClimbLevel.findViewById(i));
             data.setTeleOpClimb(selectedIndex);
+            if (selectedIndex > 0){
+                binding.climbImage.setVisibility(View.VISIBLE);
+                binding.toggleGroupClimbLocation.setVisibility(View.VISIBLE);
+            } else {
+                binding.climbImage.setVisibility(View.GONE);
+                binding.toggleGroupClimbLocation.setVisibility(View.GONE);
+            }
         });
+
+        ((RadioButton) binding.radioGroupClimbLevel.getChildAt(data.getTeleOpClimb())).setChecked(true);
+
+        binding.toggleGroupClimbLocation.setOnCheckedChangeListener((r, i) -> data.setTeleOpClimbLocation(binding.toggleGroupClimbLocation.indexOfChild(binding.toggleGroupClimbLocation.findViewById(i)) + 1));
+
+        ((RadioButton) binding.toggleGroupClimbLocation.getChildAt(data.getTeleOpClimbLocation() - 1)).setChecked(true);
     }
 
 
@@ -204,6 +212,7 @@ public class EndGame extends Fragment {
         MatchData data = UserModel.getMatchData();
 
         ((RadioButton) binding.radioGroupClimbLevel.getChildAt(0)).setChecked(true);
+        ((RadioButton) binding.toggleGroupClimbLocation.getChildAt(0)).setChecked(true);
         data.setTeleOpClimb(0);
 
         binding.sliderDefense.setValue(0);

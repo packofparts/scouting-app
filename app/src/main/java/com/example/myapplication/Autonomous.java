@@ -29,15 +29,6 @@ public class Autonomous extends Fragment {
     ){
         binding = AutonomousBinding.inflate(inflater, container, false);
         v = container;
-        binding.btnNone.setButtonDrawable(null);
-        binding.btnFail.setButtonDrawable(null);
-        binding.btnL1.setButtonDrawable(null);
-
-        binding.btn1.setButtonDrawable(null);
-        binding.btn2.setButtonDrawable(null);
-        binding.btn3.setButtonDrawable(null);
-        binding.btn4.setButtonDrawable(null);
-        binding.btn5.setButtonDrawable(null);
 
         return binding.getRoot();
     }

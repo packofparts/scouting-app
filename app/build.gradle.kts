@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.example.myapplication"
-    compileSdk = 35
+    compileSdk = 36
 
     signingConfigs {
         getByName("debug") {

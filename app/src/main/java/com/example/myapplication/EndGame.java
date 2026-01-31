@@ -25,7 +25,7 @@ public class EndGame extends Fragment {
     private EndGameBinding binding;
     ViewGroup v = null;
 
-    private int currentRating = 4;
+    private int currentRating = 0;
     private ImageView[] stars;
 
     @SuppressLint("SetTextI18n")
@@ -64,16 +64,6 @@ public class EndGame extends Fragment {
                 .navigate(R.id.action_SecondFragment2_to_SecondFragment));
 
         MatchData data = UserModel.getMatchData();
-        /*binding.fuelScored.setText(data.getAutoHub() + "");
-        binding.fuelMissed.setText(data.getAutoHubMissed() + "");
-        ((RadioButton) binding.toggleGroupClimbLevel.getChildAt(data.getAutoClimb())).setChecked(true);
-        binding.title.setText("Autonomous Team " + data.getTeamNumber());*/
-
-
-
-
-
-
 
         setupClimbLevelButtons();
 
@@ -93,8 +83,9 @@ public class EndGame extends Fragment {
         binding.tvBrokeValue.setText(String.valueOf(data.getBrokeDuration()));
         binding.etMatchNotes.setText(data.getNotes());
 
+        binding.tvTitle.setText("Endgame Team " + data.getTeamNumber());
 
-        binding.tvReset.setOnClickListener(v -> resetAllFields());
+        binding.tvReset.setOnClickListener(v -> UIHelpers.makeConfirmationAlert("Reset Data", "Do you want to reset all Endgame fields?", this::resetAllFields, () -> {}, getContext()));
 
         binding.etMatchNotes.addTextChangedListener(new TextWatcher() {
             @Override
@@ -212,11 +203,11 @@ public class EndGame extends Fragment {
     private void resetAllFields() {
         MatchData data = UserModel.getMatchData();
 
-        ((RadioButton) binding.radioGroupClimbLevel.getChildAt(4)).setChecked(true);
-        data.setTeleOpClimb(4);
+        ((RadioButton) binding.radioGroupClimbLevel.getChildAt(0)).setChecked(true);
+        data.setTeleOpClimb(0);
 
-        binding.sliderDefense.setValue(30);
-        data.setDefDuration(30);
+        binding.sliderDefense.setValue(0);
+        data.setDefDuration(0);
 
         binding.sliderUnderDefense.setValue(0);
         data.setunderDefDuration(0);
@@ -224,10 +215,10 @@ public class EndGame extends Fragment {
         binding.sliderBroke.setValue(0);
         data.setBrokeDuration(0);
 
-        currentRating = 4;
+        currentRating = 0;
         updateStars(currentRating);
         updateQualityBadge(currentRating);
-        data.setDefEffectiveness(4);
+        data.setDefEffectiveness(0);
 
         binding.etMatchNotes.setText("");
         data.setNotes("");

@@ -24,7 +24,7 @@ public class MatchData {
     private int teleOpHub, teleOpHubMissed, teleOpPassed, teleOpClimb = 0;
     private int teleOpClimbLocation = 1;
 
-    private double defEffectiveness = 0.0;
+    private int defEffectiveness = 0;
 
     private int defDuration, brokeDuration, underDefDuration = 0;
 
@@ -83,11 +83,11 @@ public class MatchData {
 
     public void setunderDefDuration(int underDefDuration){this.underDefDuration = underDefDuration;}
 
-    public double getDefEffectiveness() {
+    public int getDefEffectiveness() {
         return defEffectiveness;
     }
 
-    public void setDefEffectiveness(double defEffectiveness) {this.defEffectiveness = defEffectiveness; }
+    public void setDefEffectiveness(int defEffectiveness) {this.defEffectiveness = defEffectiveness; }
 
     public int getBrokeDuration() {
         return brokeDuration;

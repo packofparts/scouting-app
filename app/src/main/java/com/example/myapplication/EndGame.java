@@ -16,6 +16,7 @@ import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.EndGameBinding;
 
@@ -58,13 +59,40 @@ public class EndGame extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+        binding.ivLogo.setOnClickListener(view12 -> NavHostFragment.findNavController(EndGame.this)
+                .navigate(R.id.action_SecondFragment2_to_SecondFragment));
+
         MatchData data = UserModel.getMatchData();
+        /*binding.fuelScored.setText(data.getAutoHub() + "");
+        binding.fuelMissed.setText(data.getAutoHubMissed() + "");
+        ((RadioButton) binding.toggleGroupClimbLevel.getChildAt(data.getAutoClimb())).setChecked(true);
+        binding.title.setText("Autonomous Team " + data.getTeamNumber());*/
+
+
+
+
+
+
 
         setupClimbLevelButtons();
 
         setupSliders();
 
         setupStarRating();
+
+        ((RadioButton) binding.radioGroupClimbLevel.getChildAt(data.getTeleOpClimb())).setChecked(true);
+        binding.sliderDefense.setValue(data.getDefDuration());
+        binding.sliderUnderDefense.setValue(data.getunderDefDuration());
+        binding.sliderBroke.setValue(data.getBrokeDuration());
+        currentRating = data.getDefEffectiveness();
+        updateStars(currentRating);
+        updateQualityBadge(currentRating);
+        binding.tvDefenseValue.setText(String.valueOf(data.getDefDuration()));
+        binding.tvUnderDefenseValue.setText(String.valueOf(data.getunderDefDuration()));
+        binding.tvBrokeValue.setText(String.valueOf(data.getBrokeDuration()));
+        binding.etMatchNotes.setText(data.getNotes());
+
 
         binding.tvReset.setOnClickListener(v -> resetAllFields());
 
@@ -84,7 +112,14 @@ public class EndGame extends Fragment {
 
         binding.btnSubmit.setOnClickListener(view1 -> UIHelpers.makeConfirmationAlert("Submit Match Data",
                 "Do you want to submit your match data?", () -> {
+                    try {
+                        data.toJson();
+                    } catch (Exception e) {
+                        UIHelpers.makeHelpAlert("Unknown Data Transfer Error!", e.getMessage(), getContext());
+                    }
+                    NavHostFragment.findNavController(EndGame.this).navigate(R.id.action_SecondFragment2_to_FirstFragment);
                 }, () -> {}, getContext()));
+
 
     }
 
@@ -96,32 +131,9 @@ public class EndGame extends Fragment {
         binding.radioGroupClimbLevel.setOnCheckedChangeListener((r, i) -> {
             int selectedIndex = binding.radioGroupClimbLevel.indexOfChild(binding.radioGroupClimbLevel.findViewById(i));
             data.setTeleOpClimb(selectedIndex);
-            RadioButton[] buttons = {
-                    binding.rbNone,
-                    binding.rbFail,
-                    binding.rbL1,
-                    binding.rbL2,
-                    binding.rbL3
-            };
-            updateClimbButtons(buttons, selectedIndex);
         });
     }
 
-    private void updateClimbButtons(RadioButton[] buttons, int selectedIndex) {
-        for (int i = 0; i < buttons.length; i++) {
-            if (i == selectedIndex) {
-                buttons[i].setBackgroundResource(R.drawable.cr6b0d59f2);
-                buttons[i].setTextColor(Color.WHITE);
-                buttons[i].setTypeface(null, android.graphics.Typeface.BOLD);
-                buttons[i].setElevation(4f);
-            } else {
-                buttons[i].setBackground(null);
-                buttons[i].setTextColor(Color.parseColor("#94A3B8"));
-                buttons[i].setTypeface(null, android.graphics.Typeface.NORMAL);
-                buttons[i].setElevation(0f);
-            }
-        }
-    }
 
     private void setupSliders() {
         MatchData data = UserModel.getMatchData();

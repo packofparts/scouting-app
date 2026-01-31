@@ -166,10 +166,11 @@
                             android:gravity="center"
                             android:paddingVertical="8dp"
                             android:text="None"
-                            android:textColor="#94A3B8"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
                             android:textSize="14sp"
                             android:button="@null"
-                            android:background="@android:color/transparent" />
+                            android:background="@drawable/radio_button_bg" />
 
                         <RadioButton
                             android:id="@+id/rbFail"
@@ -180,10 +181,11 @@
                             android:gravity="center"
                             android:paddingVertical="8dp"
                             android:text="Fail"
-                            android:textColor="#94A3B8"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
                             android:textSize="14sp"
                             android:button="@null"
-                            android:background="@android:color/transparent" />
+                            android:background="@drawable/radio_button_bg" />
 
                         <RadioButton
                             android:id="@+id/rbL1"
@@ -194,10 +196,11 @@
                             android:gravity="center"
                             android:paddingVertical="8dp"
                             android:text="L1"
-                            android:textColor="#94A3B8"
                             android:textSize="14sp"
                             android:button="@null"
-                            android:background="@android:color/transparent" />
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            android:background="@drawable/radio_button_bg" />
 
                         <RadioButton
                             android:id="@+id/rbL2"
@@ -208,10 +211,10 @@
                             android:gravity="center"
                             android:paddingVertical="8dp"
                             android:text="L2"
-                            android:textColor="#94A3B8"
-                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"                            android:textSize="14sp"
                             android:button="@null"
-                            android:background="@android:color/transparent" />
+                            android:background="@drawable/radio_button_bg" />
 
                         <RadioButton
                             android:id="@+id/rbL3"
@@ -219,7 +222,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:background="@drawable/cr6b0d59f2"
+                            android:background="@drawable/radio_button_bg"
                             android:paddingVertical="8dp"
                             android:text="L3"
                             android:textColor="#FFFFFF"

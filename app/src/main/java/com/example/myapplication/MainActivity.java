@@ -1,6 +1,10 @@
 package com.example.myapplication;
 
-import android.annotation.SuppressLint;
+
+
+
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 
@@ -12,16 +16,10 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import com.example.myapplication.databinding.ActivityMainBinding;
 
-import android.util.Log;
+
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
@@ -34,9 +32,11 @@ public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<String> names = new ArrayList<>();
 
-    public static int scoutLocation = readInt("ScoutLocation");
+    public static int scoutLocation = 0;//readInt("ScoutLocation");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        scoutLocation = readInt("ScoutLocation");
+
         super.onCreate(savedInstanceState);
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -54,8 +54,9 @@ public class MainActivity extends AppCompatActivity {
         if (names.isEmpty()) {
             updateNames(getResources());
         }
-        writeInt("ScoutLocation", scoutLocation);
 
+
+        writeInt("ScoutLocation", scoutLocation);
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
             public void handleOnBackPressed() {
@@ -124,38 +125,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public static void writeInt(String fileName, int num){
-        @SuppressLint("SdCardPath") File file = new File("/sdcard/Documents/" + fileName + ".txt");
-        boolean deleted = file.delete();
-        if (!deleted) {
-            // Log the failure or take appropriate action
-            Log.w("FileDeletion", "Failed to delete file");
-        }
-        try {
-            boolean created = file.createNewFile();
-            if (!created) {
-                // Log the failure or take appropriate action
-                Log.w("FileCreation", "Failed to create file");
-            }
-            OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file));
-            writer.write(num);
-            writer.close();
-        } catch (IOException ignored) {
+    public void writeInt(String fileName, int num){
 
-        }
-
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(fileName, num);
+        editor.apply();
     }
-    public static int readInt(String fileName) {
-        @SuppressLint("SdCardPath") File file = new File("/sdcard/Documents/" + fileName + ".txt");
-        try {
-            InputStreamReader reader = new InputStreamReader(new FileInputStream(file));
-            int res = reader.read();
-            reader.close();
-            return res;
-        } catch (IOException ignored) {
-
-        }
-        return 0;
+    public int readInt(String fileName) {
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        return sharedPref.getInt(fileName, 0);
     }
 
 }

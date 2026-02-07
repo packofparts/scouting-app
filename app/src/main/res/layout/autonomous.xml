@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".PitScouting"
+    tools:context=".Autonomous"
     tools:ignore="HardcodedText"
     >
     <TextView
@@ -95,6 +95,7 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/fuelScoredLayout"
+                android:elevation="2dp"
                 android:layout_width="0dp"
                 android:layout_height="166dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -133,11 +134,12 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
                     app:autoSizeMinTextSize="1sp"
                     android:maxLines="1"
                     app:autoSizeTextType="uniform"
-                    app:layout_constraintBottom_toBottomOf="@id/fuelScoredExplanation"
+                    app:layout_constraintBottom_toTopOf="@id/g1"
+                    android:layout_marginBottom="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/fuelScoredHeader"
+                    app:layout_constraintStart_toEndOf="@id/g3"
                     app:layout_constraintHorizontal_bias="1"
-                    app:layout_constraintTop_toTopOf="@id/fuelScoredHeader"
+                    app:layout_constraintTop_toTopOf="parent"
                     android:id="@+id/ball1"
                      />
 
@@ -242,6 +244,7 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/fuelMissedLayout"
+                android:elevation="2dp"
                 android:layout_width="0dp"
                 android:layout_height="166dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -280,11 +283,12 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
                     app:autoSizeMinTextSize="1sp"
                     android:maxLines="1"
                     app:autoSizeTextType="uniform"
-                    app:layout_constraintBottom_toBottomOf="@id/fuelMissedExplanation"
+                    app:layout_constraintBottom_toTopOf="@id/g4"
+                    android:layout_marginBottom="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/fuelMissedHeader"
+                    app:layout_constraintStart_toEndOf="@id/g6"
                     app:layout_constraintHorizontal_bias="1"
-                    app:layout_constraintTop_toTopOf="@id/fuelMissedHeader"
+                    app:layout_constraintTop_toTopOf="parent"
                     android:id="@+id/ball2"
                      />
 
@@ -407,7 +411,8 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -483,7 +488,7 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/ivClimbIcon"
-                    app:layout_constraintBottom_toBottomOf="parent">
+                    app:layout_constraintBottom_toTopOf="@id/climbImage">
 
                     <RadioButton
                         android:id="@+id/btnNone"
@@ -501,6 +506,7 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
                         app:autoSizeMaxTextSize="20sp"
                         app:autoSizeMinTextSize="1sp"
                         app:autoSizeTextType="uniform"
+                        android:button="@null"
                         android:textStyle="bold" />
 
                     <RadioButton
@@ -519,6 +525,7 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
                         app:autoSizeMaxTextSize="20sp"
                         app:autoSizeMinTextSize="1sp"
                         app:autoSizeTextType="uniform"
+                        android:button="@null"
                         android:textStyle="bold"/>
 
                     <RadioButton
@@ -537,6 +544,130 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
                         app:autoSizeMaxTextSize="20sp"
                         app:autoSizeMinTextSize="1sp"
                         app:autoSizeTextType="uniform"
+                        android:button="@null"
+                        android:textStyle="bold"/>
+                </RadioGroup>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="12dp"
+                    android:src="@drawable/climb"
+                    android:id="@+id/climbImage"
+                    android:background="@drawable/border_rounded"
+                    app:layout_constraintTop_toBottomOf="@id/toggleGroupClimbLevel"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/toggleGroupClimbLocation"/>
+
+
+
+                <RadioGroup
+                    android:id="@+id/toggleGroupClimbLocation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/border_rounded"
+                    android:padding="4dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/climbImage"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <RadioButton
+                        android:id="@+id/btn1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        android:gravity="center"
+                        android:background="@drawable/radio_button_bg"
+                        app:cornerRadius="12dp"
+                        android:paddingVertical="8dp"
+                        android:text="1"
+                        android:fontFamily="@font/interbold"
+                        android:textColor="#FFFFFF"
+                        app:autoSizeMaxTextSize="20sp"
+                        app:autoSizeMinTextSize="1sp"
+                        app:autoSizeTextType="uniform"
+                        android:button="@null"
+                        android:textStyle="bold" />
+
+                    <RadioButton
+                        android:id="@+id/btn2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        android:gravity="center"
+                        android:background="@drawable/radio_button_bg"
+                        app:cornerRadius="12dp"
+                        android:fontFamily="@font/interbold"
+                        android:paddingVertical="8dp"
+                        android:text="2"
+                        android:textColor="#FFFFFF"
+                        app:autoSizeMaxTextSize="20sp"
+                        app:autoSizeMinTextSize="1sp"
+                        app:autoSizeTextType="uniform"
+                        android:button="@null"
+                        android:textStyle="bold"/>
+
+                    <RadioButton
+                        android:id="@+id/btn3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        android:gravity="center"
+                        android:background="@drawable/radio_button_bg"
+                        app:cornerRadius="12dp"
+                        android:paddingVertical="8dp"
+                        android:fontFamily="@font/interbold"
+                        android:text="3"
+                        android:textColor="#FFFFFF"
+                        app:autoSizeMaxTextSize="20sp"
+                        app:autoSizeMinTextSize="1sp"
+                        app:autoSizeTextType="uniform"
+                        android:button="@null"
+                        android:textStyle="bold"/>
+
+                    <RadioButton
+                        android:id="@+id/btn4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        android:gravity="center"
+                        android:background="@drawable/radio_button_bg"
+                        app:cornerRadius="12dp"
+                        android:paddingVertical="8dp"
+                        android:fontFamily="@font/interbold"
+                        android:text="4"
+                        android:textColor="#FFFFFF"
+                        app:autoSizeMaxTextSize="20sp"
+                        app:autoSizeMinTextSize="1sp"
+                        app:autoSizeTextType="uniform"
+                        android:button="@null"
+                        android:textStyle="bold"/>
+
+                    <RadioButton
+                        android:id="@+id/btn5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        android:gravity="center"
+                        android:background="@drawable/radio_button_bg"
+                        app:cornerRadius="12dp"
+                        android:paddingVertical="8dp"
+                        android:fontFamily="@font/interbold"
+                        android:text="5"
+                        android:textColor="#FFFFFF"
+                        app:autoSizeMaxTextSize="20sp"
+                        app:autoSizeMinTextSize="1sp"
+                        app:autoSizeTextType="uniform"
+                        android:button="@null"
                         android:textStyle="bold"/>
                 </RadioGroup>
 
@@ -558,40 +689,27 @@ android:fontFamily="@font/interbold"                app:autoSizeMaxTextSize="12s
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/cont"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="16dp"
-            android:backgroundTint="#3B82F6"
-            android:text="Continue to Teleop  "
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:fontFamily="@font/interbold"
+            android:backgroundTint="#0D59F2"
+            android:text="Continue to Teleop"
+            android:textColor="#FFFFFF"
             app:autoSizeMaxTextSize="20sp"
             app:autoSizeMinTextSize="1sp"
             app:autoSizeTextType="uniform"
+            android:textStyle="bold"
+            android:fontFamily="@font/interbold"
             app:cornerRadius="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:elevation="6dp"
+            app:icon="@drawable/forwardarrow"
+            app:iconGravity="end"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/arrow"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:backgroundTint="#00000000"
-            android:gravity="center"
-            android:importantForAccessibility="no"
-            android:rotation="180"
-            android:src="@drawable/backarrow"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@id/cont"
-            app:layout_constraintDimensionRatio="1"
-            app:layout_constraintEnd_toEndOf="@id/cont"
-            app:layout_constraintTop_toTopOf="@id/cont"
-            android:clickable="false"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

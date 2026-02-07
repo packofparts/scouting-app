@@ -4,11 +4,11 @@
 
     <!-- This is the border color and width -->
     <stroke
-        android:width="2dp"
-        android:color="#1E293B" />
+        android:width="1dp"
+        android:color="#314368" />
 
     <!-- This is the background color of the TextView itself -->
-    <solid android:color="#101622" />
+    <solid android:color="#151C2B" />
 
 
 </shape>

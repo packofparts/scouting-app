@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="#0B0F1A"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -51,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:text="Blue 1"
+                android:text="Red 1"
                 android:textColor="#94A3B8"
                 android:textSize="14sp"
                 android:fontFamily="@font/interbold"
@@ -81,11 +79,14 @@
                 android:layout_marginTop="12dp"
                 android:background="@drawable/border_rounded"
                 android:hint="Enter scouter name"
+                android:maxLines="2"
                 android:textColor="#FFFFFF"
                 android:paddingStart="16dp"
                 android:textColorHint="#64748B"
                 android:fontFamily="@font/interbold"
-                android:textSize="16sp"
+                app:autoSizeMaxTextSize="16sp"
+                app:autoSizeMinTextSize="1sp"
+                app:autoSizeTextType="uniform"
                 app:layout_constraintTop_toBottomOf="@+id/scouterLabel"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/random"
@@ -99,7 +100,9 @@
                 android:layout_marginTop="12dp"
                 android:background="@drawable/border_rounded"
                 android:text="🎲"
-                android:textSize="24sp"
+                app:autoSizeMaxTextSize="24sp"
+                app:autoSizeMinTextSize="1sp"
+                app:autoSizeTextType="uniform"
                 app:layout_constraintTop_toBottomOf="@+id/scouterLabel"
                 app:layout_constraintStart_toEndOf="@+id/scouterNameInput"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -142,11 +145,15 @@
                 android:layout_marginTop="12dp"
                 android:background="@drawable/border_rounded"
                 android:hint="Match #"
+                android:maxLines="1"
+                android:inputType="number"
                 android:textColor="#FFFFFF"
                 android:paddingStart="16dp"
                 android:textColorHint="#64748B"
                 android:fontFamily="@font/interbold"
-                android:textSize="16sp"
+                app:autoSizeMaxTextSize="16sp"
+                app:autoSizeMinTextSize="1sp"
+                app:autoSizeTextType="uniform"
                 app:layout_constraintTop_toBottomOf="@+id/matchLabel"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/teamNumberInput"/>
@@ -162,11 +169,15 @@
                 android:layout_marginTop="12dp"
                 android:background="@drawable/border_rounded"
                 android:hint="Team #"
+                android:maxLines="1"
+                android:inputType="number"
                 android:textColor="#FFFFFF"
                 android:paddingStart="16dp"
                 android:textColorHint="#64748B"
                 android:fontFamily="@font/interbold"
-                android:textSize="16sp"
+                app:autoSizeMaxTextSize="16sp"
+                app:autoSizeMinTextSize="1sp"
+                app:autoSizeTextType="uniform"
                 app:layout_constraintTop_toBottomOf="@+id/teamLabel"
                 app:layout_constraintStart_toEndOf="@+id/matchInputContainer"
                 app:layout_constraintEnd_toEndOf="parent"/>
@@ -217,13 +228,14 @@
                         android:background="@drawable/match_num_bg"
                         android:paddingHorizontal="8dp"
                         android:paddingVertical="4dp"
-                        android:text="#42"
+                        android:text=""
                         android:textColor="#64748B"
                         android:textSize="12sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent" />
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:visibility="gone"/>
 
                     <HorizontalScrollView
                         android:layout_width="0dp"
@@ -239,7 +251,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:id="@+id/Match1">
+                            android:id="@+id/Match1"
+                            android:visibility="gone">
 
                             <TextView
                                 android:id="@+id/matchBox1Blue1"
@@ -248,7 +261,7 @@
                                 android:background="@drawable/blue_team_bg"
                                 android:paddingHorizontal="8dp"
                                 android:paddingVertical="4dp"
-                                android:text="254"
+                                android:text=""
                                 android:fontFamily="@font/interbold"
                                 android:textColor="#9E3338"
                                 android:textSize="11sp" />
@@ -262,7 +275,7 @@
                                 android:background="@drawable/blue_team_bg"
                                 android:paddingHorizontal="8dp"
                                 android:paddingVertical="4dp"
-                                android:text="1678"
+                                android:text=""
                                 android:fontFamily="@font/interbold"
                                 android:textColor="#9E3338"
                                 android:textSize="11sp" />
@@ -277,7 +290,7 @@
                                 android:fontFamily="@font/interbold"
                                 android:paddingHorizontal="8dp"
                                 android:paddingVertical="4dp"
-                                android:text="1323"
+                                android:text=""
                                 android:textColor="#9E3338"
                                 android:textSize="11sp" />
 
@@ -291,7 +304,7 @@
                                 android:fontFamily="@font/interbold"
                                 android:paddingHorizontal="8dp"
                                 android:paddingVertical="4dp"
-                                android:text="4414"
+                                android:text=""
                                 android:textColor="#2563EB"
                                 android:textSize="11sp" />
 
@@ -305,7 +318,7 @@
                                 android:fontFamily="@font/interbold"
                                 android:paddingHorizontal="8dp"
                                 android:paddingVertical="4dp"
-                                android:text="2056"
+                                android:text=""
                                 android:textColor="#2563EB"
                                 android:textSize="11sp" />
 
@@ -318,7 +331,7 @@
                                 android:background="@drawable/red_team_bg"
                                 android:paddingHorizontal="8dp"
                                 android:paddingVertical="4dp"
-                                android:text="118"
+                                android:text=""
                                 android:fontFamily="@font/interbold"
                                 android:textColor="#2563EB"
                                 android:textSize="11sp" />
@@ -347,7 +360,6 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
                     android:background="@drawable/boxschedule"
                     android:padding="12dp">
 
@@ -358,13 +370,14 @@
                         android:background="@drawable/match_num_bg"
                         android:paddingHorizontal="8dp"
                         android:paddingVertical="4dp"
-                        android:text="#42"
+                        android:text=""
                         android:textColor="#64748B"
                         android:textSize="12sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent" />
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:visibility="gone"/>
 
                     <HorizontalScrollView
                         android:layout_width="0dp"
@@ -380,7 +393,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:id="@+id/Match2">
+                            android:id="@+id/Match2"
+                            android:visibility="gone">
 
                             <TextView
                                 android:id="@+id/matchBox2Blue1"
@@ -390,7 +404,7 @@
                                 android:background="@drawable/gray_team_bg"
                                 android:paddingHorizontal="8dp"
                                 android:paddingVertical="4dp"
-                                android:text="254"
+                                android:text=""
                                 android:fontFamily="@font/interbold"
                                 android:textColor="#6B7789"
                                 android:textSize="11sp" />
@@ -404,7 +418,7 @@
                                 android:background="@drawable/gray_team_bg"
                                 android:paddingHorizontal="8dp"
                                 android:paddingVertical="4dp"
-                                android:text="1678"
+                                android:text=""
                                 android:fontFamily="@font/interbold"
                                 android:textColor="#6B7789"
                                 android:textSize="11sp" />
@@ -418,7 +432,7 @@
                                 android:background="@drawable/gray_team_bg"
                                 android:paddingHorizontal="8dp"
                                 android:paddingVertical="4dp"
-                                android:text="1323"
+                                android:text=""
                                 android:fontFamily="@font/interbold"
                                 android:textColor="#6B7789"
                                 android:textSize="11sp" />
@@ -433,7 +447,7 @@
                                 android:fontFamily="@font/interbold"
                                 android:paddingHorizontal="8dp"
                                 android:paddingVertical="4dp"
-                                android:text="4414"
+                                android:text=""
                                 android:textColor="#6B7789"
                                 android:textSize="11sp" />
 
@@ -447,7 +461,7 @@
                                 android:fontFamily="@font/interbold"
                                 android:paddingHorizontal="8dp"
                                 android:paddingVertical="4dp"
-                                android:text="2056"
+                                android:text=""
                                 android:textColor="#6B7789"
                                 android:textSize="11sp" />
 
@@ -461,7 +475,7 @@
                                 android:fontFamily="@font/interbold"
                                 android:paddingHorizontal="8dp"
                                 android:paddingVertical="4dp"
-                                android:text="118"
+                                android:text=""
                                 android:textColor="#6B7789"
                                 android:textSize="11sp" />
 
@@ -499,13 +513,14 @@
                         android:background="@drawable/match_num_bg"
                         android:paddingHorizontal="8dp"
                         android:paddingVertical="4dp"
-                        android:text="#42"
+                        android:text=""
                         android:textColor="#64748B"
                         android:textSize="12sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent" />
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:visibility="gone"/>
 
                     <HorizontalScrollView
                         android:layout_width="0dp"
@@ -521,7 +536,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:id="@+id/Match3">
+                            android:id="@+id/Match3"
+                            android:visibility="gone">
 
                             <TextView
                                 android:id="@+id/matchBox3Blue1"
@@ -532,7 +548,7 @@
                                 android:fontFamily="@font/interbold"
                                 android:paddingHorizontal="8dp"
                                 android:paddingVertical="4dp"
-                                android:text="254"
+                                android:text=""
                                 android:textColor="#6B7789"
                                 android:textSize="11sp" />
 
@@ -546,7 +562,7 @@
                                 android:fontFamily="@font/interbold"
                                 android:paddingHorizontal="8dp"
                                 android:paddingVertical="4dp"
-                                android:text="1678"
+                                android:text=""
                                 android:textColor="#6B7789"
                                 android:textSize="11sp" />
 
@@ -559,7 +575,7 @@
                                 android:background="@drawable/gray_team_bg"
                                 android:paddingHorizontal="8dp"
                                 android:paddingVertical="4dp"
-                                android:text="1323"
+                                android:text=""
                                 android:fontFamily="@font/interbold"
                                 android:textColor="#6B7789"
                                 android:textSize="11sp" />
@@ -573,7 +589,7 @@
                                 android:background="@drawable/gray_team_bg"
                                 android:paddingHorizontal="8dp"
                                 android:paddingVertical="4dp"
-                                android:text="4414"
+                                android:text=""
                                 android:fontFamily="@font/interbold"
                                 android:textColor="#6B7789"
                                 android:textSize="11sp" />
@@ -587,7 +603,7 @@
                                 android:background="@drawable/gray_team_bg"
                                 android:paddingHorizontal="8dp"
                                 android:paddingVertical="4dp"
-                                android:text="2056"
+                                android:text=""
                                 android:fontFamily="@font/interbold"
                                 android:textColor="#6B7789"
                                 android:textSize="11sp" />
@@ -601,7 +617,7 @@
                                 android:background="@drawable/gray_team_bg"
                                 android:paddingHorizontal="8dp"
                                 android:paddingVertical="4dp"
-                                android:text="118"
+                                android:text=""
                                 android:fontFamily="@font/interbold"
                                 android:textColor="#6B7789"
                                 android:textSize="11sp" />
@@ -612,21 +628,25 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/startScoutingButton"
                 android:layout_width="0dp"
                 android:layout_height="56dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="24dp"
-                android:backgroundTint="#3B82F6"
-                android:text="▷ Start Match Scouting"
+                android:backgroundTint="#0D59F2"
+                android:text="Start Match Scouting"
                 android:textColor="#FFFFFF"
-                android:textSize="16sp"
+                app:autoSizeMaxTextSize="20sp"
+                app:autoSizeMinTextSize="1sp"
+                app:autoSizeTextType="uniform"
                 android:textStyle="bold"
                 android:elevation="12dp"
                 android:stateListAnimator="@null"
                 app:cornerRadius="12dp"
+                app:icon="@drawable/send"
+                app:iconGravity="end"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -642,9 +662,13 @@
                 android:backgroundTint="#131927"
                 android:text="Go to Pit Scouting"
                 android:textColor="#FFFFFF"
-                android:textSize="16sp"
+                app:autoSizeMaxTextSize="20sp"
+                app:autoSizeMinTextSize="1sp"
+                app:autoSizeTextType="uniform"
                 android:textStyle="bold"
                 app:cornerRadius="12dp"
+                app:icon="@drawable/backarrow"
+                app:iconGravity="start"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"

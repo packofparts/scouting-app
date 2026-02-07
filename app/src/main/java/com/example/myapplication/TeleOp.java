@@ -21,7 +21,6 @@ import com.example.myapplication.databinding.TeleOpBinding;
 public class TeleOp extends Fragment {
 
     private TeleOpBinding binding;
-    ViewGroup v = null;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -31,8 +30,8 @@ public class TeleOp extends Fragment {
     ) {
 
         binding = TeleOpBinding.inflate(inflater, container, false);
-        v = container;
-        binding.team.setText("Team " + UserModel.getMatchData().getTeamNumber());
+
+        binding.title.setText("Tele-Operated Team " + UserModel.getMatchData().getTeamNumber());
 
         return binding.getRoot();
     }
@@ -41,13 +40,43 @@ public class TeleOp extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        MatchData data = UserModel.getMatchData();
+        //initialization
+        binding.fuelScored.setText(data.getTeleOpHub() + "");
+        binding.fuelMissed.setText(data.getTeleOpHubMissed() + "");
+        binding.fuelPassed.setText(data.getTeleOpPassed() + "");
 
         binding.cont.setOnClickListener(view1 -> NavHostFragment.findNavController(TeleOp.this)
                 .navigate(R.id.action_SecondFragment_to_SecondFragment2));
         binding.back.setOnClickListener(view12 -> NavHostFragment.findNavController(TeleOp.this)
                 .navigate(R.id.action_SecondFragment_to_ThirdFragment));
 
-        binding.bottomTag.setText(MainActivity.getLocationText());
+        binding.fuelScoredPlus.setOnClickListener(v -> {
+            data.setTeleOpHub(data.getTeleOpHub() + 1);
+            binding.fuelScored.setText(Integer.toString(data.getTeleOpHub()));
+        });
+        binding.fuelScoredMinus.setOnClickListener(v -> {
+            data.setTeleOpHub(data.getTeleOpHub() <= 0 ? 0 : data.getTeleOpHub() - 1);
+            binding.fuelScored.setText(Integer.toString(data.getTeleOpHub()));
+        });
+
+        binding.fuelMissedPlus.setOnClickListener(v -> {
+            data.setTeleOpHubMissed(data.getTeleOpHubMissed() + 1);
+            binding.fuelMissed.setText(Integer.toString(data.getTeleOpHubMissed()));
+        });
+        binding.fuelMissedMinus.setOnClickListener(v -> {
+            data.setTeleOpHubMissed(data.getTeleOpHubMissed() <= 0 ? 0 : data.getTeleOpHubMissed() - 1);
+            binding.fuelMissed.setText(Integer.toString(data.getTeleOpHubMissed()));
+        });
+
+        binding.fuelPassedPlus.setOnClickListener(v -> {
+            data.setTeleOpPassed(data.getTeleOpPassed() + 1);
+            binding.fuelPassed.setText(Integer.toString(data.getTeleOpPassed()));
+        });
+        binding.fuelPassedMinus.setOnClickListener(v -> {
+            data.setTeleOpPassed(data.getTeleOpPassed() <= 0 ? 0 : data.getTeleOpPassed() - 1);
+            binding.fuelPassed.setText(Integer.toString(data.getTeleOpPassed()));
+        });
     }
    
     @Override
@@ -57,18 +86,5 @@ public class TeleOp extends Fragment {
         binding = null;
 
     }
-    @SuppressLint("ObsoleteSdkInt")
-    public void checkedOperation (View v){
-        if (v instanceof Switch){
-            @SuppressLint("UseSwitchCompatOrMaterialCode") Switch s = (Switch) v;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                if (s.isChecked()){
-                    s.setThumbTintList(UIHelpers.purpleAsList);
-                    s.setTrackTintList(UIHelpers.purpleAsList);
-                } else {
-                    s.setThumbTintList(UIHelpers.teamColorAsList);
-                    s.setTrackTintList(UIHelpers.teamColorAsList);
-                }
-        }
-    }}
+}
 

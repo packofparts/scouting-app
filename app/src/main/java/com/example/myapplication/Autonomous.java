@@ -29,9 +29,7 @@ public class Autonomous extends Fragment {
     ){
         binding = AutonomousBinding.inflate(inflater, container, false);
         v = container;
-        binding.btnNone.setButtonDrawable(null);
-        binding.btnFail.setButtonDrawable(null);
-        binding.btnL1.setButtonDrawable(null);
+
         return binding.getRoot();
     }
 
@@ -43,7 +41,6 @@ public class Autonomous extends Fragment {
         //initialization
         binding.fuelScored.setText(data.getAutoHub() + "");
         binding.fuelMissed.setText(data.getAutoHubMissed() + "");
-        ((RadioButton) binding.toggleGroupClimbLevel.getChildAt(data.getAutoClimb())).setChecked(true);
         binding.title.setText("Autonomous Team " + data.getTeamNumber());
 
         binding.fuelScoredPlus.setOnClickListener(v -> {
@@ -64,7 +61,23 @@ public class Autonomous extends Fragment {
             binding.fuelMissed.setText(Integer.toString(data.getAutoHubMissed()));
         });
 
-        binding.toggleGroupClimbLevel.setOnCheckedChangeListener((r, i) -> data.setAutoClimb(binding.toggleGroupClimbLevel.indexOfChild(binding.toggleGroupClimbLevel.findViewById(i))));
+        binding.toggleGroupClimbLevel.setOnCheckedChangeListener((r, i) -> {
+            int climb = binding.toggleGroupClimbLevel.indexOfChild(binding.toggleGroupClimbLevel.findViewById(i));
+            data.setAutoClimb(climb);
+            if (climb > 0){
+                binding.climbImage.setVisibility(View.VISIBLE);
+                binding.toggleGroupClimbLocation.setVisibility(View.VISIBLE);
+            } else {
+                binding.climbImage.setVisibility(View.GONE);
+                binding.toggleGroupClimbLocation.setVisibility(View.GONE);
+            }
+        });
+
+        ((RadioButton) binding.toggleGroupClimbLevel.getChildAt(data.getAutoClimb())).setChecked(true); //Triggers listener
+
+        binding.toggleGroupClimbLocation.setOnCheckedChangeListener((r, i) -> data.setAutoClimbLocation(binding.toggleGroupClimbLocation.indexOfChild(binding.toggleGroupClimbLocation.findViewById(i)) + 1));
+
+        ((RadioButton) binding.toggleGroupClimbLocation.getChildAt(data.getAutoClimbLocation() - 1)).setChecked(true);
 
         binding.cont.setOnClickListener(view12 -> NavHostFragment.findNavController(Autonomous.this)
                 .navigate(R.id.action_ThirdFragment_to_SecondFragment));
@@ -78,6 +91,7 @@ public class Autonomous extends Fragment {
             binding.fuelScored.setText(data.getAutoHub() + "");
             binding.fuelMissed.setText(data.getAutoHubMissed() + "");
             ((RadioButton) binding.toggleGroupClimbLevel.getChildAt(0)).setChecked(true);
+            ((RadioButton) binding.toggleGroupClimbLocation.getChildAt(0)).setChecked(true);
         }, () ->{}, getContext()));
     }
     @Override

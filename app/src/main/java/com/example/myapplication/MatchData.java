@@ -16,12 +16,15 @@ public class MatchData {
     private String matchNumber = "";
 
     //For climb, 0 = none, 1 = fail, 2 = L1, 3 = L2, and 4 = L3
+    //For climb location, refer to climb.png
 
     private int autoHub, autoHubMissed, autoClimb = 0;
+    private int autoClimbLocation = 1;
 
     private int teleOpHub, teleOpHubMissed, teleOpPassed, teleOpClimb = 0;
+    private int teleOpClimbLocation = 1;
 
-    private double defEffectiveness = 0.0;
+    private int defEffectiveness = 0;
 
     private int defDuration, brokeDuration, underDefDuration = 0;
 
@@ -80,11 +83,11 @@ public class MatchData {
 
     public void setunderDefDuration(int underDefDuration){this.underDefDuration = underDefDuration;}
 
-    public double getDefEffectiveness() {
+    public int getDefEffectiveness() {
         return defEffectiveness;
     }
 
-    public void setDefEffectiveness(double defEffectiveness) {this.defEffectiveness = defEffectiveness; }
+    public void setDefEffectiveness(int defEffectiveness) {this.defEffectiveness = defEffectiveness; }
 
     public int getBrokeDuration() {
         return brokeDuration;
@@ -118,6 +121,14 @@ public class MatchData {
         this.autoClimb = autoClimb;
     }
 
+    public int getAutoClimbLocation() {
+        return autoClimbLocation;
+    }
+
+    public void setAutoClimbLocation(int autoClimbLocation) {
+        this.autoClimbLocation = autoClimbLocation;
+    }
+
     public int getTeleOpHub() {
         return teleOpHub;
     }
@@ -148,6 +159,14 @@ public class MatchData {
 
     public void setTeleOpClimb(int teleOpClimb) {
         this.teleOpClimb = teleOpClimb;
+    }
+
+    public int getTeleOpClimbLocation() {
+        return teleOpClimbLocation;
+    }
+
+    public void setTeleOpClimbLocation(int teleOpClimbLocation) {
+        this.teleOpClimbLocation = teleOpClimbLocation;
     }
 }
 

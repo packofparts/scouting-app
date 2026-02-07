@@ -7,12 +7,62 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <ScrollView
+    <TextView
+        android:id="@+id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/border"
+        android:layout_height="55dp"
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text="Endgame"
+        android:fontFamily="@font/interextrabold"
+        android:textStyle="bold"
+        app:autoSizeMaxTextSize="18sp"
+        app:autoSizeMinTextSize="1sp"
+        app:autoSizeTextType="uniform"/>
+
+    <ImageButton
+        android:id="@+id/ivLogo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/backarrow"
+        android:backgroundTint="#00000000"
+        android:scaleType="fitXY"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintTop_toTopOf="@id/tvTitle"
+        app:layout_constraintBottom_toBottomOf="@id/tvTitle"/>
+
+    <TextView
+        android:id="@+id/tvReset"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        android:fontFamily="@font/interbold"
+        android:textStyle="bold"
+        app:autoSizeMaxTextSize="14sp"
+        app:autoSizeMinTextSize="1sp"
+        android:textColor="#0D59F2"
+        app:layout_constraintDimensionRatio="1"
+        android:gravity="center"
+        android:src="@drawable/backarrow"
+        android:backgroundTint="#00000000"/>
+
+
+    <com.example.myapplication.CustomScrollView
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="#101622"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintBottom_toTopOf="@id/sumbit_area"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -20,45 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#101622"
-            android:paddingBottom="16dp">
-
-            <!-- Header -->
-            <ImageView
-                android:id="@+id/ivLogo"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:src="@drawable/backarrow"
-                android:scaleType="fitXY"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Endgame"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/ivLogo"
-                app:layout_constraintBottom_toBottomOf="@id/ivLogo" />
-
-            <TextView
-                android:id="@+id/tvReset"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="Reset"
-                android:textColor="#0D59F2"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/ivLogo"
-                app:layout_constraintBottom_toBottomOf="@id/ivLogo" />
+            android:paddingBottom="24dp">
 
             <!-- Climb Level Section Label -->
             <TextView
@@ -66,24 +78,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="24dp"
                 android:text="Climb level"
                 android:textColor="#94A3B8"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                android:textAllCaps="false"
+                android:fontFamily="@font/interbold"
+                android:textAllCaps="true"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ivLogo" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvFinal30s"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:background="@drawable/cr9999b0d59f21a"
+                android:background="@drawable/blue_rounded"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="2dp"
                 android:text="Final 30s"
+                android:fontFamily="@font/interbold"
                 android:textColor="#0D59F2"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -130,6 +144,7 @@
                         android:textColor="#FFFFFF"
                         android:textSize="16sp"
                         android:textStyle="bold"
+                        android:fontFamily="@font/interbold"
                         app:layout_constraintStart_toEndOf="@id/ivClimbIcon"
                         app:layout_constraintTop_toTopOf="@id/ivClimbIcon" />
 
@@ -138,27 +153,30 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
-                        android:text="How high it climbed."
+                        android:text="How high it climbed"
+                        android:fontFamily="@font/interbold"
                         android:textColor="#94A3B8"
-                        android:textSize="12sp"
+                        app:autoSizeMaxTextSize="12sp"
+                        app:autoSizeMinTextSize="1sp"
+                        app:autoSizeTextType="uniform"
                         app:layout_constraintStart_toEndOf="@id/ivClimbIcon"
                         app:layout_constraintTop_toBottomOf="@id/tvClimbLevelTitle" />
 
                     <!-- Custom Toggle Buttons -->
-                    <LinearLayout
-                        android:id="@+id/toggleGroupClimbLevel"
+                    <RadioGroup
+                        android:id="@+id/radioGroupClimbLevel"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_marginTop="12dp"
-                        android:background="@drawable/cr8b101623"
+                        android:background="@drawable/border_rounded"
                         android:padding="4dp"
                         android:orientation="horizontal"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/ivClimbIcon">
 
-                        <TextView
-                            android:id="@+id/btnNone"
+                        <RadioButton
+                            android:id="@+id/rbNone"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -166,13 +184,17 @@
                             android:gravity="center"
                             android:paddingVertical="8dp"
                             android:text="None"
-                            android:textColor="#94A3B8"
-                            android:textSize="14sp"
-                            android:clickable="true"
-                            android:focusable="true" />
+                            android:textStyle="bold"
+                            android:fontFamily="@font/interbold"
+                            android:textColor="#FFFFFF"
+                            app:autoSizeMaxTextSize="20sp"
+                            app:autoSizeMinTextSize="1sp"
+                            app:autoSizeTextType="uniform"
+                            android:button="@null"
+                            android:background="@drawable/radio_button_bg" />
 
-                        <TextView
-                            android:id="@+id/btnFail"
+                        <RadioButton
+                            android:id="@+id/rbFail"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -180,13 +202,17 @@
                             android:gravity="center"
                             android:paddingVertical="8dp"
                             android:text="Fail"
-                            android:textColor="#94A3B8"
-                            android:textSize="14sp"
-                            android:clickable="true"
-                            android:focusable="true" />
+                            android:textStyle="bold"
+                            android:fontFamily="@font/interbold"
+                            android:textColor="#FFFFFF"
+                            app:autoSizeMaxTextSize="20sp"
+                            app:autoSizeMinTextSize="1sp"
+                            app:autoSizeTextType="uniform"
+                            android:button="@null"
+                            android:background="@drawable/radio_button_bg" />
 
-                        <TextView
-                            android:id="@+id/btnL1"
+                        <RadioButton
+                            android:id="@+id/rbL1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -194,13 +220,17 @@
                             android:gravity="center"
                             android:paddingVertical="8dp"
                             android:text="L1"
-                            android:textColor="#94A3B8"
-                            android:textSize="14sp"
-                            android:clickable="true"
-                            android:focusable="true" />
+                            app:autoSizeMaxTextSize="20sp"
+                            app:autoSizeMinTextSize="1sp"
+                            app:autoSizeTextType="uniform"
+                            android:button="@null"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/interbold"
+                            android:textColor="#FFFFFF"
+                            android:background="@drawable/radio_button_bg" />
 
-                        <TextView
-                            android:id="@+id/btnL2"
+                        <RadioButton
+                            android:id="@+id/rbL2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -208,27 +238,155 @@
                             android:gravity="center"
                             android:paddingVertical="8dp"
                             android:text="L2"
-                            android:textColor="#94A3B8"
-                            android:textSize="14sp"
-                            android:clickable="true"
-                            android:focusable="true" />
+                            app:autoSizeMaxTextSize="20sp"
+                            app:autoSizeMinTextSize="1sp"
+                            app:autoSizeTextType="uniform"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/interbold"
+                            android:textColor="#FFFFFF"                            android:textSize="14sp"
+                            android:button="@null"
+                            android:background="@drawable/radio_button_bg" />
 
-                        <TextView
-                            android:id="@+id/btnL3"
+                        <RadioButton
+                            android:id="@+id/rbL3"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:background="@drawable/cr6b0d59f2"
+                            android:background="@drawable/radio_button_bg"
                             android:paddingVertical="8dp"
                             android:text="L3"
                             android:textColor="#FFFFFF"
-                            android:textSize="14sp"
+                            app:autoSizeMaxTextSize="20sp"
+                            app:autoSizeMinTextSize="1sp"
+                            app:autoSizeTextType="uniform"
                             android:textStyle="bold"
-                            android:clickable="true"
-                            android:focusable="true"
+                            android:fontFamily="@font/interbold"
+                            android:button="@null"
+                            android:checked="true"
                             android:elevation="4dp" />
-                    </LinearLayout>
+                    </RadioGroup>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="12dp"
+                        android:src="@drawable/climb"
+                        android:id="@+id/climbImage"
+                        android:background="@drawable/border_rounded"
+                        app:layout_constraintTop_toBottomOf="@id/radioGroupClimbLevel"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/toggleGroupClimbLocation"/>
+
+                    <RadioGroup
+                        android:id="@+id/toggleGroupClimbLocation"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/border_rounded"
+                        android:padding="4dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/climbImage"
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+                        <RadioButton
+                            android:id="@+id/btn1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="4dp"
+                            android:gravity="center"
+                            android:background="@drawable/radio_button_bg"
+                            app:cornerRadius="12dp"
+                            android:paddingVertical="8dp"
+                            android:text="1"
+                            android:fontFamily="@font/interbold"
+                            android:textColor="#FFFFFF"
+                            app:autoSizeMaxTextSize="20sp"
+                            app:autoSizeMinTextSize="1sp"
+                            app:autoSizeTextType="uniform"
+                            android:button="@null"
+                            android:textStyle="bold" />
+
+                        <RadioButton
+                            android:id="@+id/btn2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="4dp"
+                            android:gravity="center"
+                            android:background="@drawable/radio_button_bg"
+                            app:cornerRadius="12dp"
+                            android:fontFamily="@font/interbold"
+                            android:paddingVertical="8dp"
+                            android:text="2"
+                            android:textColor="#FFFFFF"
+                            app:autoSizeMaxTextSize="20sp"
+                            app:autoSizeMinTextSize="1sp"
+                            app:autoSizeTextType="uniform"
+                            android:button="@null"
+                            android:textStyle="bold"/>
+
+                        <RadioButton
+                            android:id="@+id/btn3"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="4dp"
+                            android:gravity="center"
+                            android:background="@drawable/radio_button_bg"
+                            app:cornerRadius="12dp"
+                            android:paddingVertical="8dp"
+                            android:fontFamily="@font/interbold"
+                            android:text="3"
+                            android:textColor="#FFFFFF"
+                            app:autoSizeMaxTextSize="20sp"
+                            app:autoSizeMinTextSize="1sp"
+                            app:autoSizeTextType="uniform"
+                            android:button="@null"
+                            android:textStyle="bold"/>
+
+                        <RadioButton
+                            android:id="@+id/btn4"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="4dp"
+                            android:gravity="center"
+                            android:background="@drawable/radio_button_bg"
+                            app:cornerRadius="12dp"
+                            android:paddingVertical="8dp"
+                            android:fontFamily="@font/interbold"
+                            android:text="4"
+                            android:textColor="#FFFFFF"
+                            app:autoSizeMaxTextSize="20sp"
+                            app:autoSizeMinTextSize="1sp"
+                            app:autoSizeTextType="uniform"
+                            android:button="@null"
+                            android:textStyle="bold"/>
+
+                        <RadioButton
+                            android:id="@+id/btn5"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="4dp"
+                            android:gravity="center"
+                            android:background="@drawable/radio_button_bg"
+                            app:cornerRadius="12dp"
+                            android:paddingVertical="8dp"
+                            android:fontFamily="@font/interbold"
+                            android:text="5"
+                            android:textColor="#FFFFFF"
+                            app:autoSizeMaxTextSize="20sp"
+                            app:autoSizeMinTextSize="1sp"
+                            app:autoSizeTextType="uniform"
+                            android:button="@null"
+                            android:textStyle="bold"/>
+                    </RadioGroup>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -244,6 +402,7 @@
                 android:textColor="#94A3B8"
                 android:textSize="12sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/interbold"
                 android:textAllCaps="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardClimbLevel" />
@@ -287,6 +446,7 @@
                         android:textColor="#FFFFFF"
                         android:textSize="18sp"
                         android:textStyle="bold"
+                        android:fontFamily="@font/interbold"
                         app:layout_constraintStart_toEndOf="@id/ivDefenseIcon"
                         app:layout_constraintTop_toTopOf="@id/ivDefenseIcon" />
 
@@ -297,7 +457,8 @@
                         android:layout_marginStart="8dp"
                         android:text="Duration in seconds"
                         android:textColor="#94A3B8"
-                        android:textSize="14sp"
+                        android:fontFamily="@font/interbold"
+                        android:textSize="12sp"
                         app:layout_constraintStart_toEndOf="@id/tvDefenseTitle"
                         app:layout_constraintBottom_toBottomOf="@id/tvDefenseTitle" />
 
@@ -325,13 +486,14 @@
                                 android:id="@+id/tvDefenseValue"
                                 android:layout_width="60dp"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/cr6b0d59f2"
+                                android:background="@drawable/blue_bg"
                                 android:gravity="center"
                                 android:paddingVertical="8dp"
                                 android:text="30"
                                 android:textColor="#FFFFFF"
                                 android:textSize="20sp"
                                 android:textStyle="bold"
+                                android:fontFamily="@font/interbold"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -369,6 +531,7 @@
                 android:textColor="#94A3B8"
                 android:textSize="12sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/interbold"
                 android:textAllCaps="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardDefenseDuration" />
@@ -412,6 +575,7 @@
                         android:textColor="#FFFFFF"
                         android:textSize="16sp"
                         android:textStyle="bold"
+                        android:fontFamily="@font/interbold"
                         app:layout_constraintStart_toEndOf="@id/ivQualityIcon"
                         app:layout_constraintTop_toTopOf="@id/ivQualityIcon"
                         app:layout_constraintBottom_toBottomOf="@id/ivQualityIcon" />
@@ -420,13 +584,14 @@
                         android:id="@+id/tvQualityBadge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/s0d59f233sw1cr4b0d59f21a"
+                        android:background="@drawable/blue_rounded"
                         android:paddingHorizontal="9dp"
                         android:paddingVertical="5dp"
                         android:text="HIGH"
                         android:textColor="#0D59F2"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
                         android:textStyle="bold"
+                        android:fontFamily="@font/interbold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@id/ivQualityIcon"
                         app:layout_constraintBottom_toBottomOf="@id/ivQualityIcon" />
@@ -514,6 +679,7 @@
                 android:textColor="#94A3B8"
                 android:textSize="12sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/interbold"
                 android:textAllCaps="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardQualitative" />
@@ -557,6 +723,7 @@
                         android:textColor="#FFFFFF"
                         android:textSize="18sp"
                         android:textStyle="bold"
+                        android:fontFamily="@font/interbold"
                         app:layout_constraintStart_toEndOf="@id/ivUnderDefenseIcon"
                         app:layout_constraintTop_toTopOf="@id/ivUnderDefenseIcon" />
 
@@ -566,8 +733,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="Duration in seconds"
+                        android:fontFamily="@font/interbold"
                         android:textColor="#94A3B8"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         app:layout_constraintStart_toEndOf="@id/tvUnderDefenseTitle"
                         app:layout_constraintBottom_toBottomOf="@id/tvUnderDefenseTitle" />
 
@@ -594,13 +762,14 @@
                                 android:id="@+id/tvUnderDefenseValue"
                                 android:layout_width="60dp"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/cr6b0d59f2"
+                                android:background="@drawable/blue_bg"
                                 android:gravity="center"
                                 android:paddingVertical="8dp"
                                 android:text="0"
                                 android:textColor="#FFFFFF"
                                 android:textSize="20sp"
                                 android:textStyle="bold"
+                                android:fontFamily="@font/interbold"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -638,6 +807,7 @@
                 android:textColor="#94A3B8"
                 android:textSize="12sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/interbold"
                 android:textAllCaps="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardUnderDefense" />
@@ -681,6 +851,7 @@
                         android:textColor="#FFFFFF"
                         android:textSize="18sp"
                         android:textStyle="bold"
+                        android:fontFamily="@font/interbold"
                         app:layout_constraintStart_toEndOf="@id/ivBrokeIcon"
                         app:layout_constraintTop_toTopOf="@id/ivBrokeIcon" />
 
@@ -690,6 +861,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="Duration in seconds"
+                        android:fontFamily="@font/interbold"
                         android:textColor="#94A3B8"
                         android:textSize="14sp"
                         app:layout_constraintStart_toEndOf="@id/tvBrokeTitle"
@@ -718,13 +890,14 @@
                                 android:id="@+id/tvBrokeValue"
                                 android:layout_width="60dp"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/cr6b0d59f2"
+                                android:background="@drawable/blue_bg"
                                 android:gravity="center"
                                 android:paddingVertical="8dp"
                                 android:text="0"
                                 android:textColor="#FFFFFF"
                                 android:textSize="20sp"
                                 android:textStyle="bold"
+                                android:fontFamily="@font/interbold"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -762,6 +935,7 @@
                 android:textColor="#94A3B8"
                 android:textSize="12sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/interbold"
                 android:textAllCaps="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardBrokeDuration" />
@@ -791,6 +965,9 @@
                         android:id="@+id/etMatchNotes"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:inputType="textMultiLine"
+                        android:maxLines="6"
+                        android:maxLength="150"
                         android:background="@android:color/transparent"
                         android:hint="Enter key observations (e.g. heavy defense, broken intake, speed)..."
                         android:textColorHint="#94A3B8"
@@ -815,29 +992,56 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Submit Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnSubmit"
+            <TextView
+                android:id="@+id/characterLimit"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="21dp"
-                android:backgroundTint="#0D59F2"
-                android:text="Submit Match"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
+                android:text="CHARACTER LIMIT: 0/150"
+                android:textColor="#94A3B8"
                 android:textStyle="bold"
-                android:paddingVertical="14dp"
-                app:cornerRadius="12dp"
-                app:elevation="6dp"
-                app:icon="@drawable/send"
-                app:iconGravity="end"
-                app:layout_constraintStart_toStartOf="parent"
+                android:fontFamily="@font/interbold"
+                app:autoSizeMaxTextSize="12sp"
+                app:autoSizeMinTextSize="1sp"
+                app:autoSizeTextType="uniform"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cardMatchNotes" />
+                app:layout_constraintTop_toBottomOf="@id/cardMatchNotes"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </com.example.myapplication.CustomScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sumbit_area"
+        android:layout_width="match_parent"
+        android:layout_height="89dp"
+        android:background="@drawable/border"
+        app:layout_constraintTop_toBottomOf="@id/scrollView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSubmit"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            android:backgroundTint="#0D59F2"
+            android:text="Submit Match"
+            android:textColor="#FFFFFF"
+            app:autoSizeMaxTextSize="20sp"
+            app:autoSizeMinTextSize="1sp"
+            app:autoSizeTextType="uniform"
+            android:textStyle="bold"
+            android:fontFamily="@font/interbold"
+            app:cornerRadius="12dp"
+            app:elevation="6dp"
+            app:icon="@drawable/send"
+            app:iconGravity="end"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,7 +20,7 @@
         android:textColor="@color/white"
         android:text="Pit Scouting"
         android:textStyle="bold"
-        android:fontFamily="@font/interbold"
+        android:fontFamily="@font/interextrabold"
         app:autoSizeMaxTextSize="18sp"
         app:autoSizeMinTextSize="1sp"
         app:autoSizeTextType="uniform"

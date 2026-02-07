@@ -102,6 +102,7 @@ public class EndGame extends Fragment {
                 "Do you want to submit your match data?", () -> {
                     try {
                         data.toJson();
+                        data.setMatchNumber(String.valueOf(Integer.parseInt(UserModel.getMatchData().getMatchNumber()) + 1));
                     } catch (Exception e) {
                         UIHelpers.makeHelpAlert("Unknown Data Transfer Error!", e.getMessage(), getContext());
                     }

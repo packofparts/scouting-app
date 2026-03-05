@@ -73,7 +73,7 @@ public class TeleOp extends Fragment {
                         try{
                             setMethod.invoke(data, (int) getMethod.invoke(data) + 1);
                             tv[index].setText(Integer.toString((int) getMethod.invoke(data)));
-                            uiHandler.postDelayed(this, 150);
+                            uiHandler.postDelayed(this, 100);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -81,7 +81,7 @@ public class TeleOp extends Fragment {
                 };
 
                 plus[i].setOnLongClickListener(v -> {
-                    uiHandler.postDelayed(plusFuel, 150);
+                    uiHandler.postDelayed(plusFuel, 100);
                     return true;
                 });
 

@@ -46,87 +46,116 @@ public class TeleOp extends Fragment {
         return binding.getRoot();
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "ClickableViewAccessibility"})
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         MatchData data = UserModel.getMatchData();
         //initialization
-        TextView[] tv = new TextView[]{binding.fuelScored, binding.fuelMissed, binding.fuelPassed};
-        Button[] plus = new Button[]{binding.fuelScoredPlus, binding.fuelMissedPlus, binding.fuelPassedPlus};
-        Button[] minus = new Button[]{binding.fuelScoredMinus, binding.fuelMissedMinus, binding.fuelPassedMinus};
-        String[] setters = {"setTeleOpHub", "setTeleOpHubMissed", "setTeleOpPassed"};
-        String[] getters = {"getTeleOpHub", "getTeleOpHubMissed", "getTeleOpPassed"};
+        binding.fuelScored.setText(data.getTeleOpHub() + "");
+        binding.fuelMissed.setText(data.getTeleOpHubMissed() + "");
+        binding.fuelPassed.setText(data.getTeleOpPassed() + "");
 
-        for (int i = 0; i < tv.length; i++) {
-            final int index = i;
-            try {
-                Method getMethod = data.getClass().getMethod(getters[i]);
-                Method setMethod = data.getClass().getMethod(setters[i], getMethod.getReturnType());
-
-                getMethod.invoke(data);
-                tv[i].setText(getMethod.invoke(data) + "");
-
-                Runnable plusFuel = new Runnable() {
-                    @Override
-                    public void run() {
-                        try{
-                            setMethod.invoke(data, (int) getMethod.invoke(data) + 1);
-                            tv[index].setText(Integer.toString((int) getMethod.invoke(data)));
-                            uiHandler.postDelayed(this, 100);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                };
-
-                plus[i].setOnLongClickListener(v -> {
-                    uiHandler.postDelayed(plusFuel, 100);
-                    return true;
-                });
-
-                plus[i].setOnTouchListener((v, event) -> {
-                    if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
-                        uiHandler.removeCallbacks(plusFuel);
-                    }
-                    return false;
-                });
-
-                plus[i].setOnClickListener(v -> {
-                    try {
-                        setMethod.invoke(data, (int) getMethod.invoke(data) + 1);
-                        tv[index].setText(Integer.toString((int) getMethod.invoke(data)));
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
-
-                minus[i].setOnClickListener(v -> {
-                    try {
-                        setMethod.invoke(data, (int) getMethod.invoke(data) <= 0 ? 0 : (int) getMethod.invoke(data) - 1);
-                        tv[index].setText(Integer.toString((int) getMethod.invoke(data)));
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-                });
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        binding.cont.setOnClickListener(v -> NavHostFragment.findNavController(TeleOp.this)
+        binding.cont.setOnClickListener(view1 -> NavHostFragment.findNavController(TeleOp.this)
                 .navigate(R.id.action_SecondFragment_to_SecondFragment2));
+        binding.back.setOnClickListener(view12 -> NavHostFragment.findNavController(TeleOp.this)
+                .navigate(R.id.action_SecondFragment_to_ThirdFragment));
 
-        binding.back.setOnClickListener(v-> NavHostFragment.findNavController(TeleOp.this).navigate(R.id.action_SecondFragment_to_ThirdFragment));
 
-        binding.reset.setOnClickListener(v -> UIHelpers.makeConfirmationAlert("Reset Data", "Do you want to reset all Tele-Operated fields?", () -> {
-            data.setTeleOpHub(0);
-            data.setTeleOpHubMissed(0);
-            data.setTeleOpPassed(0);
-            binding.fuelScored.setText(data.getTeleOpHub() + "");
-            binding.fuelMissed.setText(data.getTeleOpHubMissed() + "");
-            binding.fuelPassed.setText(data.getTeleOpPassed() + "");
-        }, () ->{}, getContext()));
+
+        binding.fuelScoredPlus.setOnClickListener(v -> {
+            data.setTeleOpHub(data.getTeleOpHub() + 1);
+            binding.fuelScored.setText(Integer.toString(data.getTeleOpHub()));
+        });
+
+        Runnable plusFuelScored = new Runnable() {
+            @Override
+            public void run() {
+                data.setTeleOpHub(data.getTeleOpHub() + 1);
+                binding.fuelScored.setText(Integer.toString(data.getTeleOpHub()));
+                uiHandler.postDelayed(this, 100);
+            }
+        };
+
+        Runnable plusFuelMissed = new Runnable() {
+            @Override
+            public void run() {
+                data.setTeleOpHubMissed(data.getTeleOpHubMissed() + 1);
+                binding.fuelMissed.setText(Integer.toString(data.getTeleOpHubMissed()));
+                uiHandler.postDelayed(this, 100);
+            }
+        };
+
+        Runnable plusFuelPassed = new Runnable() {
+            @Override
+            public void run() {
+                data.setTeleOpPassed(data.getTeleOpPassed() + 1);
+                binding.fuelPassed.setText(Integer.toString(data.getTeleOpPassed()));
+                uiHandler.postDelayed(this, 100);
+            }
+        };
+
+        binding.fuelScoredPlus.setOnLongClickListener(v -> {
+            uiHandler.postDelayed(plusFuelScored, 100);
+            return true;
+        });
+
+        binding.fuelMissedPlus.setOnLongClickListener(v -> {
+            uiHandler.postDelayed(plusFuelMissed, 100);
+            return true;
+        });
+
+        binding.fuelPassedPlus.setOnLongClickListener(v -> {
+            uiHandler.postDelayed(plusFuelPassed, 100);
+            return true;
+        });
+
+        binding.fuelScoredPlus.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP ||
+                    event.getAction() == MotionEvent.ACTION_CANCEL) {
+                uiHandler.removeCallbacks(plusFuelScored); // stop the loop
+            }
+            return false; // return false so long click still fires
+        });
+
+        binding.fuelMissedPlus.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP ||
+                    event.getAction() == MotionEvent.ACTION_CANCEL) {
+                uiHandler.removeCallbacks(plusFuelMissed); // stop the loop
+            }
+            return false; // return false so long click still fires
+        });
+
+        binding.fuelPassedPlus.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP ||
+                    event.getAction() == MotionEvent.ACTION_CANCEL) {
+                uiHandler.removeCallbacks(plusFuelPassed); // stop the loop
+            }
+            return false; // return false so long click still fires
+        });
+
+        binding.fuelScoredMinus.setOnClickListener(v -> {
+            data.setTeleOpHub(data.getTeleOpHub() <= 0 ? 0 : data.getTeleOpHub() - 1);
+            binding.fuelScored.setText(Integer.toString(data.getTeleOpHub()));
+        });
+
+        binding.fuelMissedPlus.setOnClickListener(v -> {
+            data.setTeleOpHubMissed(data.getTeleOpHubMissed() + 1);
+            binding.fuelMissed.setText(Integer.toString(data.getTeleOpHubMissed()));
+        });
+        binding.fuelMissedMinus.setOnClickListener(v -> {
+            data.setTeleOpHubMissed(data.getTeleOpHubMissed() <= 0 ? 0 : data.getTeleOpHubMissed() - 1);
+            binding.fuelMissed.setText(Integer.toString(data.getTeleOpHubMissed()));
+        });
+
+        binding.fuelPassedPlus.setOnClickListener(v -> {
+            data.setTeleOpPassed(data.getTeleOpPassed() + 1);
+            binding.fuelPassed.setText(Integer.toString(data.getTeleOpPassed()));
+        });
+        binding.fuelPassedMinus.setOnClickListener(v -> {
+            data.setTeleOpPassed(data.getTeleOpPassed() <= 0 ? 0 : data.getTeleOpPassed() - 1);
+            binding.fuelPassed.setText(Integer.toString(data.getTeleOpPassed()));
+        });
     }
    
     @Override

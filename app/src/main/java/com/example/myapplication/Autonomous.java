@@ -8,10 +8,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RadioButton;
-import android.widget.TextView;
-import java.lang.reflect.Method;
+
 
 import androidx.fragment.app.Fragment;
 
@@ -41,77 +39,83 @@ public class Autonomous extends Fragment {
         return binding.getRoot();
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "ClickableViewAccessibility"})
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         MatchData data = UserModel.getMatchData();
         //initialization
-
-        TextView[] tv = new TextView[]{binding.fuelScored, binding.fuelMissed};
-        Button[] plus = new Button[]{binding.fuelScoredPlus, binding.fuelMissedPlus};
-        Button[] minus = new Button[]{binding.fuelScoredMinus, binding.fuelMissedMinus};
-        String[] setters = {"setAutoHub", "setAutoHubMissed"};
-        String[] getters = {"getAutoHub", "getAutoHubMissed"};
-
-        for (int i = 0; i < tv.length; i++) {
-            final int index = i;
-            try {
-                Method getMethod = data.getClass().getMethod(getters[i]);
-                Method setMethod = data.getClass().getMethod(setters[i], getMethod.getReturnType());
-
-                getMethod.invoke(data);
-                tv[i].setText(getMethod.invoke(data) + "");
-
-                Runnable plusFuel = new Runnable() {
-                    @Override
-                    public void run() {
-                        try{
-                            setMethod.invoke(data, (int) getMethod.invoke(data) + 1);
-                            tv[index].setText(Integer.toString((int) getMethod.invoke(data)));
-                            uiHandler.postDelayed(this, 100);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                };
-
-                plus[i].setOnLongClickListener(v -> {
-                    uiHandler.postDelayed(plusFuel, 100);
-                    return true;
-                });
-
-                plus[i].setOnTouchListener((v, event) -> {
-                    if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
-                        uiHandler.removeCallbacks(plusFuel);
-                    }
-                    return false;
-                });
-
-                plus[i].setOnClickListener(v -> {
-                    try {
-                        setMethod.invoke(data, (int) getMethod.invoke(data) + 1);
-                        tv[index].setText(Integer.toString((int) getMethod.invoke(data)));
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
-
-                minus[i].setOnClickListener(v -> {
-                    try {
-                        setMethod.invoke(data, (int) getMethod.invoke(data) <= 0 ? 0 : (int) getMethod.invoke(data) - 1);
-                        tv[index].setText(Integer.toString((int) getMethod.invoke(data)));
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-                });
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
+        binding.fuelScored.setText(data.getAutoHub() + "");
+        binding.fuelMissed.setText(data.getAutoHubMissed() + "");
         binding.title.setText("Autonomous Team " + data.getTeamNumber());
+
+        binding.fuelScoredPlus.setOnClickListener(v -> {
+            data.setAutoHub(data.getAutoHub() + 1);
+            binding.fuelScored.setText(Integer.toString(data.getAutoHub()));
+        });
+
+        Runnable plusFuelScored = new Runnable() {
+            @Override
+            public void run() {
+                data.setAutoHub(data.getAutoHub() + 1);
+                binding.fuelScored.setText(Integer.toString(data.getAutoHub()));
+                uiHandler.postDelayed(this, 100);
+            }
+        };
+
+        Runnable plusFuelMissed = new Runnable() {
+            @Override
+            public void run() {
+                data.setAutoHubMissed(data.getAutoHubMissed() + 1);
+                binding.fuelMissed.setText(Integer.toString(data.getAutoHubMissed()));
+                uiHandler.postDelayed(this, 100);
+            }
+        };
+
+        binding.fuelScoredPlus.setOnLongClickListener(v -> {
+            uiHandler.postDelayed(plusFuelScored, 100);
+            return true;
+        });
+
+        binding.fuelMissedPlus.setOnLongClickListener(v -> {
+            uiHandler.postDelayed(plusFuelMissed, 100);
+            return true;
+        });
+
+
+        binding.fuelScoredPlus.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP ||
+                    event.getAction() == MotionEvent.ACTION_CANCEL) {
+                uiHandler.removeCallbacks(plusFuelScored); // stop the loop
+            }
+            return false; // return false so long click still fires
+        });
+
+        binding.fuelMissedPlus.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP ||
+                    event.getAction() == MotionEvent.ACTION_CANCEL) {
+                uiHandler.removeCallbacks(plusFuelMissed); // stop the loop
+            }
+            return false; // return false so long click still fires
+        });
+
+
+        binding.fuelScoredMinus.setOnClickListener(v -> {
+            data.setAutoHub(data.getAutoHub() <= 0 ? 0 : data.getAutoHub() - 1);
+            binding.fuelScored.setText(Integer.toString(data.getAutoHub()));
+        });
+
+        binding.fuelMissedPlus.setOnClickListener(v -> {
+            data.setAutoHubMissed(data.getAutoHubMissed() + 1);
+            binding.fuelMissed.setText(Integer.toString(data.getAutoHubMissed()));
+        });
+        binding.fuelMissedMinus.setOnClickListener(v -> {
+            data.setAutoHubMissed(data.getAutoHubMissed() <= 0 ? 0 : data.getAutoHubMissed() - 1);
+            binding.fuelMissed.setText(Integer.toString(data.getAutoHubMissed()));
+        });
+
+
+
 
         binding.toggleGroupClimbLevel.setOnCheckedChangeListener((r, i) -> {
             int climb = binding.toggleGroupClimbLevel.indexOfChild(binding.toggleGroupClimbLevel.findViewById(i));

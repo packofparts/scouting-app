@@ -2,7 +2,10 @@ package com.example.myapplication;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
@@ -17,8 +20,11 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.myapplication.databinding.AutonomousBinding;
 
 
+
+
 public class Autonomous extends Fragment {
 
+    private final Handler uiHandler = new Handler(Looper.getMainLooper());
 
     private AutonomousBinding binding;
     ViewGroup v = null;
@@ -33,7 +39,7 @@ public class Autonomous extends Fragment {
         return binding.getRoot();
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "ClickableViewAccessibility"})
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -47,6 +53,53 @@ public class Autonomous extends Fragment {
             data.setAutoHub(data.getAutoHub() + 1);
             binding.fuelScored.setText(Integer.toString(data.getAutoHub()));
         });
+
+        Runnable plusFuelScored = new Runnable() {
+            @Override
+            public void run() {
+                data.setAutoHub(data.getAutoHub() + 1);
+                binding.fuelScored.setText(Integer.toString(data.getAutoHub()));
+                uiHandler.postDelayed(this, 100);
+            }
+        };
+
+        Runnable plusFuelMissed = new Runnable() {
+            @Override
+            public void run() {
+                data.setAutoHubMissed(data.getAutoHubMissed() + 1);
+                binding.fuelMissed.setText(Integer.toString(data.getAutoHubMissed()));
+                uiHandler.postDelayed(this, 100);
+            }
+        };
+
+        binding.fuelScoredPlus.setOnLongClickListener(v -> {
+            uiHandler.postDelayed(plusFuelScored, 100);
+            return true;
+        });
+
+        binding.fuelMissedPlus.setOnLongClickListener(v -> {
+            uiHandler.postDelayed(plusFuelMissed, 100);
+            return true;
+        });
+
+
+        binding.fuelScoredPlus.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP ||
+                    event.getAction() == MotionEvent.ACTION_CANCEL) {
+                uiHandler.removeCallbacks(plusFuelScored); // stop the loop
+            }
+            return false; // return false so long click still fires
+        });
+
+        binding.fuelMissedPlus.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP ||
+                    event.getAction() == MotionEvent.ACTION_CANCEL) {
+                uiHandler.removeCallbacks(plusFuelMissed); // stop the loop
+            }
+            return false; // return false so long click still fires
+        });
+
+
         binding.fuelScoredMinus.setOnClickListener(v -> {
             data.setAutoHub(data.getAutoHub() <= 0 ? 0 : data.getAutoHub() - 1);
             binding.fuelScored.setText(Integer.toString(data.getAutoHub()));
@@ -60,6 +113,9 @@ public class Autonomous extends Fragment {
             data.setAutoHubMissed(data.getAutoHubMissed() <= 0 ? 0 : data.getAutoHubMissed() - 1);
             binding.fuelMissed.setText(Integer.toString(data.getAutoHubMissed()));
         });
+
+
+
 
         binding.toggleGroupClimbLevel.setOnCheckedChangeListener((r, i) -> {
             int climb = binding.toggleGroupClimbLevel.indexOfChild(binding.toggleGroupClimbLevel.findViewById(i));

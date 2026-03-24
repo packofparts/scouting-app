@@ -259,7 +259,7 @@
                     android:layout_width="0dp"
                     android:gravity="start"
                     android:textColor="#94A3B8"
-                    android:text="Where the robot gets fuel"
+                    android:text="How the robot gets fuel"
                     app:autoSizeMaxTextSize="12sp"
                     app:autoSizeMinTextSize="1sp"
                     app:autoSizeTextType="uniform" />

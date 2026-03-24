@@ -62,7 +62,7 @@ public class PitScouting extends Fragment {
         });
         binding.driveTrain.setSelection(data.getDriveTrain());//Triggers setting color to white
 
-        ArrayAdapter<String> intake = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Intake", "Outpost (Source)", "Ground", "Outpost and Ground"});
+        ArrayAdapter<String> intake = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Intake", "Outpost (Source)", "Split Bumper ONLY", "Over the Bumper ONLY", "Outpost + Split Bumper", "Outpost + Over the Bumper"});
 
         binding.intake.setAdapter(intake);
 

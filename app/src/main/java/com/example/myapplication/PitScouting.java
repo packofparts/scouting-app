@@ -3,6 +3,10 @@ package com.example.myapplication;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.PickVisualMediaRequest;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.navigation.fragment.NavHostFragment;
@@ -62,7 +66,7 @@ public class PitScouting extends Fragment {
         });
         binding.driveTrain.setSelection(data.getDriveTrain());//Triggers setting color to white
 
-        ArrayAdapter<String> intake = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Intake", "Outpost (Source)", "Split Bumper ONLY", "Over the Bumper ONLY", "Outpost + Split Bumper", "Outpost + Over the Bumper"});
+        ArrayAdapter<String> intake = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Intake", "Outpost (Source) ONLY", "Split Bumper ONLY", "Over the Bumper ONLY", "Outpost + Split Bumper", "Outpost + Over the Bumper"});
 
         binding.intake.setAdapter(intake);
 
@@ -76,6 +80,21 @@ public class PitScouting extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {}
         });
         binding.intake.setSelection(data.getIntake());//Triggers setting color to white
+
+        ArrayAdapter<String> launcher = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Launcher", "Fixed Hood & Rotation", "Adjustable Hood & Fixed Rotation", "Fixed Hood & Adjustable Rotation", "Adjustable Hood & Rotation"});
+
+        binding.launcher.setAdapter(launcher);
+
+        binding.launcher.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);//Only known method to set text color to white
+                data.setIntake(position);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+        binding.launcher.setSelection(data.getLauncher());//Triggers setting color to white
 
         ArrayAdapter<String> terrain = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, new String[]{"No Traversal", "Bump", "Trench", "Bump and Trench"});
 
@@ -95,7 +114,7 @@ public class PitScouting extends Fragment {
         binding.cont.setOnClickListener(v ->
             UIHelpers.makeConfirmationAlert("Transfer Pit Data", "Do you want to transfer your pit data?", () -> {
                 try {
-                    data.toJson();
+                    data.toJson(this.getContext());
                 } catch (Exception e) {
                     UIHelpers.makeHelpAlert("Unknown Data Transfer Error!", e.getMessage(), getContext());
                 }
@@ -108,8 +127,12 @@ public class PitScouting extends Fragment {
         binding.reset.setOnClickListener(v -> UIHelpers.makeConfirmationAlert("Reset Data", "Do you want to reset all Pit Scouting fields?", () -> {
             binding.driveTrain.setSelection(0);
             binding.intake.setSelection(0);
+            binding.launcher.setSelection(0);
             binding.terrain.setSelection(0);
+            binding.widthBackground.setText("");
             binding.input.setText("");
+            data.image = null;
+            binding.photoBackground.setText("Select...");
         }, () ->{}, getContext()));
 
         binding.input.addTextChangedListener(new TextWatcher() {
@@ -126,7 +149,33 @@ public class PitScouting extends Fragment {
             }
         });
 
+        binding.widthBackground.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                try {
+                    data.setWidth(Integer.parseInt(binding.widthBackground.getText().toString()));
+                } catch (NumberFormatException e){
+                    data.setWidth(0);
+                }
+            }
+        });
 
+        ActivityResultLauncher<PickVisualMediaRequest> pickMedia =
+                registerForActivityResult(new ActivityResultContracts.PickVisualMedia(), uri -> {
+                    // Callback is invoked after the user selects a media item or closes the
+                    // photo picker.
+                    data.image = uri;
+                    binding.photoBackground.setText(uri != null ? "Photo Selected!" : "Select...");
+                });
+        binding.photoBackground.setOnClickListener(view1 -> pickMedia.launch(new PickVisualMediaRequest.Builder()
+                .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
+                .build()));
 
     }
 

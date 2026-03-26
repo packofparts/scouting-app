@@ -291,6 +291,189 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/launcherLayout"
+                android:elevation="2dp"
+                android:layout_width="0dp"
+                android:layout_height="74dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintTop_toBottomOf="@id/intakeLayout"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
+                android:background="@drawable/border_rounded">
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/g4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.25" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/g4"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/launcher"
+                    android:id="@+id/launch"/>
+                <TextView
+                    android:id="@+id/launcherHeader"
+                    android:fontFamily="@font/interbold"
+                    app:layout_constraintStart_toEndOf="@id/launch"
+                    android:layout_marginStart="5dp"
+                    app:layout_constraintEnd_toStartOf="@id/launcherBackground"
+                    app:layout_constraintTop_toTopOf="@id/launch"
+                    app:layout_constraintBottom_toTopOf="@id/launcherExplanation"
+                    android:layout_height="24dp"
+                    android:layout_width="0dp"
+                    android:gravity="start"
+                    android:textColor="@color/white"
+                    android:text="Launcher Type"
+                    android:textStyle="bold"
+                    app:autoSizeMaxTextSize="20sp"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform" />
+                <TextView
+                    android:id="@+id/launcherExplanation"
+                    android:fontFamily="@font/interbold"
+                    app:layout_constraintStart_toEndOf="@id/launch"
+                    android:layout_marginStart="5dp"
+                    app:layout_constraintEnd_toStartOf="@id/launcherBackground"
+                    app:layout_constraintTop_toBottomOf="@id/launcherHeader"
+                    app:layout_constraintBottom_toBottomOf="@id/launch"
+                    android:layout_height="24dp"
+                    android:layout_width="0dp"
+                    android:gravity="start"
+                    android:textColor="#94A3B8"
+                    android:text="How the robot ejects fuel"
+                    app:autoSizeMaxTextSize="12sp"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/launcherBackground"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/border_rounded"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/launcherHeader"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <Spinner
+                        android:id="@+id/launcher"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:backgroundTint="#D9D9D9"
+                        android:fontFamily="@font/interbold"
+                        android:spinnerMode="dropdown"
+                        android:visibility="visible"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/widthLayout"
+                android:elevation="2dp"
+                android:layout_width="0dp"
+                android:layout_height="74dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintTop_toBottomOf="@id/launcherLayout"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
+                android:background="@drawable/border_rounded">
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/g5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.25" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/g5"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/width"
+                    android:id="@+id/wide"/>
+                <TextView
+                    android:id="@+id/widthHeader"
+                    android:fontFamily="@font/interbold"
+                    app:layout_constraintStart_toEndOf="@id/wide"
+                    android:layout_marginStart="5dp"
+                    app:layout_constraintEnd_toStartOf="@id/widthBackground"
+                    app:layout_constraintTop_toTopOf="@id/wide"
+                    app:layout_constraintBottom_toTopOf="@id/widthExplanation"
+                    android:layout_height="24dp"
+                    android:layout_width="0dp"
+                    android:gravity="start"
+                    android:textColor="@color/white"
+                    android:text="Launcher Width"
+                    android:textStyle="bold"
+                    app:autoSizeMaxTextSize="20sp"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform" />
+                <TextView
+                    android:id="@+id/widthExplanation"
+                    android:fontFamily="@font/interbold"
+                    app:layout_constraintStart_toEndOf="@id/wide"
+                    android:layout_marginStart="5dp"
+                    app:layout_constraintEnd_toStartOf="@id/widthBackground"
+                    app:layout_constraintTop_toBottomOf="@id/widthHeader"
+                    app:layout_constraintBottom_toBottomOf="@id/wide"
+                    android:layout_height="24dp"
+                    android:layout_width="0dp"
+                    android:gravity="start"
+                    android:textColor="#94A3B8"
+                    android:text="Total width of the launcher(s), in fuel"
+                    app:autoSizeMaxTextSize="12sp"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform" />
+
+                <EditText
+                    android:id="@+id/widthBackground"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/border_rounded"
+                    android:hint="# of fuel"
+                    android:maxLines="1"
+                    android:inputType="number"
+                    android:textColor="#FFFFFF"
+                    android:paddingStart="16dp"
+                    android:textColorHint="#64748B"
+                    android:fontFamily="@font/interbold"
+                    app:autoSizeMaxTextSize="16sp"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/widthHeader"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+
+                </EditText>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
             <TextView
                 android:id="@+id/terrainTitle"
                 android:layout_width="0dp"
@@ -302,7 +485,7 @@
                 app:autoSizeMinTextSize="1sp"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/intakeLayout"
+                app:layout_constraintTop_toBottomOf="@id/widthLayout"
                 android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp"/>
@@ -398,6 +581,110 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/photoTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="PHOTO EVIDENCE"
+                android:textColor="#94A3B8"
+                android:textStyle="bold"
+                app:autoSizeMaxTextSize="12sp"
+                app:autoSizeMinTextSize="1sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/terrainLayout"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/photoLayout"
+                android:elevation="2dp"
+                android:layout_width="0dp"
+                android:layout_height="74dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintTop_toBottomOf="@id/photoTitle"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
+                android:background="@drawable/border_rounded">
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/g6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.25" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/g6"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/camera"
+                    android:id="@+id/camera"/>
+                <TextView
+                    android:id="@+id/photoHeader"
+                    android:fontFamily="@font/interbold"
+                    app:layout_constraintStart_toEndOf="@id/camera"
+                    android:layout_marginStart="5dp"
+                    app:layout_constraintEnd_toStartOf="@id/photoBackground"
+                    app:layout_constraintTop_toTopOf="@id/camera"
+                    app:layout_constraintBottom_toTopOf="@id/photoExplanation"
+                    android:layout_height="24dp"
+                    android:layout_width="0dp"
+                    android:gravity="start"
+                    android:textColor="@color/white"
+                    android:text="Robot Photo"
+                    android:textStyle="bold"
+                    app:autoSizeMaxTextSize="20sp"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform" />
+                <TextView
+                    android:id="@+id/photoExplanation"
+                    android:fontFamily="@font/interbold"
+                    app:layout_constraintStart_toEndOf="@id/camera"
+                    android:layout_marginStart="5dp"
+                    app:layout_constraintEnd_toStartOf="@id/photoBackground"
+                    app:layout_constraintTop_toBottomOf="@id/photoHeader"
+                    app:layout_constraintBottom_toBottomOf="@id/camera"
+                    android:layout_height="24dp"
+                    android:layout_width="0dp"
+                    android:gravity="start"
+                    android:textColor="#94A3B8"
+                    android:text="Use camera app to take a photo of the robot!"
+                    app:autoSizeMaxTextSize="12sp"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform" />
+
+                <Button
+                    android:id="@+id/photoBackground"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="#0D59F2"
+                    android:text="Select..."
+                    android:textColor="#FFFFFF"
+                    app:autoSizeMaxTextSize="20sp"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/interbold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/photoHeader"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+
+                </Button>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <TextView
                 android:id="@+id/notesTitle"
                 android:layout_width="0dp"
@@ -410,7 +697,7 @@
                 app:autoSizeMinTextSize="1sp"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/terrainLayout"
+                app:layout_constraintTop_toBottomOf="@id/photoLayout"
                 android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp" />

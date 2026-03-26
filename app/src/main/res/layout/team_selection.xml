@@ -79,7 +79,7 @@
                 android:layout_marginTop="12dp"
                 android:background="@drawable/border_rounded"
                 android:hint="Enter scouter name"
-                android:maxLines="2"
+                android:inputType="text"
                 android:textColor="#FFFFFF"
                 android:paddingStart="16dp"
                 android:textColorHint="#64748B"

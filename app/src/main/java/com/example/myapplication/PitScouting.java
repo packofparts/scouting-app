@@ -89,7 +89,7 @@ public class PitScouting extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);//Only known method to set text color to white
-                data.setIntake(position);
+                data.setLauncher(position);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
